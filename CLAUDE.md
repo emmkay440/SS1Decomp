@@ -20,6 +20,13 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   commit a non-matching build. Never push; pushing is only done when the
   user explicitly asks.
 
+## Current state (2026-10-07)
+
+260 / 986 game functions are matching C (`make progress`); every module in
+`src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
+analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
+ROM data formats: docs/data.md.
+
 ## Workflow
 
 - Decompiling: `tools/scripts/split_asm.py asm/code.s First Next module` →
@@ -31,6 +38,12 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   `old_agbcc` gets that right but allocates registers differently). Only
   the m4a library uses `old_agbcc` (Makefile override).
 - Functions that come close but don't match go to `tmp/drafts/` and stay asm.
+- Matching tricks that worked: return-0/1 layout follows if/else order
+  (flip the condition or use a result variable); `x & (1 << i)` vs
+  `(1 << i) & x` changes scheduling; per-layer code duplicated in both
+  branches (compiler merges tails); an unused parameter or `return arg` to
+  keep r0 live; separate `rest`/temp variables to change register choice;
+  an `inline` function's standalone copy moves to the end of the file.
 - agbcc quirks: every struct/union is 4-byte aligned (so a nested struct
   can't sit at offset 2); bitfield stores use the narrowest access that
   covers the bits; separate globals give one literal per variable while
@@ -41,6 +54,17 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   `config/rom_symbols.txt`. Then run `tools/scripts/apply_syms.py` (regenerates
   `ld_symbols.ld`).
 - After a batch: `make progress RECORD=1`.
+- Helpers: `tools/scripts/simple_runs.py` (runs of small adjacent functions
+  to decompile next), `tools/scripts/dumpfuncs.py FIRST END` (print their
+  asm), `tools/scripts/fcheck.py FUNC...` (build + per-function match,
+  ignoring bl offsets). Typical loop: split_asm → write C → fcheck → fix
+  shapes → `make compare` → retire asm to tmp/ → commit.
+- When one function won't match after a few tries, split it back out as
+  its own asm module (split_asm on the module file), keep the draft in
+  tmp/drafts/, list it in docs/NEXT.md, and move on.
+- The user can run mGBA with the GDB server; with it running you can read
+  RAM directly (tools/research/gdbstub.py, reads of <= 0x80 bytes) instead
+  of asking them for values.
 - Retired asm goes to `tmp/` (gitignored scratch) when its C matches.
 - Reference sources: `tmp/pokeemerald` (m4a, agb_flash), `tmp/sigmatch.txt`
   (which library functions match pokeemerald byte-for-byte).

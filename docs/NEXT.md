@@ -1,9 +1,9 @@
 # What's next (decomp)
 
-Status as of 2026-10-06 (`make progress`): ROM matches; 4 / 976 game functions
-in C (`src/copy_queue.c`); m4a's C part is fully C (`src/lib/m4a.c`, 5,456 of
-11,760 library bytes); 59 game and 144 library functions named; 36 RAM
-variables named; data region 0% split.
+Status as of 2026-10-07 (`make progress`): ROM matches; 260 / 986 game
+functions in C (3% of game code bytes: the small ones are mostly done);
+m4a's C part is fully C. Most easy runs of small functions are done; next
+are medium functions (menus, items, map) and the near misses below.
 
 ## Waiting on research data (you)
 
@@ -43,8 +43,15 @@ variables named; data region 0% split.
 - [x] `src/enemy_util.c`: `IsEnemyTypeActive`.
 - [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
       block copies, `GetPlayerClass`, 10 functions).
-- [ ] Near misses, drafts in `tmp/drafts/` (register allocation / block
-      order only): `ApplyEnemyDamage` (asm/enemy_damage.s),
+- [ ] Near misses still open (drafts in `tmp/drafts/`): `TakeItemFromSlot`
+      (asm/take_item.s), `sub_08041208` (asm/skill_check.s, inlines
+      sub_080411D0 but keeps the 1/0 result), `Lerp1024` (asm/lerp.s),
+      `Enable/DisableDisplayLayers` (asm/display_layers.s),
+      `sub_08005FC4`..`sub_080060A0` (asm/map_coords.s), `LoadSaveSlotInfo`
+      (asm/save_slot_info.s), `sub_0802F374` (asm/save_load_or_new.s).
+      Many earlier near misses turned out to be the compiler (fixed by
+      agbcc -fprologue-bugfix); these remaining ones are source shape.
+- [x] Old near-miss list (now matching): `ApplyEnemyDamage` (asm/enemy_damage.s),
       `ApplyPendingDamage` (asm/player_damage.s), `CalcExpGain`
       (asm/exp_gain.s, 12 bytes off), `InitSaveFlash` (asm/save_init.s),
       `WriteSaveSector` (asm/save.s with Read/VerifySaveSector, which match).
