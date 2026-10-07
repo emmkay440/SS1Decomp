@@ -15,3 +15,4 @@
 08054C14 gXcmdTable
 08055420 gMPlayTable            # struct MusicPlayer[gNumMusicPlayers]
 08055450 gSongTable             # struct Song[]
+080FB874 gExpTable              # u32 per level: total EXP needed to reach the next level (AddExp)

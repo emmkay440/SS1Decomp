@@ -670,7 +670,7 @@ DisplayOn: @ 0x08000890
 	lsls r2, r2, #0x13
 	ldrh r0, [r1]
 	strh r0, [r2]
-	bl sub_0803F1F8
+	bl EnableSoundVSync
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -690,7 +690,7 @@ DisplayOff: @ 0x080008B8
 	lsls r1, r1, #0x13
 	ldrh r0, [r2]
 	strh r0, [r1]
-	bl sub_0803F214
+	bl DisableSoundVSync
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1610,7 +1610,7 @@ _08000F7C:
 	thumb_func_start VCountIntr
 VCountIntr: @ 0x08000FB4
 	push {lr}
-	ldr r0, _08000FD8 @ =0x03006840
+	ldr r0, _08000FD8 @ =gSoundVSyncEnabled
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _08000FC2
@@ -1628,7 +1628,7 @@ _08000FC2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08000FD8: .4byte 0x03006840
+_08000FD8: .4byte gSoundVSyncEnabled
 _08000FDC: .4byte REG_IF
 _08000FE0: .4byte 0x03007FF8
 
@@ -1717,7 +1717,7 @@ _0800108C: .4byte gVBlankUpdatePending
 	thumb_func_start VBlankIntr
 VBlankIntr: @ 0x08001090
 	push {r4, r5, lr}
-	ldr r5, _080010E0 @ =0x03006840
+	ldr r5, _080010E0 @ =gSoundVSyncEnabled
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _080010A8
@@ -1755,7 +1755,7 @@ _080010C6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080010E0: .4byte 0x03006840
+_080010E0: .4byte gSoundVSyncEnabled
 _080010E4: .4byte REG_IME
 _080010E8: .4byte gVBlankUpdatePending
 _080010EC: .4byte REG_IF

@@ -5,7 +5,7 @@ PREFIX  ?= arm-none-eabi-
 AS      := $(PREFIX)as
 LD      := $(PREFIX)ld
 OBJCOPY := $(PREFIX)objcopy
-CC1     := tools/agbcc/bin/agbcc
+CC1     := tools/agbcc/bin/old_agbcc
 CPP     := $(PREFIX)cpp
 
 ASFLAGS  := -mcpu=arm7tdmi -I include
@@ -52,9 +52,6 @@ check_baserom:
 asm/crt0.o data/data.o: $(BASEROM) | check_baserom
 $(S_SRCS:.s=.o): asm/macros.inc
 $(C_SRCS:.c=.o): $(wildcard include/*.h include/*/*.h)
-
-# The Nintendo m4a sound library was built with an older agbcc.
-src/lib/m4a.o: CC1 := tools/agbcc/bin/old_agbcc
 
 %.o: %.s
 	$(AS) $(ASFLAGS) -o $@ $<

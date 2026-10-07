@@ -220,3 +220,87 @@
 08013310 UseItem                # healed hp +30 capped at max hp (+0x50); takes an item pointer; other item kinds unverified
 0800B8A4 HudThread              # thread drawing the status bar; displayed hp is a stack local that rolls 1/frame to the real hp
 0804FAA8 umul3232H32
+0803F1E8 ShutdownSound
+0803F1F8 EnableSoundVSync
+0803F214 DisableSoundVSync
+0803F230 FadeOutAllMusicPlayers
+0803F270 PlayBGM                 # plays only if gMusicEnabled; BGM/SE split of the wrapper sets is a guess from that and from menus calling PlaySE
+0803F28C PlayBGMOrChange
+0803F29C PlayBGMOrContinue
+0803F2AC StopBGM
+0803F2BC ContinueBGM
+0803F2CC PlaySE                  # called by menu code on cursor moves (trace boot_and_menus)
+0803F2DC PlaySEOrChange
+0803F2EC PlaySEOrContinue
+0803F2FC StopSE
+0803F30C ContinueSE
+0803F31C SndMPlayStart
+0803F328 SndMPlayStop
+0803F334 SndMPlayAllStop
+0803F340 SndMPlayAllContinue
+0803F34C SndMPlayFadeOut
+0803F35C SndMPlayTempoControl
+0803F36C SndMPlayVolumeControl
+0803F380 SndMPlayPitchControl
+0803F394 SndMPlayPanpotControl
+0803F3A8 SndMPlayModDepthSet
+0803F3BC SndMPlayLFOSpeedSet
+0803F3D0 SndMPlayImmInit
+0803F3EC SetMusicEnabled
+0803F450 FadeOutBGM
+0800189C InitSaveFlash           # IdentifyFlash + flash type check, sets gSaveEnabled
+080018FC ReadSaveSector
+0802F1F4 LoadSaveSlotInfo        # guess: reads each slot with ReadSaveSector, checks the 0x27C-byte checksum, fills the save select screen's slot info
+08002744 StartTitleMenu
+080022F8 TitleMenuThread         # trace boot_and_menus: title menu; starts SaveSelectThread
+080462EC StartSaveSelect
+08046258 SaveSelectThread        # trace boot_and_menus: runs only after choosing Single Player
+08019934 StartEnemySpawner       # waits for spawner thread slot (gSpawnerThreads[i], 0x28 bytes) to be free, starts EnemySpawnerThread (trace: monster_spawn)
+080193BC EnemySpawnerThread
+0800C504 SpawnEnemy              # takes a free slot in gActiveEnemyMask (5 slots), fills gEnemies[slot] from a spawn record, starts EnemyThread
+0800CBD8 EnemyThread
+0800E95C ApplyEnemyDamage        # enemy hp (+0x38) -= damage (+0x28); at <=0 sets state (+0xA) = 8, returns 1. Same shape as ApplyPendingDamage
+0800E988 IsEnemyTypeActive       # guess: 1 if any active enemy (or entry in the 16-slot list at 0x03004998) has type id == arg
+0801754C CalcDamageToPlayer      # 1/31 crit; else (atk - def/2)/2 +/- rand; element 1-3 scales by (110 - player resist)/60; element 2 may set status (+0xA6) and PlaySE(0x29). trace: take_damage
+0803F1BC SoundThread
+0803F40C StartSoundThread
+08026F98 StartCharacterMenu      # starts CharacterMenuThread (trace killing_slime: dungeon_character_menu)
+0802501C CharacterMenuThread     # in-dungeon character menu (trace killing_slime)
+0803F468 MenuScreen              # full-screen menu (items, stats/skills); was ItemMenuScreen, also runs for the stats menu (trace leveling_up)
+0800F470 DropItem                # drops an item near the player (sub_0800FA74 finds a spot) via SpawnFieldItem; returns 0 if no spot (trace: dropping_item)
+0802759C SpawnFieldItem          # guess: puts an item object on the map at (x, y) in pixels
+0802C540 StartItemUseEffect      # guess: starts ItemUseEffectThread when an item is used (trace: using_item_healing)
+0802C25C ItemUseEffectThread     # guess: item use effect/animation
+08006060 GetMapTileAttributes    # (x, y fixed point <<15, layer): tile at (x>>15, y>>15) in the map struct at 0x03003910 (layer 0) / 0x03003C00 (layer 1); returns bits 8-11 | bit 12 << 4 of the tile word
+0801710C AddExp                  # (stats, amount): exp (+0x34) += amount; if exp >= gExpTable[level-1] (level < 99): level++, +0x3C += 4, +0x40 += 1, returns 1
+080170F0 GetExpToNextLevel       # gExpTable[level-1] - exp
+0801709C CalcExpGain             # (stats, enemyInfo{u16 level, u16 exp}): if player level > enemy level, exp = (enemyLevel - (level - 10)) * exp / 10, min 1; doubled per equipped item id 11 (gPlayers[i]+0x1C list)
+08021CE4 StartMessageWindow      # guess: message window (NPC dialogue, END confirmation); picks one of 5 message ids (0x0010006A..) and starts MessageWindowThread. Was StartNpcTalk
+08022010 MessageWindowThread     # guess: message window thread; can show GetExpToNextLevel as digits. Was NpcTalkThread
+0800F944 AddItemToInventory      # (u32 *item): category 7 items stack into an existing slot (count in bits 15-31, max 100000); otherwise first empty slot; clears bit 14. Returns 0 if full (trace picking_up_item)
+08013EEC PickUpFieldItem         # (fieldItem): if active (+0xC bit 0) and AddItemToInventory(&fieldItem->item (+0x18)) works, deactivates it (+0xC = 0, +0x14 = 5) (trace picking_up_item)
+08013968 GetInventory            # copies gPlayerStats.inventory (25 words) out
+08013984 SetInventorySlot        # (slot, item); slot > 24 -> 0
+080139A0 SetInventory            # copies 25 words into gPlayerStats.inventory
+08016DF4 GetStatBlock            # copies gPlayerStats +0x24..+0x3F (7 words: stats, exp, level, stat points) out
+08016E0C SetStatBlock            # copies 7 words into gPlayerStats +0x24
+08016EA4 GetSkillBlock           # copies gPlayerStats +0x40..+0x63 (skill points + 8 skills) out
+08016EC0 SetSkillBlock           # copies 36 bytes into gPlayerStats +0x40
+080412C4 HaveSkillsChanged       # 1 if any of the 8 skills in the menu's working copy (*0x030004B4) differs from gPlayerStats (trace: allocating skill point)
+0804125C ApplyAllocatedPoints    # guess: writes the stats menu's working copies (*0x030004B0 stats, *0x030004B4 skills) back with SetStatBlock/SetSkillBlock (ran when confirming allocation)
+0802F5F0 GetOptions              # *dest = gPlayerStats.options (+0x278)
+0802F604 SetOptions              # gPlayerStats.options = *src (+0x278)
+0803F928 ApplyMenuChanges        # guess: writes MenuScreen's working copies back (inventory, stats, ...) depending on gMenuPage; on the options page: SetOptions + SetMusicEnabled(options & 1) (trace option_menu)
+0802F178 SaveGame                # copies gPlayerStats (0x27C bytes) + checksum byte (~sum) to a buffer, WriteSaveSector(gPlayerStats.saveSlot, buf), then VerifySaveSector. 0 = ok (trace option_menu_exit)
+0800190C WriteSaveSector         # (sector, data): returns 1 if !gSaveEnabled, else ProgramFlashSector with interrupts off
+0800194C VerifySaveSector        # (sector, data): returns 1 if !gSaveEnabled, else VerifyFlashSector
+08024B68 QuitToTitle             # menu END: confirmation in a message window, save, SoftReset (trace option_menu_exit)
+08016E94 GetPlayerClass          # gPlayerStats.classAndColor >> 2: 0 = Warrior, 1 = Mage (RAM, 2026-10-07)
+08013A98 GetCurrentWeaponIndex   # gPlayerStats.currentWeapon (0-2)
+080139BC GetWeapon               # (i): gPlayerStats.weapons[i], i > 2 -> 0
+080139D8 GetWeapons              # copies the 3 weapon slots out
+080139F8 SetWeapon               # (i, item): i > 2 -> 0
+08013A14 SetWeapons              # copies 3 weapon slots in
+08013A38 GetArmor                # gPlayerStats.armor (+0x80); guess: a category 3 item while DEF is 3
+08013A44 SetArmor                # sets +0x80 and recalculates (sub_08014114)
+08041308 CycleWeapon             # currentWeapon = (currentWeapon + 1) % 3, then recalculates (code reading)

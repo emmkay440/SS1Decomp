@@ -343,7 +343,7 @@ ReadFlash: @ 0x08051E4C
 	movs r1, #3
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r0, _08051EA0 @ =0x03007590
+	ldr r0, _08051EA0 @ =gFlash
 	ldr r0, [r0]
 	ldr r1, [r0]
 	movs r0, #0x80
@@ -369,7 +369,7 @@ _08051E84:
 	.align 2, 0
 _08051E98: .4byte REG_WAITCNT
 _08051E9C: .4byte 0x0000FFFC
-_08051EA0: .4byte 0x03007590
+_08051EA0: .4byte gFlash
 _08051EA4: .4byte ReadFlash_Core
 _08051EA8: .4byte ReadFlash
 _08051EAC:
@@ -385,7 +385,7 @@ _08051EB8:
 	bne _08051EAC
 	mov r3, sp
 	adds r3, #1
-	ldr r0, _08051EE4 @ =0x03007590
+	ldr r0, _08051EE4 @ =gFlash
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	lsls r4, r0
@@ -402,7 +402,7 @@ _08051EB8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08051EE4: .4byte 0x03007590
+_08051EE4: .4byte gFlash
 
 	thumb_func_start VerifyFlashSector_Core
 VerifyFlashSector_Core: @ 0x08051EE8
@@ -449,7 +449,7 @@ VerifyFlashSector: @ 0x08051F18
 	movs r1, #3
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r0, _08051F68 @ =0x03007590
+	ldr r0, _08051F68 @ =gFlash
 	ldr r0, [r0]
 	ldr r1, [r0]
 	movs r0, #0x80
@@ -475,7 +475,7 @@ _08051F4C:
 	.align 2, 0
 _08051F60: .4byte REG_WAITCNT
 _08051F64: .4byte 0x0000FFFC
-_08051F68: .4byte 0x03007590
+_08051F68: .4byte gFlash
 _08051F6C: .4byte VerifyFlashSector_Core
 _08051F70: .4byte VerifyFlashSector
 _08051F74:
@@ -491,7 +491,7 @@ _08051F80:
 	bne _08051F74
 	mov r3, sp
 	adds r3, #1
-	ldr r0, _08051FAC @ =0x03007590
+	ldr r0, _08051FAC @ =gFlash
 	ldr r0, [r0]
 	ldrb r1, [r0, #8]
 	lsls r4, r1
@@ -507,7 +507,7 @@ _08051F80:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08051FAC: .4byte 0x03007590
+_08051FAC: .4byte gFlash
 
 	thumb_func_start VerifyFlashSectorNBytes
 VerifyFlashSectorNBytes: @ 0x08051FB0
@@ -517,7 +517,7 @@ VerifyFlashSectorNBytes: @ 0x08051FB0
 	adds r6, r2, #0
 	lsls r2, r0, #0x10
 	lsrs r4, r2, #0x10
-	ldr r0, _08051FF8 @ =0x03007590
+	ldr r0, _08051FF8 @ =gFlash
 	ldr r0, [r0]
 	ldr r1, [r0]
 	movs r0, #0x80
@@ -548,7 +548,7 @@ _08051FD8:
 	lsls r0, r0, #0xf
 	b _08052018
 	.align 2, 0
-_08051FF8: .4byte 0x03007590
+_08051FF8: .4byte gFlash
 _08051FFC: .4byte REG_WAITCNT
 _08052000: .4byte 0x0000FFFC
 _08052004: .4byte VerifyFlashSector_Core
@@ -566,7 +566,7 @@ _08052018:
 	bne _0805200C
 	mov r3, sp
 	adds r3, #1
-	ldr r0, _08052044 @ =0x03007590
+	ldr r0, _08052044 @ =gFlash
 	ldr r0, [r0]
 	ldrb r1, [r0, #8]
 	lsls r4, r1
@@ -582,7 +582,7 @@ _08052018:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08052044: .4byte 0x03007590
+_08052044: .4byte gFlash
 
 	thumb_func_start ProgramFlashSectorAndVerify
 ProgramFlashSectorAndVerify: @ 0x08052048
@@ -599,7 +599,7 @@ _08052054:
 _0805205A:
 	cmp r6, #2
 	bhi _08052080
-	ldr r0, _08052088 @ =0x0300758C
+	ldr r0, _08052088 @ =ProgramFlashSector
 	ldr r2, [r0]
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -620,7 +620,7 @@ _08052080:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08052088: .4byte 0x0300758C
+_08052088: .4byte ProgramFlashSector
 
 	thumb_func_start ProgramFlashSectorAndVerifyNBytes
 ProgramFlashSectorAndVerifyNBytes: @ 0x0805208C
@@ -638,7 +638,7 @@ _0805209A:
 _080520A0:
 	cmp r6, #2
 	bhi _080520C8
-	ldr r0, _080520D0 @ =0x0300758C
+	ldr r0, _080520D0 @ =ProgramFlashSector
 	ldr r2, [r0]
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -660,7 +660,7 @@ _080520C8:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080520D0: .4byte 0x0300758C
+_080520D0: .4byte ProgramFlashSector
 
 	thumb_func_start IdentifyFlash
 IdentifyFlash: @ 0x080520D4
@@ -696,7 +696,7 @@ _08052102:
 	bne _08052100
 	movs r4, #0
 _08052116:
-	ldr r1, _08052150 @ =0x0300758C
+	ldr r1, _08052150 @ =ProgramFlashSector
 	ldr r0, [r2]
 	ldr r0, [r0]
 	str r0, [r1]
@@ -716,7 +716,7 @@ _08052116:
 	ldr r0, [r2]
 	ldr r0, [r0, #0x10]
 	str r0, [r1]
-	ldr r1, _08052164 @ =0x03007590
+	ldr r1, _08052164 @ =gFlash
 	ldr r0, [r2]
 	adds r0, #0x14
 	str r0, [r1]
@@ -725,12 +725,12 @@ _08052116:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08052150: .4byte 0x0300758C
+_08052150: .4byte ProgramFlashSector
 _08052154: .4byte 0x03007598
 _08052158: .4byte 0x0300759C
 _0805215C: .4byte 0x03007588
 _08052160: .4byte 0x030075A0
-_08052164: .4byte 0x03007590
+_08052164: .4byte gFlash
 
 	thumb_func_start WaitForFlashWrite_Common
 WaitForFlashWrite_Common: @ 0x08052168
@@ -756,7 +756,7 @@ WaitForFlashWrite_Common: @ 0x08052168
 	.align 2, 0
 _08052190: .4byte 0x03007584
 _08052194:
-	ldr r0, _080521AC @ =0x03007590
+	ldr r0, _080521AC @ =gFlash
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x14]
 	cmp r0, #0xc2
@@ -769,7 +769,7 @@ _080521A4:
 	mov r8, r4
 	b _080521DC
 	.align 2, 0
-_080521AC: .4byte 0x03007590
+_080521AC: .4byte gFlash
 _080521B0: .4byte 0x0E005555
 _080521B4:
 	ldr r1, [r7]
@@ -809,7 +809,7 @@ EraseFlashChip_MX: @ 0x080521F0
 	ldrh r1, [r5]
 	ldr r6, _08052250 @ =0x0000FFFC
 	ands r1, r6
-	ldr r0, _08052254 @ =0x03007590
+	ldr r0, _08052254 @ =gFlash
 	ldr r0, [r0]
 	ldrh r0, [r0, #0x10]
 	orrs r1, r0
@@ -849,7 +849,7 @@ EraseFlashChip_MX: @ 0x080521F0
 	.align 2, 0
 _0805224C: .4byte REG_WAITCNT
 _08052250: .4byte 0x0000FFFC
-_08052254: .4byte 0x03007590
+_08052254: .4byte gFlash
 _08052258: .4byte 0x0E005555
 _0805225C: .4byte 0x0E002AAA
 _08052260: .4byte 0x03007588
@@ -869,7 +869,7 @@ EraseFlashSector_MX: @ 0x08052264
 	ldr r0, _080522D8 @ =0x0000FFFC
 	mov r8, r0
 	ands r1, r0
-	ldr r0, _080522DC @ =0x03007590
+	ldr r0, _080522DC @ =gFlash
 	ldr r2, [r0]
 	ldrh r0, [r2, #0x10]
 	orrs r1, r0
@@ -912,7 +912,7 @@ EraseFlashSector_MX: @ 0x08052264
 	.align 2, 0
 _080522D4: .4byte REG_WAITCNT
 _080522D8: .4byte 0x0000FFFC
-_080522DC: .4byte 0x03007590
+_080522DC: .4byte gFlash
 _080522E0: .4byte 0x0E005555
 _080522E4: .4byte 0x0E002AAA
 _080522E8: .4byte 0x03007588
@@ -974,7 +974,7 @@ ProgramFlashSector_MX: @ 0x08052338
 	.align 2, 0
 _08052354: .4byte 0x000080FF
 _08052358:
-	ldr r0, _08052378 @ =0x03007590
+	ldr r0, _08052378 @ =gFlash
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	mov r7, r8
@@ -991,7 +991,7 @@ _08052358:
 	subs r0, r0, r1
 	b _0805238E
 	.align 2, 0
-_08052378: .4byte 0x03007590
+_08052378: .4byte gFlash
 _0805237C: .4byte sub_0805245C
 _08052380: .4byte sub_08052480
 _08052384:
@@ -1051,7 +1051,7 @@ _080523E2:
 	ldrh r1, [r3]
 	ldr r0, _08052408 @ =0x0000FFFC
 	ands r1, r0
-	ldr r0, _0805240C @ =0x03007590
+	ldr r0, _0805240C @ =gFlash
 	ldr r2, [r0]
 	ldrh r0, [r2, #0x10]
 	orrs r1, r0
@@ -1064,7 +1064,7 @@ _080523E2:
 	.align 2, 0
 _08052404: .4byte REG_WAITCNT
 _08052408: .4byte 0x0000FFFC
-_0805240C: .4byte 0x03007590
+_0805240C: .4byte gFlash
 _08052410: .4byte 0x03007594
 _08052414:
 	ldrh r0, [r4]
@@ -1110,12 +1110,12 @@ _08052458: .4byte 0x0000FFFC
 sub_0805245C: @ 0x0805245C
 	push {lr}
 	adds r2, r0, #0
-	ldr r0, _08052468 @ =0x03007590
+	ldr r0, _08052468 @ =gFlash
 	ldr r0, [r0]
 	ldr r1, [r0, #4]
 	b _0805246E
 	.align 2, 0
-_08052468: .4byte 0x03007590
+_08052468: .4byte gFlash
 _0805246C:
 	subs r1, #1
 _0805246E:
@@ -1153,7 +1153,7 @@ sub_08052498: @ 0x08052498
 	adds r7, r1, #0
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
-	ldr r0, _080524B0 @ =0x03007590
+	ldr r0, _080524B0 @ =gFlash
 	ldr r0, [r0]
 	ldrh r0, [r0, #0xa]
 	cmp r4, r0
@@ -1161,7 +1161,7 @@ sub_08052498: @ 0x08052498
 	ldr r0, _080524B4 @ =0x000080FF
 	b _08052534
 	.align 2, 0
-_080524B0: .4byte 0x03007590
+_080524B0: .4byte gFlash
 _080524B4: .4byte 0x000080FF
 _080524B8:
 	adds r0, r4, #0
@@ -1176,7 +1176,7 @@ _080524B8:
 	ldrh r1, [r3]
 	ldr r0, _080524F8 @ =0x0000FFFC
 	ands r1, r0
-	ldr r0, _080524FC @ =0x03007590
+	ldr r0, _080524FC @ =gFlash
 	ldr r2, [r0]
 	ldrh r0, [r2, #0x10]
 	orrs r1, r0
@@ -1194,7 +1194,7 @@ _080524B8:
 	.align 2, 0
 _080524F4: .4byte REG_WAITCNT
 _080524F8: .4byte 0x0000FFFC
-_080524FC: .4byte 0x03007590
+_080524FC: .4byte gFlash
 _08052500: .4byte 0x03007594
 _08052504:
 	ldrh r0, [r6]

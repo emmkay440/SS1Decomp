@@ -39,6 +39,16 @@ variables named; data region 0% split.
 - [ ] m4a_1 (`asm/lib/m4a_1.s`): the asm part (`SoundMain`, `MPlayMain`,
       `ply_*` commands). Needs an older `m4a_1.s` source. Note `umul3232H32`
       (0x0804FAA8) sits at the end of `asm/code_08001210.s`; it belongs to m4a_1.
+- [x] `src/sound.c`: game sound API (32 functions, 0x0803F1BC-0x0803F468).
+- [x] `src/enemy_util.c`: `IsEnemyTypeActive`.
+- [ ] Near misses, drafts in `tmp/drafts/` (register allocation only):
+      `ApplyEnemyDamage` (asm/enemy_damage.s), `ApplyPendingDamage`
+      (asm/player_damage.s). `include/player.h` / `include/enemy.h` hold the
+      struct layouts.
+- [ ] Heap (`InitHeap`/`Alloc`/`Free`, 0x08001210): 16-byte block header
+      {prev:31 + used:1 in one word, next, freePrev, freeNext}; the code
+      reads the first word as a plain pointer too, so the struct probably
+      needs a union. `gHeap` = free-list sentinel + start + size.
 - [ ] Engine core modules, following the `copy_queue.c` pattern
       (`split_asm.py` → C → `make check FUNC=...`): heap (`InitHeap`/`Alloc`/
       `Free`), input/RNG, display control, interrupt control.
