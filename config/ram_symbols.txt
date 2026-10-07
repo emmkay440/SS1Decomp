@@ -69,3 +69,10 @@
 030004A4 gUnknown_030004A4      # pointer; ApplyMenuChanges passes it to sub_08013C68 (page 5)
 030004AC gMenuSelectedItem      # struct Item *: item picked up in the menu (CanSwapItems)
 030004BC gMenuSelectedSlot      # 4-byte slot descriptor: +2 slot type, +3 sub-slot (CanPutItemInSlot)
+030005B8 gUnknown_030005B8      # u8 state? (src/unk_030005B8.c: 1, 4, 5 tested together)
+030005B9 gUnknown_030005B9      # u8
+030005BB gUnknown_030005BB      # u8
+030005BC gUnknown_030005BC      # u8 flag
+030005BD gUnknown_030005BD      # u8
+030005C8 gUnknown_030005C8      # u8[2]
+030005E0 gUnknown_030005E0      # 16-byte struct; +1: 6 decimal digits (sub_08045FD4)
