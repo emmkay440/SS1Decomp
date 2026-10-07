@@ -100,3 +100,12 @@
 030004C0 gUnknown_030004C0      # s8
 03003910 gMapLayer_03003910     # struct MapLayer (src/map.c); used unless gGameFlags bit 3 / layer arg is set
 03003C00 gMapLayer_03003C00     # struct MapLayer; the other layer
+030005F0 gUnknown_030005F0      # u8 state (save select); 10 and 12 tested together
+030005F5 gUnknown_030005F5      # u8: save slot passed to sub_0802F374
+03000608 gUnknown_03000608      # heap pointer (freed by sub_0804855C)
+0300060C gUnknown_0300060C      # heap pointer
+03000610 gUnknown_03000610      # heap pointer
+03000764 gUnknown_03000764      # struct SaveSlotInfo * (passed to sub_0802F374)
+03000768 gUnknown_03000768      # u8: selects the cleanup in sub_08048614
+030068F0 gUnknownThread_030068F0 # struct Thread, entry sub_080485E0
+03006918 gUnknown_03006918      # u8

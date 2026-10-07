@@ -3585,7 +3585,7 @@ _080245BC:
 	adds r0, r4, #0
 	bl KillThread
 _080245D6:
-	ldr r4, _08024670 @ =0x030068F0
+	ldr r4, _08024670 @ =gUnknownThread_030068F0
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -3647,7 +3647,7 @@ _08024630:
 	.align 2, 0
 _08024668: .4byte 0x03003F90
 _0802466C: .4byte 0x03006890
-_08024670: .4byte 0x030068F0
+_08024670: .4byte gUnknownThread_030068F0
 _08024674: .4byte 0x030044B0
 _08024678: .4byte 0x030064B0
 _0802467C: .4byte gUnknownThread_03003CB0
@@ -3872,7 +3872,7 @@ _0802485E:
 	adds r0, r4, #0
 	bl KillThread
 _08024870:
-	ldr r4, _08024964 @ =0x030068F0
+	ldr r4, _08024964 @ =gUnknownThread_030068F0
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -3978,7 +3978,7 @@ _08024954: .4byte gMapLayer_03003910
 _08024958: .4byte gMapLayer_03003C00
 _0802495C: .4byte 0x030066B0
 _08024960: .4byte 0x03006890
-_08024964: .4byte 0x030068F0
+_08024964: .4byte gUnknownThread_030068F0
 _08024968: .4byte 0x030044B0
 _0802496C: .4byte 0x030064B0
 _08024970: .4byte gUnknownThread_03003CB0
@@ -4416,7 +4416,7 @@ _08024D30:
 	adds r0, r4, #0
 	bl KillThread
 _08024D54:
-	ldr r4, _08024E34 @ =0x030068F0
+	ldr r4, _08024E34 @ =gUnknownThread_030068F0
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -4514,7 +4514,7 @@ _08024E24:
 	.align 2, 0
 _08024E2C: .4byte gBgRegsBuffer
 _08024E30: .4byte 0x03006890
-_08024E34: .4byte 0x030068F0
+_08024E34: .4byte gUnknownThread_030068F0
 _08024E38: .4byte 0x030044B0
 _08024E3C: .4byte 0x030064B0
 _08024E40: .4byte gUnknownThread_03003CB0
@@ -6296,7 +6296,7 @@ _08025D1C: @ jump table
 	.4byte _08025DEC @ case 7
 	.4byte _08025E08 @ case 8
 _08025D40:
-	ldr r1, _08025D54 @ =0x03006918
+	ldr r1, _08025D54 @ =gUnknown_03006918
 	movs r0, #0
 	strb r0, [r1]
 	bl Random
@@ -6306,9 +6306,9 @@ _08025D40:
 	str r1, [sp, #0x14]
 	b _08025E12
 	.align 2, 0
-_08025D54: .4byte 0x03006918
+_08025D54: .4byte gUnknown_03006918
 _08025D58:
-	ldr r1, _08025D6C @ =0x03006918
+	ldr r1, _08025D6C @ =gUnknown_03006918
 	movs r0, #1
 	strb r0, [r1]
 	bl Random
@@ -6318,9 +6318,9 @@ _08025D58:
 	str r1, [sp, #0x14]
 	b _08025E12
 	.align 2, 0
-_08025D6C: .4byte 0x03006918
+_08025D6C: .4byte gUnknown_03006918
 _08025D70:
-	ldr r1, _08025D84 @ =0x03006918
+	ldr r1, _08025D84 @ =gUnknown_03006918
 	movs r0, #3
 	strb r0, [r1]
 	bl Random
@@ -6330,9 +6330,9 @@ _08025D70:
 	str r1, [sp, #0x14]
 	b _08025E12
 	.align 2, 0
-_08025D84: .4byte 0x03006918
+_08025D84: .4byte gUnknown_03006918
 _08025D88:
-	ldr r1, _08025D9C @ =0x03006918
+	ldr r1, _08025D9C @ =gUnknown_03006918
 	movs r0, #2
 	strb r0, [r1]
 	bl Random
@@ -6342,9 +6342,9 @@ _08025D88:
 	str r1, [sp, #0x14]
 	b _08025E12
 	.align 2, 0
-_08025D9C: .4byte 0x03006918
+_08025D9C: .4byte gUnknown_03006918
 _08025DA0:
-	ldr r1, _08025DB4 @ =0x03006918
+	ldr r1, _08025DB4 @ =gUnknown_03006918
 	movs r0, #4
 	strb r0, [r1]
 	bl Random
@@ -6354,9 +6354,9 @@ _08025DA0:
 	str r1, [sp, #0x14]
 	b _08025E12
 	.align 2, 0
-_08025DB4: .4byte 0x03006918
+_08025DB4: .4byte gUnknown_03006918
 _08025DB8:
-	ldr r1, _08025DCC @ =0x03006918
+	ldr r1, _08025DCC @ =gUnknown_03006918
 	movs r0, #8
 	strb r0, [r1]
 	bl Random
@@ -6366,9 +6366,9 @@ _08025DB8:
 	str r1, [sp, #0x14]
 	b _08025E12
 	.align 2, 0
-_08025DCC: .4byte 0x03006918
+_08025DCC: .4byte gUnknown_03006918
 _08025DD0:
-	ldr r1, _08025DE8 @ =0x03006918
+	ldr r1, _08025DE8 @ =gUnknown_03006918
 	movs r0, #7
 	strb r0, [r1]
 	bl Random
@@ -6379,9 +6379,9 @@ _08025DD0:
 	adds r0, r1, r0
 	b _08025E10
 	.align 2, 0
-_08025DE8: .4byte 0x03006918
+_08025DE8: .4byte gUnknown_03006918
 _08025DEC:
-	ldr r1, _08025E04 @ =0x03006918
+	ldr r1, _08025E04 @ =gUnknown_03006918
 	movs r0, #5
 	strb r0, [r1]
 	bl Random
@@ -6393,9 +6393,9 @@ _08025DEC:
 	str r2, [sp, #0x14]
 	b _08025E12
 	.align 2, 0
-_08025E04: .4byte 0x03006918
+_08025E04: .4byte gUnknown_03006918
 _08025E08:
-	ldr r1, _08025E50 @ =0x03006918
+	ldr r1, _08025E50 @ =gUnknown_03006918
 	movs r0, #6
 	strb r0, [r1]
 	movs r0, #1
@@ -6429,7 +6429,7 @@ _08025E12:
 	bl SignalEvent
 	b _08025E6A
 	.align 2, 0
-_08025E50: .4byte 0x03006918
+_08025E50: .4byte gUnknown_03006918
 _08025E54: .4byte 0x11201100
 _08025E58: .4byte 0x03006430
 _08025E5C: .4byte gMapLayer_03003910
