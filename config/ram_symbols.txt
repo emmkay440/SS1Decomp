@@ -76,3 +76,8 @@
 030005BD gUnknown_030005BD      # u8
 030005C8 gUnknown_030005C8      # u8[2]
 030005E0 gUnknown_030005E0      # 16-byte struct; +1: 6 decimal digits (sub_08045FD4)
+030005BF gUnknown_030005BF      # u8 flag
+030005C0 gUnknown_030005C0      # u8
+030005CC gUnknown_030005CC      # u8[2]
+030005D0 gUnknown_030005D0      # struct MenuSlot
+030005D4 gUnknown_030005D4      # struct MenuSlot

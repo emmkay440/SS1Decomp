@@ -31,6 +31,11 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   `old_agbcc` gets that right but allocates registers differently). Only
   the m4a library uses `old_agbcc` (Makefile override).
 - Functions that come close but don't match go to `tmp/drafts/` and stay asm.
+- agbcc quirks: every struct/union is 4-byte aligned (so a nested struct
+  can't sit at offset 2); bitfield stores use the narrowest access that
+  covers the bits; separate globals give one literal per variable while
+  struct fields give base + offset; `&array[i].field` folds into one literal,
+  loading the field doesn't.
 - Names: `tools/scripts/rename.py old new` (records in config/names.txt).
   RAM globals: `config/ram_symbols.txt`; ROM tables and link-time constants:
   `config/rom_symbols.txt`. Then run `tools/scripts/apply_syms.py` (regenerates

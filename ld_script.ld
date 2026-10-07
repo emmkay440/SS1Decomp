@@ -49,6 +49,8 @@ SECTIONS {
         asm/code_08040CAC.o(.text);
         src/unk_030005B8.o(.text);
         asm/code_08046004.o(.text);
+        src/unk_030005B8_2.o(.text);
+        asm/code_08046128.o(.text);
         asm/lib/m4a_1.o(.text);
         src/lib/m4a.o(.text);
         asm/lib/libagbsyscall.o(.text);

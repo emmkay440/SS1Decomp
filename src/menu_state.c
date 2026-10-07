@@ -1,16 +1,10 @@
 #include "global.h"
 #include "item.h"
+#include "menu.h"
 
 // MenuScreen keeps working copies of the player's items and writes them
 // back with ApplyMenuChanges.
 
-struct MenuSlot
-{
-    u8 unk0;
-    u8 unk1;
-    u8 type;          // CanPutItemInSlot: 1 weapon, 2 equipment, ...
-    u8 subSlot;
-};
 
 extern u32 gMenuHeldCount;
 extern void *gUnknown_03000494;
@@ -59,8 +53,8 @@ void sub_08040C54(void)
 {
     gMenuSelectedSlot.unk0 = 0;
     gMenuSelectedSlot.unk1 = 0;
-    gMenuSelectedSlot.type = 0;
-    gMenuSelectedSlot.subSlot = 0;
+    MENU_SLOT_TYPE(&gMenuSelectedSlot) = 0;
+    MENU_SLOT_SUBSLOT(&gMenuSelectedSlot) = 0;
     gMenuSelectedItem = NULL;
     if (gMenuHeldCount != 0)
         gMenuSelectedItem->count += gMenuHeldCount;
