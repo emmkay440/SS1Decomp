@@ -42,6 +42,8 @@ SECTIONS {
         src/exp_gain.o(.text);
         src/exp.o(.text);
         asm/code_08017150.o(.text);
+        src/thread_starters.o(.text);
+        asm/code_080216E0.o(.text);
         src/window_checks.o(.text);
         asm/code_0802297C.o(.text);
         src/save_game.o(.text);

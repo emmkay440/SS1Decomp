@@ -5951,7 +5951,7 @@ _080326A4:
 	strb r0, [r2]
 _0803272C:
 	bl sub_0800F53C
-	ldr r4, _08032798 @ =0x030063E4
+	ldr r4, _08032798 @ =gUnknownThreadPtr_030063E4
 	ldr r0, [r4]
 	bl IsThreadInList
 	cmp r0, #0
@@ -5985,7 +5985,7 @@ _08032788: .4byte 0x03003D08
 _0803278C: .4byte gPlayerStats
 _08032790: .4byte 0x00000272
 _08032794: .4byte 0x00000275
-_08032798: .4byte 0x030063E4
+_08032798: .4byte gUnknownThreadPtr_030063E4
 
 	thumb_func_start sub_0803279C
 sub_0803279C: @ 0x0803279C
@@ -10709,7 +10709,7 @@ _08034E44:
 	strb r0, [r2]
 _08034ECC:
 	bl sub_0800F53C
-	ldr r4, _08034F38 @ =0x030063E4
+	ldr r4, _08034F38 @ =gUnknownThreadPtr_030063E4
 	ldr r0, [r4]
 	bl IsThreadInList
 	cmp r0, #0
@@ -10743,7 +10743,7 @@ _08034F28: .4byte 0x03003D08
 _08034F2C: .4byte gPlayerStats
 _08034F30: .4byte 0x00000272
 _08034F34: .4byte 0x00000275
-_08034F38: .4byte 0x030063E4
+_08034F38: .4byte gUnknownThreadPtr_030063E4
 
 	thumb_func_start sub_08034F3C
 sub_08034F3C: @ 0x08034F3C
@@ -13321,7 +13321,7 @@ _080363CC:
 	strb r0, [r2]
 _08036454:
 	bl sub_0800F53C
-	ldr r4, _080364BC @ =0x030063E4
+	ldr r4, _080364BC @ =gUnknownThreadPtr_030063E4
 	ldr r0, [r4]
 	bl IsThreadInList
 	cmp r0, #0
@@ -13354,7 +13354,7 @@ _080364AC: .4byte 0x03003D08
 _080364B0: .4byte gPlayerStats
 _080364B4: .4byte 0x00000272
 _080364B8: .4byte 0x00000275
-_080364BC: .4byte 0x030063E4
+_080364BC: .4byte gUnknownThreadPtr_030063E4
 
 	thumb_func_start sub_080364C0
 sub_080364C0: @ 0x080364C0
@@ -16103,7 +16103,7 @@ _08037A72:
 	strb r0, [r2]
 _08037AFA:
 	bl sub_0800F53C
-	ldr r4, _08037B54 @ =0x030063E4
+	ldr r4, _08037B54 @ =gUnknownThreadPtr_030063E4
 	ldr r0, [r4]
 	bl IsThreadInList
 	cmp r0, #0
@@ -16133,7 +16133,7 @@ _08037B44: .4byte 0x03003D08
 _08037B48: .4byte gPlayerStats
 _08037B4C: .4byte 0x00000272
 _08037B50: .4byte 0x00000275
-_08037B54: .4byte 0x030063E4
+_08037B54: .4byte gUnknownThreadPtr_030063E4
 
 	thumb_func_start sub_08037B58
 sub_08037B58: @ 0x08037B58
@@ -20032,7 +20032,7 @@ _08039A44:
 	strb r0, [r2]
 _08039ACC:
 	bl sub_0800F53C
-	ldr r4, _08039B38 @ =0x030063E4
+	ldr r4, _08039B38 @ =gUnknownThreadPtr_030063E4
 	ldr r0, [r4]
 	bl IsThreadInList
 	cmp r0, #0
@@ -20066,7 +20066,7 @@ _08039B28: .4byte 0x03003D08
 _08039B2C: .4byte gPlayerStats
 _08039B30: .4byte 0x00000272
 _08039B34: .4byte 0x00000275
-_08039B38: .4byte 0x030063E4
+_08039B38: .4byte gUnknownThreadPtr_030063E4
 
 	thumb_func_start sub_08039B3C
 sub_08039B3C: @ 0x08039B3C
@@ -22811,7 +22811,7 @@ _0803B11A:
 	strb r0, [r2]
 _0803B1A4:
 	bl sub_0800F53C
-	ldr r4, _0803B208 @ =0x030063E4
+	ldr r4, _0803B208 @ =gUnknownThreadPtr_030063E4
 	ldr r0, [r4]
 	bl IsThreadInList
 	cmp r0, #0
@@ -22843,7 +22843,7 @@ _0803B1F8: .4byte 0x03003D08
 _0803B1FC: .4byte gPlayerStats
 _0803B200: .4byte 0x00000272
 _0803B204: .4byte 0x00000275
-_0803B208: .4byte 0x030063E4
+_0803B208: .4byte gUnknownThreadPtr_030063E4
 
 	thumb_func_start sub_0803B20C
 sub_0803B20C: @ 0x0803B20C
@@ -28692,7 +28692,7 @@ _0803E254:
 _0803E2E2:
 	bl sub_0800F53C
 _0803E2E6:
-	ldr r4, _0803E35C @ =0x030063E4
+	ldr r4, _0803E35C @ =gUnknownThreadPtr_030063E4
 	ldr r0, [r4]
 	bl IsThreadInList
 	cmp r0, #0
@@ -28735,7 +28735,7 @@ _0803E34C: .4byte 0x00000BB8
 _0803E350: .4byte 0x03003D08
 _0803E354: .4byte 0x00000272
 _0803E358: .4byte 0x00000275
-_0803E35C: .4byte 0x030063E4
+_0803E35C: .4byte gUnknownThreadPtr_030063E4
 _0803E360: .4byte gActiveEnemyMask
 
 	thumb_func_start sub_0803E364

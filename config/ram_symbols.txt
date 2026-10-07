@@ -109,3 +109,5 @@
 03000768 gUnknown_03000768      # u8: selects the cleanup in sub_08048614
 030068F0 gUnknownThread_030068F0 # struct Thread, entry sub_080485E0
 03006918 gUnknown_03006918      # u8
+030063E4 gUnknownThreadPtr_030063E4 # struct Thread *; src/thread_starters.c starts different entries on it
+030063EC gUnknownThreadPtr_030063EC # struct Thread *
