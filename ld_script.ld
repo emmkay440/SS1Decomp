@@ -15,8 +15,7 @@ SECTIONS {
         asm/code_08000AF8.o(.text);
         src/copy_queue.o(.text);
         asm/code_08001210.o(.text);
-        asm/save_init.o(.text);
-        asm/save.o(.text);
+        src/save.o(.text);
         asm/code_08001970.o(.text);
         src/game_flags.o(.text);
         asm/code_080077D0.o(.text);
