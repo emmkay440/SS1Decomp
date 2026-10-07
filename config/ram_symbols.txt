@@ -81,3 +81,8 @@
 030005CC gUnknown_030005CC      # u8[2]
 030005D0 gUnknown_030005D0      # struct MenuSlot
 030005D4 gUnknown_030005D4      # struct MenuSlot
+030030B0 gUnknown_030030B0      # 16 bytes: the local player's link entry (sub_08001E78)
+030030C4 gUnknown_030030C4      # u32 link state; bits 8-11 = connected players (sub_08001EC4)
+030030D0 gUnknownThread_030030D0 # struct Thread, entry sub_08001A00 (sub_08001E08)
+03003100 gUnknown_03003100      # 4 x 16 bytes: link entries per player (sub_08001E78)
+03003140 gLinkStatus            # u32 flags; bit 1 = link (multiplayer) active (GetMultiplayerId reads SIOCNT then)
