@@ -855,7 +855,7 @@ _0800FAA4:
 	adds r0, r4, #0
 	b _0800FC58
 _0800FAB8:
-	ldr r0, _0800FB94 @ =0x030063B0
+	ldr r0, _0800FB94 @ =gFieldItems
 	ldr r4, [r0]
 	movs r1, #0
 	movs r6, #0
@@ -925,7 +925,7 @@ _0800FB24:
 	mov r8, r2
 	cmp r1, #0
 	bne _0800FBA0
-	ldr r0, _0800FB94 @ =0x030063B0
+	ldr r0, _0800FB94 @ =gFieldItems
 	ldr r2, [r0]
 	movs r3, #0
 _0800FB40:
@@ -975,7 +975,7 @@ _0800FB7E:
 	movs r1, #1
 	b _0800FBAE
 	.align 2, 0
-_0800FB94: .4byte 0x030063B0
+_0800FB94: .4byte gFieldItems
 _0800FB98: .4byte 0x030063BC
 _0800FB9C:
 	adds r0, r2, #0
@@ -996,7 +996,7 @@ _0800FBAE:
 	mov r7, sb
 	cmp r7, #0x14
 	ble _0800FAFE
-	ldr r0, _0800FC68 @ =0x030063B0
+	ldr r0, _0800FC68 @ =gFieldItems
 	ldr r4, [r0]
 	movs r0, #0
 	str r0, [sp, #0x10]
@@ -1093,7 +1093,7 @@ _0800FC58:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800FC68: .4byte 0x030063B0
+_0800FC68: .4byte gFieldItems
 _0800FC6C: .4byte 0x030063B4
 
 	thumb_func_start sub_0800FC70
@@ -1131,7 +1131,7 @@ _0800FCA0:
 	adds r0, r4, #0
 	b _0800FE46
 _0800FCB4:
-	ldr r0, _0800FD90 @ =0x030063B0
+	ldr r0, _0800FD90 @ =gFieldItems
 	ldr r4, [r0]
 	movs r1, #0
 	movs r6, #0
@@ -1201,7 +1201,7 @@ _0800FD20:
 	mov r8, r2
 	cmp r1, #0
 	bne _0800FD9C
-	ldr r0, _0800FD90 @ =0x030063B0
+	ldr r0, _0800FD90 @ =gFieldItems
 	ldr r2, [r0]
 	movs r3, #0
 _0800FD3C:
@@ -1251,7 +1251,7 @@ _0800FD7A:
 	movs r1, #1
 	b _0800FDAA
 	.align 2, 0
-_0800FD90: .4byte 0x030063B0
+_0800FD90: .4byte gFieldItems
 _0800FD94: .4byte 0x030063BC
 _0800FD98:
 	adds r0, r2, #0
@@ -1272,7 +1272,7 @@ _0800FDAA:
 	mov r7, sb
 	cmp r7, #0x14
 	ble _0800FCFA
-	ldr r0, _0800FE58 @ =0x030063B0
+	ldr r0, _0800FE58 @ =gFieldItems
 	ldr r4, [r0]
 	movs r0, #0
 	str r0, [sp, #0x10]
@@ -1361,7 +1361,7 @@ _0800FE46:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800FE58: .4byte 0x030063B0
+_0800FE58: .4byte gFieldItems
 
 	thumb_func_start sub_0800FE5C
 sub_0800FE5C: @ 0x0800FE5C
@@ -8521,7 +8521,7 @@ _08013276:
 	bl sub_08007604
 	cmp r0, #0
 	bne _080132B8
-	ldr r0, _080132FC @ =0x030063B0
+	ldr r0, _080132FC @ =gFieldItems
 	ldr r4, [r0]
 	movs r5, #0
 	ldr r0, _08013300 @ =gPlayers
@@ -8553,7 +8553,7 @@ _080132BC:
 	bl sub_080074CC
 	cmp r0, #0
 	beq _08013276
-	ldr r0, _080132FC @ =0x030063B0
+	ldr r0, _080132FC @ =gFieldItems
 	mov r8, r0
 	ldr r0, [r0]
 	bl Free
@@ -8578,7 +8578,7 @@ _080132BC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080132FC: .4byte 0x030063B0
+_080132FC: .4byte gFieldItems
 _08013300: .4byte gPlayers
 _08013304: .4byte 0x030063AC
 _08013308: .4byte 0x030063B8

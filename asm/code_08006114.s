@@ -185,7 +185,7 @@ _0800624A:
 	bl sub_0800454C
 	bl sub_0800C3C0
 	bl sub_080186A8
-	bl sub_08013C84
+	bl InitFieldItems
 	bl sub_08022AB4
 	bl sub_08018254
 	bl WaitFrame

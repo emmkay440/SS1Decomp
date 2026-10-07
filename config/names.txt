@@ -324,3 +324,8 @@
 0804137C AppraiseItem
 08041150 EquipItem
 080270A4 Lerp1024
+08013C24 GetStorage              # copies the 60-slot storage box (gPlayerStats +0xEC) out (trace town_storage)
+08013C68 SetStorage              # copies 60 item words into gPlayerStats +0xEC (storage box: 4 pages x 5 x 3)
+08013D44 FindFieldItemNear       # (x, y, layer): first active field item within 7 px of (x, y) on that layer, else NULL
+08013C84 InitFieldItems          # allocates gFieldItems (15 x 0x1C) and two 0x30-byte buffers
+08029A0C StartSpellEffect        # guess: starts sub_080298C0 as a thread (ice magic trace, mage_character)

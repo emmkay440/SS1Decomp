@@ -66,7 +66,7 @@
 03000498 gMenuInventory         # struct Item *: MenuScreen's working copy of the inventory (ApplyMenuChanges -> SetInventory)
 0300049C gMenuWeapons           # u32 *: working copy of the 3 weapon slots (-> SetWeapons)
 030004A0 gMenuEquipment         # u32 *: working copy of head/armor/third slot (-> sub_08013A64/SetArmor/sub_08013A84)
-030004A4 gUnknown_030004A4      # pointer; ApplyMenuChanges passes it to sub_08013C68 (page 5)
+030004A4 gUnknown_030004A4      # pointer; ApplyMenuChanges passes it to SetStorage (page 5)
 030004AC gMenuSelectedItem      # struct Item *: item picked up in the menu (CanSwapItems)
 030004BC gMenuSelectedSlot      # 4-byte slot descriptor: +2 slot type, +3 sub-slot (CanPutItemInSlot)
 030005B8 gUnknown_030005B8      # u8 state? (src/unk_030005B8.c: 1, 4, 5 tested together)
@@ -114,3 +114,4 @@
 030064B0 gCharacterMenuThread   # struct Thread (StartCharacterMenu)
 030064E0 gUnknownThread_030064E0 # struct Thread, entry sub_08025940
 030066B0 gUnknownThread_030066B0 # struct Thread, entry sub_080260E8
+030063B0 gFieldItems            # struct FieldItem * (15 x 0x1C): items lying on the map (FindFieldItemNear, PickUpFieldItem)

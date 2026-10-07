@@ -11,7 +11,8 @@ boot_and_menus, killing_slime, NPC, picking_up_item, leveling_up,
 option_menu, option_menu_exit, warrior_equpping_items, plus the RAM reads
 of the Mage character.
 
-## Not analyzed yet (2026-10-07): leads from a first pass
+## Partly analyzed (2026-10-07): named GetStorage/SetStorage, FindFieldItemNear,
+InitFieldItems, StartSpellEffect; gold = category 7; storage in gPlayerStats +0xEC
 
 - **mage_character** (ice attack freezing an enemy, weapon switching):
   new functions sub_08029560, sub_08029688, sub_080297D4, sub_080298C0,

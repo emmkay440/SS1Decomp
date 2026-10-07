@@ -14955,7 +14955,7 @@ _0801E724:
 	ldrh r2, [r0, #0x16]
 	mov r0, r8
 	adds r1, r6, #0
-	bl sub_08013D44
+	bl FindFieldItemNear
 	cmp r0, #0
 	bne _0801E786
 	ldr r3, [sp, #0x50]

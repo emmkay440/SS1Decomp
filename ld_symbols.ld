@@ -93,6 +93,7 @@ gUnknown_03004998 = 0x03004998;
 gEnemies = 0x03005DA4;
 gActiveEnemyMask = 0x03005DAC;
 gUnknown_03005DD4 = 0x03005DD4;
+gFieldItems = 0x030063B0;
 gSpawnerThreads = 0x030063C8;
 gUnknownThreadPtr_030063E4 = 0x030063E4;
 gUnknownThreadPtr_030063EC = 0x030063EC;

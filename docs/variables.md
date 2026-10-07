@@ -38,6 +38,8 @@ checksum byte (~ byte sum) at 0x27C, and writes the sector `saveSlot`
 | +0x7C | u32 | head | Warrior: 0x40C0 = Bandana (category 4, id 1). `CanPutItemInSlot` sub-slot 0 takes category 4 |
 | +0x80 | u32 | armor (body) | Mage: 0x4030 (Robe); Warrior after equipping the Cotton Robe: 0x4130 (category 3, id 2). Sub-slot 1 takes category 3 |
 | +0x84 | u32 | third equipment slot | empty so far; sub-slot 2 takes category 5 |
+| +0xEC | Item[60] | storage | storage box, 4 pages of 5x3 (trace town_storage; GetStorage/SetStorage) |
+| +0x1DC | Item[3][12] | ? | three 12-item lists picked by index (sub_08013B94) |
 | +0x278 | u32 | options | read from RAM after setting the defaults: 0x1059D = BGM on (bit 0, `ApplyMenuChanges` passes it to `SetMusicEnabled`), bit 1 = control type (0 = A, 1 = B: 0x1059F with B, checked 2026-10-07), window color R/G/B in 5-bit fields at bits 2/7/12 = 7/11/16 (the menu's defaults) |
 | +0x88 | u32[25] | inventory | `AddItemToInventory` (trace picking_up_item, code reading) |
 
@@ -51,7 +53,7 @@ Mithril, Long Sword, ?Robe): 0x10, 0x10, 0x310 (Angel Wing id?), 0x610
 | Bits | Field | Evidence |
 |---|---|---|
 | 4-6 | category; 0 = empty slot | `AddItemToInventory` looks for 0 |
-| 4-6 = 7 | stackable kind | stacks merge, count capped at 100000 |
+| 4-6 = 7 | gold | stacks merge, count capped at 100000; buying in a shop takes from these stacks (trace town_store) |
 | 4-6 = 1 | usable item | the Mage's inventory slots 1-5: 0x190 Goddess Tear (id 3), empty, 0x310 Angel Wing (id 6), 0x310 Angel Wing, 0x10 Herb (id 0) (checked in game, 2026-10-07). `sub_08014EB4` (quick-equip phase) checks for 1 |
 | 4-6 = 2 | weapon | the Mage's two books; the Warrior's Long Sword = 0x120 (id 2) |
 | 4-6 = 3 | armor (body) | Robe = id 0, Cotton Robe = id 2 (guess) |

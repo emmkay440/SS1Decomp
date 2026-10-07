@@ -159,8 +159,8 @@ _08013C0C:
 	.byte 0x00, 0xD9, 0x00, 0x21, 0x02, 0x48, 0x89, 0x00, 0xEC, 0x30, 0x09, 0x18, 0x08, 0x68, 0x70, 0x47
 	.byte 0x10, 0x3D, 0x00, 0x03
 
-	thumb_func_start sub_08013C24
-sub_08013C24: @ 0x08013C24
+	thumb_func_start GetStorage
+GetStorage: @ 0x08013C24
 	adds r2, r0, #0
 	movs r1, #0
 	ldr r3, _08013C44 @ =0x03003DFC
@@ -185,8 +185,8 @@ _08013C48:
 	.byte 0x00, 0xD9, 0x00, 0x21, 0x03, 0x48, 0x89, 0x00, 0xEC, 0x30, 0x09, 0x18, 0x10, 0x68, 0x08, 0x60
 	.byte 0x70, 0x47, 0x00, 0x00, 0x10, 0x3D, 0x00, 0x03
 
-	thumb_func_start sub_08013C68
-sub_08013C68: @ 0x08013C68
+	thumb_func_start SetStorage
+SetStorage: @ 0x08013C68
 	adds r2, r0, #0
 	movs r1, #0
 	ldr r0, _08013C80 @ =gPlayerStats
@@ -202,10 +202,10 @@ _08013C72:
 	.align 2, 0
 _08013C80: .4byte gPlayerStats
 
-	thumb_func_start sub_08013C84
-sub_08013C84: @ 0x08013C84
+	thumb_func_start InitFieldItems
+InitFieldItems: @ 0x08013C84
 	push {r4, lr}
-	ldr r4, _08013CCC @ =0x030063B0
+	ldr r4, _08013CCC @ =gFieldItems
 	movs r0, #0xd2
 	lsls r0, r0, #1
 	bl Alloc
@@ -234,7 +234,7 @@ sub_08013C84: @ 0x08013C84
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08013CCC: .4byte 0x030063B0
+_08013CCC: .4byte gFieldItems
 _08013CD0: .4byte 0x030063AC
 _08013CD4: .4byte 0x030063B8
 _08013CD8: .4byte 0x030063A8
@@ -244,7 +244,7 @@ _08013CE0: .4byte 0x030063BC
 	thumb_func_start sub_08013CE4
 sub_08013CE4: @ 0x08013CE4
 	push {r4, r5, r6, r7, lr}
-	ldr r0, _08013D2C @ =0x030063B0
+	ldr r0, _08013D2C @ =gFieldItems
 	ldr r2, [r0]
 	ldr r1, _08013D30 @ =0x030063B4
 	movs r0, #1
@@ -280,20 +280,20 @@ _08013D04:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08013D2C: .4byte 0x030063B0
+_08013D2C: .4byte gFieldItems
 _08013D30: .4byte 0x030063B4
 _08013D34: .4byte 0x030063BC
 _08013D38: .4byte 0x7FFFFFFF
 _08013D3C: .4byte 0xFFFF8000
 _08013D40: .4byte 0x00007FFF
 
-	thumb_func_start sub_08013D44
-sub_08013D44: @ 0x08013D44
+	thumb_func_start FindFieldItemNear
+FindFieldItemNear: @ 0x08013D44
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r5, r1, #0
 	adds r4, r2, #0
-	ldr r0, _08013D88 @ =0x030063B0
+	ldr r0, _08013D88 @ =gFieldItems
 	ldr r3, [r0]
 	movs r2, #0
 _08013D52:
@@ -326,7 +326,7 @@ _08013D74:
 	adds r0, r3, #0
 	b _08013D96
 	.align 2, 0
-_08013D88: .4byte 0x030063B0
+_08013D88: .4byte gFieldItems
 _08013D8C:
 	adds r2, #1
 	adds r3, #0x1c
@@ -344,7 +344,7 @@ sub_08013D9C: @ 0x08013D9C
 	mov ip, r0
 	adds r7, r1, #0
 	adds r6, r2, #0
-	ldr r0, _08013DF0 @ =0x030063B0
+	ldr r0, _08013DF0 @ =gFieldItems
 	ldr r1, [r0]
 	movs r2, #0
 	ldr r0, _08013DF4 @ =gFrameCounter
@@ -385,7 +385,7 @@ _08013DDC:
 	adds r0, r1, #0
 	b _08013E02
 	.align 2, 0
-_08013DF0: .4byte 0x030063B0
+_08013DF0: .4byte gFieldItems
 _08013DF4: .4byte gFrameCounter
 _08013DF8:
 	adds r2, #1

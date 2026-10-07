@@ -464,7 +464,7 @@ _0803F876:
 	movs r1, #0xf0
 	bl bzero
 	ldr r0, [r4]
-	bl sub_08013C24
+	bl GetStorage
 	b _0803F912
 	.align 2, 0
 _0803F88C: .4byte gUnknown_030004A4
@@ -585,7 +585,7 @@ _0803F9A0:
 	ldr r0, _0803F9AC @ =gUnknown_030004A4
 _0803F9A2:
 	ldr r0, [r0]
-	bl sub_08013C68
+	bl SetStorage
 	b _0803F9CA
 	.align 2, 0
 _0803F9AC: .4byte gUnknown_030004A4

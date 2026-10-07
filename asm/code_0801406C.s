@@ -1695,7 +1695,7 @@ sub_08014D28: @ 0x08014D28
 	push {r4, lr}
 	lsls r0, r0, #0x18
 	lsrs r3, r0, #0x18
-	ldr r0, _08014D48 @ =0x030063B0
+	ldr r0, _08014D48 @ =gFieldItems
 	ldr r1, [r0]
 	movs r2, #0
 	movs r4, #1
@@ -1710,7 +1710,7 @@ _08014D36:
 	adds r0, r1, #0
 	b _08014D56
 	.align 2, 0
-_08014D48: .4byte 0x030063B0
+_08014D48: .4byte gFieldItems
 _08014D4C:
 	adds r2, #1
 	adds r1, #0x1c
@@ -1728,7 +1728,7 @@ sub_08014D5C: @ 0x08014D5C
 	adds r4, r1, #0
 	lsls r0, r0, #0x18
 	lsrs r1, r0, #0x18
-	ldr r0, _08014D84 @ =0x030063B0
+	ldr r0, _08014D84 @ =gFieldItems
 	ldr r2, [r0]
 	movs r3, #0
 	movs r5, #3
@@ -1747,7 +1747,7 @@ _08014D7A:
 	adds r0, r2, #0
 	b _08014D92
 	.align 2, 0
-_08014D84: .4byte 0x030063B0
+_08014D84: .4byte gFieldItems
 _08014D88:
 	adds r3, #1
 	adds r2, #0x1c

@@ -1608,7 +1608,7 @@ _08027D04:
 	lsrs r2, r2, #0x1a
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08013D44
+	bl FindFieldItemNear
 	adds r6, r0, #0
 	bl PickUpFieldItem
 	cmp r0, #0
@@ -4766,7 +4766,7 @@ _08029642:
 	mov r1, sl
 	adds r2, r6, #0
 	mov r3, sb
-	bl sub_08029A0C
+	bl StartSpellEffect
 	b _08029666
 	.align 2, 0
 _08029654: .4byte gPlayers
@@ -5243,8 +5243,8 @@ _080299DC:
 _08029A04: .4byte 0x030063D8
 _08029A08: .4byte 0x03006800
 
-	thumb_func_start sub_08029A0C
-sub_08029A0C: @ 0x08029A0C
+	thumb_func_start StartSpellEffect
+StartSpellEffect: @ 0x08029A0C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -5806,7 +5806,7 @@ _08029E6C:
 	mov r1, r8
 	ldr r2, [sp, #0x5c]
 	movs r3, #0
-	bl sub_08029A0C
+	bl StartSpellEffect
 	b _0802A0C0
 _08029E7E:
 	movs r0, #0x80
@@ -6468,7 +6468,7 @@ _0802A3B8:
 	mov r1, sb
 	ldr r2, [sp, #0x5c]
 	movs r3, #1
-	bl sub_08029A0C
+	bl StartSpellEffect
 	b _0802A5CE
 _0802A3CA:
 	movs r0, #0x80
@@ -7412,7 +7412,7 @@ _0802AB26:
 	str r2, [sp]
 	ldr r2, [sp, #0x44]
 	movs r3, #2
-	bl sub_08029A0C
+	bl StartSpellEffect
 _0802AB46:
 	adds r0, r6, #1
 	lsls r0, r0, #0x10
@@ -7734,7 +7734,7 @@ _0802ADB8:
 	mov r1, sb
 	ldr r2, [sp, #0x28]
 	movs r3, #3
-	bl sub_08029A0C
+	bl StartSpellEffect
 	b _0802B0F4
 _0802ADCA:
 	movs r2, #3
@@ -8547,7 +8547,7 @@ _0802B3E6:
 	adds r1, r4, #0
 	ldr r2, [sp, #0x44]
 	movs r3, #4
-	bl sub_08029A0C
+	bl StartSpellEffect
 	b _0802B5FA
 	.align 2, 0
 _0802B438: .4byte 0x080FB9FC
@@ -8757,7 +8757,7 @@ _0802B5B6:
 	str r4, [sp]
 	ldr r2, [sp, #0x44]
 	movs r3, #4
-	bl sub_08029A0C
+	bl StartSpellEffect
 _0802B5EE:
 	adds r0, r6, #1
 	lsls r0, r0, #0x10

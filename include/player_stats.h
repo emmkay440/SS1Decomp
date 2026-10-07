@@ -87,7 +87,9 @@ struct PlayerStats
     u32 armor;        // +0x80 item word (category 3, body)
     u32 unk84;        // +0x84 third equipment slot (category 5); empty so far
     struct Item inventory[INVENTORY_SIZE]; // +0x88
-    u8 unkEC[0x184];
+    struct Item storage[60]; // +0xEC storage box: 4 pages x 5 x 3 (GetStorage/SetStorage)
+    struct Item unk1DC[3][12]; // +0x1DC three 12-item lists (sub_08013B94)
+    u8 unk26C[0x4];
     u16 unk270_0:9;
     u16 unk270_9:1;   // +0x270 bit 9: shown on the save select screen (SaveSlotInfo.unk5)
     u16 unk270_10:6;

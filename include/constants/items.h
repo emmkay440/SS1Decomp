@@ -14,7 +14,7 @@
 #define ITEM_CATEGORY_HEAD   4  // head slot (+0x7C); Bandana
 #define ITEM_CATEGORY_5      5  // third equipment slot (+0x84)
 #define ITEM_CATEGORY_6      6  // Mithril (material?)
-#define ITEM_CATEGORY_STACK  7  // stacks in AddItemToInventory
+#define ITEM_CATEGORY_STACK  7  // gold: stacks of up to 100000 (shops take from them)
 
 // Usable item ids (category 1), from the in-game inventory (2026-10-07)
 #define ITEM_HERB          0
