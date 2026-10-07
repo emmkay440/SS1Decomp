@@ -179,7 +179,7 @@ sub_0803F5E8: @ 0x0803F5E8
 	ldr r0, _0803F64C @ =gMenuPage
 	movs r1, #0
 	strb r1, [r0]
-	ldr r0, _0803F650 @ =0x03000479
+	ldr r0, _0803F650 @ =gUnknown_03000479
 	strb r1, [r0]
 	ldr r1, _0803F654 @ =0x03000488
 	movs r0, #0
@@ -215,7 +215,7 @@ sub_0803F5E8: @ 0x0803F5E8
 	str r0, [r1]
 	ldr r1, _0803F68C @ =gUnknown_030004A4
 	str r0, [r1]
-	ldr r1, _0803F690 @ =0x030004A8
+	ldr r1, _0803F690 @ =gUnknown_030004A8
 	str r0, [r1]
 	ldr r1, _0803F694 @ =gMenuSelectedItem
 	str r0, [r1]
@@ -228,7 +228,7 @@ sub_0803F5E8: @ 0x0803F5E8
 	bx lr
 	.align 2, 0
 _0803F64C: .4byte gMenuPage
-_0803F650: .4byte 0x03000479
+_0803F650: .4byte gUnknown_03000479
 _0803F654: .4byte 0x03000488
 _0803F658: .4byte gMenuHeldCount
 _0803F65C: .4byte 0x0300047A
@@ -244,7 +244,7 @@ _0803F680: .4byte gMenuWeapons
 _0803F684: .4byte gUnknown_03000494
 _0803F688: .4byte gMenuEquipment
 _0803F68C: .4byte gUnknown_030004A4
-_0803F690: .4byte 0x030004A8
+_0803F690: .4byte gUnknown_030004A8
 _0803F694: .4byte gMenuSelectedItem
 _0803F698: .4byte 0x030004B0
 _0803F69C: .4byte 0x030004B4
@@ -283,7 +283,7 @@ _0803F6D6:
 	beq _0803F6E2
 	bl Free
 _0803F6E2:
-	ldr r0, _0803F72C @ =0x030004A8
+	ldr r0, _0803F72C @ =gUnknown_030004A8
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0803F6EE
@@ -315,7 +315,7 @@ _0803F71C: .4byte gMenuWeapons
 _0803F720: .4byte gUnknown_03000494
 _0803F724: .4byte gMenuEquipment
 _0803F728: .4byte gUnknown_030004A4
-_0803F72C: .4byte 0x030004A8
+_0803F72C: .4byte gUnknown_030004A8
 _0803F730: .4byte 0x030004B0
 _0803F734: .4byte 0x030004B4
 _0803F738: .4byte 0x030004B8
@@ -451,10 +451,10 @@ _0803F862:
 	movs r0, #2
 	bl sub_08013B94
 _0803F86A:
-	ldr r4, _0803F870 @ =0x030004A8
+	ldr r4, _0803F870 @ =gUnknown_030004A8
 	b _0803F876
 	.align 2, 0
-_0803F870: .4byte 0x030004A8
+_0803F870: .4byte gUnknown_030004A8
 _0803F874:
 	ldr r4, _0803F88C @ =gUnknown_030004A4
 _0803F876:
@@ -572,7 +572,7 @@ _0803F978:
 	beq _0803F9CA
 	cmp r0, #5
 	beq _0803F9A0
-	ldr r0, _0803F99C @ =0x030004A8
+	ldr r0, _0803F99C @ =gUnknown_030004A8
 	b _0803F9A2
 	.align 2, 0
 _0803F988: .4byte gMenuPage
@@ -580,7 +580,7 @@ _0803F98C: .4byte gMenuInventory
 _0803F990: .4byte gMenuWeapons
 _0803F994: .4byte gMenuEquipment
 _0803F998: .4byte gUnknown_03000494
-_0803F99C: .4byte 0x030004A8
+_0803F99C: .4byte gUnknown_030004A8
 _0803F9A0:
 	ldr r0, _0803F9AC @ =gUnknown_030004A4
 _0803F9A2:
@@ -1473,11 +1473,11 @@ sub_0803FFFC: @ 0x0803FFFC
 	ldrb r0, [r0]
 	cmp r0, #5
 	beq _08040018
-	ldr r0, _08040014 @ =0x030004A8
+	ldr r0, _08040014 @ =gUnknown_030004A8
 	b _0804001A
 	.align 2, 0
 _08040010: .4byte gMenuPage
-_08040014: .4byte 0x030004A8
+_08040014: .4byte gUnknown_030004A8
 _08040018:
 	ldr r0, _08040070 @ =gUnknown_030004A4
 _0804001A:
@@ -1723,14 +1723,14 @@ _080401B8:
 	ldrb r0, [r1]
 	cmp r0, #5
 	beq _080401F0
-	ldr r0, _080401EC @ =0x030004A8
+	ldr r0, _080401EC @ =gUnknown_030004A8
 	b _080401F2
 	.align 2, 0
 _080401DC: .4byte gUnknown_030004A4
 _080401E0: .4byte 0x00000302
 _080401E4: .4byte gMenuPage
 _080401E8: .4byte gMenuInventory
-_080401EC: .4byte 0x030004A8
+_080401EC: .4byte gUnknown_030004A8
 _080401F0:
 	ldr r0, _08040238 @ =gUnknown_030004A4
 _080401F2:
@@ -2070,7 +2070,7 @@ _08040480:
 	ands r0, r4
 	orrs r0, r1
 	str r0, [r7]
-	ldr r0, _080404B0 @ =0x03000479
+	ldr r0, _080404B0 @ =gUnknown_03000479
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _080404B4
@@ -2087,7 +2087,7 @@ _08040480:
 	b _08040776
 	.align 2, 0
 _080404AC: .4byte 0x00007FFF
-_080404B0: .4byte 0x03000479
+_080404B0: .4byte gUnknown_03000479
 _080404B4:
 	adds r0, r5, #0
 	b _08040606
@@ -2232,7 +2232,7 @@ _080405B8:
 	adds r2, r1, #0
 	cmp r0, #7
 	bne _0804061C
-	ldr r0, _08040614 @ =0x03000479
+	ldr r0, _08040614 @ =gUnknown_03000479
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0804061C
@@ -2269,7 +2269,7 @@ _08040606:
 	b _08040776
 	.align 2, 0
 _08040610: .4byte gMenuSelectedItem
-_08040614: .4byte 0x03000479
+_08040614: .4byte gUnknown_03000479
 _08040618: .4byte 0x00007FFF
 _0804061C:
 	ldrb r0, [r6, #2]
@@ -2483,14 +2483,14 @@ _080407B8:
 	ldrb r0, [r0]
 	cmp r0, #5
 	beq _080407DC
-	ldr r0, _080407D8 @ =0x030004A8
+	ldr r0, _080407D8 @ =gUnknown_030004A8
 	b _080407DE
 	.align 2, 0
 _080407C8: .4byte gMenuSelectedItem
 _080407CC: .4byte gMenuSelectedSlot
 _080407D0: .4byte gPlayerStats
 _080407D4: .4byte gMenuPage
-_080407D8: .4byte 0x030004A8
+_080407D8: .4byte gUnknown_030004A8
 _080407DC:
 	ldr r0, _0804082C @ =gUnknown_030004A4
 _080407DE:
@@ -3028,7 +3028,7 @@ _08040B78:
 	lsrs r0, r0, #0x1d
 	cmp r0, #7
 	beq _08040BD8
-	ldr r0, _08040BD4 @ =0x03000479
+	ldr r0, _08040BD4 @ =gUnknown_03000479
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08040BD8
@@ -3038,7 +3038,7 @@ _08040BC8:
 	.align 2, 0
 _08040BCC: .4byte gUnknown_030004A4
 _08040BD0: .4byte gMenuSelectedSlot
-_08040BD4: .4byte 0x03000479
+_08040BD4: .4byte gUnknown_03000479
 _08040BD8:
 	movs r0, #1
 	b _08040BE6

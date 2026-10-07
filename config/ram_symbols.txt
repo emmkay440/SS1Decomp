@@ -86,3 +86,5 @@
 030030D0 gUnknownThread_030030D0 # struct Thread, entry sub_08001A00 (sub_08001E08)
 03003100 gUnknown_03003100      # 4 x 16 bytes: link entries per player (sub_08001E78)
 03003140 gLinkStatus            # u32 flags; bit 1 = link (multiplayer) active (GetMultiplayerId reads SIOCNT then)
+03000479 gUnknown_03000479      # u8 (sub_08040D98 / sub_08040DA4)
+030004A8 gUnknown_030004A8      # struct Item *: a 4 x 5 x 3 grid of items (sub_08041014)

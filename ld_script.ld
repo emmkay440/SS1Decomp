@@ -49,6 +49,8 @@ SECTIONS {
         asm/code_0803F468.o(.text);
         src/menu_state.o(.text);
         asm/code_08040CAC.o(.text);
+        src/menu_items.o(.text);
+        asm/code_08041074.o(.text);
         src/unk_030005B8.o(.text);
         asm/code_08046004.o(.text);
         src/unk_030005B8_2.o(.text);
