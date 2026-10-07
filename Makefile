@@ -5,11 +5,11 @@ PREFIX  ?= arm-none-eabi-
 AS      := $(PREFIX)as
 LD      := $(PREFIX)ld
 OBJCOPY := $(PREFIX)objcopy
-CC1     := tools/agbcc/bin/old_agbcc
+CC1     := tools/agbcc/bin/agbcc
 CPP     := $(PREFIX)cpp
 
 ASFLAGS  := -mcpu=arm7tdmi -I include
-CC1FLAGS := -mthumb-interwork -Wimplicit -Wparentheses -O2 -fhex-asm
+CC1FLAGS := -mthumb-interwork -Wimplicit -Wparentheses -O2 -fhex-asm -fprologue-bugfix
 CPPFLAGS := -nostdinc -I include -I tools/agbcc/include -iquote include
 
 ROM     := shiningsoul.gba
@@ -52,6 +52,10 @@ check_baserom:
 asm/crt0.o data/data.o: $(BASEROM) | check_baserom
 $(S_SRCS:.s=.o): asm/macros.inc
 $(C_SRCS:.c=.o): $(wildcard include/*.h include/*/*.h)
+
+# The Nintendo m4a sound library was built with an older agbcc.
+src/lib/m4a.o: CC1 := tools/agbcc/bin/old_agbcc
+src/lib/m4a.o: CC1FLAGS := -mthumb-interwork -Wimplicit -Wparentheses -O2 -fhex-asm
 
 %.o: %.s
 	$(AS) $(ASFLAGS) -o $@ $<

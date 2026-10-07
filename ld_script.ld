@@ -9,6 +9,10 @@ SECTIONS {
     .text : {
         asm/crt0.o(.text);
         asm/code.o(.text);
+        src/display.o(.text);
+        asm/display_layers.o(.text);
+        src/display_misc.o(.text);
+        asm/code_08000AF8.o(.text);
         src/copy_queue.o(.text);
         asm/code_08001210.o(.text);
         asm/save_init.o(.text);
