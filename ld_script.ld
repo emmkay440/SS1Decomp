@@ -45,6 +45,8 @@ SECTIONS {
         asm/code_0802F618.o(.text);
         src/sound.o(.text);
         asm/code_0803F468.o(.text);
+        src/menu_state.o(.text);
+        asm/code_08040CAC.o(.text);
         asm/lib/m4a_1.o(.text);
         src/lib/m4a.o(.text);
         asm/lib/libagbsyscall.o(.text);

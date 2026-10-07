@@ -61,3 +61,11 @@
 0300001A gFadeTimer             # guess: u16
 0300001E gFadeDirection         # guess: s16, -1 or 1
 03000020 gFadeFlags             # guess: u16; (flags & 0x16) == 0 means idle
+03000484 gMenuHeldCount         # u32; added to the selected item's count (sub_08040C54)
+03000494 gUnknown_03000494      # pointer; ApplyMenuChanges passes it to sub_08013AF8
+03000498 gMenuInventory         # struct Item *: MenuScreen's working copy of the inventory (ApplyMenuChanges -> SetInventory)
+0300049C gMenuWeapons           # u32 *: working copy of the 3 weapon slots (-> SetWeapons)
+030004A0 gMenuEquipment         # u32 *: working copy of head/armor/third slot (-> sub_08013A64/SetArmor/sub_08013A84)
+030004A4 gUnknown_030004A4      # pointer; ApplyMenuChanges passes it to sub_08013C68 (page 5)
+030004AC gMenuSelectedItem      # struct Item *: item picked up in the menu (CanSwapItems)
+030004BC gMenuSelectedSlot      # 4-byte slot descriptor: +2 slot type, +3 sub-slot (CanPutItemInSlot)
