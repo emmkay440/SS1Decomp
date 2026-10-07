@@ -26,6 +26,11 @@ SECTIONS {
         asm/exp_gain.o(.text);
         src/exp.o(.text);
         asm/code_08017150.o(.text);
+        asm/save_game.o(.text);
+        asm/save_slot_info.o(.text);
+        asm/save_slots.o(.text);
+        src/save_options.o(.text);
+        asm/code_0802F618.o(.text);
         src/sound.o(.text);
         asm/code_0803F468.o(.text);
         asm/lib/m4a_1.o(.text);

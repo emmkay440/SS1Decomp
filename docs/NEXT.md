@@ -47,7 +47,13 @@ variables named; data region 0% split.
       order only): `ApplyEnemyDamage` (asm/enemy_damage.s),
       `ApplyPendingDamage` (asm/player_damage.s), `CalcExpGain`
       (asm/exp_gain.s, 12 bytes off), `InitSaveFlash` (asm/save_init.s),
-      `WriteSaveSector` (asm/save.s with Read/VerifySaveSector, which match). `include/player.h` / `include/enemy.h` hold the
+      `WriteSaveSector` (asm/save.s with Read/VerifySaveSector, which match).
+      Save slots: `SaveGame` (asm/save_game.s), `LoadSaveSlotInfo`
+      (asm/save_slot_info.s), `sub_0802F374`/`CalcSaveChecksum`/
+      `IsSaveSlotValid`/`LoadSaveSlot` (asm/save_slots.s). They share an
+      inline checksum loop (macro in tmp/drafts/save_with_macro.h); every
+      variant tried leaves the sum in the wrong register. Solve it once in
+      `CalcSaveChecksum` (4 lines off) and the rest should follow. `include/player.h` / `include/enemy.h` hold the
       struct layouts.
 - [ ] Heap (`InitHeap`/`Alloc`/`Free`, 0x08001210): 16-byte block header
       {prev:31 + used:1 in one word, next, freePrev, freeNext}; the code

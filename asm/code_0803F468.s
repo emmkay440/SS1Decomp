@@ -14835,7 +14835,7 @@ _0804691A:
 	beq _08046946
 	ldr r4, _08046950 @ =0x030005F5
 	ldrb r0, [r4]
-	bl sub_0802F5A4
+	bl EraseSaveSlot
 	ldr r2, _08046954 @ =0x03000764
 	ldrb r0, [r4]
 	lsls r1, r0, #3

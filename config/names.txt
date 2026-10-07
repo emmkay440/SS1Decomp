@@ -308,3 +308,7 @@
 08040A18 CanPutItemInSlot        # (slot desc, item *): slot type at +2 (1 weapon, 2 equipment with sub-slot at +3: 0 head = category 4, 1 body = category 3, 2 = category 5; ...); equipment must have bit 26 (unappraised) clear and pass CanEquipItem
 080410C8 CanSwapItems            # both items fit the other's slot (CanPutItemInSlot); extra rule for stackables (category 7)
 08002B8C GetDataRecord           # (category << 16 | index): record in gDataArchive ("SSDT"); category 5 weapons, 6 armor, 7 head, 10 usable items. See docs/data.md
+0802F498 CalcSaveChecksum
+0802F4C4 IsSaveSlotValid
+0802F52C LoadSaveSlot
+0802F5A4 EraseSaveSlot

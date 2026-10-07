@@ -14,11 +14,15 @@
 #define INVENTORY_SIZE 25
 
 // gPlayerStats.options (read from RAM, 2026-10-07)
-#define OPTIONS_BGM_ON        (1 << 0)
-#define OPTIONS_CONTROLS_B    (1 << 1)  // 0 = control type A, 1 = B
-#define OPTIONS_WINDOW_R(x)   (((x) >> 2) & 0x1F)   // default 7
-#define OPTIONS_WINDOW_G(x)   (((x) >> 7) & 0x1F)   // default 11
-#define OPTIONS_WINDOW_B(x)   (((x) >> 12) & 0x1F)  // default 16
+struct Options
+{
+    u32 bgm:1;        // 1 = on
+    u32 controls:1;   // 0 = type A, 1 = type B
+    u32 windowR:5;    // window color, default 7
+    u32 windowG:5;    // default 11
+    u32 windowB:5;    // default 16
+    u32 unk17:15;
+};
 
 // Skills in menu order (= array order, checked with watch.py), per class:
 // Warrior: Sword, Axe, Spear, Def build-up, Efficacy, Mental power,
@@ -66,8 +70,12 @@ struct PlayerStats
     u32 armor;        // +0x80 item word (category 3, body)
     u32 unk84;        // +0x84 third equipment slot (category 5); empty so far
     u32 inventory[INVENTORY_SIZE]; // +0x88 item words, see docs/variables.md
-    u8 unkEC[0x18C];
-    u32 options;      // +0x278 OPTIONS_* bits; last saved word
+    u8 unkEC[0x184];
+    u16 unk270_0:9;
+    u16 unk270_9:1;   // +0x270 bit 9: shown on the save select screen (SaveSlotInfo.unk5)
+    u16 unk270_10:6;
+    u8 unk272[0x6];
+    struct Options options; // +0x278 last saved word
 };
 
 #define SAVE_DATA_SIZE 0x27C  // bytes of gPlayerStats that SaveGame writes
