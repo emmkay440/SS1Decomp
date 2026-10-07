@@ -31,9 +31,10 @@ SECTIONS {
         src/exp_gain.o(.text);
         src/exp.o(.text);
         asm/code_08017150.o(.text);
-        asm/save_game.o(.text);
+        src/save_game.o(.text);
         asm/save_slot_info.o(.text);
-        asm/save_slots.o(.text);
+        asm/save_load_or_new.o(.text);
+        src/save_check.o(.text);
         src/save_options.o(.text);
         asm/code_0802F618.o(.text);
         src/sound.o(.text);

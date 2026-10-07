@@ -30,6 +30,21 @@ struct SaveSlotInfo
     u8 unk34[0x4];
 };                    // size 0x38
 
+// Byte sum of the first SAVE_DATA_SIZE bytes of buf; the save stores ~sum.
+#define SAVE_CHECKSUM(buf, sum)                     \
+{                                                   \
+    u8 *_p;                                         \
+    u32 _i;                                         \
+    sum = 0;                                        \
+    _p = (buf);                                     \
+    for (_i = 0; _i < SAVE_DATA_SIZE; _p++)         \
+    {                                               \
+        sum += *_p;                                 \
+        _i++;                                       \
+    }                                               \
+}
+
+
 extern bool8 gSaveEnabled;
 
 void InitSaveFlash(void);
@@ -40,6 +55,10 @@ u32 VerifySaveSector(u16 sector, u8 *src);
 u32 SaveGame(void);
 bool32 LoadSaveSlotInfo(struct SaveSlotInfo *info);
 bool32 EraseSaveSlot(u8 slot);
+bool32 sub_0802F374(struct SaveSlotInfo *info, u8 slot);
+u8 CalcSaveChecksum(u8 *buf);
+bool32 IsSaveSlotValid(u8 slot);
+bool32 LoadSaveSlot(u8 slot);
 void GetOptions(struct Options *dest);
 void SetOptions(const struct Options *src);
 
