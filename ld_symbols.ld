@@ -73,6 +73,7 @@ gPaletteBuffer = 0x03002950;
 gKeyRepeatTimer = 0x03002D50;
 gFrameCounter = 0x03002D54;
 gKeyRepeatRate = 0x03002D58;
+gUnknown_03002D60 = 0x03002D60;
 gVBlankUpdatePending = 0x03002D64;
 gCopyQueueCount = 0x03002D68;
 gCopyQueue = 0x03002D6C;

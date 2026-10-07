@@ -44,6 +44,11 @@ ROM data formats: docs/data.md.
   branches (compiler merges tails); an unused parameter or `return arg` to
   keep r0 live; separate `rest`/temp variables to change register choice;
   an `inline` function's standalone copy moves to the end of the file.
+- Code that looks like an inlined call with a constant argument (e.g.
+  `EnableIntr(INTR_FLAG_HBLANK)` inside another function) matches with a
+  `static inline` helper taking the value as a parameter.
+- The game read REG_VCOUNT without `volatile` (`*(u16 *)REG_ADDR_VCOUNT`
+  matched FrameUpdate; the volatile macro didn't).
 - agbcc quirks: every struct/union is 4-byte aligned (so a nested struct
   can't sit at offset 2); bitfield stores use the narrowest access that
   covers the bits; separate globals give one literal per variable while

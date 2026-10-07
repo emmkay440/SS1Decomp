@@ -122,3 +122,4 @@
 030063B8 gUnknown_030063B8      # 0x30-byte item list (list 1)
 030063BC gUnknown_030063BC      # u32, set to 0 by InitFieldItems
 03006430 gUnknown_03006430      # struct SpriteObj? (returned by sub_08026C78)
+03002D60 gUnknown_03002D60      # u32, cleared by InitVBlankState

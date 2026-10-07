@@ -15,6 +15,9 @@ SECTIONS {
         asm/code_08000AF8.o(.text);
         src/interrupts.o(.text);
         asm/code_08000F40.o(.text);
+        asm/hblank.o(.text);
+        src/intr_handlers.o(.text);
+        asm/code_080010F4.o(.text);
         src/copy_queue.o(.text);
         asm/code_08001210.o(.text);
         src/save.o(.text);

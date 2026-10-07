@@ -330,3 +330,5 @@
 08013C84 InitFieldItems          # allocates gFieldItems (15 x 0x1C) and two 0x30-byte buffers
 08029A0C StartSpellEffect        # guess: starts sub_080298C0 as a thread (ice magic trace, mage_character)
 08013C48 SetStorageSlot           # (slot, item *): slot > 59 -> 0; was disassembled as data
+08000F7C SetVCountLine            # (u8 line): DISPSTAT VCount setting; was disassembled as data
+08000F98 sub_08000F98             # clears DISPSTAT bit 2; was disassembled as data
