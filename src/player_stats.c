@@ -75,12 +75,12 @@ void SetArmor(u32 value)
 
 u32 sub_08013A58(void)
 {
-    return gPlayerStats.unk7C;
+    return gPlayerStats.head;
 }
 
 void sub_08013A64(u32 value)
 {
-    u32 *p = &gPlayerStats.unk7C;
+    u32 *p = &gPlayerStats.head;
     *p = value;
     sub_08014160();
 }

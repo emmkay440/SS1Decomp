@@ -32,6 +32,14 @@ struct Skill
     u16 unk2;
 };
 
+// gPlayerStats +0x40..+0x63, copied as a whole by GetSkillBlock/SetSkillBlock
+struct SkillBlock
+{
+    u16 points;       // unspent; +1 per level up
+    u8 unk2[0x2];
+    struct Skill skills[NUM_SKILLS];
+};
+
 struct PlayerStats
 {
     u16 name[16];     // +0x00 character codes; 'A' = 0xB1, 'B' = 0xB2?; 0-terminated
@@ -48,18 +56,15 @@ struct PlayerStats
     u32 level;        // +0x38
     u16 statPoints;   // +0x3C unspent; +4 per level up
     u8 unk3E[0x2];
-    // +0x40..+0x63: the "skill block" (GetSkillBlock / SetSkillBlock)
-    u16 skillPoints;  // +0x40 unspent; +1 per level up
-    u8 unk42[0x2];
-    struct Skill skills[NUM_SKILLS]; // +0x44
+    struct SkillBlock skillBlock; // +0x40 (GetSkillBlock / SetSkillBlock)
     u16 unk64;
     u16 unk66[3];
     u16 currentWeapon; // +0x6C index into weapons
     u8 unk6E[0x2];
     u32 weapons[3];   // +0x70 item words (category 2)
-    u32 unk7C;        // +0x7C equipment slot? (empty on both characters seen)
-    u32 armor;        // +0x80 item word (category 3); guess
-    u32 unk84;        // +0x84 equipment slot? (empty on both characters seen)
+    u32 head;         // +0x7C item word (category 4); Bandana on the Warrior
+    u32 armor;        // +0x80 item word (category 3, body)
+    u32 unk84;        // +0x84 third equipment slot (category 5); empty so far
     u32 inventory[INVENTORY_SIZE]; // +0x88 item words, see docs/variables.md
     u8 unkEC[0x18C];
     u32 options;      // +0x278 OPTIONS_* bits; last saved word
@@ -72,5 +77,10 @@ extern const u32 gExpTable[];
 
 bool32 AddExp(struct PlayerStats *stats, u32 amount);
 u32 GetExpToNextLevel(void);
+void GetStatBlock(void *dest);
+void SetStatBlock(const void *src);
+u8 GetPlayerClass(void);
+void GetSkillBlock(struct SkillBlock *dest);
+void SetSkillBlock(const struct SkillBlock *src);
 
 #endif // GUARD_PLAYER_STATS_H

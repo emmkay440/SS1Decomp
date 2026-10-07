@@ -304,3 +304,7 @@
 08013A38 GetArmor                # gPlayerStats.armor (+0x80); guess: a category 3 item while DEF is 3
 08013A44 SetArmor                # sets +0x80 and recalculates (sub_08014114)
 08041308 CycleWeapon             # currentWeapon = (currentWeapon + 1) % 3, then recalculates (code reading)
+08010064 CanEquipItem            # (item *): class/requirement check. 0 if unappraised (bit 26); weapons: looks up the record GetDataRecord(0x50000 | id) and switches on GetPlayerClass (0-3). Refused the Warrior's long sword (trace warrior_equpping_items)
+08040A18 CanPutItemInSlot        # (slot desc, item *): slot type at +2 (1 weapon, 2 equipment with sub-slot at +3: 0 head = category 4, 1 body = category 3, 2 = category 5; ...); equipment must have bit 26 (unappraised) clear and pass CanEquipItem
+080410C8 CanSwapItems            # both items fit the other's slot (CanPutItemInSlot); extra rule for stackables (category 7)
+08002B8C GetDataRecord           # (category << 16 | index): record in gDataArchive ("SSDT"); category 5 weapons, 6 armor, 7 head, 10 usable items. See docs/data.md

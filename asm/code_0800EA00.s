@@ -606,7 +606,7 @@ sub_0800EE58: @ 0x0800EE58
 _0800EE6E:
 	adds r0, r4, #0
 	orrs r0, r6
-	bl sub_08002B8C
+	bl GetDataRecord
 	stm r7!, {r0}
 	adds r4, #1
 	cmp r4, r5
@@ -1511,7 +1511,7 @@ _0800F584:
 	lsls r0, r0, #0xc
 	orrs r4, r0
 	adds r0, r4, #0
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	movs r4, #0
 _0800F598:
@@ -1808,7 +1808,7 @@ _0800F7B2:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r7, r0, #0
 	movs r2, #0
 	ldr r0, _0800F828 @ =0x00000153
@@ -1832,7 +1832,7 @@ _0800F7CA:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	movs r2, #0
 	movs r1, #0xa8
 	lsls r1, r1, #1
@@ -1874,7 +1874,7 @@ _0800F830:
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	movs r2, #0
 	adds r3, r0, #0
 	adds r3, #0xf2
@@ -1897,7 +1897,7 @@ _0800F846:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	movs r2, #0
 	movs r1, #0xa8
 	lsls r1, r1, #1
@@ -1930,7 +1930,7 @@ _0800F89A:
 	movs r1, #0xe0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	movs r2, #0
 	adds r3, r0, #0
 	adds r3, #0xf2
@@ -1953,7 +1953,7 @@ _0800F8B0:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	movs r2, #0
 	movs r1, #0xa8
 	lsls r1, r1, #1
@@ -1986,7 +1986,7 @@ _0800F904:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	movs r2, #0
 	movs r1, #0xa8
 	lsls r1, r1, #1
@@ -2784,7 +2784,7 @@ _0800FEC8:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _0800FEE4:
 	movs r1, #0xae
@@ -2817,7 +2817,7 @@ _0800FF04:
 	lsls r1, r1, #0xb
 _0800FF18:
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _0800FF20:
 	adds r0, r2, #0
@@ -2836,7 +2836,7 @@ _0800FF28:
 	movs r1, #0xa0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _0800FF44:
 	movs r3, #0xac
@@ -2856,7 +2856,7 @@ _0800FF4E:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _0800FF6A:
 	movs r4, #0xae
@@ -2876,7 +2876,7 @@ _0800FF74:
 	movs r1, #0xb0
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _0800FF90:
 	movs r7, #0xce
@@ -2924,7 +2924,7 @@ _0800FFCE:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _0800FFE6
 _0800FFE4:
 	movs r0, #0
@@ -2998,8 +2998,8 @@ _08010054:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_08010064
-sub_08010064: @ 0x08010064
+	thumb_func_start CanEquipItem
+CanEquipItem: @ 0x08010064
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -3043,7 +3043,7 @@ _080100A2:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	movs r1, #0xad
 	lsls r1, r1, #1
@@ -3159,7 +3159,7 @@ _08010180:
 	lsls r1, r1, #0xb
 _0801018E:
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	adds r1, #0xf8
 	ldrb r6, [r1]
@@ -3241,7 +3241,7 @@ _08010210:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _0801022A:
 	adds r5, r2, #0
@@ -3338,7 +3338,7 @@ sub_080102C4: @ 0x080102C4
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _08010364
@@ -3460,7 +3460,7 @@ _080103A4:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _080103BE:
 	adds r0, r2, #0
@@ -3539,7 +3539,7 @@ _0801043E:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08010452
 _08010450:
 	movs r0, #0
@@ -3612,7 +3612,7 @@ _080104BC:
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _080104D6:
 	adds r0, r2, #0
@@ -3686,7 +3686,7 @@ _08010548:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _0801055E
 _0801055C:
 	movs r0, #0
@@ -3760,7 +3760,7 @@ _080105C8:
 	movs r1, #0xe0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _080105E4:
 	adds r0, r2, #0
@@ -3835,7 +3835,7 @@ _08010658:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08010670
 _0801066E:
 	movs r0, #0
@@ -3906,7 +3906,7 @@ _080106D8:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _080106F2:
 	adds r0, r2, #0
@@ -4017,7 +4017,7 @@ _080107A4:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _080107BE:
 	adds r0, r2, #0
@@ -4096,7 +4096,7 @@ _0801083E:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08010852
 _08010850:
 	movs r0, #0
@@ -4169,7 +4169,7 @@ _080108BC:
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _080108D6:
 	adds r0, r2, #0
@@ -4243,7 +4243,7 @@ _08010948:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _0801095E
 _0801095C:
 	movs r0, #0
@@ -4317,7 +4317,7 @@ _080109C8:
 	movs r1, #0xe0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _080109E4:
 	adds r0, r2, #0
@@ -4392,7 +4392,7 @@ _08010A58:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08010A70
 _08010A6E:
 	movs r0, #0
@@ -4463,7 +4463,7 @@ _08010AD8:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08010AF2:
 	adds r0, r2, #0
@@ -4545,7 +4545,7 @@ sub_08010B48: @ 0x08010B48
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08010B86:
 	cmp r2, #0
@@ -4607,7 +4607,7 @@ _08010BE6:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08010BFA
 _08010BF8:
 	movs r0, #0
@@ -4656,7 +4656,7 @@ _08010C20:
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08010C52:
 	cmp r2, #0
@@ -4711,7 +4711,7 @@ _08010CA6:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08010CBA
 _08010CB8:
 	movs r0, #0
@@ -4760,7 +4760,7 @@ _08010CE0:
 	movs r1, #0xe0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08010D12:
 	cmp r2, #0
@@ -4813,7 +4813,7 @@ _08010D62:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08010D76
 _08010D74:
 	movs r0, #0
@@ -4860,7 +4860,7 @@ _08010D9A:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08010DCC:
 	cmp r2, #0
@@ -4937,7 +4937,7 @@ _08010E38:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08010E52:
 	adds r0, r2, #0
@@ -5016,7 +5016,7 @@ _08010ED2:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08010EE6
 _08010EE4:
 	movs r0, #0
@@ -5089,7 +5089,7 @@ _08010F50:
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08010F6A:
 	adds r0, r2, #0
@@ -5163,7 +5163,7 @@ _08010FDC:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08010FF2
 _08010FF0:
 	movs r0, #0
@@ -5237,7 +5237,7 @@ _0801105C:
 	movs r1, #0xe0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011078:
 	adds r0, r2, #0
@@ -5312,7 +5312,7 @@ _080110EC:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08011104
 _08011102:
 	movs r0, #0
@@ -5383,7 +5383,7 @@ _0801116C:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011186:
 	adds r0, r2, #0
@@ -5494,7 +5494,7 @@ _08011238:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011252:
 	adds r0, r2, #0
@@ -5573,7 +5573,7 @@ _080112D2:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _080112E6
 _080112E4:
 	movs r0, #0
@@ -5646,7 +5646,7 @@ _08011350:
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _0801136A:
 	adds r0, r2, #0
@@ -5720,7 +5720,7 @@ _080113DC:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _080113F2
 _080113F0:
 	movs r0, #0
@@ -5794,7 +5794,7 @@ _0801145C:
 	movs r1, #0xe0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011478:
 	adds r0, r2, #0
@@ -5869,7 +5869,7 @@ _080114EC:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08011504
 _08011502:
 	movs r0, #0
@@ -5940,7 +5940,7 @@ _0801156C:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011586:
 	adds r0, r2, #0
@@ -6051,7 +6051,7 @@ _08011638:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011652:
 	adds r0, r2, #0
@@ -6130,7 +6130,7 @@ _080116D2:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _080116E6
 _080116E4:
 	movs r0, #0
@@ -6203,7 +6203,7 @@ _08011750:
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _0801176A:
 	adds r0, r2, #0
@@ -6277,7 +6277,7 @@ _080117DC:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _080117F2
 _080117F0:
 	movs r0, #0
@@ -6351,7 +6351,7 @@ _0801185C:
 	movs r1, #0xe0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011878:
 	adds r0, r2, #0
@@ -6426,7 +6426,7 @@ _080118EC:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08011904
 _08011902:
 	movs r0, #0
@@ -6497,7 +6497,7 @@ _0801196C:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011986:
 	adds r0, r2, #0
@@ -6591,7 +6591,7 @@ _08011A0A:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011A30:
 	ldr r1, [sp]
@@ -6681,7 +6681,7 @@ _08011ACA:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08011ADE
 _08011ADC:
 	movs r0, #0
@@ -6759,7 +6759,7 @@ _08011B4A:
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011B6E:
 	ldr r1, [sp]
@@ -6845,7 +6845,7 @@ _08011C00:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08011C16
 _08011C14:
 	movs r0, #0
@@ -6923,7 +6923,7 @@ _08011C82:
 	movs r1, #0xe0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011CA6:
 	ldr r1, [sp]
@@ -7009,7 +7009,7 @@ _08011D38:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08011D4E
 _08011D4C:
 	movs r0, #0
@@ -7085,7 +7085,7 @@ _08011DAA:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011DDC:
 	ldr r1, [sp]
@@ -7194,7 +7194,7 @@ _08011E8C:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011EA6:
 	adds r0, r2, #0
@@ -7273,7 +7273,7 @@ _08011F26:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08011F3A
 _08011F38:
 	movs r0, #0
@@ -7346,7 +7346,7 @@ _08011FA4:
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _08011FBE:
 	adds r0, r2, #0
@@ -7420,7 +7420,7 @@ _08012030:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08012046
 _08012044:
 	movs r0, #0
@@ -7494,7 +7494,7 @@ _080120B0:
 	movs r1, #0xe0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _080120CC:
 	adds r0, r2, #0
@@ -7569,7 +7569,7 @@ _08012140:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _08012158
 _08012156:
 	movs r0, #0
@@ -7640,7 +7640,7 @@ _080121C0:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _080121DA:
 	adds r0, r2, #0
@@ -7722,7 +7722,7 @@ sub_08012230: @ 0x08012230
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _0801226E:
 	cmp r2, #0
@@ -7784,7 +7784,7 @@ _080122CE:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _080122E2
 _080122E0:
 	movs r0, #0
@@ -7833,7 +7833,7 @@ _08012308:
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _0801233A:
 	cmp r2, #0
@@ -7888,7 +7888,7 @@ _0801238E:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _080123A2
 _080123A0:
 	movs r0, #0
@@ -7937,7 +7937,7 @@ _080123C8:
 	movs r1, #0xe0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _080123FA:
 	cmp r2, #0
@@ -7990,7 +7990,7 @@ _0801244A:
 	movs r1, #0xd0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	b _0801245E
 _0801245C:
 	movs r0, #0
@@ -8037,7 +8037,7 @@ _08012482:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r2, r0, #0
 _080124B4:
 	cmp r2, #0
@@ -8260,7 +8260,7 @@ _0801263E:
 	orrs r0, r6
 	str r2, [sp, #4]
 	str r3, [sp, #8]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r5, r0, #0
 	ldr r1, [r7]
 	lsls r0, r1, #0x19
@@ -8291,7 +8291,7 @@ _08012678:
 	orrs r0, r1
 	str r2, [sp, #4]
 	str r3, [sp, #8]
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov ip, r0
 	ldr r0, _080126A0 @ =0x00000159
 	add r0, ip
@@ -8585,7 +8585,7 @@ _0801289E:
 	movs r1, #0xa0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov ip, r0
 	ldr r0, _0801291C @ =0x00000159
 	add r0, ip
@@ -8695,7 +8695,7 @@ _08012970:
 	movs r1, #0xe0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	movs r0, #1
 	mov r1, sl
@@ -8785,7 +8785,7 @@ _08012A18:
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	movs r0, #1
 	mov r2, sl
@@ -8918,7 +8918,7 @@ _08012B04:
 	ldr r1, [r7, #0x28]
 _08012B1C:
 	adds r0, r1, #0
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	bl Random
 	lsls r0, r0, #0x10
@@ -9310,7 +9310,7 @@ _08012E00:
 	lsls r1, r1, #0xc
 	orrs r0, r1
 	str r3, [sp, #4]
-	bl sub_08002B8C
+	bl GetDataRecord
 	movs r2, #0xab
 	lsls r2, r2, #1
 	adds r0, r0, r2
@@ -9374,7 +9374,7 @@ _08012E72:
 	movs r1, #0xb0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r1, sb
 	cmp r1, #0
 	beq _08012E58
@@ -9682,7 +9682,7 @@ sub_080130F4: @ 0x080130F4
 	adds r4, r1, #0
 	adds r6, r2, #0
 	mov sb, r3
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r7, r0, #0
 	ldrh r1, [r6]
 	ldr r0, _0801312C @ =0xFFFF8000
@@ -9978,7 +9978,7 @@ _0801333E:
 	movs r1, #0xa0
 	lsls r1, r1, #0xc
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r7, r0, #0
 	movs r1, #0xa8
 	lsls r1, r1, #1

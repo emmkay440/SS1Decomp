@@ -11,7 +11,9 @@ struct Player
     u8 unk00[0xA];
     u16 unk0A;            // +0x0A SpawnPlayer sets 4
     u16 state;            // +0x0C 8, 9 are special (see ApplyPendingDamage, UseItem)
-    u8 unk0E[0x1E];
+    u8 unk0E[0xE];
+    u16 *unk1C;           // +0x1C 3 ids; CalcExpGain doubles EXP for each 11 (equipped item ids?)
+    u8 unk20[0xC];
     // +0x2C: copy of gPlayerStats' stat block, plus resistances
     u16 str;              // +0x2C
     u16 vit;              // +0x2E
@@ -41,6 +43,8 @@ struct Player
 };                        // size 0xD4
 
 extern struct Player gPlayers[MAX_PLAYERS];
+
+u32 GetMultiplayerId(void);
 
 bool32 ApplyPendingDamage(struct Player *player);
 

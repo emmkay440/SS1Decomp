@@ -14,6 +14,10 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   effort on it; matching the ROM comes first. (Using the `include/gba/`
   register macros instead of raw addresses is still the normal style.)
 - Names you can't verify are guesses: say so in a comment.
+- Git: commit progress whenever `make compare` prints `shiningsoul.gba: OK`
+  (check that no ROM, saves, traces or build output are staged). Never
+  commit a non-matching build. Never push; pushing is only done when the
+  user explicitly asks.
 
 ## Workflow
 

@@ -2183,7 +2183,7 @@ _0800C56E:
 	lsls r0, r0, #0xb
 	orrs r4, r0
 	adds r0, r4, #0
-	bl sub_08002B8C
+	bl GetDataRecord
 	movs r1, #0
 	mov sl, r1
 	mov r2, sp
@@ -3128,7 +3128,7 @@ _0800CC78:
 	str r1, [sp, #0x94]
 	ldr r6, [sp, #0xb0]
 	ldr r0, [r6, #0x28]
-	bl sub_08002B8C
+	bl GetDataRecord
 	str r0, [sp, #0xac]
 	ldr r0, [r6, #0x28]
 	ldr r1, [sp, #0x94]
@@ -3136,7 +3136,7 @@ _0800CC78:
 	movs r1, #0x88
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	str r0, [sp, #0xa8]
 	ldr r0, [r6, #0x28]
 	ldr r2, [sp, #0x94]
@@ -3144,7 +3144,7 @@ _0800CC78:
 	movs r1, #0x98
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	str r0, [sp, #0xb4]
 	movs r3, #0x1e
 	str r3, [sp, #0xb8]

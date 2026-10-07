@@ -35,11 +35,16 @@ checksum byte (~ byte sum) at 0x27C, and writes the sector `saveSlot`
 | +0x44 | 8 x {u16 level, u16 ?} | skills | watch.py: adding/removing a point in each skill in menu order wrote +0x44, +0x48, ... +0x60 in order (Sword .. Thunder res). After confirming 1 point in Thunder res, +0x60 = 1 (menu shows 15) |
 | +0x6C | u16 | currentWeapon | index into weapons; `CycleWeapon` steps it 0-2 |
 | +0x70 | u32[3] | weapons | Mage: 0x57A0, 0x1820, 0 (fire book and freeze book; category 2, ids 47 and 48) |
-| +0x7C | u32 | ? equipment slot | 0 on the Mage |
-| +0x80 | u32 | armor (guess) | Mage: 0x4030 (category 3) with DEF 3 |
-| +0x84 | u32 | ? equipment slot | 0 on the Mage |
+| +0x7C | u32 | head | Warrior: 0x40C0 = Bandana (category 4, id 1). `CanPutItemInSlot` sub-slot 0 takes category 4 |
+| +0x80 | u32 | armor (body) | Mage: 0x4030 (Robe); Warrior after equipping the Cotton Robe: 0x4130 (category 3, id 2). Sub-slot 1 takes category 3 |
+| +0x84 | u32 | third equipment slot | empty so far; sub-slot 2 takes category 5 |
 | +0x278 | u32 | options | read from RAM after setting the defaults: 0x1059D = BGM on (bit 0, `ApplyMenuChanges` passes it to `SetMusicEnabled`), bit 1 = control type (0 = A, 1 = B: 0x1059F with B, checked 2026-10-07), window color R/G/B in 5-bit fields at bits 2/7/12 = 7/11/16 (the menu's defaults) |
 | +0x88 | u32[25] | inventory | `AddItemToInventory` (trace picking_up_item, code reading) |
+
+Warrior inventory, 2026-10-07 (in game: Herb, Herb, Valuing Scroll, Robe,
+Mithril, Long Sword, ?Robe): 0x10, 0x10, 0x310 (Angel Wing id?), 0x610
+(id 12), 0x4030, 0x60, 0x120, empty, 0x4200030. Weapons 0x4020 (id 0),
+0x13A0 (id 39), 0x820 (id 16).
 
 ### Item word (inventory slots, field items +0x18)
 
@@ -48,11 +53,15 @@ checksum byte (~ byte sum) at 0x27C, and writes the sector `saveSlot`
 | 4-6 | category; 0 = empty slot | `AddItemToInventory` looks for 0 |
 | 4-6 = 7 | stackable kind | stacks merge, count capped at 100000 |
 | 4-6 = 1 | usable item | the Mage's inventory slots 1-5: 0x190 Goddess Tear (id 3), empty, 0x310 Angel Wing (id 6), 0x310 Angel Wing, 0x10 Herb (id 0) (checked in game, 2026-10-07). `sub_08014EB4` (quick-equip phase) checks for 1 |
-| 4-6 = 2 | weapon | the Mage's two books in `weapons` |
-| 4-6 = 3 | armor? | the item in the armor slot |
+| 4-6 = 2 | weapon | the Mage's two books; the Warrior's Long Sword = 0x120 (id 2) |
+| 4-6 = 3 | armor (body) | Robe = id 0, Cotton Robe = id 2 (guess) |
+| 4-6 = 4 | head | Bandana = id 1 |
+| 4-6 = 5 | third slot | not seen yet |
+| 4-6 = 6 | ? | Mithril = 0x60 (id 0) |
 | 7-13 | item id | per category; constants in `include/constants/items.h`. `sub_08014EB4` looks it up via `sub_08002B8C(id \| 0xA0000)` |
-| 14 | flag (equipped? new?) | cleared when added to the inventory |
-| 15-31 | count (stackables) | `AddItemToInventory` |
+| 14 | flag | set on equipped items and on the Robe that was just swapped out; cleared when picked up. Unknown |
+| 26 | unappraised | "?robe" = 0x4200030, Robe = 0x4030. Items with it can't be equipped (`CanPutItemInSlot`) |
+| 15-31 | count (stackables) | `AddItemToInventory`. Other items use these bits for something else (the "?robe" has 0x84 in bits 15-25) |
 
 `gPlayers[i]` has copies: +0x2C is a 7-word copy of the stat block
 (`sub_08016E24`), +0x48 a block of 6 u16 (`sub_08016E4C`; derived stats?).

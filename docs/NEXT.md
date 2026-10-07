@@ -41,9 +41,13 @@ variables named; data region 0% split.
       (0x0804FAA8) sits at the end of `asm/code_08001210.s`; it belongs to m4a_1.
 - [x] `src/sound.c`: game sound API (32 functions, 0x0803F1BC-0x0803F468).
 - [x] `src/enemy_util.c`: `IsEnemyTypeActive`.
-- [ ] Near misses, drafts in `tmp/drafts/` (register allocation only):
-      `ApplyEnemyDamage` (asm/enemy_damage.s), `ApplyPendingDamage`
-      (asm/player_damage.s). `include/player.h` / `include/enemy.h` hold the
+- [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
+      block copies, `GetPlayerClass`, 10 functions).
+- [ ] Near misses, drafts in `tmp/drafts/` (register allocation / block
+      order only): `ApplyEnemyDamage` (asm/enemy_damage.s),
+      `ApplyPendingDamage` (asm/player_damage.s), `CalcExpGain`
+      (asm/exp_gain.s, 12 bytes off), `InitSaveFlash` (asm/save_init.s),
+      `WriteSaveSector` (asm/save.s with Read/VerifySaveSector, which match). `include/player.h` / `include/enemy.h` hold the
       struct layouts.
 - [ ] Heap (`InitHeap`/`Alloc`/`Free`, 0x08001210): 16-byte block header
       {prev:31 + used:1 in one word, next, freePrev, freeNext}; the code
@@ -62,6 +66,10 @@ variables named; data region 0% split.
 
 ## Data (0x0805289C to the end, currently one incbin)
 
+- [ ] `gDataArchive` ("SSDT", 0x080FC200): format in `docs/data.md`. Split it
+      out as its own labeled incbin, then write a script that dumps the
+      weapon/armor/item records (names need the text encoding).
+
 - [ ] Split known pieces out of `data/data.s` as labeled incbins: the table
       right after the code (likely sine/curve values) at 0x0805289C, the
       interrupt table template at 0x08052B1C, and the agb_flash type
@@ -74,6 +82,12 @@ variables named; data region 0% split.
       only tables with pointers become C (they have to, for the PC port).
 
 ## Known rough edges
+
+- `apply_syms.py` replaces any literal equal to an IO register address, so
+  masks get register names: in `CanPutItemInSlot`, `REG_SOUND3CNT_L` is
+  really the item mask 0x04000070 (category bits | unappraised bit). Bytes
+  are unaffected. Fix: only rewrite literals that are loaded and then used as
+  a base address, or undo the known false hits.
 
 - The ARM part of the m4a mixer (`SoundMainRAM`, 0x0804FB3C-0x0804FE6C) was
   disassembled partly as Thumb. It's byte-exact but unreadable. Replace it with an

@@ -1928,7 +1928,7 @@ _08040348:
 _0804035A:
 	adds r0, r6, #0
 	adds r1, r7, #0
-	bl sub_080410C8
+	bl CanSwapItems
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0804036A
@@ -2101,7 +2101,7 @@ _080404C2:
 	ldr r0, _08040570 @ =0x030004AC
 	ldr r1, [r0]
 	adds r0, r6, #0
-	bl sub_08040A18
+	bl CanPutItemInSlot
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080404D4
@@ -2415,7 +2415,7 @@ _08040706:
 	beq _08040776
 	adds r0, r6, #0
 	adds r1, r7, #0
-	bl sub_080410C8
+	bl CanSwapItems
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08040744
@@ -2809,13 +2809,13 @@ _08040A02:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08040A18
-sub_08040A18: @ 0x08040A18
+	thumb_func_start CanPutItemInSlot
+CanPutItemInSlot: @ 0x08040A18
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
 	adds r0, r4, #0
-	bl sub_08010064
+	bl CanEquipItem
 	lsls r0, r0, #0x18
 	lsrs r3, r0, #0x18
 	ldrb r0, [r5, #2]
@@ -3007,13 +3007,13 @@ _08040B78:
 	beq _08040BDC
 	ldr r1, [r5]
 	adds r0, r2, #0
-	bl sub_08040A18
+	bl CanPutItemInSlot
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08040BC8
 	ldr r0, _08040BD0 @ =0x030004BC
 	adds r1, r4, #0
-	bl sub_08040A18
+	bl CanPutItemInSlot
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08040BC8
@@ -3045,7 +3045,7 @@ _08040BD8:
 _08040BDC:
 	ldr r1, [r5]
 	adds r0, r2, #0
-	bl sub_08040A18
+	bl CanPutItemInSlot
 	lsls r0, r0, #0x18
 _08040BE6:
 	cmp r0, #0
@@ -3768,19 +3768,19 @@ sub_080410BC: @ 0x080410BC
 	.align 2, 0
 _080410C4: .4byte 0x030004B4
 
-	thumb_func_start sub_080410C8
-sub_080410C8: @ 0x080410C8
+	thumb_func_start CanSwapItems
+CanSwapItems: @ 0x080410C8
 	push {r4, r5, lr}
 	adds r4, r1, #0
 	ldr r5, _0804110C @ =0x030004AC
 	ldr r1, [r5]
-	bl sub_08040A18
+	bl CanPutItemInSlot
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08041106
 	ldr r0, _08041110 @ =0x030004BC
 	adds r1, r4, #0
-	bl sub_08040A18
+	bl CanPutItemInSlot
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08041106
@@ -4502,7 +4502,7 @@ _08041614: @ jump table
 	.4byte _08041860 @ case 8
 _08041638:
 	movs r0, #2
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	ldr r0, _08041658 @ =0x03003CA8
 	ldrh r0, [r0]
@@ -4542,7 +4542,7 @@ _08041684:
 	b _080418AA
 _08041688:
 	movs r0, #6
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	ldr r0, _080416A8 @ =0x03003CA8
 	ldrh r0, [r0]
@@ -4582,7 +4582,7 @@ _080416D4:
 	b _080418AA
 _080416D8:
 	movs r0, #0x12
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	ldr r0, _080416F8 @ =0x03003CA8
 	ldrh r0, [r0]
@@ -4622,7 +4622,7 @@ _08041724:
 	b _080418AA
 _08041728:
 	movs r0, #3
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	ldr r0, _08041748 @ =0x03003CA8
 	ldrh r0, [r0]
@@ -4662,7 +4662,7 @@ _08041774:
 	b _080418AA
 _08041778:
 	movs r0, #4
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	ldr r0, _08041798 @ =0x03003CA8
 	ldrh r0, [r0]
@@ -4702,7 +4702,7 @@ _080417C4:
 	b _080418AA
 _080417C8:
 	movs r0, #7
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	ldr r0, _080417E4 @ =0x03003CA8
 	ldrh r0, [r0]
@@ -4740,7 +4740,7 @@ _08041810:
 	b _080418AA
 _08041814:
 	movs r0, #0x25
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	ldr r0, _08041830 @ =0x03003CA8
 	ldrh r0, [r0]
@@ -4778,7 +4778,7 @@ _0804185C:
 	b _080418AA
 _08041860:
 	movs r0, #0xa
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	ldr r0, _0804187C @ =0x03003CA8
 	ldrh r0, [r0]
@@ -4814,7 +4814,7 @@ _080418A4:
 _080418A8:
 	movs r0, #0xac
 _080418AA:
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 _080418B0:
 	mov r0, r8
@@ -5025,7 +5025,7 @@ _08041A2C:
 _08041A30:
 	movs r0, #0xaa
 _08041A32:
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r7, r0, #0
 	b _08041A66
 _08041A3A:
@@ -5050,7 +5050,7 @@ _08041A54:
 _08041A58:
 	movs r0, #0xe
 _08041A5A:
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r7, r0, #0
 _08041A60:
 	ldr r1, _08041A84 @ =gBgRegsBuffer
@@ -5075,14 +5075,14 @@ _08041A8C:
 	cmp r0, #5
 	bne _08041AE4
 	movs r0, #5
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r7, r0, #0
 	ldr r4, _08041B0C @ =0x03000500
 	adds r0, r7, #4
 	bl LZ77DecompressAlloc
 	str r0, [r4]
 	movs r0, #0xb
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r7, r0, #0
 	ldr r4, _08041B10 @ =0x03000504
 	adds r0, r7, #4
@@ -5094,14 +5094,14 @@ _08041A8C:
 	movs r3, #0x20
 	bl sub_0804620C
 	movs r0, #0xc
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r7, r0, #0
 	ldr r4, _08041B18 @ =0x03000508
 	adds r0, r7, #4
 	bl LZ77DecompressAlloc
 	str r0, [r4]
 	movs r0, #0xd
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r7, r0, #0
 	ldr r4, _08041B1C @ =0x0300050C
 	adds r0, r7, #4
@@ -5110,7 +5110,7 @@ _08041A8C:
 _08041AE4:
 	mov r1, r8
 	ldr r0, [r1]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	mov r0, r8
 	ldr r1, [r0]
@@ -5158,7 +5158,7 @@ _08041B46:
 	cmp r0, r1
 	beq _08041B9A
 	adds r0, r1, #0
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r6]
 	movs r0, #0x80
@@ -5199,7 +5199,7 @@ _08041B9A:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0xf
@@ -5585,7 +5585,7 @@ _08041EE2:
 	bne _08041F14
 _08041EEE:
 	adds r0, r4, #0
-	bl sub_08010064
+	bl CanEquipItem
 	movs r3, #2
 	cmp r0, #0
 	beq _08041EFC
@@ -5639,7 +5639,7 @@ _08041F4C:
 	cmp r0, #0
 	beq _08041F62
 	adds r0, r4, #0
-	bl sub_08010064
+	bl CanEquipItem
 	movs r3, #2
 	cmp r0, #0
 	beq _08041F64
@@ -5670,7 +5670,7 @@ _08041F86:
 	cmp r0, #0
 	beq _08041F9C
 	adds r0, r4, #0
-	bl sub_08010064
+	bl CanEquipItem
 	movs r3, #2
 	cmp r0, #0
 	beq _08041F9E
@@ -5813,7 +5813,7 @@ _08042096:
 	bne _080420CC
 _080420A2:
 	adds r0, r4, #0
-	bl sub_08010064
+	bl CanEquipItem
 	movs r3, #2
 	cmp r0, #0
 	beq _080420B0
@@ -6007,7 +6007,7 @@ _08042224:
 	cmp r0, #3
 	bhi _0804223C
 	adds r0, r5, #0
-	bl sub_08010064
+	bl CanEquipItem
 	cmp r0, #0
 	bne _08042246
 _0804223C:
@@ -6049,7 +6049,7 @@ _08042272:
 	bl sub_08026B90
 	bl sub_08040C98
 	adds r5, r0, #0
-	bl sub_08010064
+	bl CanEquipItem
 	cmp r0, #0
 	beq _080422B4
 	ldrb r0, [r7]
@@ -8138,7 +8138,7 @@ _080433BC: @ jump table
 	.4byte _08043414 @ case 5
 _080433D4:
 	ldr r0, _080433E0 @ =0x00090063
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	movs r5, #0xdc
 	b _0804341E
@@ -8146,7 +8146,7 @@ _080433D4:
 _080433E0: .4byte 0x00090063
 _080433E4:
 	ldr r0, _080433F0 @ =0x00090065
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	movs r5, #0xd2
 	b _0804341E
@@ -8154,7 +8154,7 @@ _080433E4:
 _080433F0: .4byte 0x00090065
 _080433F4:
 	ldr r0, _08043400 @ =0x00090067
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	movs r5, #0xc3
 	b _0804341E
@@ -8162,7 +8162,7 @@ _080433F4:
 _08043400: .4byte 0x00090067
 _08043404:
 	ldr r0, _08043410 @ =0x0009006B
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	movs r5, #0xd7
 	b _0804341E
@@ -8170,7 +8170,7 @@ _08043404:
 _08043410: .4byte 0x0009006B
 _08043414:
 	ldr r0, _08043474 @ =0x00090069
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	movs r5, #0xcd
 _0804341E:
@@ -8265,7 +8265,7 @@ _080434D4: .4byte 0x0009006C
 _080434D8:
 	ldr r0, _080434E4 @ =0x0009006A
 _080434DA:
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	b _08043AA4
 	.align 2, 0
@@ -8321,7 +8321,7 @@ _08043548:
 _0804355C: .4byte 0x0009001F
 _08043560:
 	ldr r0, _080435D4 @ =0x00090021
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	adds r4, #0xa
 	adds r0, r4, #0
@@ -8413,7 +8413,7 @@ _0804360C:
 _0804361C: .4byte 0x00090020
 _08043620:
 	ldr r0, _080436B4 @ =0x00090022
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	adds r4, #0xa
 	adds r0, r4, #0
@@ -8784,7 +8784,7 @@ _080438EC: .4byte 0x00090049
 _080438F0:
 	ldr r0, _0804391C @ =0x0009004A
 _080438F2:
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 _080438F8:
 	adds r4, #0xa
@@ -8808,7 +8808,7 @@ _0804391C: .4byte 0x0009004A
 _08043920: .4byte 0x03003CA0
 _08043924:
 	ldr r0, _0804395C @ =0x0009000D
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	bl sub_08043B28
 	adds r4, #0xa
@@ -8900,7 +8900,7 @@ _080439DC: .4byte 0x00090061
 _080439E0:
 	ldr r0, _080439EC @ =0x00090062
 _080439E2:
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	b _08043AA4
 	.align 2, 0
@@ -8989,7 +8989,7 @@ _08043A94: .4byte 0x000900DF
 _08043A98:
 	ldr r0, _08043AC8 @ =0x000900E5
 _08043A9A:
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 _08043AA0:
 	bl sub_08043B28
@@ -13912,12 +13912,12 @@ sub_08046178: @ 0x08046178
 	add r1, sp, #4
 	bl SetBgCnt
 	movs r0, #1
-	bl sub_08002B8C
+	bl GetDataRecord
 	ldrh r0, [r0]
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0xf
@@ -15723,7 +15723,7 @@ _08047058:
 _0804705C:
 	movs r0, #0x7d
 _0804705E:
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r5, r0, #0
 _08047064:
 	movs r6, #0
@@ -15751,12 +15751,12 @@ _08047080: @ jump table
 	.4byte _080470A4 @ case 8
 _080470A4:
 	movs r0, #8
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	b _080470C2
 _080470AE:
 	movs r0, #9
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #2
@@ -15810,7 +15810,7 @@ _08047118:
 _0804711C:
 	movs r0, #0x7d
 _0804711E:
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 _08047124:
 	ldr r4, _08047188 @ =0x03000608
@@ -15891,7 +15891,7 @@ _080471D0:
 _080471D4:
 	movs r0, #0x79
 _080471D6:
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 _080471DC:
 	ldr r4, _08047200 @ =0x03000610
@@ -15930,7 +15930,7 @@ _08047224:
 	cmp r0, #0
 	beq _0804726E
 	ldr r0, [r5]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r5]
 	movs r0, #0x80
@@ -15966,7 +15966,7 @@ _08047266:
 	b _080472B2
 _0804726E:
 	ldr r0, [r5]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r5]
 	movs r0, #0x80
@@ -16004,7 +16004,7 @@ _080472B2:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
@@ -16968,7 +16968,7 @@ _08047A70: .4byte 0x00090025
 _08047A74:
 	ldr r0, _08047AA8 @ =0x00090026
 _08047A76:
-	bl sub_08002B8C
+	bl GetDataRecord
 	str r0, [sp, #0x14]
 _08047A7C:
 	ldr r4, [sp, #0x14]
@@ -17049,7 +17049,7 @@ _08047B0C: .4byte 0x00090029
 _08047B10:
 	ldr r0, _08047B58 @ =0x0009002A
 _08047B12:
-	bl sub_08002B8C
+	bl GetDataRecord
 	str r0, [sp, #0x14]
 _08047B18:
 	ldr r4, [sp, #0x14]
@@ -17100,7 +17100,7 @@ _08047B68: @ jump table
 	.4byte _08047BB8 @ case 8
 _08047B8C:
 	ldr r0, _08047BB0 @ =0x00090007
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	adds r4, #0xa
 	adds r0, r4, #0
@@ -17120,7 +17120,7 @@ _08047BB0: .4byte 0x00090007
 _08047BB4: .4byte 0x03003CA0
 _08047BB8:
 	ldr r0, _08047BDC @ =0x00090014
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	adds r4, #0xa
 	adds r0, r4, #0
@@ -17140,7 +17140,7 @@ _08047BDC: .4byte 0x00090014
 _08047BE0: .4byte 0x03003CA0
 _08047BE4:
 	ldr r0, _08047C08 @ =0x00090008
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	adds r4, #0xa
 	adds r0, r4, #0
@@ -17160,7 +17160,7 @@ _08047C08: .4byte 0x00090008
 _08047C0C: .4byte 0x03003CA0
 _08047C10:
 	ldr r0, _08047C34 @ =0x00090009
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	adds r4, #0xa
 	adds r0, r4, #0
@@ -17239,7 +17239,7 @@ _08047CB4: .4byte 0x00000201
 _08047CB8: .4byte 0x030005F4
 _08047CBC:
 	ldr r0, _08047CE0 @ =0x0009000D
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	adds r4, #0xa
 	adds r0, r4, #0
@@ -17259,7 +17259,7 @@ _08047CE0: .4byte 0x0009000D
 _08047CE4: .4byte 0x03003CA0
 _08047CE8:
 	ldr r0, _08047CFC @ =0x0009000B
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r0, #0xa
 	movs r1, #0x14
 _08047CF2:
@@ -17270,7 +17270,7 @@ _08047CF2:
 _08047CFC: .4byte 0x0009000B
 _08047D00:
 	ldr r0, _08047D38 @ =0x0009000C
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r4, r0, #0
 	adds r4, #0xa
 	adds r0, r4, #0
@@ -18783,7 +18783,7 @@ sub_08048834: @ 0x08048834
 	add r1, sp, #4
 	bl SetBgCnt
 	movs r0, #0x10
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r5, r0, #0
 	movs r0, #0xc0
 	lsls r0, r0, #5
@@ -18801,7 +18801,7 @@ sub_08048834: @ 0x08048834
 	adds r0, r4, #0
 	bl Free
 	ldr r0, [r5]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r5]
 	movs r0, #0x80
@@ -18842,7 +18842,7 @@ _080488F6:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
@@ -19681,7 +19681,7 @@ sub_08048F7C: @ 0x08048F7C
 	add r1, sp, #4
 	bl SetBgCnt
 	movs r0, #0x11
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r5, r0, #0
 	movs r0, #0xc0
 	lsls r0, r0, #5
@@ -19699,7 +19699,7 @@ sub_08048F7C: @ 0x08048F7C
 	adds r0, r4, #0
 	bl Free
 	ldr r0, [r5]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r5]
 	movs r0, #0x80
@@ -19742,7 +19742,7 @@ _08049042:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
@@ -20582,7 +20582,7 @@ sub_080496CC: @ 0x080496CC
 	add r1, sp, #4
 	bl SetBgCnt
 	movs r0, #0x13
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r5, r0, #0
 	movs r0, #0xc0
 	lsls r0, r0, #5
@@ -20600,7 +20600,7 @@ sub_080496CC: @ 0x080496CC
 	adds r0, r4, #0
 	bl Free
 	ldr r0, [r5]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r5]
 	movs r0, #0x80
@@ -20643,7 +20643,7 @@ _08049792:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
@@ -21531,7 +21531,7 @@ sub_08049E70: @ 0x08049E70
 	movs r2, #1
 	bl EnableDisplayLayers
 	movs r0, #0x20
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	adds r0, r6, #4
 	bl LZ77DecompressAlloc
@@ -21545,7 +21545,7 @@ sub_08049E70: @ 0x08049E70
 	adds r0, r5, #0
 	bl Free
 	movs r0, #0x1f
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r0, #4
 	bl LZ77DecompressAlloc
 	adds r5, r0, #0
@@ -21556,7 +21556,7 @@ sub_08049E70: @ 0x08049E70
 	adds r0, r5, #0
 	bl Free
 	ldr r0, [r6]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r6]
 	movs r0, #0x80
@@ -21601,7 +21601,7 @@ _08049F6A:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
@@ -22280,7 +22280,7 @@ sub_0804A4AC: @ 0x0804A4AC
 	movs r2, #1
 	bl EnableDisplayLayers
 	movs r0, #0x14
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	adds r0, r6, #4
 	bl LZ77DecompressAlloc
@@ -22294,7 +22294,7 @@ sub_0804A4AC: @ 0x0804A4AC
 	adds r0, r5, #0
 	bl Free
 	movs r0, #0x15
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r0, #4
 	bl LZ77DecompressAlloc
 	adds r5, r0, #0
@@ -22305,7 +22305,7 @@ sub_0804A4AC: @ 0x0804A4AC
 	adds r0, r5, #0
 	bl Free
 	ldr r0, [r6]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r6]
 	movs r0, #0x80
@@ -22350,7 +22350,7 @@ _0804A5A6:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
@@ -23190,7 +23190,7 @@ sub_0804AC1C: @ 0x0804AC1C
 	movs r2, #1
 	bl EnableDisplayLayers
 	movs r0, #0x1e
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	adds r0, r6, #4
 	bl LZ77DecompressAlloc
@@ -23204,7 +23204,7 @@ sub_0804AC1C: @ 0x0804AC1C
 	adds r0, r5, #0
 	bl Free
 	movs r0, #0x1d
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r0, #4
 	bl LZ77DecompressAlloc
 	adds r5, r0, #0
@@ -23215,7 +23215,7 @@ sub_0804AC1C: @ 0x0804AC1C
 	adds r0, r5, #0
 	bl Free
 	movs r0, #0x1d
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r0, #4
 	bl LZ77DecompressAlloc
 	adds r5, r0, #0
@@ -23226,7 +23226,7 @@ sub_0804AC1C: @ 0x0804AC1C
 	adds r0, r5, #0
 	bl Free
 	ldr r0, [r6]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r6]
 	movs r0, #0x80
@@ -23273,7 +23273,7 @@ _0804AD4E:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
@@ -24253,7 +24253,7 @@ sub_0804B52C: @ 0x0804B52C
 	movs r2, #1
 	bl EnableDisplayLayers
 	movs r0, #0x16
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r5, r0, #0
 	adds r0, r5, #4
 	bl LZ77DecompressAlloc
@@ -24266,7 +24266,7 @@ sub_0804B52C: @ 0x0804B52C
 	adds r0, r4, #0
 	bl Free
 	movs r0, #0x17
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r0, #4
 	bl LZ77DecompressAlloc
 	adds r4, r0, #0
@@ -24278,7 +24278,7 @@ sub_0804B52C: @ 0x0804B52C
 	adds r0, r4, #0
 	bl Free
 	ldr r0, [r5]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r5]
 	movs r0, #0x80
@@ -24323,7 +24323,7 @@ _0804B626:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
@@ -25021,7 +25021,7 @@ sub_0804BBA0: @ 0x0804BBA0
 	movs r2, #1
 	bl EnableDisplayLayers
 	movs r0, #0x19
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	adds r0, r6, #4
 	bl LZ77DecompressAlloc
@@ -25035,7 +25035,7 @@ sub_0804BBA0: @ 0x0804BBA0
 	adds r0, r5, #0
 	bl Free
 	movs r0, #0x1a
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r0, #4
 	bl LZ77DecompressAlloc
 	adds r5, r0, #0
@@ -25046,7 +25046,7 @@ sub_0804BBA0: @ 0x0804BBA0
 	adds r0, r5, #0
 	bl Free
 	movs r0, #0x18
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r0, #4
 	bl LZ77DecompressAlloc
 	adds r5, r0, #0
@@ -25058,7 +25058,7 @@ sub_0804BBA0: @ 0x0804BBA0
 	adds r0, r5, #0
 	bl Free
 	ldr r0, [r6]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r6]
 	movs r0, #0x80
@@ -25105,7 +25105,7 @@ _0804BCD2:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
@@ -25962,7 +25962,7 @@ sub_0804C37C: @ 0x0804C37C
 	movs r2, #1
 	bl EnableDisplayLayers
 	movs r0, #0x1b
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	adds r0, r6, #4
 	bl LZ77DecompressAlloc
@@ -25976,7 +25976,7 @@ sub_0804C37C: @ 0x0804C37C
 	adds r0, r5, #0
 	bl Free
 	movs r0, #0x1c
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r0, #4
 	bl LZ77DecompressAlloc
 	adds r5, r0, #0
@@ -25987,7 +25987,7 @@ sub_0804C37C: @ 0x0804C37C
 	adds r0, r5, #0
 	bl Free
 	ldr r0, [r6]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r6]
 	movs r0, #0x80
@@ -26032,7 +26032,7 @@ _0804C476:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
@@ -26834,7 +26834,7 @@ _0804CB18:
 	movs r0, #3
 	bl SetBgCnt
 	movs r0, #0x4d
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	movs r0, #0xc0
 	lsls r0, r0, #5
@@ -26848,7 +26848,7 @@ _0804CB38:
 	movs r0, #3
 	bl SetBgCnt
 	movs r0, #0x2d
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	movs r0, #0xc0
 	lsls r0, r0, #5
@@ -26857,10 +26857,10 @@ _0804CB38:
 _0804CB54: .4byte 0x00001F83
 _0804CB58:
 	movs r0, #0x27
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	movs r0, #0x26
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	movs r0, #0xe0
 	lsls r0, r0, #5
@@ -26871,10 +26871,10 @@ _0804CB6C:
 	b _0804CBF6
 _0804CB76:
 	movs r0, #0x28
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	movs r0, #0x29
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	movs r0, #0xe0
 	lsls r0, r0, #5
@@ -26892,13 +26892,13 @@ _0804CB76:
 _0804CBA4: .4byte 0x00005D02
 _0804CBA8:
 	movs r0, #0x2b
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r6, r0, #0
 	movs r0, #0x2c
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov r8, r0
 	movs r0, #0x2a
-	bl sub_08002B8C
+	bl GetDataRecord
 	mov sb, r0
 	movs r0, #0xf0
 	lsls r0, r0, #5
@@ -27004,7 +27004,7 @@ _0804CC68:
 	bl Free
 _0804CCB8:
 	ldr r0, [r6]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r6]
 	movs r0, #0x80
@@ -27047,7 +27047,7 @@ _0804CD0E:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
@@ -31352,7 +31352,7 @@ _0804EF24:
 _0804EF28:
 	movs r0, #0x42
 _0804EF2A:
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r5, r0, #0
 _0804EF30:
 	adds r0, r5, #4
@@ -31366,7 +31366,7 @@ _0804EF30:
 	adds r0, r4, #0
 	bl Free
 	ldr r0, [r5]
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r3, r0, #0
 	ldr r1, [r5]
 	movs r0, #0x80
@@ -31407,7 +31407,7 @@ _0804EF96:
 	movs r1, #0x90
 	lsls r1, r1, #0xd
 	orrs r0, r1
-	bl sub_08002B8C
+	bl GetDataRecord
 	adds r1, r0, #0
 	movs r0, #0
 	movs r2, #0x10
