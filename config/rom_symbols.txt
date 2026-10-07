@@ -1,0 +1,17 @@
+# ROM data and link-time constants: <address/value> <name>  [# note]
+# Only written to ld_symbols.ld (data/data.s is still one incbin).
+
+# m4a sound engine. Addresses found by matching relocations in
+# pret/pokeemerald's m4a.c (compiled with old_agbcc) against this ROM.
+00000000 gMaxLines              # m4a link-time constant
+00000004 gNumMusicPlayers       # m4a link-time constant
+080549FC gScaleTable
+08054AB0 gFreqTable
+08054AE0 gPcmSamplesPerVBlankTable
+08054AF8 gCgbScaleTable
+08054B7C gCgbFreqTable
+08054B94 gNoiseTable
+08054BD0 gCgb3Vol
+08054C14 gXcmdTable
+08055420 gMPlayTable            # struct MusicPlayer[gNumMusicPlayers]
+08055450 gSongTable             # struct Song[]

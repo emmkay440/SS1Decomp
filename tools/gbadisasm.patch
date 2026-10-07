@@ -1,0 +1,28 @@
+diff --git a/disasm.c b/disasm.c
+index 29f4794..e3ad643 100755
+--- a/disasm.c
++++ b/disasm.c
+@@ -604,6 +604,7 @@ static void analyze(void)
+                             addr += 2;
+                             if (insn[i].size == 2) continue;
+                             tmp_cnt = cs_disasm(sCapstone, gInputFileBuffer + addr - ROM_LOAD_ADDR, 2, addr, 0, &tmp);
++                            if (tmp_cnt != 1) fprintf(stderr, "bad thumb at 0x%08X\n", addr);
+                             assert(tmp_cnt == 1);
+                             free(insn[i].detail);
+                             insn[i] = *tmp;
+@@ -1187,6 +1188,7 @@ static void print_disassembly(void)
+                             addr += 2;
+                             if (insn[j].size == 2) continue;
+                             tmp_cnt = cs_disasm(sCapstone, gInputFileBuffer + addr - ROM_LOAD_ADDR, 2, addr, 0, &tmp);
++                            if (tmp_cnt != 1) fprintf(stderr, "bad thumb at 0x%08X\n", addr);
+                             assert(tmp_cnt == 1);
+                             free(insn[j].detail);
+                             insn[j] = *tmp;
+@@ -1283,6 +1285,7 @@ static void print_disassembly(void)
+         if (i >= gLabelsCount)
+             break;
+         nextAddr = gLabels[i].addr;
++        if (addr > nextAddr) fprintf(stderr, "overlap at 0x%08X next 0x%08X type %d\n", addr, nextAddr, gLabels[i-1].type);
+         assert(addr <= nextAddr);
+ 
+         if (nextAddr <= ROM_LOAD_ADDR + gInputFileBufferSize) // prevent out-of-bound read

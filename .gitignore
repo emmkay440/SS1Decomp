@@ -1,0 +1,25 @@
+# The game itself is never committed. Supply your own dump as baserom.gba.
+*.gba
+*.sav
+
+# build output
+*.o
+*.elf
+*.map
+build/
+src/*.s
+src/lib/*.s
+
+# external tools (see tools/setup.sh)
+tools/agbcc/
+tools/agbcc-src/
+tools/gbadisasm/
+
+# scratch
+tmp/
+
+# research sessions (share them directly; they contain no game data)
+traces/
+
+# python
+__pycache__/

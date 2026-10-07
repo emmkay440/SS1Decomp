@@ -1,0 +1,222 @@
+# Function names: <address> <name>  [# note]
+# Names here are applied to config/functions.cfg by tools/scripts/disasm.py.
+# Library names come from byte-signature matches against pret/pokeemerald's
+# m4a/agb_flash sources (see README); game names are inferred from behavior.
+
+# --- crt0 / interrupts ---
+08000104 IntrMain
+# --- cooperative threads (engine) ---
+0800023C RunThreads             # sets up main thread, runs scheduler forever
+08000274 CreateThread           # (thread, func, arg); sorted by priority field
+0800036C ThreadExit             # return trampoline pushed on every new thread stack
+080003B4 KillThread
+080003FC WaitFrame              # WaitEvent(1); event 1 is signalled once per frame
+08000400 WaitEvent
+0800042C SignalEvent
+0800044C IsAnyThreadWaitingOn
+08000470 GetThreadCount
+0800047C IsThreadInList
+08000498 GetCurrentThread
+08000624 AgbMain
+# --- input / rng ---
+0800076C UpdateInput
+08000830 Random
+08000A9C SeedRandom
+08000AE4 SetKeyRepeat
+# --- display ---
+08000890 DisplayOn
+080008B8 DisplayOff
+080008E0 SetBgMode
+08000910 EnableDisplayLayers
+08000948 DisableDisplayLayers
+08000984 SetDispCntFlags
+080009DC SetBgCnt
+08000A24 LoadPalette
+08000A6C FlushPaletteBuffer
+08000A84 CopyBgRegsBuffer
+08000AB4 LZ77DecompressAlloc
+08000AF8 InitBgRegsBuffer
+# --- interrupt control ---
+08000B2C EnableHBlankEffect
+08000BF0 DisableHBlankEffect
+08000C7C EnableVCountIntr
+08000D48 InitIntrState
+08000D6C DisableInterrupts
+08000DA4 EnableInterrupts
+08000DDC EnableIntr
+08000E4C DisableIntr
+08000EB8 SetDispStatFlags
+08000F24 ClearDispStatFlags
+08000F40 HBlankIntr
+08000FB4 VCountIntr
+08000FE4 FrameUpdate            # wait vblank, clear OAM, read input, signal frame event
+0800107C InitVBlankState
+08001090 VBlankIntr
+# --- copy queue (DMA/CpuSet requests flushed in VBlank) ---
+08001114 InitCopyQueue
+08001154 QueueCopy
+080011A0 ProcessCopyQueue
+08001204 ClearCopyQueue
+# --- heap ---
+08001210 InitHeap
+080012A0 Alloc
+08001344 Free
+# --- game ---
+08001970 GameMain               # entry of the main thread created by AgbMain
+
+# --- m4a (MusicPlayer2000) asm core ---
+0804FAAC __umul3232H32
+0804FAB8 SoundMain
+0804FB3C SoundMainRAM
+0804FB48 SoundMainRAM_Reverb
+0804FE6C SoundMainBTM
+0804FE84 RealClearChain
+0804FEA4 ply_fine
+0804FED4 MPlayJumpTableCopy
+0804FF08 ld_r3_tp_adr_i
+0804FF14 ply_goto
+0804FF34 ply_patt
+0804FF50 ply_pend
+0804FF64 ply_rept
+0804FF94 ply_prio
+0804FFA0 ply_tempo
+0804FFB4 ply_keysh
+0804FFC8 ply_voice
+0804FFF8 ply_vol
+0805000C ply_pan
+08050020 ply_bend
+08050034 ply_bendr
+08050048 ply_lfodl
+08050054 ply_modt
+0805006C ply_tune
+08050080 ply_port
+08050098 m4aSoundVSync
+080500D4 MPlayMain
+0805033C TrackStop
+08050380 ChnVolSetAsm
+080503B0 ply_note
+080505B0 ply_endtie
+080505F0 clear_modM
+0805060C ld_r3_tp_adr_i_unchecked
+08050618 ply_lfos
+0805062C ply_mod
+# --- m4a (C part) ---
+08050640 MidiKeyToFreq
+080506A8 MPlayContinue
+080506C4 MPlayFadeOut
+080506E4 m4aSoundInit
+0805075C m4aSoundMain
+08050768 m4aSongNumStart
+08050794 m4aSongNumStartOrChange
+080507E0 m4aSongNumStartOrContinue
+08050834 m4aSongNumStop
+08050868 m4aSongNumContinue
+0805089C m4aMPlayAllStop
+080508C8 m4aMPlayContinue
+080508D4 m4aMPlayAllContinue
+08050900 m4aMPlayFadeOut
+08050910 m4aMPlayFadeOutTemporarily
+08050930 m4aMPlayFadeIn
+08050958 m4aMPlayImmInit
+080509A0 MPlayExtender
+08050ABC ClearChain
+08050AD0 Clear64byte
+08050AE4 SoundInit
+08050BB0 SampleFreqSet
+08050C54 m4aSoundMode
+08050CEC SoundClear
+08050D40 m4aSoundVSyncOff
+08050DA4 m4aSoundVSyncOn
+08050DDC MPlayOpen
+08050E54 MPlayStart
+08050F38 m4aMPlayStop
+08050F78 FadeOutBody
+08051040 TrkVolPitSet
+080510F4 MidiKeyToCgbFreq
+0805119C CgbOscOff
+080511EC CgbModVol
+08051254 CgbSound
+080516A0 m4aMPlayTempoControl
+080516C8 m4aMPlayVolumeControl
+08051730 m4aMPlayPitchControl
+080517A4 m4aMPlayPanpotControl
+0805180C ClearModM
+0805182C m4aMPlayModDepthSet
+080518A0 m4aMPlayLFOSpeedSet
+08051914 ply_memacc
+08051A6C ply_xcmd
+08051A8C ply_xxx
+08051AA0 ply_xwave
+08051AE8 ply_xtype
+08051AFC ply_xatta
+08051B10 ply_xdeca
+08051B24 ply_xsust
+08051B38 ply_xrele
+08051B4C ply_xiecv
+08051B58 ply_xiecl
+08051B64 ply_xleng
+08051B78 ply_xswee
+08051B8C DummyFunc
+# --- libagbsyscall ---
+08051B90 ArcTan2
+08051B94 CpuFastSet
+08051B98 CpuSet
+08051B9C Div
+08051BA0 LZ77UnCompWram
+08051BA4 ObjAffineSet
+08051BA8 RegisterRamReset
+08051BAC Sqrt
+08051BB0 VBlankIntrWait
+08051BB8 SoftReset
+# --- agb_flash (FLASH512_V131) ---
+08051BD4 SwitchFlashBank
+08051BF8 ReadFlashId
+08051C94 FlashTimerIntr
+08051CBC SetFlashTimerIntr
+08051CF8 StartFlashTimer
+08051DA0 StopFlashTimer
+08051DE4 ReadFlash1
+08051DE8 SetReadFlash1
+08051E28 ReadFlash_Core
+08051E4C ReadFlash
+08051EE8 VerifyFlashSector_Core
+08051F18 VerifyFlashSector
+08051FB0 VerifyFlashSectorNBytes
+08052048 ProgramFlashSectorAndVerify
+0805208C ProgramFlashSectorAndVerifyNBytes
+080520D4 IdentifyFlash
+08052168 WaitForFlashWrite_Common
+080521F0 EraseFlashChip_MX
+08052264 EraseFlashSector_MX
+08052300 ProgramByte
+08052338 ProgramFlashSector_MX
+# --- libgcc ---
+08052544 _call_via_r0
+08052548 _call_via_r1
+0805254C _call_via_r2
+08052550 _call_via_r3
+08052554 _call_via_r4
+08052558 _call_via_r5
+0805255C _call_via_r6
+08052560 _call_via_r7
+08052564 _call_via_r8
+08052568 _call_via_r9
+0805256C _call_via_sl
+08052570 _call_via_fp
+08052574 _call_via_ip
+08052578 _call_via_sp
+0805257C _call_via_lr
+08052580 __divsi3
+08052614 __div0
+08052618 __modsi3
+080526E8 __udivsi3
+08052760 __umodsi3
+# --- newlib ---
+08052820 bzero
+0805283C memcpy
+08001E54 GetMultiplayerId       # SIOCNT multiplayer id when link is active, else 0
+0800B3F4 ApplyPendingDamage     # hp -= pending damage (+0x54,+0x56); clamps to 0 and returns 1 on death (watch hp, 2026-10-05)
+0800C1E8 SpawnPlayer            # puts a player at a spawn point, resets state, refills hp; seen after death (maybe also on map entry)
+08013310 UseItem                # healed hp +30 capped at max hp (+0x50); takes an item pointer; other item kinds unverified
+0800B8A4 HudThread              # thread drawing the status bar; displayed hp is a stack local that rolls 1/frame to the real hp
+0804FAA8 umul3232H32

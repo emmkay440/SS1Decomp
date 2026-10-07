@@ -1,0 +1,39 @@
+# RAM variables: <address> <name>  [# note]
+# Raw addresses in the disassembly that exactly equal one of these are replaced
+# by the symbol; the linker script defines them (see ld_symbols.ld, generated).
+03000000 gIntrMasterEnable      # mirror of REG_IME
+03000002 gIntrEnableMask        # mirror of REG_IE
+03000004 gDispStat              # mirror of REG_DISPSTAT
+03000008 gHBlankEffectTable     # [0]=dest register, [1..] per-scanline values
+03001C44 gCurrentThread
+03001C48 gThreadList
+03001C4C gThreadCount
+03001C50 gSchedulerStack
+03001C60 gBgRegsBuffer          # copied to REG_BG0HOFS.. every VBlank
+03001CA8 gKeysPrev
+03001CAC gDispCnt               # mirror of REG_DISPCNT
+03001CB0 gIntrTable
+03001CF0 gMainThread
+03001D18 gKeysRepeat
+03001D1C gKeysHeld
+03001D20 gPaletteBufferQueued
+03001D28 gRngState              # 8-byte LFSR
+03001D30 gKeyRepeatCounter
+03001D34 gKeysNew
+03001D40 gOamBuffer
+03002140 gKeyRepeatDelay
+03002150 gIntrMainRam           # IntrMain is copied here
+03002950 gPaletteBuffer
+03002D50 gKeyRepeatTimer
+03002D54 gFrameCounter
+03002D58 gKeyRepeatRate
+03002D64 gVBlankUpdatePending
+03002D68 gCopyQueueCount
+03002D6C gCopyQueue
+03002D70 gHeap
+03004580 gPlayers               # [4] x 0xD4 bytes, indexed by GetMultiplayerId(); see docs/variables.md
+030018C4 SoundMainRAM_Buffer    # m4a: SoundMainRAM (ARM mixer) is copied here, 0x380 bytes
+03006960 gSoundInfo             # m4a struct SoundInfo (0x980 bytes, mono PCM buffer)
+030072E0 gMPlayJumpTable        # m4a, 36 entries
+03007370 gCgbChans              # m4a struct CgbChannel[4]
+03007530 gMPlayMemAccArea       # m4a, 0x10 bytes
