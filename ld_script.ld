@@ -14,6 +14,8 @@ SECTIONS {
         asm/save_init.o(.text);
         asm/save.o(.text);
         asm/code_08001970.o(.text);
+        src/game_flags.o(.text);
+        asm/code_080077D0.o(.text);
         asm/player_damage.o(.text);
         asm/code_0800B4B4.o(.text);
         asm/enemy_damage.o(.text);

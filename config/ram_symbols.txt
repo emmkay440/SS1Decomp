@@ -54,3 +54,6 @@
 03003D10 gPlayerStats           # the local character: +0x34 exp, +0x38 level (AddExp); saved (LoadSaveSlotInfo checksum); see docs/variables.md
 03000478 gMenuPage              # current MenuScreen page; 9 = options (ApplyMenuChanges). Other values: 1, 5, 6, 7, 8
 0300758C ProgramFlashSector     # agb_flash: u16 (*)(u16 sector, void *src), set by IdentifyFlash (pokeemerald name)
+03003CA4 gGameFlags             # u32 of single-bit flags, one get/set/clear function each (src/game_flags.c); meanings mostly unknown
+03003CB0 gUnknownThread_03003CB0 # struct Thread, entry sub_08006414 (sub_08007760)
+03003CE0 gUnknownThread_03003CE0 # struct Thread, entry sub_08006144 (sub_08007490)
