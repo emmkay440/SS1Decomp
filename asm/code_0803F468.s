@@ -2277,7 +2277,7 @@ _0804061C:
 	bne _08040658
 	ldr r4, _08040654 @ =0x030004AC
 	ldr r0, [r4]
-	bl sub_08014014
+	bl GetCategory5Record
 	cmp r0, #0
 	beq _08040640
 	movs r1, #0xab
@@ -2450,7 +2450,7 @@ _08040776:
 	bl sub_08016DC0
 	ldr r4, _080407C8 @ =0x030004AC
 	ldr r0, [r4]
-	bl sub_08014014
+	bl GetCategory5Record
 	cmp r0, #0
 	beq _0804079C
 	movs r1, #0xab
@@ -4308,7 +4308,7 @@ sub_08041498: @ 0x08041498
 	ldr r4, _080414C4 @ =0x030004A0
 	ldr r0, [r4]
 	adds r0, #8
-	bl sub_08014014
+	bl GetCategory5Record
 	cmp r0, #0
 	beq _080414BC
 	movs r1, #0xab
@@ -6805,7 +6805,7 @@ _080428D6:
 	adds r4, r0, #0
 	adds r4, #8
 	adds r0, r4, #0
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r5, r0, #0
 	cmp r5, #0
 	beq _08042922

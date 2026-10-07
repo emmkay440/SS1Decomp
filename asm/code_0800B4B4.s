@@ -5905,7 +5905,7 @@ _0800E208:
 	bne _0800E1EC
 	ldr r4, _0800E2F4 @ =0x03003D94
 	adds r0, r4, #0
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _0800E248

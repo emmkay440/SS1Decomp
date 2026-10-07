@@ -2058,7 +2058,7 @@ _080306B2:
 	beq _080307A0
 	ldr r4, _0803086C @ =0x03003D94
 	adds r0, r4, #0
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _080306E6
@@ -5795,7 +5795,7 @@ _080325D0:
 	beq _080326A4
 	ldr r4, _08032770 @ =0x03003D94
 	adds r0, r4, #0
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _08032604
@@ -10549,7 +10549,7 @@ _08034D42:
 	beq _08034E44
 	ldr r4, _08034F14 @ =0x03003D94
 	adds r0, r4, #0
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _08034D96
@@ -13162,7 +13162,7 @@ _080362CC:
 	beq _080363CC
 	ldr r4, _0803649C @ =0x03003D94
 	adds r0, r4, #0
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _08036320
@@ -15950,7 +15950,7 @@ _080379A0: .4byte 0x03003910
 _080379A4: .4byte 0x03003D94
 _080379A8:
 	adds r0, r4, #0
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _080379D4
@@ -19866,7 +19866,7 @@ _08039942:
 	beq _08039A44
 	ldr r4, _08039B14 @ =0x03003D94
 	adds r0, r4, #0
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _08039988
@@ -22655,7 +22655,7 @@ _0803B044:
 	beq _0803B11A
 	ldr r4, _0803B1DC @ =0x03003D94
 	adds r0, r4, #0
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _0803B078
@@ -28539,7 +28539,7 @@ _0803E18E:
 	beq _0803E254
 	adds r0, r5, #0
 	adds r0, #0x84
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _0803E1C8

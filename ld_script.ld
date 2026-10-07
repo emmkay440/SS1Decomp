@@ -28,6 +28,10 @@ SECTIONS {
         asm/code_0800F470.o(.text);
         src/player_stats.o(.text);
         asm/code_08013AF8.o(.text);
+        src/items.o(.text);
+        asm/take_item.o(.text);
+        src/item_records.o(.text);
+        asm/code_0801406C.o(.text);
         src/stats.o(.text);
         asm/code_08016F00.o(.text);
         src/exp_gain.o(.text);

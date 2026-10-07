@@ -312,3 +312,11 @@
 0802F4C4 IsSaveSlotValid
 0802F52C LoadSaveSlot
 0802F5A4 EraseSaveSlot
+08013F64 GetWeaponRecord
+08013F90 GetArmorRecord
+08013FBC GetHeadRecord
+08013FE8 GetUsableItemRecord
+08014014 GetCategory5Record
+08014040 GetCategory6Record
+08013EAC PutItemInSlot
+08013F20 TakeItemFromSlot

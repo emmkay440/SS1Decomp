@@ -8,7 +8,7 @@ void sub_080141AC(void);
 
 void GetInventory(u32 *dest)
 {
-    u32 *src = gPlayerStats.inventory;
+    u32 *src = (u32 *)gPlayerStats.inventory;
     u8 i;
 
     for (i = 0; i < INVENTORY_SIZE; i++)
@@ -20,12 +20,12 @@ void SetInventorySlot(u8 i, u32 value)
     struct PlayerStats *s = &gPlayerStats;
     if (i > INVENTORY_SIZE - 1)
         i = 0;
-    *(s->inventory + i) = value;
+    *((u32 *)s->inventory + i) = value;
 }
 
 void SetInventory(u32 *src)
 {
-    u32 *dest = gPlayerStats.inventory;
+    u32 *dest = (u32 *)gPlayerStats.inventory;
     u8 i;
 
     for (i = 0; i < INVENTORY_SIZE; i++)

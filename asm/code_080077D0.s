@@ -1087,7 +1087,7 @@ _08008032:
 	ldrh r1, [r1]
 	lsls r1, r1, #0x12
 	lsrs r4, r1, #0x19
-	bl sub_08013F20
+	bl TakeItemFromSlot
 	adds r0, r4, #0
 	bl sub_08014CF0
 	adds r4, r0, #0
@@ -1155,7 +1155,7 @@ _080080A0:
 	bne _08008164
 	ldr r5, _08008128 @ =0x03003D94
 	adds r0, r5, #0
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _08008164
@@ -4635,7 +4635,7 @@ _08009C48:
 	movs r0, #0xd
 	strh r0, [r7, #0xe]
 	ldr r0, _08009C9C @ =0x03003D94
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	mov r2, sb
 	ldr r3, [r2]
@@ -6923,7 +6923,7 @@ _0800AE4E:
 _0800AE56:
 	ldr r4, _0800AF10 @ =0x03003D94
 	adds r0, r4, #0
-	bl sub_08014014
+	bl GetCategory5Record
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _0800AF20

@@ -1,6 +1,8 @@
 #ifndef GUARD_PLAYER_STATS_H
 #define GUARD_PLAYER_STATS_H
 
+#include "item.h"
+
 // The local player's character (gPlayerStats, 0x03003D10). This is the save
 // slot: SaveGame writes its first 0x27C bytes plus a checksum byte to the
 // flash sector numbered saveSlot. See docs/variables.md.
@@ -69,7 +71,7 @@ struct PlayerStats
     u32 head;         // +0x7C item word (category 4); Bandana on the Warrior
     u32 armor;        // +0x80 item word (category 3, body)
     u32 unk84;        // +0x84 third equipment slot (category 5); empty so far
-    u32 inventory[INVENTORY_SIZE]; // +0x88 item words, see docs/variables.md
+    struct Item inventory[INVENTORY_SIZE]; // +0x88
     u8 unkEC[0x184];
     u16 unk270_0:9;
     u16 unk270_9:1;   // +0x270 bit 9: shown on the save select screen (SaveSlotInfo.unk5)

@@ -21,7 +21,7 @@ sub_08017150: @ 0x08017150
 	lsls r0, r0, #2
 	adds r0, #0x70
 	add r0, sb
-	bl sub_08013F64
+	bl GetWeaponRecord
 	str r0, [sp, #4]
 	movs r5, #0
 	adds r0, r6, #0
