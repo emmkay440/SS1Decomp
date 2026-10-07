@@ -98,3 +98,5 @@
 030004B0 gMenuStatBlock         # struct StatBlock *: the stats menu's working copy (ApplyAllocatedPoints)
 030004B4 gMenuSkillBlock        # struct SkillBlock *: same for skills
 030004C0 gUnknown_030004C0      # s8
+03003910 gMapLayer_03003910     # struct MapLayer (src/map.c); used unless gGameFlags bit 3 / layer arg is set
+03003C00 gMapLayer_03003C00     # struct MapLayer; the other layer

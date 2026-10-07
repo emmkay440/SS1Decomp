@@ -7043,7 +7043,7 @@ _0801274A:
 	ldr r1, _0801276C @ =0x00007FFF
 	bl __umodsi3
 	adds r4, r0, #0
-	ldr r1, _08012770 @ =0x03003910
+	ldr r1, _08012770 @ =gMapLayer_03003910
 	adds r0, r1, #0
 	adds r0, #0x68
 	ldrh r0, [r0]
@@ -7055,7 +7055,7 @@ _0801274A:
 	b _08012882
 	.align 2, 0
 _0801276C: .4byte 0x00007FFF
-_08012770: .4byte 0x03003910
+_08012770: .4byte gMapLayer_03003910
 _08012774:
 	adds r0, r1, #0
 	adds r0, #0x68
@@ -7749,7 +7749,7 @@ _08012C7E:
 	bl sub_080076A8
 	cmp r0, #0
 	bne _08012D38
-	ldr r0, _08012CA8 @ =0x03003910
+	ldr r0, _08012CA8 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	subs r0, #1
@@ -7761,7 +7761,7 @@ _08012C7E:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08012CA8: .4byte 0x03003910
+_08012CA8: .4byte gMapLayer_03003910
 _08012CAC: .4byte _08012CB0
 _08012CB0: @ jump table
 	.4byte _08012D6C @ case 0

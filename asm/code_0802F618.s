@@ -67,7 +67,7 @@ _0802F666:
 	ldrh r0, [r4, #2]
 	lsls r0, r0, #0xf
 	str r0, [r7, #0x14]
-	ldr r0, _0802F7C0 @ =0x03003910
+	ldr r0, _0802F7C0 @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r7, #0x26]
@@ -206,7 +206,7 @@ _0802F7B6:
 	bl sub_0802934C
 	b _0802F7D0
 	.align 2, 0
-_0802F7C0: .4byte 0x03003910
+_0802F7C0: .4byte gMapLayer_03003910
 _0802F7C4: .4byte 0x080FB740
 _0802F7C8: .4byte gPlayers
 _0802F7CC:
@@ -2048,7 +2048,7 @@ _08030664:
 	bl sub_080074F0
 	cmp r0, #0
 	bne _080306B2
-	ldr r0, _08030868 @ =0x03003910
+	ldr r0, _08030868 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	bl PlayBGM
@@ -2115,7 +2115,7 @@ _08030716:
 	bl sub_080075AC
 	cmp r0, #0
 	bne _08030752
-	ldr r0, _08030868 @ =0x03003910
+	ldr r0, _08030868 @ =gMapLayer_03003910
 	ldr r0, [r0, #0x78]
 	movs r1, #0xc
 	ands r0, r1
@@ -2248,7 +2248,7 @@ _08030848:
 _0803085C: .4byte 0x030063D8
 _08030860: .4byte gPlayers
 _08030864: .4byte 0x0000FFFE
-_08030868: .4byte 0x03003910
+_08030868: .4byte gMapLayer_03003910
 _0803086C: .4byte 0x03003D94
 _08030870: .4byte 0x00000157
 _08030874: .4byte 0x0000FFFF
@@ -2293,7 +2293,7 @@ sub_08030894: @ 0x08030894
 	bl sub_080076A8
 	cmp r0, #0
 	beq _08030908
-	ldr r0, _08030904 @ =0x03003910
+	ldr r0, _08030904 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	cmp r0, #1
@@ -2309,7 +2309,7 @@ _080308F4: .4byte 0x08054918
 _080308F8: .4byte 0x0010002B
 _080308FC: .4byte 0x0011002B
 _08030900: .4byte 0x0013002B
-_08030904: .4byte 0x03003910
+_08030904: .4byte gMapLayer_03003910
 _08030908:
 	movs r0, #0x1d
 	adds r1, r5, #0
@@ -2391,7 +2391,7 @@ _08030990:
 	bl sub_080076A8
 	cmp r0, #0
 	beq _08030A14
-	ldr r0, _080309B8 @ =0x03003910
+	ldr r0, _080309B8 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	movs r5, #0x46
@@ -2401,7 +2401,7 @@ _08030990:
 	movs r0, #0x3c
 	b _08030A24
 	.align 2, 0
-_080309B8: .4byte 0x03003910
+_080309B8: .4byte gMapLayer_03003910
 _080309BC:
 	bl GetMultiplayerId
 	muls r0, r6, r0
@@ -2442,7 +2442,7 @@ _080309BC:
 	.align 2, 0
 _08030A10: .4byte 0x0000FFFE
 _08030A14:
-	ldr r0, _08030D0C @ =0x03003910
+	ldr r0, _08030D0C @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	movs r5, #0x28
@@ -2810,7 +2810,7 @@ _08030CB6:
 	lsrs r3, r0, #0x10
 	b _08030D36
 	.align 2, 0
-_08030D0C: .4byte 0x03003910
+_08030D0C: .4byte gMapLayer_03003910
 _08030D10: .4byte gPlayers
 _08030D14: .4byte 0x0805289C
 _08030D18: .4byte 0x0000FFFE
@@ -2893,7 +2893,7 @@ _08030D82:
 	ldr r3, [sp, #0x80]
 	adds r3, r3, r0
 	str r3, [sp, #0x80]
-	ldr r1, _08031104 @ =0x03003910
+	ldr r1, _08031104 @ =gMapLayer_03003910
 	adds r0, r1, #0
 	adds r0, #0x58
 	ldrh r0, [r0]
@@ -3171,7 +3171,7 @@ _08030FC4:
 	ldr r3, [sp, #0x80]
 	adds r3, r3, r0
 	str r3, [sp, #0x80]
-	ldr r1, _08031104 @ =0x03003910
+	ldr r1, _08031104 @ =gMapLayer_03003910
 	adds r0, r1, #0
 	adds r0, #0x58
 	ldrh r0, [r0]
@@ -3306,7 +3306,7 @@ _080310D8:
 	.align 2, 0
 _080310FC: .4byte 0xFFFFFF00
 _08031100: .4byte 0x0805289C
-_08031104: .4byte 0x03003910
+_08031104: .4byte gMapLayer_03003910
 _08031108: .4byte 0x030063D8
 _0803110C: .4byte gPlayers
 _08031110: .4byte 0x012B0000
@@ -3675,7 +3675,7 @@ _080313CA:
 	ldrh r0, [r1, #0x2a]
 	lsls r0, r0, #0xf
 	str r0, [r7, #0x14]
-	ldr r0, _0803153C @ =0x03003910
+	ldr r0, _0803153C @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r7, #0x26]
@@ -3822,7 +3822,7 @@ _08031532:
 	bl sub_0802934C
 	b _08031550
 	.align 2, 0
-_0803153C: .4byte 0x03003910
+_0803153C: .4byte gMapLayer_03003910
 _08031540: .4byte 0x080FB740
 _08031544: .4byte 0x00100018
 _08031548: .4byte gPlayers
@@ -4006,7 +4006,7 @@ _080316DA:
 _080316F8: .4byte gPlayers
 _080316FC: .4byte 0x0000FFFE
 _08031700:
-	ldr r2, _080317A4 @ =0x03003910
+	ldr r2, _080317A4 @ =gMapLayer_03003910
 	ldr r0, [r2, #0x78]
 	movs r1, #0x10
 	orrs r0, r1
@@ -4077,7 +4077,7 @@ _08031774:
 	bl StopSE
 	bl _080321F4
 	.align 2, 0
-_080317A4: .4byte 0x03003910
+_080317A4: .4byte gMapLayer_03003910
 _080317A8: .4byte gFrameCounter
 _080317AC: .4byte gPlayers
 _080317B0: .4byte 0x0000FFFE
@@ -4381,7 +4381,7 @@ _08031A32:
 	asrs r1, r1, #0x10
 	ldr r5, _08031B44 @ =0x00000115
 	adds r1, r1, r5
-	ldr r0, _08031B48 @ =0x03003910
+	ldr r0, _08031B48 @ =gMapLayer_03003910
 	adds r6, r0, #0
 	adds r6, #0x5e
 	movs r0, #0
@@ -4508,7 +4508,7 @@ _08031B24:
 	.align 2, 0
 _08031B40: .4byte 0x0000012B
 _08031B44: .4byte 0x00000115
-_08031B48: .4byte 0x03003910
+_08031B48: .4byte gMapLayer_03003910
 _08031B4C: .4byte 0x0000012F
 _08031B50:
 	movs r0, #0
@@ -5280,7 +5280,7 @@ _08032148:
 	movs r0, #0x6a
 	bl PlaySE
 _0803216A:
-	ldr r2, _08032290 @ =0x03003910
+	ldr r2, _08032290 @ =gMapLayer_03003910
 	ldr r0, [r2, #0x78]
 	movs r1, #0x10
 	orrs r0, r1
@@ -5410,7 +5410,7 @@ _08032276:
 	b _080322BE
 	.align 2, 0
 _0803228C: .4byte gFrameCounter
-_08032290: .4byte 0x03003910
+_08032290: .4byte gMapLayer_03003910
 _08032294: .4byte 0xFFFF0000
 _08032298: .4byte gPlayers
 _0803229C: .4byte 0x0000FFFE
@@ -5526,7 +5526,7 @@ _08032378:
 	beq _08032384
 	b _080324C4
 _08032384:
-	ldr r4, _08032410 @ =0x03003910
+	ldr r4, _08032410 @ =gMapLayer_03003910
 	adds r4, #0x5e
 	movs r1, #0
 	ldrsh r0, [r4, r1]
@@ -5591,7 +5591,7 @@ _08032384:
 	b _080324C4
 	.align 2, 0
 _0803240C: .4byte 0x0000FFFF
-_08032410: .4byte 0x03003910
+_08032410: .4byte gMapLayer_03003910
 _08032414: .4byte 0x00000101
 _08032418: .4byte 0x0000011B
 _0803241C:
@@ -5785,7 +5785,7 @@ _08032586:
 	bl sub_080076E0
 	cmp r0, #0
 	bne _080325D0
-	ldr r0, _0803276C @ =0x03003910
+	ldr r0, _0803276C @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	bl PlayBGM
@@ -5844,7 +5844,7 @@ _0803263C:
 	ldr r3, _08032780 @ =0xFFFFFE00
 	adds r0, r0, r3
 	str r0, [r7, #0x14]
-	ldr r0, _0803276C @ =0x03003910
+	ldr r0, _0803276C @ =gMapLayer_03003910
 	ldr r0, [r0, #0x78]
 	movs r1, #0xc
 	ands r0, r1
@@ -5974,7 +5974,7 @@ _0803275C: .4byte 0x030063D8
 _08032760: .4byte 0x03006814
 _08032764: .4byte gActiveEnemyMask
 _08032768: .4byte 0x030064D8
-_0803276C: .4byte 0x03003910
+_0803276C: .4byte gMapLayer_03003910
 _08032770: .4byte 0x03003D94
 _08032774: .4byte 0x00000157
 _08032778: .4byte gPlayers
@@ -6243,7 +6243,7 @@ _08032978:
 	ldr r1, [r0]
 	ldr r2, [r6]
 	subs r2, #0xc8
-	ldr r0, _080329EC @ =0x03003910
+	ldr r0, _080329EC @ =gMapLayer_03003910
 	adds r0, #0x5e
 	movs r7, #0
 	ldrsh r0, [r0, r7]
@@ -6267,7 +6267,7 @@ _080329D6:
 	str r2, [sp, #0x6c]
 	b _080329FE
 	.align 2, 0
-_080329EC: .4byte 0x03003910
+_080329EC: .4byte gMapLayer_03003910
 _080329F0:
 	ldr r3, [sp, #0x60]
 	ldrh r0, [r3, #2]
@@ -7232,7 +7232,7 @@ _0803319C:
 	ldr r0, [sp, #0x54]
 	ldr r1, [sp, #0x58]
 	adds r1, #0x1e
-	ldr r2, _08033278 @ =0x03003910
+	ldr r2, _08033278 @ =gMapLayer_03003910
 	adds r2, #0x62
 	movs r4, #0
 	ldrsh r2, [r2, r4]
@@ -7293,7 +7293,7 @@ _08033270:
 	str r3, [sp, #0x6c]
 	b _08033464
 	.align 2, 0
-_08033278: .4byte 0x03003910
+_08033278: .4byte gMapLayer_03003910
 _0803327C: .4byte 0x030063D8
 _08033280:
 	bl WaitFrame
@@ -7366,7 +7366,7 @@ _08033298:
 	ldr r0, [sp, #0x54]
 	ldr r1, [sp, #0x58]
 	adds r1, #0x1e
-	ldr r2, _080334B0 @ =0x03003910
+	ldr r2, _080334B0 @ =gMapLayer_03003910
 	adds r2, #0x62
 	movs r3, #0
 	ldrsh r2, [r2, r3]
@@ -7432,7 +7432,7 @@ _08033358:
 	str r2, [sp, #0x54]
 	ldr r1, [sp, #0x58]
 	adds r1, #0x1e
-	ldr r0, _080334B0 @ =0x03003910
+	ldr r0, _080334B0 @ =gMapLayer_03003910
 	adds r0, #0x62
 	movs r3, #0
 	ldrsh r0, [r0, r3]
@@ -7552,7 +7552,7 @@ _08033498:
 	adds r5, #0x14
 	b _0803354C
 	.align 2, 0
-_080334B0: .4byte 0x03003910
+_080334B0: .4byte gMapLayer_03003910
 _080334B4: .4byte gPlayers
 _080334B8: .4byte 0x0000FFFE
 _080334BC: .4byte 0x030063D8
@@ -7597,7 +7597,7 @@ _080334D6:
 	ldr r0, [sp, #0x54]
 	ldr r1, [sp, #0x58]
 	adds r1, #0x1e
-	ldr r2, _080335A0 @ =0x03003910
+	ldr r2, _080335A0 @ =gMapLayer_03003910
 	adds r2, #0x62
 	movs r3, #0
 	ldrsh r2, [r2, r3]
@@ -7660,7 +7660,7 @@ _08033598:
 	str r4, [sp, #0x70]
 	b _08033774
 	.align 2, 0
-_080335A0: .4byte 0x03003910
+_080335A0: .4byte gMapLayer_03003910
 _080335A4: .4byte 0x030063D8
 _080335A8:
 	bl WaitFrame
@@ -7732,7 +7732,7 @@ _080335BE:
 	ldr r0, [sp, #0x54]
 	ldr r1, [sp, #0x58]
 	adds r1, #0x1e
-	ldr r2, _080337C8 @ =0x03003910
+	ldr r2, _080337C8 @ =gMapLayer_03003910
 	adds r2, #0x62
 	movs r3, #0
 	ldrsh r2, [r2, r3]
@@ -7788,7 +7788,7 @@ _08033668:
 	str r2, [sp, #0x54]
 	ldr r1, [sp, #0x58]
 	adds r1, #0x1e
-	ldr r0, _080337C8 @ =0x03003910
+	ldr r0, _080337C8 @ =gMapLayer_03003910
 	adds r0, #0x62
 	movs r4, #0
 	ldrsh r0, [r0, r4]
@@ -7910,7 +7910,7 @@ _080337BE:
 	str r4, [sp, #0x74]
 	b _080339A4
 	.align 2, 0
-_080337C8: .4byte 0x03003910
+_080337C8: .4byte gMapLayer_03003910
 _080337CC: .4byte gPlayers
 _080337D0: .4byte 0x0000FFFE
 _080337D4: .4byte 0x030063D8
@@ -7984,7 +7984,7 @@ _080337EE:
 	ldr r0, [sp, #0x54]
 	ldr r1, [sp, #0x58]
 	adds r1, #0x1e
-	ldr r2, _080339EC @ =0x03003910
+	ldr r2, _080339EC @ =gMapLayer_03003910
 	adds r2, #0x62
 	movs r3, #0
 	ldrsh r2, [r2, r3]
@@ -8040,7 +8040,7 @@ _08033898:
 	str r2, [sp, #0x54]
 	ldr r1, [sp, #0x58]
 	adds r1, #0x1e
-	ldr r0, _080339EC @ =0x03003910
+	ldr r0, _080339EC @ =gMapLayer_03003910
 	adds r0, #0x62
 	movs r4, #0
 	ldrsh r0, [r0, r4]
@@ -8158,7 +8158,7 @@ _080339D4:
 	adds r5, #0x14
 	b _08033A88
 	.align 2, 0
-_080339EC: .4byte 0x03003910
+_080339EC: .4byte gMapLayer_03003910
 _080339F0: .4byte gPlayers
 _080339F4: .4byte 0x0000FFFE
 _080339F8: .4byte 0x030063D8
@@ -8203,7 +8203,7 @@ _08033A12:
 	ldr r0, [sp, #0x54]
 	ldr r1, [sp, #0x58]
 	adds r1, #0x1e
-	ldr r2, _08033AEC @ =0x03003910
+	ldr r2, _08033AEC @ =gMapLayer_03003910
 	adds r2, #0x62
 	movs r3, #0
 	ldrsh r2, [r2, r3]
@@ -8274,7 +8274,7 @@ _08033AD6:
 	mov sl, r0
 	b _08033BBA
 	.align 2, 0
-_08033AEC: .4byte 0x03003910
+_08033AEC: .4byte gMapLayer_03003910
 _08033AF0: .4byte 0x030063D8
 _08033AF4:
 	ldr r1, [sp, #0x5c]
@@ -8336,7 +8336,7 @@ _08033AF4:
 	ldr r0, [sp, #0x54]
 	ldr r1, [sp, #0x58]
 	adds r1, #0x1e
-	ldr r2, _08033BFC @ =0x03003910
+	ldr r2, _08033BFC @ =gMapLayer_03003910
 	adds r2, #0x62
 	movs r3, #0
 	ldrsh r2, [r2, r3]
@@ -8399,7 +8399,7 @@ _08033BF6:
 	str r4, [sp, #0x68]
 	b _08033C76
 	.align 2, 0
-_08033BFC: .4byte 0x03003910
+_08033BFC: .4byte gMapLayer_03003910
 _08033C00: .4byte 0x030063D8
 _08033C04:
 	ldr r5, [sp, #0x68]
@@ -8434,7 +8434,7 @@ _08033C30:
 	bl Random
 	ldr r2, [sp, #0x58]
 	adds r2, #0x1e
-	ldr r1, _08033CC0 @ =0x03003910
+	ldr r1, _08033CC0 @ =gMapLayer_03003910
 	adds r1, #0x62
 	movs r3, #0
 	ldrsh r1, [r1, r3]
@@ -8493,7 +8493,7 @@ _08033CA4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08033CC0: .4byte 0x03003910
+_08033CC0: .4byte gMapLayer_03003910
 _08033CC4: .4byte 0x030063D8
 
 	thumb_func_start sub_08033CC8
@@ -8934,7 +8934,7 @@ _08034006:
 	ldrh r0, [r4, #2]
 	lsls r0, r0, #0xf
 	str r0, [r7, #0x14]
-	ldr r0, _0803417C @ =0x03003910
+	ldr r0, _0803417C @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r7, #0x26]
@@ -9082,7 +9082,7 @@ _08034170:
 	bl sub_0802934C
 	b _0803418C
 	.align 2, 0
-_0803417C: .4byte 0x03003910
+_0803417C: .4byte gMapLayer_03003910
 _08034180: .4byte 0x080FB740
 _08034184: .4byte gPlayers
 _08034188:
@@ -10514,7 +10514,7 @@ _08034CA0:
 	bl sub_080076E0
 	cmp r0, #0
 	bne _08034D2E
-	ldr r0, _08034F10 @ =0x03003910
+	ldr r0, _08034F10 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	bl PlayBGM
@@ -10602,7 +10602,7 @@ _08034DC4:
 	bl sub_080075AC
 	cmp r0, #0
 	bne _08034DF8
-	ldr r0, _08034F10 @ =0x03003910
+	ldr r0, _08034F10 @ =gMapLayer_03003910
 	ldr r0, [r0, #0x78]
 	movs r1, #0xc
 	ands r0, r1
@@ -10733,7 +10733,7 @@ _08034F00: .4byte 0x030063D8
 _08034F04: .4byte gActiveEnemyMask
 _08034F08: .4byte gPlayers
 _08034F0C: .4byte 0x030064D8
-_08034F10: .4byte 0x03003910
+_08034F10: .4byte gMapLayer_03003910
 _08034F14: .4byte 0x03003D94
 _08034F18: .4byte 0x00000157
 _08034F1C: .4byte 0x0000FFFF
@@ -11813,7 +11813,7 @@ _080357C4:
 	ldrh r0, [r6, #2]
 	lsls r0, r0, #0xf
 	str r0, [r7, #0x14]
-	ldr r0, _08035940 @ =0x03003910
+	ldr r0, _08035940 @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r7, #0x26]
@@ -11966,7 +11966,7 @@ _08035932:
 	b _08035954
 	.align 2, 0
 _0803593C: .4byte 0x030063D8
-_08035940: .4byte 0x03003910
+_08035940: .4byte gMapLayer_03003910
 _08035944: .4byte 0x080FB740
 _08035948: .4byte 0x0300680C
 _0803594C: .4byte gPlayers
@@ -13127,7 +13127,7 @@ _08036236:
 	bl sub_080076E0
 	cmp r0, #0
 	bne _080362B8
-	ldr r0, _08036498 @ =0x03003910
+	ldr r0, _08036498 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	bl PlayBGM
@@ -13215,7 +13215,7 @@ _0803634E:
 	bl sub_080075AC
 	cmp r0, #0
 	bne _08036382
-	ldr r0, _08036498 @ =0x03003910
+	ldr r0, _08036498 @ =gMapLayer_03003910
 	ldr r0, [r0, #0x78]
 	movs r1, #0xc
 	ands r0, r1
@@ -13345,7 +13345,7 @@ _08036488: .4byte 0x030063D8
 _0803648C: .4byte gActiveEnemyMask
 _08036490: .4byte gPlayers
 _08036494: .4byte 0x030064D8
-_08036498: .4byte 0x03003910
+_08036498: .4byte gMapLayer_03003910
 _0803649C: .4byte 0x03003D94
 _080364A0: .4byte 0x00000157
 _080364A4: .4byte 0xFFFFFE00
@@ -13407,7 +13407,7 @@ _08036502:
 	adds r0, #0xf0
 	movs r4, #0
 	strh r0, [r7, #2]
-	ldr r0, _08036664 @ =0x03003910
+	ldr r0, _08036664 @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r7, #0x26]
@@ -13568,7 +13568,7 @@ _08036642:
 _08036660:
 	b _0803686E
 	.align 2, 0
-_08036664: .4byte 0x03003910
+_08036664: .4byte gMapLayer_03003910
 _08036668: .4byte 0x0000FFFF
 _0803666C: .4byte 0x030063D8
 _08036670:
@@ -14580,7 +14580,7 @@ _08036E06:
 	ldrh r0, [r4, #2]
 	lsls r0, r0, #0xf
 	str r0, [r1, #0x14]
-	ldr r0, _08036FA8 @ =0x03003910
+	ldr r0, _08036FA8 @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r1, #0x26]
@@ -14746,7 +14746,7 @@ _08036F98:
 	b _08036FB8
 	.align 2, 0
 _08036FA4: .4byte 0x030063D8
-_08036FA8: .4byte 0x03003910
+_08036FA8: .4byte gMapLayer_03003910
 _08036FAC: .4byte 0x080FB740
 _08036FB0: .4byte gPlayers
 _08036FB4:
@@ -15899,7 +15899,7 @@ _080378B0:
 	bl sub_080076E0
 	cmp r0, #0
 	bne _08037942
-	ldr r0, _080379A0 @ =0x03003910
+	ldr r0, _080379A0 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	bl PlayBGM
@@ -15946,7 +15946,7 @@ _08037990: .4byte 0x0000FFFE
 _08037994: .4byte 0x030063D8
 _08037998: .4byte gActiveEnemyMask
 _0803799C: .4byte 0x030064D8
-_080379A0: .4byte 0x03003910
+_080379A0: .4byte gMapLayer_03003910
 _080379A4: .4byte 0x03003D94
 _080379A8:
 	adds r0, r4, #0
@@ -16004,7 +16004,7 @@ _08037A02:
 	bl sub_080075AC
 	cmp r0, #0
 	bne _08037A38
-	ldr r0, _08037B38 @ =0x03003910
+	ldr r0, _08037B38 @ =gMapLayer_03003910
 	ldr r0, [r0, #0x78]
 	movs r1, #0xc
 	ands r0, r1
@@ -16126,7 +16126,7 @@ _08037B28: .4byte 0x00000157
 _08037B2C: .4byte gPlayers
 _08037B30: .4byte 0x0000FFFF
 _08037B34: .4byte 0xFFFFFE00
-_08037B38: .4byte 0x03003910
+_08037B38: .4byte gMapLayer_03003910
 _08037B3C: .4byte 0x030063D8
 _08037B40: .4byte 0x00000BB8
 _08037B44: .4byte 0x03003D08
@@ -16460,7 +16460,7 @@ sub_08037D98: @ 0x08037D98
 	str r0, [r7, #0x10]
 	ldr r0, [r2, #0x14]
 	str r0, [r7, #0x14]
-	ldr r0, _08037EAC @ =0x03003910
+	ldr r0, _08037EAC @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r7, #0x26]
@@ -16529,7 +16529,7 @@ _08037E9C: .4byte 0x00040022
 _08037EA0: .4byte 0x00100023
 _08037EA4: .4byte gEnemies
 _08037EA8: .4byte gActiveEnemyMask
-_08037EAC: .4byte 0x03003910
+_08037EAC: .4byte gMapLayer_03003910
 _08037EB0: .4byte 0x0000FFFF
 _08037EB4:
 	bl sub_08007510
@@ -18159,7 +18159,7 @@ _08038B4E:
 	ldrh r0, [r1, #0x12]
 	lsls r0, r0, #0xf
 	str r0, [r7, #0x14]
-	ldr r0, _08038D40 @ =0x03003910
+	ldr r0, _08038D40 @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r7, #0x26]
@@ -18371,7 +18371,7 @@ _08038D36:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08038D40: .4byte 0x03003910
+_08038D40: .4byte gMapLayer_03003910
 _08038D44: .4byte 0x080FB740
 _08038D48: .4byte 0x00100067
 _08038D4C: .4byte gPlayers
@@ -19838,7 +19838,7 @@ _080398C4:
 	bl sub_080076E0
 	cmp r0, #0
 	bne _0803992E
-	ldr r0, _08039B10 @ =0x03003910
+	ldr r0, _08039B10 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	bl PlayBGM
@@ -19920,7 +19920,7 @@ _080399B8:
 	bl sub_080075AC
 	cmp r0, #0
 	bne _080399EC
-	ldr r0, _08039B10 @ =0x03003910
+	ldr r0, _08039B10 @ =gMapLayer_03003910
 	ldr r0, [r0, #0x78]
 	movs r1, #0xc
 	ands r0, r1
@@ -20056,7 +20056,7 @@ _08039B00: .4byte gPlayers
 _08039B04: .4byte 0x0000FFFE
 _08039B08: .4byte gActiveEnemyMask
 _08039B0C: .4byte 0x030064D8
-_08039B10: .4byte 0x03003910
+_08039B10: .4byte gMapLayer_03003910
 _08039B14: .4byte 0x03003D94
 _08039B18: .4byte 0x00000157
 _08039B1C: .4byte 0x0000FFFF
@@ -21255,7 +21255,7 @@ _0803A4A2:
 	ldrh r0, [r4, #2]
 	lsls r0, r0, #0xf
 	str r0, [r7, #0x14]
-	ldr r0, _0803A614 @ =0x03003910
+	ldr r0, _0803A614 @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r7, #0x26]
@@ -21404,7 +21404,7 @@ _0803A60A:
 	bl sub_0802934C
 	b _0803A624
 	.align 2, 0
-_0803A614: .4byte 0x03003910
+_0803A614: .4byte gMapLayer_03003910
 _0803A618: .4byte 0x080FB740
 _0803A61C: .4byte gPlayers
 _0803A620:
@@ -21470,7 +21470,7 @@ _0803A69C:
 	bl sub_080076A8
 	cmp r0, #0
 	beq _0803A6D0
-	ldr r0, _0803A6C8 @ =0x03003910
+	ldr r0, _0803A6C8 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	cmp r0, #9
@@ -21480,7 +21480,7 @@ _0803A69C:
 	ldr r0, _0803A6CC @ =0x00090102
 	b _0803A6D6
 	.align 2, 0
-_0803A6C8: .4byte 0x03003910
+_0803A6C8: .4byte gMapLayer_03003910
 _0803A6CC: .4byte 0x00090102
 _0803A6D0:
 	movs r0, #0x3c
@@ -22334,7 +22334,7 @@ _0803AD74:
 	bl sub_080076A8
 	cmp r0, #0
 	beq _0803ADC2
-	ldr r0, _0803ADB4 @ =0x03003910
+	ldr r0, _0803ADB4 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	cmp r0, #9
@@ -22348,7 +22348,7 @@ _0803ADA4: .4byte 0x0000FFFF
 _0803ADA8: .4byte 0x030063D8
 _0803ADAC: .4byte gActiveEnemyMask
 _0803ADB0: .4byte gPlayers
-_0803ADB4: .4byte 0x03003910
+_0803ADB4: .4byte gMapLayer_03003910
 _0803ADB8: .4byte 0x00090103
 _0803ADBC:
 	bl sub_080077AC
@@ -22449,7 +22449,7 @@ _0803AE8A:
 	bl sub_08001F98
 	cmp r0, #0
 	bne _0803AE9C
-	ldr r0, _0803AF04 @ =0x03003910
+	ldr r0, _0803AF04 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	bl PlayBGM
@@ -22502,7 +22502,7 @@ _0803AED8:
 _0803AEF8: .4byte 0x030063D8
 _0803AEFC: .4byte gPlayers
 _0803AF00: .4byte 0x0000FFFE
-_0803AF04: .4byte 0x03003910
+_0803AF04: .4byte gMapLayer_03003910
 _0803AF08:
 	bl WaitFrame
 _0803AF0C:
@@ -22529,7 +22529,7 @@ _0803AF20:
 	bl sub_080076A8
 	cmp r0, #0
 	beq _0803AF60
-	ldr r0, _0803AF58 @ =0x03003910
+	ldr r0, _0803AF58 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	cmp r0, #9
@@ -22540,7 +22540,7 @@ _0803AF20:
 	b _0803AF66
 	.align 2, 0
 _0803AF54: .4byte 0x0010000E
-_0803AF58: .4byte 0x03003910
+_0803AF58: .4byte gMapLayer_03003910
 _0803AF5C: .4byte 0x00090104
 _0803AF60:
 	movs r0, #0x3c
@@ -22709,7 +22709,7 @@ _0803B0A8:
 	bl sub_080075AC
 	cmp r0, #0
 	bne _0803B0DC
-	ldr r0, _0803B1EC @ =0x03003910
+	ldr r0, _0803B1EC @ =gMapLayer_03003910
 	ldr r0, [r0, #0x78]
 	movs r1, #0xc
 	ands r0, r1
@@ -22836,7 +22836,7 @@ _0803B1DC: .4byte 0x03003D94
 _0803B1E0: .4byte 0x00000157
 _0803B1E4: .4byte 0x0000FFFF
 _0803B1E8: .4byte 0xFFFFFE00
-_0803B1EC: .4byte 0x03003910
+_0803B1EC: .4byte gMapLayer_03003910
 _0803B1F0: .4byte 0x030063D8
 _0803B1F4: .4byte 0x00000BB8
 _0803B1F8: .4byte 0x03003D08
@@ -24515,7 +24515,7 @@ _0803BF4E:
 	movs r0, #0xd4
 	lsls r0, r0, #0xa
 	str r0, [r3, #0x14]
-	ldr r0, _0803C174 @ =0x03003910
+	ldr r0, _0803C174 @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r3, #0x26]
@@ -24754,7 +24754,7 @@ _0803C16A:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0803C174: .4byte 0x03003910
+_0803C174: .4byte gMapLayer_03003910
 _0803C178: .4byte 0x080FB740
 _0803C17C: .4byte 0x080FBD60
 _0803C180: .4byte 0x03006820
@@ -24812,7 +24812,7 @@ _0803C1DC:
 	ldr r0, _0803C220 @ =0x0000FFFE
 	ands r0, r2
 	strh r0, [r1, #0x10]
-	ldr r2, _0803C224 @ =0x03003910
+	ldr r2, _0803C224 @ =gMapLayer_03003910
 	ldr r0, [r2, #0x78]
 	movs r1, #0x10
 	orrs r0, r1
@@ -24823,10 +24823,10 @@ _0803C1DC:
 	.align 2, 0
 _0803C21C: .4byte gPlayers
 _0803C220: .4byte 0x0000FFFE
-_0803C224: .4byte 0x03003910
+_0803C224: .4byte gMapLayer_03003910
 _0803C228: .4byte 0x03006820
 _0803C22C:
-	ldr r2, _0803C248 @ =0x03003910
+	ldr r2, _0803C248 @ =gMapLayer_03003910
 	ldr r0, [r2, #0x78]
 	movs r1, #0x10
 	orrs r0, r1
@@ -24841,7 +24841,7 @@ _0803C23C:
 	movs r7, #2
 	b _0803C28A
 	.align 2, 0
-_0803C248: .4byte 0x03003910
+_0803C248: .4byte gMapLayer_03003910
 _0803C24C: .4byte 0x03006820
 _0803C250:
 	add r0, sp, #0x1fc
@@ -28181,7 +28181,7 @@ _0803DE6C:
 	str r1, [sp, #0x22c]
 	cmp r0, #0x77
 	bls _0803DE6C
-	ldr r0, _0803DEA4 @ =0x03003910
+	ldr r0, _0803DEA4 @ =gMapLayer_03003910
 	ldr r1, [r0, #0x78]
 	movs r2, #0x11
 	rsbs r2, r2, #0
@@ -28199,7 +28199,7 @@ _0803DE6C:
 	b _0803DEEC
 	.align 2, 0
 _0803DEA0: .4byte 0x030063D8
-_0803DEA4: .4byte 0x03003910
+_0803DEA4: .4byte gMapLayer_03003910
 _0803DEA8:
 	mov r2, sl
 	ldr r0, [r2, #0x10]
@@ -28521,7 +28521,7 @@ _0803E144:
 	ldr r0, _0803E334 @ =0x0000FFDF
 	ands r0, r2
 	strh r0, [r1, #0x10]
-	ldr r2, _0803E338 @ =0x03003910
+	ldr r2, _0803E338 @ =gMapLayer_03003910
 	ldr r0, [r2, #0x78]
 	movs r1, #0x10
 	orrs r0, r1
@@ -28587,7 +28587,7 @@ _0803E1F8:
 	ldr r3, _0803E344 @ =0xFFFFFE00
 	adds r0, r0, r3
 	str r0, [r2, #0x14]
-	ldr r0, _0803E338 @ =0x03003910
+	ldr r0, _0803E338 @ =gMapLayer_03003910
 	ldr r0, [r0, #0x78]
 	movs r1, #0xc
 	ands r0, r1
@@ -28726,7 +28726,7 @@ _0803E2F8:
 _0803E32C: .4byte gPlayerStats
 _0803E330: .4byte gPlayers
 _0803E334: .4byte 0x0000FFDF
-_0803E338: .4byte 0x03003910
+_0803E338: .4byte gMapLayer_03003910
 _0803E33C: .4byte 0x00000157
 _0803E340: .4byte 0x0000FFFF
 _0803E344: .4byte 0xFFFFFE00
@@ -28799,7 +28799,7 @@ sub_0803E364: @ 0x0803E364
 	strh r0, [r7, #2]
 	str r2, [r7, #0x10]
 	str r2, [r7, #0x14]
-	ldr r0, _0803E424 @ =0x03003910
+	ldr r0, _0803E424 @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r7, #0x26]
@@ -28831,7 +28831,7 @@ sub_0803E364: @ 0x0803E364
 	.align 2, 0
 _0803E41C: .4byte 0x080FBD60
 _0803E420: .4byte gEnemies
-_0803E424: .4byte 0x03003910
+_0803E424: .4byte gMapLayer_03003910
 _0803E428:
 	adds r1, r7, #0
 	adds r1, #0x87
@@ -30052,7 +30052,7 @@ sub_0803EDD8: @ 0x0803EDD8
 	movs r5, #0
 	movs r6, #0
 	movs r4, #0
-	ldr r0, _0803EDFC @ =0x03003910
+	ldr r0, _0803EDFC @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	cmp r0, #8
@@ -30061,7 +30061,7 @@ sub_0803EDD8: @ 0x0803EDD8
 	mov sb, r0
 	b _0803EE32
 	.align 2, 0
-_0803EDFC: .4byte 0x03003910
+_0803EDFC: .4byte gMapLayer_03003910
 _0803EE00: .4byte 0x03004650
 _0803EE04:
 	movs r0, #0xd4

@@ -157,7 +157,7 @@ _0800B5CE:
 	ldrh r0, [r0]
 	cmp r0, #3
 	bne _0800B5E2
-	ldr r0, _0800B608 @ =0x03003910
+	ldr r0, _0800B608 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	cmp r0, #8
@@ -181,7 +181,7 @@ _0800B5F6:
 _0800B5FC: .4byte gEnemies
 _0800B600: .4byte gFrameCounter
 _0800B604: .4byte gActiveEnemyMask
-_0800B608: .4byte 0x03003910
+_0800B608: .4byte gMapLayer_03003910
 _0800B60C:
 	mov r2, sb
 	ldrh r0, [r2, #0xa]
@@ -1773,7 +1773,7 @@ SpawnPlayer: @ 0x0800C1E8
 	strh r4, [r0]
 	movs r0, #4
 	strh r0, [r6, #0xa]
-	ldr r1, _0800C2B8 @ =0x03003C00
+	ldr r1, _0800C2B8 @ =gMapLayer_03003C00
 	adds r0, r1, #0
 	adds r0, #0x5c
 	strh r4, [r0]
@@ -1823,7 +1823,7 @@ _0800C28C:
 	cmp r3, #2
 	bls _0800C28C
 	bl sub_08021000
-	ldr r2, _0800C2C0 @ =0x03003910
+	ldr r2, _0800C2C0 @ =gMapLayer_03003910
 	ldr r0, [r2, #0x78]
 	movs r1, #0xc
 	orrs r0, r1
@@ -1836,9 +1836,9 @@ _0800C28C:
 	bx r0
 	.align 2, 0
 _0800C2B4: .4byte 0xFFFFF000
-_0800C2B8: .4byte 0x03003C00
+_0800C2B8: .4byte gMapLayer_03003C00
 _0800C2BC: .4byte gPlayerStats
-_0800C2C0: .4byte 0x03003910
+_0800C2C0: .4byte gMapLayer_03003910
 _0800C2C4: .4byte 0x000514C9
 
 	thumb_func_start sub_0800C2C8
@@ -2264,7 +2264,7 @@ _0800C56E:
 	lsls r0, r0, #0x11
 	lsrs r0, r0, #0x17
 	strh r0, [r7, #0x28]
-	ldr r0, _0800C634 @ =0x03003910
+	ldr r0, _0800C634 @ =gMapLayer_03003910
 	adds r0, #0x6c
 	ldrh r0, [r0]
 	strh r0, [r7, #0x26]
@@ -2272,7 +2272,7 @@ _0800C56E:
 	.align 2, 0
 _0800C62C: .4byte gEnemies
 _0800C630: .4byte 0x080FB740
-_0800C634: .4byte 0x03003910
+_0800C634: .4byte gMapLayer_03003910
 _0800C638:
 	strh r0, [r7, #0x26]
 	mov r2, sl
@@ -5885,7 +5885,7 @@ _0800E1EC:
 	ldr r1, _0800E2EC @ =0xFFFFFE00
 	adds r0, r0, r1
 	str r0, [r7, #0x14]
-	ldr r0, _0800E2F0 @ =0x03003910
+	ldr r0, _0800E2F0 @ =gMapLayer_03003910
 	ldr r0, [r0, #0x78]
 	movs r1, #0xc
 	ands r0, r1
@@ -5938,7 +5938,7 @@ _0800E24E:
 	ands r0, r1
 	cmp r0, #0
 	beq _0800E274
-	ldr r0, _0800E2F0 @ =0x03003910
+	ldr r0, _0800E2F0 @ =gMapLayer_03003910
 	ldr r0, [r0, #0x78]
 	movs r1, #0xc
 	ands r0, r1
@@ -6002,7 +6002,7 @@ _0800E2D2:
 _0800E2E4: .4byte gPlayers
 _0800E2E8: .4byte 0x0000FFFF
 _0800E2EC: .4byte 0xFFFFFE00
-_0800E2F0: .4byte 0x03003910
+_0800E2F0: .4byte gMapLayer_03003910
 _0800E2F4: .4byte 0x03003D94
 _0800E2F8: .4byte 0x00000157
 _0800E2FC: .4byte gActiveEnemyMask

@@ -4125,7 +4125,7 @@ _0800982A:
 	mov r2, sb
 	ldr r0, [r2]
 	strh r4, [r0, #6]
-	ldr r2, _08009850 @ =0x03003910
+	ldr r2, _08009850 @ =gMapLayer_03003910
 	ldr r0, [r2, #0x78]
 	movs r1, #0xc
 	orrs r0, r1
@@ -4136,7 +4136,7 @@ _0800982A:
 	strh r0, [r7, #0x18]
 	b _08009C7A
 	.align 2, 0
-_08009850: .4byte 0x03003910
+_08009850: .4byte gMapLayer_03003910
 _08009854:
 	bl sub_0800F298
 	cmp r0, #0
@@ -4207,7 +4207,7 @@ sub_08009876: @ 0x08009876
 	add r0, sp, #0xcc
 	ldrh r0, [r0]
 	strh r0, [r7, #0xc]
-	ldr r1, _08009904 @ =0x03003C00
+	ldr r1, _08009904 @ =gMapLayer_03003C00
 	adds r0, r1, #0
 	adds r0, #0x5c
 	add r2, sp, #0xcc
@@ -4220,7 +4220,7 @@ _080098F4: .4byte 0x000514C9
 _080098F8: .4byte 0x0000FFFE
 _080098FC: .4byte 0xFFFFF000
 _08009900: .4byte 0xFFFFFC0F
-_08009904: .4byte 0x03003C00
+_08009904: .4byte gMapLayer_03003C00
 _08009908:
 	ldr r4, _08009980 @ =0x030063D8
 	ldr r0, [r4]
@@ -4242,7 +4242,7 @@ _08009926:
 	bl sub_08022964
 	cmp r0, #0
 	beq _080099B0
-	ldr r0, _08009984 @ =0x03003910
+	ldr r0, _08009984 @ =gMapLayer_03003910
 	adds r0, #0x68
 	ldrh r0, [r0]
 	cmp r0, #8
@@ -4282,7 +4282,7 @@ _08009926:
 	b _08009C7A
 	.align 2, 0
 _08009980: .4byte 0x030063D8
-_08009984: .4byte 0x03003910
+_08009984: .4byte gMapLayer_03003910
 _08009988: .4byte 0x000900DD
 _0800998C: .4byte 0x0000FFFE
 _08009990:
@@ -4293,14 +4293,14 @@ _08009990:
 	strh r0, [r7, #0xe]
 	movs r0, #0x75
 	bl PlaySE
-	ldr r2, _080099AC @ =0x03003C00
+	ldr r2, _080099AC @ =gMapLayer_03003C00
 	ldr r0, [r2, #0x78]
 	movs r1, #0x10
 	orrs r0, r1
 	str r0, [r2, #0x78]
 	b _08009C7A
 	.align 2, 0
-_080099AC: .4byte 0x03003C00
+_080099AC: .4byte gMapLayer_03003C00
 _080099B0:
 	movs r0, #0xa
 	str r0, [sp]
@@ -4358,10 +4358,10 @@ _08009A12:
 	mov r3, sb
 	ldr r0, [r3]
 	strh r2, [r0, #6]
-	ldr r2, _08009A20 @ =0x03003C00
+	ldr r2, _08009A20 @ =gMapLayer_03003C00
 	b _08009C06
 	.align 2, 0
-_08009A20: .4byte 0x03003C00
+_08009A20: .4byte gMapLayer_03003C00
 _08009A24:
 	mov r4, sb
 	ldr r1, [r4]
@@ -4379,7 +4379,7 @@ _08009A3A:
 	bl StopSE
 	ldr r0, _08009AC4 @ =0x000514C8
 	bl SignalEvent
-	ldr r2, _08009AC8 @ =0x03003C00
+	ldr r2, _08009AC8 @ =gMapLayer_03003C00
 	ldr r0, [r2, #0x78]
 	movs r1, #0x11
 	rsbs r1, r1, #0
@@ -4428,7 +4428,7 @@ _08009A3A:
 	strh r0, [r3, #2]
 	movs r0, #8
 	strh r0, [r7, #0xe]
-	ldr r1, _08009AD8 @ =0x03003910
+	ldr r1, _08009AD8 @ =gMapLayer_03003910
 	adds r0, r1, #0
 	adds r0, #0x5c
 	strh r4, [r0]
@@ -4443,11 +4443,11 @@ _08009AB8:
 	b _08009C7A
 	.align 2, 0
 _08009AC4: .4byte 0x000514C8
-_08009AC8: .4byte 0x03003C00
+_08009AC8: .4byte gMapLayer_03003C00
 _08009ACC: .4byte 0x0000FFFE
 _08009AD0: .4byte 0xFFFFFC0F
 _08009AD4: .4byte 0xFFFFF000
-_08009AD8: .4byte 0x03003910
+_08009AD8: .4byte gMapLayer_03003910
 _08009ADC:
 	ldr r4, [sp, #0xcc]
 	ldr r0, [sp, #0xd4]
@@ -4592,7 +4592,7 @@ _08009BDA:
 	mov r3, sb
 	ldr r0, [r3]
 	strh r2, [r0, #6]
-	ldr r2, _08009C1C @ =0x03003910
+	ldr r2, _08009C1C @ =gMapLayer_03003910
 _08009C06:
 	ldr r0, [r2, #0x78]
 	movs r1, #0xc
@@ -4603,7 +4603,7 @@ _08009C06:
 	b _08009C7A
 	.align 2, 0
 _08009C18: .4byte 0x000007FF
-_08009C1C: .4byte 0x03003910
+_08009C1C: .4byte gMapLayer_03003910
 _08009C20:
 	mov r4, sb
 	ldr r3, [r4]

@@ -19,6 +19,9 @@ SECTIONS {
         asm/code_08001970.o(.text);
         src/link.o(.text);
         asm/code_08001FD0.o(.text);
+        src/map.o(.text);
+        asm/map_coords.o(.text);
+        asm/code_08006114.o(.text);
         src/game_flags.o(.text);
         asm/code_080077D0.o(.text);
         src/player_damage.o(.text);
