@@ -57,3 +57,7 @@
 03003CA4 gGameFlags             # u32 of single-bit flags, one get/set/clear function each (src/game_flags.c); meanings mostly unknown
 03003CB0 gUnknownThread_03003CB0 # struct Thread, entry sub_08006414 (sub_08007760)
 03003CE0 gUnknownThread_03003CE0 # struct Thread, entry sub_08006144 (sub_08007490)
+03000018 gFadeDuration          # guess: screen fade (src/fade.c); u16
+0300001A gFadeTimer             # guess: u16
+0300001E gFadeDirection         # guess: s16, -1 or 1
+03000020 gFadeFlags             # guess: u16; (flags & 0x16) == 0 means idle

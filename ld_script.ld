@@ -24,6 +24,8 @@ SECTIONS {
         src/enemy_damage.o(.text);
         src/enemy_util.o(.text);
         asm/code_0800EA00.o(.text);
+        src/fade.o(.text);
+        asm/code_0800F470.o(.text);
         src/player_stats.o(.text);
         asm/code_08013AF8.o(.text);
         src/stats.o(.text);
