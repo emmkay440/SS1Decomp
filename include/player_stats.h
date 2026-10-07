@@ -106,7 +106,7 @@ bool32 AddExp(struct PlayerStats *stats, u32 amount);
 u32 GetExpToNextLevel(void);
 void GetStatBlock(void *dest);
 void SetStatBlock(const void *src);
-u8 GetPlayerClass(void);
+u32 GetPlayerClass(void);
 void GetSkillBlock(struct SkillBlock *dest);
 void SetSkillBlock(const struct SkillBlock *src);
 

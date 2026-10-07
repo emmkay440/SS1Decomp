@@ -4276,7 +4276,7 @@ _08024BF4:
 	cmp r0, #0
 	beq _08024C44
 	ldr r3, _08024C34 @ =gPlayerStats
-	ldr r0, _08024C38 @ =0x03003D08
+	ldr r0, _08024C38 @ =gUnknown_03003D08
 	ldr r2, [r0]
 	movs r0, #0x9c
 	lsls r0, r0, #2
@@ -4293,12 +4293,12 @@ _08024BF4:
 	.align 2, 0
 _08024C30: .4byte 0x0009001C
 _08024C34: .4byte gPlayerStats
-_08024C38: .4byte 0x03003D08
+_08024C38: .4byte gUnknown_03003D08
 _08024C3C: .4byte 0x000003FF
 _08024C40: .4byte 0xFFF003FF
 _08024C44:
 	ldr r2, _08024CAC @ =gPlayerStats
-	ldr r0, _08024CB0 @ =0x03003D08
+	ldr r0, _08024CB0 @ =gUnknown_03003D08
 	ldr r1, [r0]
 	movs r3, #0x9c
 	lsls r3, r3, #2
@@ -4345,7 +4345,7 @@ _08024C96:
 	b _08024CC4
 	.align 2, 0
 _08024CAC: .4byte gPlayerStats
-_08024CB0: .4byte 0x03003D08
+_08024CB0: .4byte gUnknown_03003D08
 _08024CB4: .4byte 0x000003FF
 _08024CB8: .4byte 0xFFFFFC00
 _08024CBC: .4byte 0x0009001D
@@ -4602,7 +4602,7 @@ _08024F0A:
 	cmp r0, #0
 	beq _08024F58
 	ldr r3, _08024F48 @ =gPlayerStats
-	ldr r0, _08024F4C @ =0x03003D08
+	ldr r0, _08024F4C @ =gUnknown_03003D08
 	ldr r2, [r0]
 	movs r0, #0x9c
 	lsls r0, r0, #2
@@ -4619,12 +4619,12 @@ _08024F0A:
 	.align 2, 0
 _08024F44: .4byte 0x000900FD
 _08024F48: .4byte gPlayerStats
-_08024F4C: .4byte 0x03003D08
+_08024F4C: .4byte gUnknown_03003D08
 _08024F50: .4byte 0x000003FF
 _08024F54: .4byte 0xFFF003FF
 _08024F58:
 	ldr r2, _08024FB8 @ =gPlayerStats
-	ldr r0, _08024FBC @ =0x03003D08
+	ldr r0, _08024FBC @ =gUnknown_03003D08
 	ldr r1, [r0]
 	movs r3, #0x9c
 	lsls r3, r3, #2
@@ -4668,7 +4668,7 @@ _08024FA2:
 	b _08024FD0
 	.align 2, 0
 _08024FB8: .4byte gPlayerStats
-_08024FBC: .4byte 0x03003D08
+_08024FBC: .4byte gUnknown_03003D08
 _08024FC0: .4byte 0x000003FF
 _08024FC4: .4byte 0xFFFFFC00
 _08024FC8: .4byte 0x0009001D

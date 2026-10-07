@@ -2194,7 +2194,7 @@ _080307A0:
 	adds r0, #0x9e
 	strh r5, [r0]
 	bl sub_080213CC
-	ldr r3, _08030884 @ =0x03003D08
+	ldr r3, _08030884 @ =gUnknown_03003D08
 	ldr r1, [r3]
 	movs r2, #4
 	adds r0, r1, #0
@@ -2255,7 +2255,7 @@ _08030874: .4byte 0x0000FFFF
 _08030878: .4byte 0xFFFFFE00
 _0803087C: .4byte gActiveEnemyMask
 _08030880: .4byte 0x00000BB8
-_08030884: .4byte 0x03003D08
+_08030884: .4byte gUnknown_03003D08
 _08030888: .4byte gPlayerStats
 _0803088C: .4byte 0x00000272
 _08030890: .4byte 0x00000275
@@ -5911,7 +5911,7 @@ _080326A4:
 	movs r1, #1
 	strh r1, [r0]
 	bl sub_080213CC
-	ldr r3, _08032788 @ =0x03003D08
+	ldr r3, _08032788 @ =gUnknown_03003D08
 	ldr r1, [r3]
 	movs r2, #8
 	adds r0, r1, #0
@@ -5981,7 +5981,7 @@ _08032778: .4byte gPlayers
 _0803277C: .4byte 0x0000FFFF
 _08032780: .4byte 0xFFFFFE00
 _08032784: .4byte 0x00000BB8
-_08032788: .4byte 0x03003D08
+_08032788: .4byte gUnknown_03003D08
 _0803278C: .4byte gPlayerStats
 _08032790: .4byte 0x00000272
 _08032794: .4byte 0x00000275
@@ -10669,7 +10669,7 @@ _08034E44:
 	movs r1, #1
 	strh r1, [r0]
 	bl sub_080213CC
-	ldr r3, _08034F28 @ =0x03003D08
+	ldr r3, _08034F28 @ =gUnknown_03003D08
 	ldr r1, [r3]
 	movs r2, #0x10
 	adds r0, r1, #0
@@ -10739,7 +10739,7 @@ _08034F18: .4byte 0x00000157
 _08034F1C: .4byte 0x0000FFFF
 _08034F20: .4byte 0xFFFFFE00
 _08034F24: .4byte 0x00000BB8
-_08034F28: .4byte 0x03003D08
+_08034F28: .4byte gUnknown_03003D08
 _08034F2C: .4byte gPlayerStats
 _08034F30: .4byte 0x00000272
 _08034F34: .4byte 0x00000275
@@ -13281,7 +13281,7 @@ _080363CC:
 	movs r1, #1
 	strh r1, [r0]
 	bl sub_080213CC
-	ldr r3, _080364AC @ =0x03003D08
+	ldr r3, _080364AC @ =gUnknown_03003D08
 	ldr r1, [r3]
 	movs r2, #0x20
 	adds r0, r1, #0
@@ -13350,7 +13350,7 @@ _0803649C: .4byte 0x03003D94
 _080364A0: .4byte 0x00000157
 _080364A4: .4byte 0xFFFFFE00
 _080364A8: .4byte 0x00000BB8
-_080364AC: .4byte 0x03003D08
+_080364AC: .4byte gUnknown_03003D08
 _080364B0: .4byte gPlayerStats
 _080364B4: .4byte 0x00000272
 _080364B8: .4byte 0x00000275
@@ -16063,7 +16063,7 @@ _08037A72:
 	movs r1, #1
 	strh r1, [r0]
 	bl sub_080213CC
-	ldr r3, _08037B44 @ =0x03003D08
+	ldr r3, _08037B44 @ =gUnknown_03003D08
 	ldr r1, [r3]
 	movs r2, #0x40
 	adds r0, r1, #0
@@ -16129,7 +16129,7 @@ _08037B34: .4byte 0xFFFFFE00
 _08037B38: .4byte gMapLayer_03003910
 _08037B3C: .4byte 0x030063D8
 _08037B40: .4byte 0x00000BB8
-_08037B44: .4byte 0x03003D08
+_08037B44: .4byte gUnknown_03003D08
 _08037B48: .4byte gPlayerStats
 _08037B4C: .4byte 0x00000272
 _08037B50: .4byte 0x00000275
@@ -19992,7 +19992,7 @@ _08039A44:
 	movs r1, #1
 	strh r1, [r0]
 	bl sub_080213CC
-	ldr r3, _08039B28 @ =0x03003D08
+	ldr r3, _08039B28 @ =gUnknown_03003D08
 	ldr r1, [r3]
 	movs r2, #0x80
 	adds r0, r1, #0
@@ -20062,7 +20062,7 @@ _08039B18: .4byte 0x00000157
 _08039B1C: .4byte 0x0000FFFF
 _08039B20: .4byte 0xFFFFFE00
 _08039B24: .4byte 0x00000BB8
-_08039B28: .4byte 0x03003D08
+_08039B28: .4byte gUnknown_03003D08
 _08039B2C: .4byte gPlayerStats
 _08039B30: .4byte 0x00000272
 _08039B34: .4byte 0x00000275
@@ -22770,7 +22770,7 @@ _0803B11A:
 	movs r1, #1
 	strh r1, [r0]
 	bl sub_080213CC
-	ldr r3, _0803B1F8 @ =0x03003D08
+	ldr r3, _0803B1F8 @ =gUnknown_03003D08
 	ldr r1, [r3]
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -22839,7 +22839,7 @@ _0803B1E8: .4byte 0xFFFFFE00
 _0803B1EC: .4byte gMapLayer_03003910
 _0803B1F0: .4byte 0x030063D8
 _0803B1F4: .4byte 0x00000BB8
-_0803B1F8: .4byte 0x03003D08
+_0803B1F8: .4byte gUnknown_03003D08
 _0803B1FC: .4byte gPlayerStats
 _0803B200: .4byte 0x00000272
 _0803B204: .4byte 0x00000275
@@ -28648,7 +28648,7 @@ _0803E254:
 	adds r0, #0x9e
 	movs r1, #1
 	strh r1, [r0]
-	ldr r3, _0803E350 @ =0x03003D08
+	ldr r3, _0803E350 @ =gUnknown_03003D08
 	ldr r1, [r3]
 	movs r2, #0x80
 	lsls r2, r2, #2
@@ -28732,7 +28732,7 @@ _0803E340: .4byte 0x0000FFFF
 _0803E344: .4byte 0xFFFFFE00
 _0803E348: .4byte 0x030063D8
 _0803E34C: .4byte 0x00000BB8
-_0803E350: .4byte 0x03003D08
+_0803E350: .4byte gUnknown_03003D08
 _0803E354: .4byte 0x00000272
 _0803E358: .4byte 0x00000275
 _0803E35C: .4byte gUnknownThreadPtr_030063E4

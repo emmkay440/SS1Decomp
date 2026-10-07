@@ -120,7 +120,7 @@ sub_0800F53C: @ 0x0800F53C
 	cmp r0, #0
 	bne _0800F580
 	movs r6, #2
-	ldr r0, _0800F57C @ =0x03003D08
+	ldr r0, _0800F57C @ =gUnknown_03003D08
 	movs r2, #1
 	ldr r1, [r0]
 _0800F562:
@@ -138,7 +138,7 @@ _0800F572:
 	bls _0800F562
 	b _0800F584
 	.align 2, 0
-_0800F57C: .4byte 0x03003D08
+_0800F57C: .4byte gUnknown_03003D08
 _0800F580:
 	movs r1, #7
 	str r1, [sp, #0xc]
@@ -170,11 +170,11 @@ _0800F5A6:
 	bl sub_080074F0
 	cmp r0, #0
 	beq _0800F5C4
-	ldr r0, _0800F5C0 @ =0x030063AC
+	ldr r0, _0800F5C0 @ =gUnknown_030063AC
 	ldr r0, [r0]
 	b _0800F616
 	.align 2, 0
-_0800F5C0: .4byte 0x030063AC
+_0800F5C0: .4byte gUnknown_030063AC
 _0800F5C4:
 	ldr r0, _0800F5C8 @ =0x03003EEC
 	b _0800F616
@@ -190,11 +190,11 @@ _0800F5CC:
 	bl sub_080074F0
 	cmp r0, #0
 	beq _0800F5EC
-	ldr r0, _0800F5E8 @ =0x030063B8
+	ldr r0, _0800F5E8 @ =gUnknown_030063B8
 	ldr r0, [r0]
 	b _0800F616
 	.align 2, 0
-_0800F5E8: .4byte 0x030063B8
+_0800F5E8: .4byte gUnknown_030063B8
 _0800F5EC:
 	ldr r0, _0800F5F0 @ =0x03003F1C
 	b _0800F616
@@ -210,11 +210,11 @@ _0800F5F4:
 	bl sub_080074F0
 	cmp r0, #0
 	beq _0800F614
-	ldr r0, _0800F610 @ =0x030063A8
+	ldr r0, _0800F610 @ =gUnknown_030063A8
 	ldr r0, [r0]
 	b _0800F616
 	.align 2, 0
-_0800F610: .4byte 0x030063A8
+_0800F610: .4byte gUnknown_030063A8
 _0800F614:
 	ldr r0, _0800F620 @ =0x03003F4C
 _0800F616:
@@ -878,7 +878,7 @@ _0800FAD0:
 	cmp r1, #0xe
 	bls _0800FAFC
 	ldr r4, [r3]
-	ldr r2, _0800FB98 @ =0x030063BC
+	ldr r2, _0800FB98 @ =gUnknown_030063BC
 	ldr r1, [r2]
 	lsls r0, r1, #3
 	subs r0, r0, r1
@@ -976,7 +976,7 @@ _0800FB7E:
 	b _0800FBAE
 	.align 2, 0
 _0800FB94: .4byte gFieldItems
-_0800FB98: .4byte 0x030063BC
+_0800FB98: .4byte gUnknown_030063BC
 _0800FB9C:
 	adds r0, r2, #0
 	b _0800FB7E
@@ -1013,7 +1013,7 @@ _0800FBC4:
 	ldr r1, [sp, #0xc]
 	ldr r0, [r1]
 	str r0, [r4, #0x18]
-	ldr r1, _0800FC6C @ =0x030063B4
+	ldr r1, _0800FC6C @ =gUnknown_030063B4
 	ldr r0, [r1]
 	str r0, [r4, #0x10]
 	adds r0, #1
@@ -1094,7 +1094,7 @@ _0800FC58:
 	bx r1
 	.align 2, 0
 _0800FC68: .4byte gFieldItems
-_0800FC6C: .4byte 0x030063B4
+_0800FC6C: .4byte gUnknown_030063B4
 
 	thumb_func_start sub_0800FC70
 sub_0800FC70: @ 0x0800FC70
@@ -1154,7 +1154,7 @@ _0800FCCC:
 	cmp r1, #0xe
 	bls _0800FCF8
 	ldr r4, [r3]
-	ldr r2, _0800FD94 @ =0x030063BC
+	ldr r2, _0800FD94 @ =gUnknown_030063BC
 	ldr r1, [r2]
 	lsls r0, r1, #3
 	subs r0, r0, r1
@@ -1252,7 +1252,7 @@ _0800FD7A:
 	b _0800FDAA
 	.align 2, 0
 _0800FD90: .4byte gFieldItems
-_0800FD94: .4byte 0x030063BC
+_0800FD94: .4byte gUnknown_030063BC
 _0800FD98:
 	adds r0, r2, #0
 	b _0800FD7A
@@ -8557,13 +8557,13 @@ _080132BC:
 	mov r8, r0
 	ldr r0, [r0]
 	bl Free
-	ldr r6, _08013304 @ =0x030063AC
+	ldr r6, _08013304 @ =gUnknown_030063AC
 	ldr r0, [r6]
 	bl Free
-	ldr r5, _08013308 @ =0x030063B8
+	ldr r5, _08013308 @ =gUnknown_030063B8
 	ldr r0, [r5]
 	bl Free
-	ldr r4, _0801330C @ =0x030063A8
+	ldr r4, _0801330C @ =gUnknown_030063A8
 	ldr r0, [r4]
 	bl Free
 	movs r0, #0
@@ -8580,9 +8580,9 @@ _080132BC:
 	.align 2, 0
 _080132FC: .4byte gFieldItems
 _08013300: .4byte gPlayers
-_08013304: .4byte 0x030063AC
-_08013308: .4byte 0x030063B8
-_0801330C: .4byte 0x030063A8
+_08013304: .4byte gUnknown_030063AC
+_08013308: .4byte gUnknown_030063B8
+_0801330C: .4byte gUnknown_030063A8
 
 	thumb_func_start UseItem
 UseItem: @ 0x08013310

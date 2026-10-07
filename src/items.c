@@ -16,15 +16,6 @@ bool32 PutItemInSlot(struct Item *item, u32 slot)
     return TRUE;
 }
 
-struct FieldItem
-{
-    u8 unk0[0xC];
-    u32 active;        // bit 0
-    u8 unk10[0x4];
-    u32 unk14;
-    struct Item item;
-};
-
 bool32 PickUpFieldItem(struct FieldItem *fieldItem)
 {
     bool32 result;

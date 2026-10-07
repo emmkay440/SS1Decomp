@@ -31,6 +31,22 @@ struct ItemFlags
     u32 unk27:5;
 };
 
+// An item lying on the map (gFieldItems, 15 of them).
+struct FieldItem
+{
+    s32 x;             // fixed point
+    s32 y;
+    u32 layer;
+    u32 active;        // bit 0
+    u32 unk10;
+    u32 unk14;         // 5 when free
+    struct Item item;
+};                     // size 0x1C
+
+#define NUM_FIELD_ITEMS 15
+
+extern struct FieldItem *gFieldItems;
+
 void *GetWeaponRecord(struct Item *item);
 void *GetArmorRecord(struct Item *item);
 void *GetHeadRecord(struct Item *item);

@@ -125,7 +125,7 @@ _08006218:
 	bl sub_080076A8
 	cmp r0, #0
 	beq _08006238
-	ldr r2, _08006230 @ =0x03003D08
+	ldr r2, _08006230 @ =gUnknown_03003D08
 	ldr r1, _08006234 @ =gPlayerStats
 	movs r3, #0x9c
 	lsls r3, r3, #2
@@ -134,10 +134,10 @@ _08006218:
 	lsls r0, r0, #0xc
 	b _08006246
 	.align 2, 0
-_08006230: .4byte 0x03003D08
+_08006230: .4byte gUnknown_03003D08
 _08006234: .4byte gPlayerStats
 _08006238:
-	ldr r2, _080062B4 @ =0x03003D08
+	ldr r2, _080062B4 @ =gUnknown_03003D08
 	ldr r1, _080062B8 @ =gPlayerStats
 	movs r3, #0x9c
 	lsls r3, r3, #2
@@ -192,7 +192,7 @@ _0800624A:
 	movs r4, #0
 	b _080062CE
 	.align 2, 0
-_080062B4: .4byte 0x03003D08
+_080062B4: .4byte gUnknown_03003D08
 _080062B8: .4byte gPlayerStats
 _080062BC: .4byte 0x00120002
 _080062C0: .4byte gPaletteBuffer
@@ -632,7 +632,7 @@ _08006692:
 	ldrh r0, [r4, #6]
 	adds r0, #1
 	strh r0, [r4, #6]
-	ldr r0, _08006740 @ =0x03003D08
+	ldr r0, _08006740 @ =gUnknown_03003D08
 	ldr r0, [r0]
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -705,7 +705,7 @@ _08006730: .4byte 0x0600E000
 _08006734: .4byte gBgRegsBuffer
 _08006738: .4byte gPlayers
 _0800673C: .4byte 0xFFFFF000
-_08006740: .4byte 0x03003D08
+_08006740: .4byte gUnknown_03003D08
 _08006744: .4byte 0xFFFF0000
 _08006748: .4byte 0x0010005B
 _0800674C: .4byte gFrameCounter
@@ -762,7 +762,7 @@ _0800679A:
 	movs r0, #0x1d
 	movs r2, #1
 	bl LoadPalette
-	ldr r0, _0800681C @ =0x03003D08
+	ldr r0, _0800681C @ =gUnknown_03003D08
 	ldr r0, [r0]
 	str r0, [sp, #0x17c]
 	ldr r1, _08006820 @ =gPlayers
@@ -808,7 +808,7 @@ _0800680C:
 	mov pc, r0
 	.align 2, 0
 _08006818: .4byte 0x03003CA8
-_0800681C: .4byte 0x03003D08
+_0800681C: .4byte gUnknown_03003D08
 _08006820: .4byte gPlayers
 _08006824: .4byte gKeysRepeat
 _08006828: .4byte _0800682C
@@ -1812,7 +1812,7 @@ _08007006:
 	adds r0, r5, #0
 	movs r2, #0x8c
 	bl sub_0800EB30
-	ldr r0, _08007078 @ =0x03003D08
+	ldr r0, _08007078 @ =gUnknown_03003D08
 	ldr r0, [r0]
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -1850,7 +1850,7 @@ _08007062:
 	b _08007094
 	.align 2, 0
 _08007074: .4byte 0x03003CA0
-_08007078: .4byte 0x03003D08
+_08007078: .4byte gUnknown_03003D08
 _0800707C: .4byte 0x03004650
 _08007080:
 	movs r0, #0xd4
@@ -2159,7 +2159,7 @@ _080072D8:
 	bhs _080072E2
 	b _080071DE
 _080072E2:
-	ldr r0, _0800738C @ =0x03003D08
+	ldr r0, _0800738C @ =gUnknown_03003D08
 	ldr r0, [r0]
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -2236,7 +2236,7 @@ _0800732A:
 _08007380: .4byte 0x080FB564
 _08007384: .4byte 0x080FB566
 _08007388: .4byte 0x03004650
-_0800738C: .4byte 0x03003D08
+_0800738C: .4byte gUnknown_03003D08
 _08007390: .4byte gGameFlags
 _08007394: .4byte gKeysHeld
 _08007398: .4byte gMapLayer_03003910

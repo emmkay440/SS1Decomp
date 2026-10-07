@@ -33,6 +33,10 @@ SECTIONS {
         asm/code_0800F470.o(.text);
         src/player_stats.o(.text);
         asm/code_08013AF8.o(.text);
+        src/field_items.o(.text);
+        asm/item_lists.o(.text);
+        src/field_items2.o(.text);
+        asm/code_08013D9C.o(.text);
         src/items.o(.text);
         asm/take_item.o(.text);
         src/item_records.o(.text);

@@ -115,3 +115,9 @@
 030064E0 gUnknownThread_030064E0 # struct Thread, entry sub_08025940
 030066B0 gUnknownThread_030066B0 # struct Thread, entry sub_080260E8
 030063B0 gFieldItems            # struct FieldItem * (15 x 0x1C): items lying on the map (FindFieldItemNear, PickUpFieldItem)
+03003D08 gUnknown_03003D08      # u32 flags; bits 2-7 counted by sub_08013B20
+030063A8 gUnknown_030063A8      # 0x30-byte item list (sub_08013B94, list 2)
+030063AC gUnknown_030063AC      # 0x30-byte item list (list 0)
+030063B4 gUnknown_030063B4      # u32, set to 1 by InitFieldItems
+030063B8 gUnknown_030063B8      # 0x30-byte item list (list 1)
+030063BC gUnknown_030063BC      # u32, set to 0 by InitFieldItems

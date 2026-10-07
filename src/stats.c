@@ -49,9 +49,9 @@ void sub_08016E70(const void *src)
     CpuCopy16(src, &gPlayers[GetMultiplayerId()].attack, 12);
 }
 
-u8 GetPlayerClass(void)
+u32 GetPlayerClass(void)
 {
-    return gPlayerStats.classAndColor >> 2;
+    return (u8)(gPlayerStats.classAndColor >> 2);
 }
 
 void GetSkillBlock(struct SkillBlock *dest)
