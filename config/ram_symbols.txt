@@ -88,3 +88,13 @@
 03003140 gLinkStatus            # u32 flags; bit 1 = link (multiplayer) active (GetMultiplayerId reads SIOCNT then)
 03000479 gUnknown_03000479      # u8 (sub_08040D98 / sub_08040DA4)
 030004A8 gUnknown_030004A8      # struct Item *: a 4 x 5 x 3 grid of items (sub_08041014)
+0300047A gUnknown_0300047A      # u8
+0300047B gUnknown_0300047B      # u8
+0300047C gUnknown_0300047C      # u8
+0300047E gMenuSavedStatPoints   # u16: stat points when the stats menu was last applied (ApplyAllocatedPoints)
+03000480 gMenuSavedSkillPoints  # u16: same for skill points
+0300048C gUnknown_0300048C      # u32 (sub_080412A0)
+03000490 gUnknown_03000490      # u32 (sub_080412A0)
+030004B0 gMenuStatBlock         # struct StatBlock *: the stats menu's working copy (ApplyAllocatedPoints)
+030004B4 gMenuSkillBlock        # struct SkillBlock *: same for skills
+030004C0 gUnknown_030004C0      # s8

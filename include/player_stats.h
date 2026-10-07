@@ -38,6 +38,21 @@ struct Skill
     u16 unk2;
 };
 
+// gPlayerStats +0x24..+0x3F, copied with GetStatBlock/SetStatBlock
+struct StatBlock
+{
+    u16 str;
+    u16 vit;
+    u16 int_;
+    u16 dex;
+    u16 unk8;
+    u8 unkA[0x6];
+    u32 exp;
+    u32 level;
+    u16 statPoints;
+    u8 unk1A[0x2];
+};
+
 // gPlayerStats +0x40..+0x63, copied as a whole by GetSkillBlock/SetSkillBlock
 struct SkillBlock
 {

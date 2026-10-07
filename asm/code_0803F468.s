@@ -186,24 +186,24 @@ sub_0803F5E8: @ 0x0803F5E8
 	str r0, [r1]
 	ldr r1, _0803F658 @ =gMenuHeldCount
 	str r0, [r1]
-	ldr r1, _0803F65C @ =0x0300047A
+	ldr r1, _0803F65C @ =gUnknown_0300047A
 	strb r0, [r1]
-	ldr r2, _0803F660 @ =0x030004C0
+	ldr r2, _0803F660 @ =gUnknown_030004C0
 	movs r3, #1
 	rsbs r3, r3, #0
 	adds r1, r3, #0
 	strb r1, [r2]
-	ldr r1, _0803F664 @ =0x0300047B
+	ldr r1, _0803F664 @ =gUnknown_0300047B
 	strb r0, [r1]
-	ldr r1, _0803F668 @ =0x0300047C
+	ldr r1, _0803F668 @ =gUnknown_0300047C
 	strb r0, [r1]
-	ldr r1, _0803F66C @ =0x0300048C
+	ldr r1, _0803F66C @ =gUnknown_0300048C
 	str r0, [r1]
-	ldr r1, _0803F670 @ =0x03000490
+	ldr r1, _0803F670 @ =gUnknown_03000490
 	str r0, [r1]
-	ldr r1, _0803F674 @ =0x0300047E
+	ldr r1, _0803F674 @ =gMenuSavedStatPoints
 	strh r0, [r1]
-	ldr r1, _0803F678 @ =0x03000480
+	ldr r1, _0803F678 @ =gMenuSavedSkillPoints
 	strh r0, [r1]
 	ldr r1, _0803F67C @ =gMenuInventory
 	str r0, [r1]
@@ -219,9 +219,9 @@ sub_0803F5E8: @ 0x0803F5E8
 	str r0, [r1]
 	ldr r1, _0803F694 @ =gMenuSelectedItem
 	str r0, [r1]
-	ldr r1, _0803F698 @ =0x030004B0
+	ldr r1, _0803F698 @ =gMenuStatBlock
 	str r0, [r1]
-	ldr r1, _0803F69C @ =0x030004B4
+	ldr r1, _0803F69C @ =gMenuSkillBlock
 	str r0, [r1]
 	ldr r1, _0803F6A0 @ =0x030004B8
 	str r0, [r1]
@@ -231,14 +231,14 @@ _0803F64C: .4byte gMenuPage
 _0803F650: .4byte gUnknown_03000479
 _0803F654: .4byte 0x03000488
 _0803F658: .4byte gMenuHeldCount
-_0803F65C: .4byte 0x0300047A
-_0803F660: .4byte 0x030004C0
-_0803F664: .4byte 0x0300047B
-_0803F668: .4byte 0x0300047C
-_0803F66C: .4byte 0x0300048C
-_0803F670: .4byte 0x03000490
-_0803F674: .4byte 0x0300047E
-_0803F678: .4byte 0x03000480
+_0803F65C: .4byte gUnknown_0300047A
+_0803F660: .4byte gUnknown_030004C0
+_0803F664: .4byte gUnknown_0300047B
+_0803F668: .4byte gUnknown_0300047C
+_0803F66C: .4byte gUnknown_0300048C
+_0803F670: .4byte gUnknown_03000490
+_0803F674: .4byte gMenuSavedStatPoints
+_0803F678: .4byte gMenuSavedSkillPoints
 _0803F67C: .4byte gMenuInventory
 _0803F680: .4byte gMenuWeapons
 _0803F684: .4byte gUnknown_03000494
@@ -246,8 +246,8 @@ _0803F688: .4byte gMenuEquipment
 _0803F68C: .4byte gUnknown_030004A4
 _0803F690: .4byte gUnknown_030004A8
 _0803F694: .4byte gMenuSelectedItem
-_0803F698: .4byte 0x030004B0
-_0803F69C: .4byte 0x030004B4
+_0803F698: .4byte gMenuStatBlock
+_0803F69C: .4byte gMenuSkillBlock
 _0803F6A0: .4byte 0x030004B8
 
 	thumb_func_start sub_0803F6A4
@@ -289,13 +289,13 @@ _0803F6E2:
 	beq _0803F6EE
 	bl Free
 _0803F6EE:
-	ldr r0, _0803F730 @ =0x030004B0
+	ldr r0, _0803F730 @ =gMenuStatBlock
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0803F6FA
 	bl Free
 _0803F6FA:
-	ldr r0, _0803F734 @ =0x030004B4
+	ldr r0, _0803F734 @ =gMenuSkillBlock
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0803F706
@@ -316,8 +316,8 @@ _0803F720: .4byte gUnknown_03000494
 _0803F724: .4byte gMenuEquipment
 _0803F728: .4byte gUnknown_030004A4
 _0803F72C: .4byte gUnknown_030004A8
-_0803F730: .4byte 0x030004B0
-_0803F734: .4byte 0x030004B4
+_0803F730: .4byte gMenuStatBlock
+_0803F734: .4byte gMenuSkillBlock
 _0803F738: .4byte 0x030004B8
 
 	thumb_func_start sub_0803F73C
@@ -345,7 +345,7 @@ _0803F75A:
 	bl Alloc
 	str r0, [r4]
 	bl GetInventory
-	ldr r4, _0803F828 @ =0x030004B0
+	ldr r4, _0803F828 @ =gMenuStatBlock
 	movs r0, #0x1c
 	bl Alloc
 	str r0, [r4]
@@ -353,11 +353,11 @@ _0803F75A:
 	bl bzero
 	ldr r0, [r4]
 	bl GetStatBlock
-	ldr r1, _0803F82C @ =0x0300047E
+	ldr r1, _0803F82C @ =gMenuSavedStatPoints
 	ldr r0, [r4]
 	ldrh r0, [r0, #0x18]
 	strh r0, [r1]
-	ldr r4, _0803F830 @ =0x030004B4
+	ldr r4, _0803F830 @ =gMenuSkillBlock
 	movs r0, #0x24
 	bl Alloc
 	str r0, [r4]
@@ -365,7 +365,7 @@ _0803F75A:
 	bl bzero
 	ldr r0, [r4]
 	bl GetSkillBlock
-	ldr r1, _0803F834 @ =0x03000480
+	ldr r1, _0803F834 @ =gMenuSavedSkillPoints
 	ldr r0, [r4]
 	ldrh r0, [r0]
 	strh r0, [r1]
@@ -424,10 +424,10 @@ _0803F7FA:
 	.align 2, 0
 _0803F820: .4byte gMenuPage
 _0803F824: .4byte gMenuInventory
-_0803F828: .4byte 0x030004B0
-_0803F82C: .4byte 0x0300047E
-_0803F830: .4byte 0x030004B4
-_0803F834: .4byte 0x03000480
+_0803F828: .4byte gMenuStatBlock
+_0803F82C: .4byte gMenuSavedStatPoints
+_0803F830: .4byte gMenuSkillBlock
+_0803F834: .4byte gMenuSavedSkillPoints
 _0803F838: .4byte gMenuWeapons
 _0803F83C: .4byte gMenuEquipment
 _0803F840: .4byte gUnknown_03000494
@@ -478,7 +478,7 @@ _0803F896:
 	bl Alloc
 	str r0, [r4]
 	bl GetInventory
-	ldr r4, _0803F8E8 @ =0x030004B0
+	ldr r4, _0803F8E8 @ =gMenuStatBlock
 	movs r0, #0x1c
 	bl Alloc
 	str r0, [r4]
@@ -486,11 +486,11 @@ _0803F896:
 	bl bzero
 	ldr r0, [r4]
 	bl GetStatBlock
-	ldr r1, _0803F8EC @ =0x0300047E
+	ldr r1, _0803F8EC @ =gMenuSavedStatPoints
 	ldr r0, [r4]
 	ldrh r0, [r0, #0x18]
 	strh r0, [r1]
-	ldr r4, _0803F8F0 @ =0x030004B4
+	ldr r4, _0803F8F0 @ =gMenuSkillBlock
 	movs r0, #0x24
 	bl Alloc
 	str r0, [r4]
@@ -498,17 +498,17 @@ _0803F896:
 	bl bzero
 	ldr r0, [r4]
 	bl GetSkillBlock
-	ldr r1, _0803F8F4 @ =0x03000480
+	ldr r1, _0803F8F4 @ =gMenuSavedSkillPoints
 	ldr r0, [r4]
 	ldrh r0, [r0]
 	strh r0, [r1]
 	b _0803F912
 	.align 2, 0
 _0803F8E4: .4byte gMenuInventory
-_0803F8E8: .4byte 0x030004B0
-_0803F8EC: .4byte 0x0300047E
-_0803F8F0: .4byte 0x030004B4
-_0803F8F4: .4byte 0x03000480
+_0803F8E8: .4byte gMenuStatBlock
+_0803F8EC: .4byte gMenuSavedStatPoints
+_0803F8F0: .4byte gMenuSkillBlock
+_0803F8F4: .4byte gMenuSavedSkillPoints
 _0803F8F8:
 	cmp r1, #9
 	bne _0803F912
@@ -640,7 +640,7 @@ _0803FA04:
 	b _0803FA92
 _0803FA0E:
 	mov r1, sp
-	ldr r0, _0803FA24 @ =0x030004B0
+	ldr r0, _0803FA24 @ =gMenuStatBlock
 	ldr r0, [r0]
 	movs r2, #0
 	ldrsh r1, [r1, r2]
@@ -651,10 +651,10 @@ _0803FA1C:
 	bne _0803FA88
 	b _0803FA64
 	.align 2, 0
-_0803FA24: .4byte 0x030004B0
+_0803FA24: .4byte gMenuStatBlock
 _0803FA28:
 	mov r1, sp
-	ldr r0, _0803FA38 @ =0x030004B0
+	ldr r0, _0803FA38 @ =gMenuStatBlock
 	ldr r0, [r0]
 	movs r2, #6
 	ldrsh r1, [r1, r2]
@@ -662,10 +662,10 @@ _0803FA28:
 	ldrsh r0, [r0, r3]
 	b _0803FA1C
 	.align 2, 0
-_0803FA38: .4byte 0x030004B0
+_0803FA38: .4byte gMenuStatBlock
 _0803FA3C:
 	mov r1, sp
-	ldr r0, _0803FA4C @ =0x030004B0
+	ldr r0, _0803FA4C @ =gMenuStatBlock
 	ldr r0, [r0]
 	movs r2, #4
 	ldrsh r1, [r1, r2]
@@ -673,10 +673,10 @@ _0803FA3C:
 	ldrsh r0, [r0, r3]
 	b _0803FA1C
 	.align 2, 0
-_0803FA4C: .4byte 0x030004B0
+_0803FA4C: .4byte gMenuStatBlock
 _0803FA50:
 	mov r1, sp
-	ldr r0, _0803FA68 @ =0x030004B0
+	ldr r0, _0803FA68 @ =gMenuStatBlock
 	ldr r2, [r0]
 	ldrh r0, [r1, #2]
 	lsls r0, r0, #0x10
@@ -689,12 +689,12 @@ _0803FA64:
 	movs r0, #0
 	b _0803FA92
 	.align 2, 0
-_0803FA68: .4byte 0x030004B0
+_0803FA68: .4byte gMenuStatBlock
 _0803FA6C:
 	ldrb r0, [r4, #3]
 	lsls r0, r0, #2
 	adds r2, r5, r0
-	ldr r1, _0803FA8C @ =0x030004B4
+	ldr r1, _0803FA8C @ =gMenuSkillBlock
 	ldr r1, [r1]
 	adds r1, r1, r0
 	ldrh r0, [r2, #6]
@@ -709,7 +709,7 @@ _0803FA88:
 	movs r0, #1
 	b _0803FA92
 	.align 2, 0
-_0803FA8C: .4byte 0x030004B4
+_0803FA8C: .4byte gMenuSkillBlock
 _0803FA90:
 	movs r0, #0
 _0803FA92:
@@ -728,7 +728,7 @@ sub_0803FA9C: @ 0x0803FA9C
 	mov r0, sp
 	bl GetStatBlock
 	mov r1, sp
-	ldr r0, _0803FAF0 @ =0x030004B0
+	ldr r0, _0803FAF0 @ =gMenuStatBlock
 	ldr r2, [r0]
 	movs r0, #0
 	ldrsh r1, [r1, r0]
@@ -761,7 +761,7 @@ sub_0803FA9C: @ 0x0803FA9C
 	movs r0, #0
 	b _0803FAF6
 	.align 2, 0
-_0803FAF0: .4byte 0x030004B0
+_0803FAF0: .4byte gMenuStatBlock
 _0803FAF4:
 	movs r0, #1
 _0803FAF6:
@@ -882,31 +882,31 @@ _0803FBA6:
 	beq _0803FBE0
 	b _0803FBF8
 _0803FBB0:
-	ldr r0, _0803FBBC @ =0x030004B0
+	ldr r0, _0803FBBC @ =gMenuStatBlock
 	ldr r0, [r0]
 	movs r2, #0
 	ldrsh r1, [r0, r2]
 	b _0803FBE8
 	.align 2, 0
-_0803FBBC: .4byte 0x030004B0
+_0803FBBC: .4byte gMenuStatBlock
 _0803FBC0:
-	ldr r0, _0803FBCC @ =0x030004B0
+	ldr r0, _0803FBCC @ =gMenuStatBlock
 	ldr r0, [r0]
 	movs r2, #6
 	ldrsh r1, [r0, r2]
 	b _0803FBE8
 	.align 2, 0
-_0803FBCC: .4byte 0x030004B0
+_0803FBCC: .4byte gMenuStatBlock
 _0803FBD0:
-	ldr r0, _0803FBDC @ =0x030004B0
+	ldr r0, _0803FBDC @ =gMenuStatBlock
 	ldr r0, [r0]
 	movs r2, #4
 	ldrsh r1, [r0, r2]
 	b _0803FBE8
 	.align 2, 0
-_0803FBDC: .4byte 0x030004B0
+_0803FBDC: .4byte gMenuStatBlock
 _0803FBE0:
-	ldr r0, _0803FBF4 @ =0x030004B0
+	ldr r0, _0803FBF4 @ =gMenuStatBlock
 	ldr r0, [r0]
 	movs r2, #2
 	ldrsh r1, [r0, r2]
@@ -918,7 +918,7 @@ _0803FBE8:
 	movs r0, #0
 	b _0803FBFA
 	.align 2, 0
-_0803FBF4: .4byte 0x030004B0
+_0803FBF4: .4byte gMenuStatBlock
 _0803FBF8:
 	movs r0, #1
 _0803FBFA:
@@ -933,7 +933,7 @@ sub_0803FC00: @ 0x0803FC00
 	ldrb r0, [r4, #2]
 	cmp r0, #7
 	bne _0803FC66
-	ldr r5, _0803FC38 @ =0x030004B0
+	ldr r5, _0803FC38 @ =gMenuStatBlock
 	ldr r0, [r5]
 	ldrh r0, [r0, #0x18]
 	cmp r0, #0
@@ -956,7 +956,7 @@ sub_0803FC00: @ 0x0803FC00
 	beq _0803FC46
 	b _0803FCCE
 	.align 2, 0
-_0803FC38: .4byte 0x030004B0
+_0803FC38: .4byte gMenuStatBlock
 _0803FC3C:
 	cmp r0, #2
 	beq _0803FC56
@@ -984,7 +984,7 @@ _0803FC5E:
 	strh r0, [r1, #2]
 	b _0803FCCE
 _0803FC66:
-	ldr r0, _0803FCB4 @ =0x030004B4
+	ldr r0, _0803FCB4 @ =gMenuSkillBlock
 	ldr r2, [r0]
 	ldrb r0, [r4, #3]
 	lsls r0, r0, #2
@@ -1012,19 +1012,19 @@ _0803FC66:
 	bhs _0803FCC4
 	movs r0, #0x25
 	bl PlaySE
-	ldr r1, _0803FCB8 @ =0x0300047A
+	ldr r1, _0803FCB8 @ =gUnknown_0300047A
 	movs r0, #0x4b
 	strb r0, [r1]
-	ldr r0, _0803FCBC @ =0x030004C0
+	ldr r0, _0803FCBC @ =gUnknown_030004C0
 	ldrb r1, [r4, #3]
 	strb r1, [r0]
 	ldr r0, _0803FCC0 @ =gMenuSelectedSlot
 	strb r1, [r0, #3]
 	b _0803FCCE
 	.align 2, 0
-_0803FCB4: .4byte 0x030004B4
-_0803FCB8: .4byte 0x0300047A
-_0803FCBC: .4byte 0x030004C0
+_0803FCB4: .4byte gMenuSkillBlock
+_0803FCB8: .4byte gUnknown_0300047A
+_0803FCBC: .4byte gUnknown_030004C0
 _0803FCC0: .4byte gMenuSelectedSlot
 _0803FCC4:
 	bl sub_080413F4
@@ -1044,7 +1044,7 @@ _0803FCD0:
 sub_0803FCD8: @ 0x0803FCD8
 	push {r4, r5, lr}
 	sub sp, #0x24
-	ldr r1, _0803FD24 @ =0x0300047A
+	ldr r1, _0803FD24 @ =gUnknown_0300047A
 	ldrb r0, [r1]
 	cmp r0, #0
 	beq _0803FD30
@@ -1054,7 +1054,7 @@ sub_0803FCD8: @ 0x0803FCD8
 	lsrs r5, r0, #0x18
 	cmp r5, #0
 	bne _0803FD20
-	ldr r4, _0803FD28 @ =0x030004B4
+	ldr r4, _0803FD28 @ =gMenuSkillBlock
 	ldr r2, [r4]
 	ldr r3, _0803FD2C @ =gMenuSelectedSlot
 	ldrb r1, [r3, #3]
@@ -1078,8 +1078,8 @@ _0803FD20:
 	movs r0, #1
 	b _0803FD32
 	.align 2, 0
-_0803FD24: .4byte 0x0300047A
-_0803FD28: .4byte 0x030004B4
+_0803FD24: .4byte gUnknown_0300047A
+_0803FD28: .4byte gMenuSkillBlock
 _0803FD2C: .4byte gMenuSelectedSlot
 _0803FD30:
 	movs r0, #0
@@ -1108,48 +1108,48 @@ sub_0803FD3C: @ 0x0803FD3C
 	bgt _0803FD68
 	cmp r0, #0
 	beq _0803FD78
-	ldr r2, _0803FD64 @ =0x030004B0
+	ldr r2, _0803FD64 @ =gMenuStatBlock
 	b _0803FDB2
 	.align 2, 0
-_0803FD64: .4byte 0x030004B0
+_0803FD64: .4byte gMenuStatBlock
 _0803FD68:
 	cmp r0, #2
 	beq _0803FD98
 	cmp r0, #3
 	beq _0803FDA8
-	ldr r2, _0803FD74 @ =0x030004B0
+	ldr r2, _0803FD74 @ =gMenuStatBlock
 	b _0803FDB2
 	.align 2, 0
-_0803FD74: .4byte 0x030004B0
+_0803FD74: .4byte gMenuStatBlock
 _0803FD78:
-	ldr r2, _0803FD84 @ =0x030004B0
+	ldr r2, _0803FD84 @ =gMenuStatBlock
 	ldr r1, [r2]
 	ldrh r0, [r1]
 	subs r0, #1
 	strh r0, [r1]
 	b _0803FDB2
 	.align 2, 0
-_0803FD84: .4byte 0x030004B0
+_0803FD84: .4byte gMenuStatBlock
 _0803FD88:
-	ldr r2, _0803FD94 @ =0x030004B0
+	ldr r2, _0803FD94 @ =gMenuStatBlock
 	ldr r1, [r2]
 	ldrh r0, [r1, #6]
 	subs r0, #1
 	strh r0, [r1, #6]
 	b _0803FDB2
 	.align 2, 0
-_0803FD94: .4byte 0x030004B0
+_0803FD94: .4byte gMenuStatBlock
 _0803FD98:
-	ldr r2, _0803FDA4 @ =0x030004B0
+	ldr r2, _0803FDA4 @ =gMenuStatBlock
 	ldr r1, [r2]
 	ldrh r0, [r1, #4]
 	subs r0, #1
 	strh r0, [r1, #4]
 	b _0803FDB2
 	.align 2, 0
-_0803FDA4: .4byte 0x030004B0
+_0803FDA4: .4byte gMenuStatBlock
 _0803FDA8:
-	ldr r2, _0803FDBC @ =0x030004B0
+	ldr r2, _0803FDBC @ =gMenuStatBlock
 	ldr r1, [r2]
 	ldrh r0, [r1, #2]
 	subs r0, #1
@@ -1161,9 +1161,9 @@ _0803FDB2:
 	strh r0, [r1, #0x18]
 	b _0803FE10
 	.align 2, 0
-_0803FDBC: .4byte 0x030004B0
+_0803FDBC: .4byte gMenuStatBlock
 _0803FDC0:
-	ldr r2, _0803FDDC @ =0x030004B4
+	ldr r2, _0803FDDC @ =gMenuSkillBlock
 	ldr r1, [r2]
 	ldrb r0, [r4, #3]
 	lsls r0, r0, #2
@@ -1178,7 +1178,7 @@ _0803FDD6:
 	movs r0, #0
 	b _0803FE12
 	.align 2, 0
-_0803FDDC: .4byte 0x030004B4
+_0803FDDC: .4byte gMenuSkillBlock
 _0803FDE0:
 	ldr r2, [r2]
 	ldrh r0, [r2]
@@ -1220,7 +1220,7 @@ sub_0803FE1C: @ 0x0803FE1C
 	sub sp, #0x1c
 	mov r0, sp
 	bl GetStatBlock
-	ldr r4, _0803FE68 @ =0x030004B0
+	ldr r4, _0803FE68 @ =gMenuStatBlock
 	ldr r1, [r4]
 	ldr r0, [sp, #0x10]
 	str r0, [r1, #0x10]
@@ -1235,7 +1235,7 @@ sub_0803FE1C: @ 0x0803FE1C
 	mov r0, sp
 	ldrh r0, [r0, #0xe]
 	strh r0, [r1, #0xe]
-	ldr r3, _0803FE6C @ =0x0300047E
+	ldr r3, _0803FE6C @ =gMenuSavedStatPoints
 	mov r0, sp
 	ldrh r2, [r3]
 	ldrh r0, [r0, #0x18]
@@ -1255,8 +1255,8 @@ _0803FE5E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0803FE68: .4byte 0x030004B0
-_0803FE6C: .4byte 0x0300047E
+_0803FE68: .4byte gMenuStatBlock
+_0803FE6C: .4byte gMenuSavedStatPoints
 
 	thumb_func_start sub_0803FE70
 sub_0803FE70: @ 0x0803FE70
@@ -1297,19 +1297,19 @@ _0803FE9A:
 	adds r6, r5, #0
 	bl sub_08040D44
 	mov r8, r0
-	ldr r1, _0803FEE4 @ =0x0300047B
+	ldr r1, _0803FEE4 @ =gUnknown_0300047B
 	ldrb r2, [r1]
 	cmp r2, #0
 	bne _0803FEC0
 	b _0803FFD2
 _0803FEC0:
-	ldr r0, _0803FEE8 @ =0x0300047C
+	ldr r0, _0803FEE8 @ =gUnknown_0300047C
 	mov sl, r1
 	adds r7, r0, #0
 	ldrb r0, [r7]
 	cmp r2, r0
 	bne _0803FF48
-	ldr r0, _0803FEEC @ =0x0300048C
+	ldr r0, _0803FEEC @ =gUnknown_0300048C
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0803FEF0
@@ -1320,11 +1320,11 @@ _0803FEC0:
 	b _0803FEFE
 	.align 2, 0
 _0803FEE0: .4byte gMenuInventory
-_0803FEE4: .4byte 0x0300047B
-_0803FEE8: .4byte 0x0300047C
-_0803FEEC: .4byte 0x0300048C
+_0803FEE4: .4byte gUnknown_0300047B
+_0803FEE8: .4byte gUnknown_0300047C
+_0803FEEC: .4byte gUnknown_0300048C
 _0803FEF0:
-	ldr r0, _0803FF08 @ =0x03000490
+	ldr r0, _0803FF08 @ =gUnknown_03000490
 	ldr r0, [r0]
 	mov r1, r8
 	subs r2, r1, r0
@@ -1337,7 +1337,7 @@ _0803FEFE:
 	movs r0, #0xa
 	b _0803FF3E
 	.align 2, 0
-_0803FF08: .4byte 0x03000490
+_0803FF08: .4byte gUnknown_03000490
 _0803FF0C:
 	ldr r0, _0803FF18 @ =0x000003E7
 	cmp r2, r0
@@ -1366,7 +1366,7 @@ _0803FF3C:
 	movs r0, #0x1e
 _0803FF3E:
 	strb r0, [r7]
-	ldr r1, _0803FF80 @ =0x0300047B
+	ldr r1, _0803FF80 @ =gUnknown_0300047B
 	ldrb r0, [r7]
 	strb r0, [r1]
 	mov sl, r1
@@ -1379,7 +1379,7 @@ _0803FF48:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0803FFD2
-	ldr r0, _0803FF84 @ =0x0300048C
+	ldr r0, _0803FF84 @ =gUnknown_0300048C
 	ldr r4, [r0]
 	cmp r4, #0
 	beq _0803FFB0
@@ -1399,8 +1399,8 @@ _0803FF48:
 	subs r6, r4, r0
 	b _0803FFB0
 	.align 2, 0
-_0803FF80: .4byte 0x0300047B
-_0803FF84: .4byte 0x0300048C
+_0803FF80: .4byte gUnknown_0300047B
+_0803FF84: .4byte gUnknown_0300048C
 _0803FF88:
 	mov r0, sb
 	strb r2, [r0]
@@ -1424,7 +1424,7 @@ _0803FFAA:
 	strb r2, [r0]
 	b _0803FFD2
 _0803FFB0:
-	ldr r0, _0803FFF8 @ =0x03000490
+	ldr r0, _0803FFF8 @ =gUnknown_03000490
 	ldr r5, [r0]
 	mov r1, r8
 	subs r0, r5, r1
@@ -1462,7 +1462,7 @@ _0803FFE4:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0803FFF8: .4byte 0x03000490
+_0803FFF8: .4byte gUnknown_03000490
 
 	thumb_func_start sub_0803FFFC
 sub_0803FFFC: @ 0x0803FFFC
@@ -1484,7 +1484,7 @@ _0804001A:
 	ldr r2, [r0]
 	movs r5, #0
 	movs r0, #0
-	ldr r1, _08040074 @ =0x0300047B
+	ldr r1, _08040074 @ =gUnknown_0300047B
 	mov r8, r1
 _08040024:
 	movs r3, #0
@@ -1512,12 +1512,12 @@ _08040036:
 	ldrb r2, [r0]
 	cmp r2, #0
 	beq _08040112
-	ldr r0, _08040078 @ =0x0300047C
+	ldr r0, _08040078 @ =gUnknown_0300047C
 	adds r1, r0, #0
 	ldrb r0, [r1]
 	cmp r2, r0
 	bne _080400BA
-	ldr r0, _0804007C @ =0x03000490
+	ldr r0, _0804007C @ =gUnknown_03000490
 	ldr r0, [r0]
 	subs r2, r5, r0
 	cmp r5, r0
@@ -1530,9 +1530,9 @@ _08040068:
 	b _080400B2
 	.align 2, 0
 _08040070: .4byte gUnknown_030004A4
-_08040074: .4byte 0x0300047B
-_08040078: .4byte 0x0300047C
-_0804007C: .4byte 0x03000490
+_08040074: .4byte gUnknown_0300047B
+_08040078: .4byte gUnknown_0300047C
+_0804007C: .4byte gUnknown_03000490
 _08040080:
 	ldr r0, _0804008C @ =0x000003E7
 	cmp r2, r0
@@ -1572,7 +1572,7 @@ _080400BA:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08040112
-	ldr r0, _080400EC @ =0x03000490
+	ldr r0, _080400EC @ =gUnknown_03000490
 	ldr r4, [r0]
 	cmp r5, r4
 	bhs _080400F4
@@ -1589,7 +1589,7 @@ _080400BA:
 	subs r5, r4, r0
 	b _08040112
 	.align 2, 0
-_080400EC: .4byte 0x03000490
+_080400EC: .4byte gUnknown_03000490
 _080400F0:
 	strb r2, [r7]
 	b _08040112
@@ -2005,7 +2005,7 @@ _080403DE:
 	cmp r0, #0
 	beq _08040418
 	adds r0, r7, #0
-	bl sub_0804137C
+	bl AppraiseItem
 	ldr r0, [r4]
 	movs r1, #4
 	bl bzero

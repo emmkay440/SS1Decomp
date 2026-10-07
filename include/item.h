@@ -21,6 +21,16 @@ struct ItemData
     u32 count:17;
 };
 
+// Appraisal flags (IsItemUnappraised / AppraiseItem).
+struct ItemFlags
+{
+    u32 unk0:15;
+    u32 unappraised15:1;  // category 5
+    u32 unk16:10;
+    u32 unappraised:1;    // weapons, armor, head gear
+    u32 unk27:5;
+};
+
 void *GetWeaponRecord(struct Item *item);
 void *GetArmorRecord(struct Item *item);
 void *GetHeadRecord(struct Item *item);

@@ -320,3 +320,6 @@
 08014040 GetCategory6Record
 08013EAC PutItemInSlot
 08013F20 TakeItemFromSlot
+08041120 IsItemUnappraised
+0804137C AppraiseItem
+08041150 EquipItem
