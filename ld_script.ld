@@ -46,6 +46,9 @@ SECTIONS {
         asm/code_080216E0.o(.text);
         src/window_checks.o(.text);
         asm/code_0802297C.o(.text);
+        src/char_menu_threads.o(.text);
+        asm/lerp.o(.text);
+        asm/code_080270D8.o(.text);
         src/save_game.o(.text);
         asm/save_slot_info.o(.text);
         asm/save_load_or_new.o(.text);

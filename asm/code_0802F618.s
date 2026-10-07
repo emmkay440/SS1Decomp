@@ -6362,7 +6362,7 @@ _08032A8E:
 	adds r1, r4, #0
 	adds r2, r6, #0
 	adds r3, r5, #0
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r4, [sp, #0x84]
 	ldr r1, [r4]
 	subs r1, #0xc8
@@ -6375,7 +6375,7 @@ _08032A8E:
 	ldr r2, [r3]
 	mov r0, sb
 	adds r3, r5, #0
-	bl sub_080270A4
+	bl Lerp1024
 	movs r4, #4
 	add sb, r4
 	add r8, r4
@@ -7209,14 +7209,14 @@ _0803319C:
 	lsls r2, r2, #3
 	add r0, sp, #0x54
 	movs r3, #0
-	bl sub_080270A4
+	bl Lerp1024
 	ldrh r1, [r5, #2]
 	lsls r1, r1, #3
 	ldrh r2, [r4, #2]
 	lsls r2, r2, #3
 	add r0, sp, #0x58
 	movs r3, #0
-	bl sub_080270A4
+	bl Lerp1024
 	bl sub_08007510
 	cmp r0, #0
 	bne _0803321A
@@ -7334,7 +7334,7 @@ _08033298:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	add r6, sp, #0x58
 	mov r3, sl
 	ldrh r5, [r3, #2]
@@ -7350,7 +7350,7 @@ _08033298:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	bl sub_08007510
 	cmp r0, #0
 	bne _08033344
@@ -7574,14 +7574,14 @@ _080334D6:
 	lsls r2, r2, #3
 	add r0, sp, #0x54
 	movs r3, #0
-	bl sub_080270A4
+	bl Lerp1024
 	ldrh r1, [r6, #2]
 	lsls r1, r1, #3
 	ldrh r2, [r5, #2]
 	lsls r2, r2, #3
 	add r0, sp, #0x58
 	movs r3, #0
-	bl sub_080270A4
+	bl Lerp1024
 	bl sub_08007510
 	cmp r0, #0
 	bne _08033542
@@ -7700,7 +7700,7 @@ _080335BE:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	add r6, sp, #0x58
 	mov r4, sl
 	ldrh r5, [r4, #2]
@@ -7716,7 +7716,7 @@ _080335BE:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	bl sub_08007510
 	cmp r0, #0
 	bne _08033668
@@ -7952,7 +7952,7 @@ _080337EE:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	add r6, sp, #0x58
 	mov r4, sl
 	ldrh r5, [r4, #2]
@@ -7968,7 +7968,7 @@ _080337EE:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	bl sub_08007510
 	cmp r0, #0
 	bne _08033898
@@ -8180,14 +8180,14 @@ _08033A12:
 	lsls r2, r2, #3
 	add r0, sp, #0x54
 	movs r3, #0
-	bl sub_080270A4
+	bl Lerp1024
 	ldrh r1, [r6, #2]
 	lsls r1, r1, #3
 	ldrh r2, [r5, #2]
 	lsls r2, r2, #3
 	add r0, sp, #0x58
 	movs r3, #0
-	bl sub_080270A4
+	bl Lerp1024
 	bl sub_08007510
 	cmp r0, #0
 	bne _08033A7E
@@ -8306,7 +8306,7 @@ _08033AF4:
 	ldr r0, [sp, #0x78]
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	mov r3, sb
 	ldrh r5, [r3, #2]
 	lsls r5, r5, #3
@@ -8320,7 +8320,7 @@ _08033AF4:
 	ldr r0, [sp, #0x7c]
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	bl sub_08007510
 	cmp r0, #0
 	bne _08033B9E
@@ -9173,12 +9173,12 @@ _08034258:
 	rsbs r2, r2, #0
 	movs r1, #0
 	ldr r3, [sp, #0xd4]
-	bl sub_080270A4
+	bl Lerp1024
 	add r0, sp, #0x88
 	movs r1, #0
 	movs r2, #0x64
 	ldr r3, [sp, #0xd4]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r4, [sp, #0xd4]
 	adds r4, #8
 	str r4, [sp, #0xd4]
@@ -9270,12 +9270,12 @@ _08034314:
 	rsbs r1, r1, #0
 	movs r2, #0
 	ldr r3, [sp, #0xd4]
-	bl sub_080270A4
+	bl Lerp1024
 	add r0, sp, #0x88
 	movs r1, #0x64
 	movs r2, #0
 	ldr r3, [sp, #0xd4]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r3, [sp, #0xd4]
 	adds r3, #8
 	str r3, [sp, #0xd4]
@@ -12046,13 +12046,13 @@ _080359FC:
 	rsbs r2, r2, #0
 	movs r1, #0
 	ldr r3, [sp, #0x88]
-	bl sub_080270A4
+	bl Lerp1024
 	add r0, sp, #0x50
 	movs r2, #0x5a
 	rsbs r2, r2, #0
 	movs r1, #0
 	ldr r3, [sp, #0x88]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r5, [sp, #0x88]
 	adds r5, #0x10
 	str r5, [sp, #0x88]
@@ -12133,13 +12133,13 @@ _08035AB0:
 	rsbs r1, r1, #0
 	movs r2, #0
 	ldr r3, [sp, #0x88]
-	bl sub_080270A4
+	bl Lerp1024
 	add r0, sp, #0x50
 	movs r1, #0x5a
 	rsbs r1, r1, #0
 	movs r2, #0
 	ldr r3, [sp, #0x88]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r4, [sp, #0x88]
 	adds r4, #0x10
 	str r4, [sp, #0x88]
@@ -14822,12 +14822,12 @@ _08037050:
 	rsbs r2, r2, #0
 	movs r1, #0
 	ldr r3, [sp, #0xb4]
-	bl sub_080270A4
+	bl Lerp1024
 	add r0, sp, #0x88
 	movs r1, #0
 	movs r2, #0xdc
 	ldr r3, [sp, #0xb4]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r4, [sp, #0xb4]
 	adds r4, #8
 	str r4, [sp, #0xb4]
@@ -14916,12 +14916,12 @@ _08037110:
 	rsbs r1, r1, #0
 	movs r2, #0
 	ldr r3, [sp, #0xb4]
-	bl sub_080270A4
+	bl Lerp1024
 	add r0, sp, #0x88
 	movs r1, #0xdc
 	movs r2, #0
 	ldr r3, [sp, #0xb4]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r4, [sp, #0xb4]
 	adds r4, #8
 	str r4, [sp, #0xb4]
@@ -18414,12 +18414,12 @@ _08038DB8:
 	rsbs r2, r2, #0
 	movs r1, #0
 	ldr r3, [sp, #0x108]
-	bl sub_080270A4
+	bl Lerp1024
 	add r0, sp, #0xbc
 	movs r1, #0
 	movs r2, #0x50
 	ldr r3, [sp, #0x108]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r6, [sp, #0x108]
 	adds r6, #0x10
 	str r6, [sp, #0x108]
@@ -18494,12 +18494,12 @@ _08038E58:
 	rsbs r1, r1, #0
 	movs r2, #0
 	ldr r3, [sp, #0x108]
-	bl sub_080270A4
+	bl Lerp1024
 	add r0, sp, #0xbc
 	movs r1, #0x50
 	movs r2, #0
 	ldr r3, [sp, #0x108]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r0, [sp, #0x108]
 	adds r0, #0x10
 	str r0, [sp, #0x108]
@@ -18839,7 +18839,7 @@ _080390E0:
 	ldrh r2, [r4, #4]
 	lsls r2, r2, #3
 	ldr r3, [sp, #0x104]
-	bl sub_080270A4
+	bl Lerp1024
 	adds r0, r7, #0
 	adds r0, #0x14
 	ldrh r1, [r4, #2]
@@ -18847,7 +18847,7 @@ _080390E0:
 	ldrh r2, [r5, #2]
 	lsls r2, r2, #3
 	ldr r3, [sp, #0x104]
-	bl sub_080270A4
+	bl Lerp1024
 _08039112:
 	ldr r0, [r7, #0x10]
 	lsls r0, r0, #0xc
@@ -27052,7 +27052,7 @@ _0803D4B4:
 	ldr r0, [sp, #0x244]
 	adds r1, r4, #0
 	ldr r3, [sp, #0x22c]
-	bl sub_080270A4
+	bl Lerp1024
 	add r5, sp, #0x204
 	ldr r0, [sp, #0x210]
 	ldrh r4, [r0, #0x20]
@@ -27066,7 +27066,7 @@ _0803D4B4:
 	adds r0, r5, #0
 	adds r1, r4, #0
 	ldr r3, [sp, #0x22c]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r0, [r5]
 	lsls r0, r0, #4
 	asrs r0, r0, #0x10
@@ -27691,7 +27691,7 @@ _0803DA3E:
 	ldr r2, [r0, #0x14]
 	add r0, sp, #0x200
 	ldr r3, [sp, #0x22c]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r2, [sp, #0x210]
 	ldrh r1, [r2, #0x2c]
 	lsls r1, r1, #0xf
@@ -27699,7 +27699,7 @@ _0803DA3E:
 	ldr r2, [r3, #0x10]
 	add r0, sp, #0x204
 	ldr r3, [sp, #0x22c]
-	bl sub_080270A4
+	bl Lerp1024
 	movs r0, #0x10
 	str r0, [sp]
 	mov r4, sb
@@ -28348,7 +28348,7 @@ _0803DFD2:
 	adds r0, r5, #0
 	movs r2, #0
 	ldr r3, [sp, #0x22c]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r0, [r7]
 	lsls r0, r0, #4
 	lsrs r0, r0, #0x10
@@ -28367,7 +28367,7 @@ _0803DFD2:
 	adds r0, r5, #0
 	movs r2, #0
 	ldr r3, [sp, #0x22c]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r0, [r7]
 	lsls r0, r0, #4
 	lsrs r0, r0, #0x10
@@ -28386,7 +28386,7 @@ _0803DFD2:
 	adds r0, r5, #0
 	movs r2, #0
 	ldr r3, [sp, #0x22c]
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r0, [r7]
 	lsls r0, r0, #4
 	lsrs r0, r0, #0x10
@@ -29385,7 +29385,7 @@ _0803E860:
 	adds r2, r3, r2
 	ldr r2, [r2]
 	ldr r3, [sp, #0x74]
-	bl sub_080270A4
+	bl Lerp1024
 	movs r5, #0x4e
 	adds r5, r5, r7
 	mov r8, r5
@@ -29939,14 +29939,14 @@ _0803ECF2:
 	lsls r4, r6, #8
 	adds r0, r5, #0
 	adds r3, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r0, [sp, #0x2c]
 	ldr r1, [r0]
 	ldr r0, [sp, #0x30]
 	ldr r2, [r0]
 	adds r0, r7, #0
 	adds r3, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	adds r7, #4
 	adds r5, #4
 	adds r6, #1

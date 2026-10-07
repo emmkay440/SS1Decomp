@@ -323,3 +323,4 @@
 08041120 IsItemUnappraised
 0804137C AppraiseItem
 08041150 EquipItem
+080270A4 Lerp1024

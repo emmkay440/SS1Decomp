@@ -6880,7 +6880,7 @@ _0800ADEC:
 	lsls r2, r2, #0xb
 	mov r0, r8
 	ldr r3, [sp, #0xc0]
-	bl sub_080270A4
+	bl Lerp1024
 	add r5, sp, #0xa8
 	ldr r0, [sp, #0x14c]
 	movs r2, #0
@@ -6894,7 +6894,7 @@ _0800ADEC:
 	lsls r2, r2, #9
 	adds r0, r5, #0
 	ldr r3, [sp, #0xc0]
-	bl sub_080270A4
+	bl Lerp1024
 	add r4, sp, #0x90
 	mov r3, sp
 	adds r3, #0x92
@@ -6972,7 +6972,7 @@ _0800AEAC:
 	lsls r2, r2, #0xb
 	mov r0, r8
 	ldr r3, [sp, #0xc8]
-	bl sub_080270A4
+	bl Lerp1024
 	add r5, sp, #0xb0
 	ldr r3, [sp, #0x14c]
 	movs r4, #0
@@ -6986,7 +6986,7 @@ _0800AEAC:
 	lsls r2, r2, #9
 	adds r0, r5, #0
 	ldr r3, [sp, #0xc8]
-	bl sub_080270A4
+	bl Lerp1024
 	add r4, sp, #0x94
 	mov r3, sp
 	adds r3, #0x96

@@ -15575,12 +15575,12 @@ _0801EC30:
 	ldr r1, [r7, #0x3c]
 	ldr r2, [r7, #0x44]
 	adds r3, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	mov r0, sb
 	ldr r1, [r7, #0x40]
 	mov r2, sl
 	adds r3, r4, #0
-	bl sub_080270A4
+	bl Lerp1024
 	ldr r0, [r7, #0x34]
 	lsls r0, r0, #0xc
 	str r0, [r6, #0x58]
@@ -16801,7 +16801,7 @@ _0801F5D8:
 	adds r1, r6, #0
 	adds r2, r5, #0
 	mov r3, r8
-	bl sub_080270A4
+	bl Lerp1024
 	add r0, sp, #0x50
 	mov r2, sb
 	ldrh r1, [r2, #2]
@@ -16809,7 +16809,7 @@ _0801F5D8:
 	ldrh r2, [r4, #2]
 	lsls r2, r2, #3
 	mov r3, r8
-	bl sub_080270A4
+	bl Lerp1024
 	b _0801F650
 _0801F624:
 	ldr r0, [sp, #0x6c]
