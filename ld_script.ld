@@ -50,6 +50,8 @@ SECTIONS {
         asm/code_080216E0.o(.text);
         src/window_checks.o(.text);
         asm/code_0802297C.o(.text);
+        src/sprite_obj.o(.text);
+        asm/code_08026C80.o(.text);
         src/char_menu_threads.o(.text);
         asm/lerp.o(.text);
         asm/code_080270D8.o(.text);
