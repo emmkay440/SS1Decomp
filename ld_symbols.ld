@@ -113,6 +113,7 @@ gCharacterMenuThread = 0x030064B0;
 gUnknown_030064D8 = 0x030064D8;
 gUnknownThread_030064E0 = 0x030064E0;
 gUnknownThread_030066B0 = 0x030066B0;
+gUnknown_030066E8 = 0x030066E8;
 gSoundVSyncEnabled = 0x03006840;
 gSoundThread = 0x03006850;
 gMusicEnabled = 0x0300687C;
