@@ -119,6 +119,8 @@ SECTIONS {
         asm/code_080486A4.o(.text);
         src/ad_sub_080486a4.o(.text);
         asm/code_080486C8.o(.text);
+        src/ad_sub_08048740.o(.text);
+        asm/code_080487B8.o(.text);
         src/ad_sub_0804bb88.o(.text);
         src/ad_sub_0804bb9c.o(.text);
         asm/code_0804BBA0.o(.text);
