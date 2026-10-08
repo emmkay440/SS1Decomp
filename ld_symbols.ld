@@ -185,6 +185,7 @@ gUnknown_030067A0 = 0x030067A0;
 gUnknown_030067C0 = 0x030067C0;
 gUnknown_030067D0 = 0x030067D0;
 gUnknown_030067F0 = 0x030067F0;
+gUnknown_03006814 = 0x03006814;
 gSoundVSyncEnabled = 0x03006840;
 gSoundThread = 0x03006850;
 gMusicEnabled = 0x0300687C;
