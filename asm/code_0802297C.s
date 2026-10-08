@@ -4727,7 +4727,7 @@ CharacterMenuThread: @ 0x0802501C
 	stm r1!, {r3, r5, r6}
 	ldr r0, [r0]
 	str r0, [r1]
-	ldr r0, _0802504C @ =0x030064D8
+	ldr r0, _0802504C @ =gUnknown_030064D8
 	ldr r0, [r0]
 	adds r5, r2, #0
 	cmp r0, #0
@@ -4736,7 +4736,7 @@ CharacterMenuThread: @ 0x0802501C
 	bl _08025928
 	.align 2, 0
 _08025048: .4byte 0x080548DC
-_0802504C: .4byte 0x030064D8
+_0802504C: .4byte gUnknown_030064D8
 _08025050:
 	bl sub_080076B8
 	ldr r0, _08025068 @ =0x03003CA8
@@ -6236,7 +6236,7 @@ _08025CA8:
 	bl sub_0800F430
 	cmp r0, #0
 	beq _08025CA4
-	ldr r1, _08025CD0 @ =0x030064D8
+	ldr r1, _08025CD0 @ =gUnknown_030064D8
 	ldr r0, [r1]
 	subs r0, #1
 	lsls r0, r0, #0x10
@@ -6252,7 +6252,7 @@ _08025CA8:
 	bl sub_0800F3A0
 	b _08025CDC
 	.align 2, 0
-_08025CD0: .4byte 0x030064D8
+_08025CD0: .4byte gUnknown_030064D8
 _08025CD4: .4byte gMapLayer_03003910
 _08025CD8:
 	bl WaitFrame
@@ -6457,7 +6457,7 @@ _08025E88:
 	beq _08025E84
 	b _08025F3E
 _08025E92:
-	ldr r0, _08025F84 @ =0x030064D8
+	ldr r0, _08025F84 @ =gUnknown_030064D8
 	ldr r0, [r0]
 	subs r0, #1
 	lsls r0, r0, #0x10
@@ -6580,7 +6580,7 @@ _08025F70:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08025F84: .4byte 0x030064D8
+_08025F84: .4byte gUnknown_030064D8
 _08025F88: .4byte gPlayers
 _08025F8C: .4byte 0x03004650
 _08025F90: .4byte gEnemies
@@ -6725,7 +6725,7 @@ _080260A2:
 	ands r0, r2
 	movs r2, #0
 	strh r0, [r1, #0x10]
-	ldr r0, _080260E4 @ =0x030064D8
+	ldr r0, _080260E4 @ =gUnknown_030064D8
 	str r2, [r0]
 	add sp, #0x18
 	pop {r3, r4, r5}
@@ -6742,7 +6742,7 @@ _080260D4: .4byte 0x0000FFFF
 _080260D8: .4byte 0x03006788
 _080260DC: .4byte 0x03006718
 _080260E0: .4byte 0x0000FEFF
-_080260E4: .4byte 0x030064D8
+_080260E4: .4byte gUnknown_030064D8
 
 	thumb_func_start sub_080260E8
 sub_080260E8: @ 0x080260E8
@@ -7978,83 +7978,3 @@ _08026A9E:
 _08026AC4: .4byte gBgRegsBuffer
 _08026AC8: .4byte gPlayers
 _08026ACC: .4byte 0x0000FF7F
-
-	thumb_func_start sub_08026AD0
-sub_08026AD0: @ 0x08026AD0
-	ldr r1, _08026AD8 @ =0x030064D8
-	movs r0, #0
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-_08026AD8: .4byte 0x030064D8
-
-	thumb_func_start sub_08026ADC
-sub_08026ADC: @ 0x08026ADC
-	push {r4, r5, r6, r7, lr}
-	adds r5, r0, #0
-	adds r4, r1, #0
-	adds r7, r3, #0
-	str r4, [r5, #0x10]
-	str r2, [r5, #0x14]
-	str r7, [r5, #0x18]
-	adds r0, r4, #0
-	bl GetDataRecord
-	str r0, [r5, #8]
-	cmp r0, #0
-	beq _08026B20
-	ldr r6, _08026B24 @ =0x0000FFFF
-	ands r4, r6
-	movs r0, #0x88
-	lsls r0, r0, #0xd
-	orrs r4, r0
-	adds r0, r4, #0
-	bl GetDataRecord
-	str r0, [r5]
-	cmp r0, #0
-	beq _08026B20
-	ands r4, r6
-	movs r0, #0x98
-	lsls r0, r0, #0xd
-	orrs r0, r4
-	bl GetDataRecord
-	adds r2, r0, #0
-	str r2, [r5, #0xc]
-	cmp r2, #0
-	bne _08026B28
-_08026B20:
-	movs r0, #0
-	b _08026B5C
-	.align 2, 0
-_08026B24: .4byte 0x0000FFFF
-_08026B28:
-	cmp r7, #0
-	blt _08026B3C
-	ldr r1, [r5, #0x14]
-	adds r0, r1, #0
-	adds r0, #0x10
-	lsls r1, r1, #5
-	adds r1, r2, r1
-	ldr r2, [r5, #0x18]
-	bl LoadPalette
-_08026B3C:
-	movs r1, #0
-	adds r2, r5, #0
-	adds r2, #0x1c
-_08026B42:
-	adds r0, r2, r1
-	strb r1, [r0]
-	adds r1, #1
-	cmp r1, #0xf
-	bls _08026B42
-	movs r1, #0x90
-	lsls r1, r1, #1
-	adds r0, r5, #0
-	movs r2, #0xe0
-	movs r3, #8
-	bl sub_08026C64
-	adds r0, r5, #0
-_08026B5C:
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-	.align 2, 0

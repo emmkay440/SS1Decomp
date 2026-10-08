@@ -61,6 +61,8 @@ SECTIONS {
         asm/code_080216E0.o(.text);
         src/window_checks.o(.text);
         asm/code_0802297C.o(.text);
+        src/ad_sub_08026ad0.o(.text);
+        asm/code_08026ADC.o(.text);
         src/sprite_obj.o(.text);
         asm/code_08026C80.o(.text);
         src/char_menu_threads.o(.text);

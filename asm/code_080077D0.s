@@ -1207,7 +1207,7 @@ _08008130:
 	adds r0, #2
 	strh r4, [r0]
 	strb r2, [r5, #2]
-	ldr r1, _08008220 @ =0x030064D8
+	ldr r1, _08008220 @ =gUnknown_030064D8
 	ldrh r0, [r7]
 	adds r0, #1
 	str r0, [r1]
@@ -1308,7 +1308,7 @@ _08008210:
 	mov pc, r0
 	.align 2, 0
 _0800821C: .4byte gKeysNew
-_08008220: .4byte 0x030064D8
+_08008220: .4byte gUnknown_030064D8
 _08008224: .4byte 0x030063D8
 _08008228: .4byte 0x00090015
 _0800822C: .4byte _08008230
@@ -5892,7 +5892,7 @@ _0800A5FC:
 	bls _0800A630
 	movs r0, #0xe
 	strh r0, [r7, #0xe]
-	ldr r1, _0800A624 @ =0x030064D8
+	ldr r1, _0800A624 @ =gUnknown_030064D8
 	ldrh r0, [r7]
 	adds r0, #1
 	str r0, [r1]
@@ -5900,9 +5900,9 @@ _0800A5FC:
 	str r0, [sp, #0x100]
 	b _0800A630
 	.align 2, 0
-_0800A624: .4byte 0x030064D8
+_0800A624: .4byte gUnknown_030064D8
 _0800A628:
-	ldr r1, _0800A644 @ =0x030064D8
+	ldr r1, _0800A644 @ =gUnknown_030064D8
 	ldrh r0, [r7]
 	adds r0, #1
 	str r0, [r1]
@@ -5916,7 +5916,7 @@ _0800A630:
 	bl sub_08027188
 	b _0800A668
 	.align 2, 0
-_0800A644: .4byte 0x030064D8
+_0800A644: .4byte gUnknown_030064D8
 _0800A648:
 	bl sub_0800F298
 	cmp r0, #0
@@ -5924,7 +5924,7 @@ _0800A648:
 	bl sub_08007604
 	cmp r0, #0
 	bne _0800A668
-	ldr r0, _0800A738 @ =0x030064D8
+	ldr r0, _0800A738 @ =gUnknown_030064D8
 	ldr r1, [r0]
 	cmp r1, #0
 	bne _0800A668
@@ -6038,7 +6038,7 @@ _0800A6BA:
 	ldr r0, [r1]
 	b _0800A75A
 	.align 2, 0
-_0800A738: .4byte 0x030064D8
+_0800A738: .4byte gUnknown_030064D8
 _0800A73C: .4byte 0xFFFFE000
 _0800A740: .4byte 0x0000FFBF
 _0800A744: .4byte 0x080FB610

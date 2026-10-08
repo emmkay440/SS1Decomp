@@ -130,7 +130,7 @@ _080271CC: .4byte sub_08025BFC
 	thumb_func_start sub_080271D0
 sub_080271D0: @ 0x080271D0
 	push {r4, r5, lr}
-	ldr r0, _080271E8 @ =0x030064D8
+	ldr r0, _080271E8 @ =gUnknown_030064D8
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _080271E2
@@ -141,7 +141,7 @@ _080271E2:
 	movs r0, #1
 	b _08027220
 	.align 2, 0
-_080271E8: .4byte 0x030064D8
+_080271E8: .4byte gUnknown_030064D8
 _080271EC:
 	movs r4, #0
 	ldr r5, _080271F4 @ =0x03004650
@@ -984,7 +984,7 @@ _0802784C:
 	bl sub_08007604
 	cmp r0, #0
 	bne _08027844
-	ldr r7, _080278A4 @ =0x030064D8
+	ldr r7, _080278A4 @ =gUnknown_030064D8
 	ldr r4, [r7]
 	cmp r4, #0
 	bne _08027844
@@ -1019,7 +1019,7 @@ _0802784C:
 	str r0, [r7]
 	b _08027926
 	.align 2, 0
-_080278A4: .4byte 0x030064D8
+_080278A4: .4byte gUnknown_030064D8
 _080278A8: .4byte 0x03006788
 _080278AC: .4byte gPlayers
 _080278B0: .4byte 0x0000FEFF
@@ -3440,7 +3440,7 @@ _08028BD4:
 	bl GetMultiplayerId
 	cmp r4, r0
 	bne _08028CBC
-	ldr r4, _08028C9C @ =0x030064D8
+	ldr r4, _08028C9C @ =gUnknown_030064D8
 	ldr r0, [r4]
 	cmp r0, #0
 	bne _08028CBC
@@ -3519,7 +3519,7 @@ _08028BD4:
 	.align 2, 0
 _08028C94: .4byte 0x03006720
 _08028C98: .4byte 0x03006758
-_08028C9C: .4byte 0x030064D8
+_08028C9C: .4byte gUnknown_030064D8
 _08028CA0: .4byte gPlayers
 _08028CA4: .4byte gPlayerStats
 _08028CA8:

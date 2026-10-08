@@ -1976,7 +1976,7 @@ _080398C4:
 	bl sub_08001F98
 	cmp r0, #0
 	bne _0803992E
-	ldr r0, _08039B0C @ =0x030064D8
+	ldr r0, _08039B0C @ =gUnknown_030064D8
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0803992E
@@ -2212,7 +2212,7 @@ _08039AFC: .4byte 0x030063D8
 _08039B00: .4byte gPlayers
 _08039B04: .4byte 0x0000FFFE
 _08039B08: .4byte gActiveEnemyMask
-_08039B0C: .4byte 0x030064D8
+_08039B0C: .4byte gUnknown_030064D8
 _08039B10: .4byte gMapLayer_03003910
 _08039B14: .4byte 0x03003D94
 _08039B18: .4byte 0x00000157

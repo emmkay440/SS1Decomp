@@ -7486,7 +7486,7 @@ _0801AC40:
 	bl sub_0800F430
 	cmp r0, #0
 	beq _0801ACD8
-	ldr r0, _0801ACD0 @ =0x030064D8
+	ldr r0, _0801ACD0 @ =gUnknown_030064D8
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0801ACD8
@@ -7551,7 +7551,7 @@ _0801ACA4:
 	strh r0, [r6, #0xe]
 	b _0801AD1A
 	.align 2, 0
-_0801ACD0: .4byte 0x030064D8
+_0801ACD0: .4byte gUnknown_030064D8
 _0801ACD4: .4byte gKeysNew
 _0801ACD8:
 	bl sub_080076E0
@@ -15391,7 +15391,7 @@ _0801EAC8:
 _0801EAE0: .4byte 0x030063D8
 _0801EAE4: .4byte gPlayers
 _0801EAE8:
-	ldr r0, _0801EB3C @ =0x030064D8
+	ldr r0, _0801EB3C @ =gUnknown_030064D8
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0801EAF2
@@ -15436,7 +15436,7 @@ _0801EB32:
 	movs r5, #0
 	b _0801EC80
 	.align 2, 0
-_0801EB3C: .4byte 0x030064D8
+_0801EB3C: .4byte gUnknown_030064D8
 _0801EB40:
 	adds r0, r6, #0
 	adds r0, #0xd0
