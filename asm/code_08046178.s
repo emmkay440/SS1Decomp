@@ -169,34 +169,3 @@ _080462E4:
 _080462E8:
 	pop {r0}
 	bx r0
-
-	thumb_func_start StartSaveSelect
-StartSaveSelect: @ 0x080462EC
-	push {lr}
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	adds r2, r0, #0
-	ldr r0, _08046320 @ =0x030068C0
-	ldr r1, _08046324 @ =SaveSelectThread
-	str r1, [r0, #0xc]
-	movs r3, #0xff
-	lsls r3, r3, #2
-	adds r1, r2, r3
-	str r1, [r0, #0x10]
-	str r2, [r0, #0x20]
-	movs r1, #0x32
-	str r1, [r0, #8]
-	movs r1, #0
-	str r1, [r0, #0x18]
-	str r1, [r0]
-	ldr r1, _08046328 @ =sub_0804632C
-	str r1, [r0, #0x24]
-	movs r1, #0
-	bl CreateThread
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08046320: .4byte 0x030068C0
-_08046324: .4byte SaveSelectThread
-_08046328: .4byte sub_0804632C
