@@ -23,3 +23,8 @@ traces/
 
 # python
 __pycache__/
+
+# autodecomp loop (local)
+tools/autodecomp/state.json
+tools/autodecomp/logs/
+tools/autodecomp/STOP
