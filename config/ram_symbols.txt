@@ -130,3 +130,5 @@
 030064D8 gUnknown_030064D8      # added by autodecomp
 030066E8 gUnknown_030066E8      # added by autodecomp
 03000A48 gUnknown_03000A48      # added by autodecomp
+03000074 gUnknown_03000074      # added by autodecomp
+03000076 gUnknown_03000076      # added by autodecomp
