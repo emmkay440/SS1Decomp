@@ -2315,7 +2315,7 @@ _08007428: .4byte gGameFlags
 _0800742C: .4byte 0x000514C9
 _08007430: .4byte gPlayers
 _08007434:
-	ldr r4, _08007474 @ =0x03006410
+	ldr r4, _08007474 @ =gUnknownThreadPtr_03006410
 	ldr r0, [r4]
 	bl IsThreadInList
 	cmp r0, #0
@@ -2346,7 +2346,7 @@ _08007464:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08007474: .4byte 0x03006410
+_08007474: .4byte gUnknownThreadPtr_03006410
 _08007478: .4byte gPlayers
 _0800747C: .4byte 0x030063D8
 _08007480: .4byte 0x00000BB9

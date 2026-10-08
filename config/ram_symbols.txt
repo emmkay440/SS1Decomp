@@ -180,3 +180,19 @@
 03002EB0 gMultiSioArea          # struct MultiSioArea (include/multi_sio.h); MultiSio library work area
 03003060 gMultiSioRecvFuncBuf   # u32[0x10]: RAM copy of MultiSioRecvBufChange (MultiSioInit)
 03002D90 gMultiSioIntrFuncBuf   # u32[0x48]: RAM copy of MultiSioIntr (MultiSioInit)
+030063D0 gUnknownThreadPtr_030063D0 # struct Thread *
+030063D4 gUnknownThreadPtr_030063D4 # struct Thread *
+030063DC gUnknownThreadPtr_030063DC # struct Thread *
+030063E0 gUnknownThreadPtr_030063E0 # struct Thread *
+030063E8 gUnknownThreadPtr_030063E8 # struct Thread *
+030063F0 gUnknownThreadPtr_030063F0 # struct Thread *
+030063F4 gUnknownThreadPtr_030063F4 # struct Thread *
+030063F8 gUnknownThreadPtr_030063F8 # struct Thread *
+030063FC gUnknownThreadPtr_030063FC # struct Thread *
+03006400 gUnknownThreadPtr_03006400 # struct Thread *
+03006404 gUnknownThreadPtr_03006404 # struct Thread *
+03006408 gUnknownThreadPtr_03006408 # struct Thread *
+0300640C gUnknownThreadPtr_0300640C # struct Thread *
+03006410 gUnknownThreadPtr_03006410 # struct Thread *
+03006414 gUnknownThreadPtr_03006414 # struct Thread *
+030063CC gUnknownThreadPtr_030063CC # struct Thread *

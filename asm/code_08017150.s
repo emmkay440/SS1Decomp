@@ -2809,63 +2809,63 @@ sub_080186A8: @ 0x080186A8
 	movs r0, #0xc8
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187A0 @ =0x0300640C
+	ldr r4, _080187A0 @ =gUnknownThreadPtr_0300640C
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187A4 @ =0x03006410
+	ldr r4, _080187A4 @ =gUnknownThreadPtr_03006410
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187A8 @ =0x03006404
+	ldr r4, _080187A8 @ =gUnknownThreadPtr_03006404
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187AC @ =0x03006408
+	ldr r4, _080187AC @ =gUnknownThreadPtr_03006408
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187B0 @ =0x030063D0
+	ldr r4, _080187B0 @ =gUnknownThreadPtr_030063D0
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187B4 @ =0x030063F4
+	ldr r4, _080187B4 @ =gUnknownThreadPtr_030063F4
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187B8 @ =0x030063F0
+	ldr r4, _080187B8 @ =gUnknownThreadPtr_030063F0
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187BC @ =0x030063FC
+	ldr r4, _080187BC @ =gUnknownThreadPtr_030063FC
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187C0 @ =0x030063DC
+	ldr r4, _080187C0 @ =gUnknownThreadPtr_030063DC
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187C4 @ =0x030063E0
+	ldr r4, _080187C4 @ =gUnknownThreadPtr_030063E0
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187C8 @ =0x030063CC
+	ldr r4, _080187C8 @ =gUnknownThreadPtr_030063CC
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187CC @ =0x030063F8
+	ldr r4, _080187CC @ =gUnknownThreadPtr_030063F8
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187D0 @ =0x030063E8
+	ldr r4, _080187D0 @ =gUnknownThreadPtr_030063E8
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187D4 @ =0x030063D4
+	ldr r4, _080187D4 @ =gUnknownThreadPtr_030063D4
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187D8 @ =0x03006414
+	ldr r4, _080187D8 @ =gUnknownThreadPtr_03006414
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
@@ -2877,7 +2877,7 @@ sub_080186A8: @ 0x080186A8
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _080187E4 @ =0x03006400
+	ldr r4, _080187E4 @ =gUnknownThreadPtr_03006400
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
@@ -2889,24 +2889,24 @@ sub_080186A8: @ 0x080186A8
 _08018794: .4byte 0x030063D8
 _08018798: .4byte 0x0000FFFF
 _0801879C: .4byte gSpawnerThreads
-_080187A0: .4byte 0x0300640C
-_080187A4: .4byte 0x03006410
-_080187A8: .4byte 0x03006404
-_080187AC: .4byte 0x03006408
-_080187B0: .4byte 0x030063D0
-_080187B4: .4byte 0x030063F4
-_080187B8: .4byte 0x030063F0
-_080187BC: .4byte 0x030063FC
-_080187C0: .4byte 0x030063DC
-_080187C4: .4byte 0x030063E0
-_080187C8: .4byte 0x030063CC
-_080187CC: .4byte 0x030063F8
-_080187D0: .4byte 0x030063E8
-_080187D4: .4byte 0x030063D4
-_080187D8: .4byte 0x03006414
+_080187A0: .4byte gUnknownThreadPtr_0300640C
+_080187A4: .4byte gUnknownThreadPtr_03006410
+_080187A8: .4byte gUnknownThreadPtr_03006404
+_080187AC: .4byte gUnknownThreadPtr_03006408
+_080187B0: .4byte gUnknownThreadPtr_030063D0
+_080187B4: .4byte gUnknownThreadPtr_030063F4
+_080187B8: .4byte gUnknownThreadPtr_030063F0
+_080187BC: .4byte gUnknownThreadPtr_030063FC
+_080187C0: .4byte gUnknownThreadPtr_030063DC
+_080187C4: .4byte gUnknownThreadPtr_030063E0
+_080187C8: .4byte gUnknownThreadPtr_030063CC
+_080187CC: .4byte gUnknownThreadPtr_030063F8
+_080187D0: .4byte gUnknownThreadPtr_030063E8
+_080187D4: .4byte gUnknownThreadPtr_030063D4
+_080187D8: .4byte gUnknownThreadPtr_03006414
 _080187DC: .4byte gUnknownThreadPtr_030063EC
 _080187E0: .4byte gUnknownThreadPtr_030063E4
-_080187E4: .4byte 0x03006400
+_080187E4: .4byte gUnknownThreadPtr_03006400
 
 	thumb_func_start sub_080187E8
 sub_080187E8: @ 0x080187E8
@@ -2921,51 +2921,51 @@ sub_080187E8: @ 0x080187E8
 	ldr r1, _080188F4 @ =gSpawnerThreads
 	ldr r0, [r1]
 	bl Free
-	ldr r1, _080188F8 @ =0x0300640C
+	ldr r1, _080188F8 @ =gUnknownThreadPtr_0300640C
 	ldr r0, [r1]
 	bl Free
-	ldr r1, _080188FC @ =0x03006410
+	ldr r1, _080188FC @ =gUnknownThreadPtr_03006410
 	ldr r0, [r1]
 	bl Free
-	ldr r1, _08018900 @ =0x03006404
+	ldr r1, _08018900 @ =gUnknownThreadPtr_03006404
 	ldr r0, [r1]
 	bl Free
-	ldr r1, _08018904 @ =0x03006408
+	ldr r1, _08018904 @ =gUnknownThreadPtr_03006408
 	ldr r0, [r1]
 	bl Free
-	ldr r1, _08018908 @ =0x030063D0
+	ldr r1, _08018908 @ =gUnknownThreadPtr_030063D0
 	ldr r0, [r1]
 	bl Free
-	ldr r1, _0801890C @ =0x030063F4
+	ldr r1, _0801890C @ =gUnknownThreadPtr_030063F4
 	ldr r0, [r1]
 	bl Free
-	ldr r1, _08018910 @ =0x030063F0
+	ldr r1, _08018910 @ =gUnknownThreadPtr_030063F0
 	ldr r0, [r1]
 	bl Free
-	ldr r1, _08018914 @ =0x030063FC
+	ldr r1, _08018914 @ =gUnknownThreadPtr_030063FC
 	ldr r0, [r1]
 	bl Free
-	ldr r1, _08018918 @ =0x030063DC
+	ldr r1, _08018918 @ =gUnknownThreadPtr_030063DC
 	ldr r0, [r1]
 	bl Free
-	ldr r1, _0801891C @ =0x030063E0
+	ldr r1, _0801891C @ =gUnknownThreadPtr_030063E0
 	ldr r0, [r1]
 	bl Free
-	ldr r1, _08018920 @ =0x030063CC
+	ldr r1, _08018920 @ =gUnknownThreadPtr_030063CC
 	ldr r0, [r1]
 	bl Free
-	ldr r7, _08018924 @ =0x030063F8
+	ldr r7, _08018924 @ =gUnknownThreadPtr_030063F8
 	ldr r0, [r7]
 	bl Free
-	ldr r0, _08018928 @ =0x030063E8
+	ldr r0, _08018928 @ =gUnknownThreadPtr_030063E8
 	mov sl, r0
 	ldr r0, [r0]
 	bl Free
-	ldr r1, _0801892C @ =0x030063D4
+	ldr r1, _0801892C @ =gUnknownThreadPtr_030063D4
 	mov sb, r1
 	ldr r0, [r1]
 	bl Free
-	ldr r0, _08018930 @ =0x03006414
+	ldr r0, _08018930 @ =gUnknownThreadPtr_03006414
 	mov r8, r0
 	ldr r0, [r0]
 	bl Free
@@ -2975,7 +2975,7 @@ sub_080187E8: @ 0x080187E8
 	ldr r5, _08018938 @ =gUnknownThreadPtr_030063E4
 	ldr r0, [r5]
 	bl Free
-	ldr r4, _0801893C @ =0x03006400
+	ldr r4, _0801893C @ =gUnknownThreadPtr_03006400
 	ldr r0, [r4]
 	bl Free
 	movs r0, #0
@@ -2983,27 +2983,27 @@ sub_080187E8: @ 0x080187E8
 	str r0, [r1]
 	ldr r1, _080188F4 @ =gSpawnerThreads
 	str r0, [r1]
-	ldr r1, _080188F8 @ =0x0300640C
+	ldr r1, _080188F8 @ =gUnknownThreadPtr_0300640C
 	str r0, [r1]
-	ldr r1, _080188FC @ =0x03006410
+	ldr r1, _080188FC @ =gUnknownThreadPtr_03006410
 	str r0, [r1]
-	ldr r1, _08018900 @ =0x03006404
+	ldr r1, _08018900 @ =gUnknownThreadPtr_03006404
 	str r0, [r1]
-	ldr r1, _08018904 @ =0x03006408
+	ldr r1, _08018904 @ =gUnknownThreadPtr_03006408
 	str r0, [r1]
-	ldr r1, _08018908 @ =0x030063D0
+	ldr r1, _08018908 @ =gUnknownThreadPtr_030063D0
 	str r0, [r1]
-	ldr r1, _0801890C @ =0x030063F4
+	ldr r1, _0801890C @ =gUnknownThreadPtr_030063F4
 	str r0, [r1]
-	ldr r1, _08018910 @ =0x030063F0
+	ldr r1, _08018910 @ =gUnknownThreadPtr_030063F0
 	str r0, [r1]
-	ldr r1, _08018914 @ =0x030063FC
+	ldr r1, _08018914 @ =gUnknownThreadPtr_030063FC
 	str r0, [r1]
-	ldr r1, _08018918 @ =0x030063DC
+	ldr r1, _08018918 @ =gUnknownThreadPtr_030063DC
 	str r0, [r1]
-	ldr r1, _0801891C @ =0x030063E0
+	ldr r1, _0801891C @ =gUnknownThreadPtr_030063E0
 	str r0, [r1]
-	ldr r1, _08018920 @ =0x030063CC
+	ldr r1, _08018920 @ =gUnknownThreadPtr_030063CC
 	str r0, [r1]
 	str r0, [r7]
 	mov r1, sl
@@ -3025,24 +3025,24 @@ sub_080187E8: @ 0x080187E8
 	.align 2, 0
 _080188F0: .4byte 0x030063D8
 _080188F4: .4byte gSpawnerThreads
-_080188F8: .4byte 0x0300640C
-_080188FC: .4byte 0x03006410
-_08018900: .4byte 0x03006404
-_08018904: .4byte 0x03006408
-_08018908: .4byte 0x030063D0
-_0801890C: .4byte 0x030063F4
-_08018910: .4byte 0x030063F0
-_08018914: .4byte 0x030063FC
-_08018918: .4byte 0x030063DC
-_0801891C: .4byte 0x030063E0
-_08018920: .4byte 0x030063CC
-_08018924: .4byte 0x030063F8
-_08018928: .4byte 0x030063E8
-_0801892C: .4byte 0x030063D4
-_08018930: .4byte 0x03006414
+_080188F8: .4byte gUnknownThreadPtr_0300640C
+_080188FC: .4byte gUnknownThreadPtr_03006410
+_08018900: .4byte gUnknownThreadPtr_03006404
+_08018904: .4byte gUnknownThreadPtr_03006408
+_08018908: .4byte gUnknownThreadPtr_030063D0
+_0801890C: .4byte gUnknownThreadPtr_030063F4
+_08018910: .4byte gUnknownThreadPtr_030063F0
+_08018914: .4byte gUnknownThreadPtr_030063FC
+_08018918: .4byte gUnknownThreadPtr_030063DC
+_0801891C: .4byte gUnknownThreadPtr_030063E0
+_08018920: .4byte gUnknownThreadPtr_030063CC
+_08018924: .4byte gUnknownThreadPtr_030063F8
+_08018928: .4byte gUnknownThreadPtr_030063E8
+_0801892C: .4byte gUnknownThreadPtr_030063D4
+_08018930: .4byte gUnknownThreadPtr_03006414
 _08018934: .4byte gUnknownThreadPtr_030063EC
 _08018938: .4byte gUnknownThreadPtr_030063E4
-_0801893C: .4byte 0x03006400
+_0801893C: .4byte gUnknownThreadPtr_03006400
 
 	thumb_func_start sub_08018940
 sub_08018940: @ 0x08018940
@@ -7785,7 +7785,7 @@ _0801AE96:
 	cmp r0, #0
 	bne _0801AE28
 _0801AEB6:
-	ldr r4, _0801AF24 @ =0x03006410
+	ldr r4, _0801AF24 @ =gUnknownThreadPtr_03006410
 	ldr r0, [r4]
 	bl IsThreadInList
 	cmp r0, #0
@@ -7837,7 +7837,7 @@ _0801AF10:
 	bx r0
 	.align 2, 0
 _0801AF20: .4byte 0x030063D8
-_0801AF24: .4byte 0x03006410
+_0801AF24: .4byte gUnknownThreadPtr_03006410
 _0801AF28: .4byte gPlayers
 _0801AF2C: .4byte gMapLayer_03003910
 _0801AF30: .4byte 0x080FB0F8
@@ -19961,635 +19961,3 @@ _08020F74:
 	.align 2, 0
 _08020F8C: .4byte 0x030063D8
 _08020F90: .4byte 0x0000FFFD
-
-	thumb_func_start sub_08020F94
-sub_08020F94: @ 0x08020F94
-	push {r4, r5, r6, lr}
-	ldr r4, _08020FEC @ =0x03006408
-	ldr r1, [r4]
-	ldr r0, _08020FF0 @ =sub_0801B210
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r6, #0x46
-	str r6, [r1, #8]
-	movs r5, #0
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	ldr r4, _08020FF4 @ =0x030063D0
-	ldr r1, [r4]
-	ldr r0, _08020FF8 @ =sub_0801C6B0
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #4
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	ldr r2, _08020FFC @ =0x000007FC
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	str r6, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08020FEC: .4byte 0x03006408
-_08020FF0: .4byte sub_0801B210
-_08020FF4: .4byte 0x030063D0
-_08020FF8: .4byte sub_0801C6B0
-_08020FFC: .4byte 0x000007FC
-
-	thumb_func_start sub_08021000
-sub_08021000: @ 0x08021000
-	push {r4, lr}
-	ldr r4, _08021034 @ =0x030063F4
-	ldr r1, [r4]
-	ldr r0, _08021038 @ =sub_0801CB88
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	movs r0, #0
-	str r0, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021034: .4byte 0x030063F4
-_08021038: .4byte sub_0801CB88
-
-	thumb_func_start sub_0802103C
-sub_0802103C: @ 0x0802103C
-	push {r4, lr}
-	ldr r4, _08021070 @ =0x030063F4
-	ldr r1, [r4]
-	ldr r0, _08021074 @ =sub_0801CC68
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	movs r0, #0
-	str r0, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021070: .4byte 0x030063F4
-_08021074: .4byte sub_0801CC68
-
-	thumb_func_start sub_08021078
-sub_08021078: @ 0x08021078
-	push {r4, r5, lr}
-	ldr r4, _08021080 @ =0x03006400
-	b _08021088
-	.align 2, 0
-_08021080: .4byte 0x03006400
-_08021084:
-	bl WaitFrame
-_08021088:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _08021084
-	ldr r4, _080210C4 @ =0x03006400
-	ldr r1, [r4]
-	ldr r0, _080210C8 @ =sub_0801AAC8
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x56
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080210C4: .4byte 0x03006400
-_080210C8: .4byte sub_0801AAC8
-
-	thumb_func_start sub_080210CC
-sub_080210CC: @ 0x080210CC
-	push {r4, lr}
-	ldr r4, _080210D4 @ =0x0300640C
-	b _080210DC
-	.align 2, 0
-_080210D4: .4byte 0x0300640C
-_080210D8:
-	bl WaitFrame
-_080210DC:
-	ldr r0, [r4]
-	bl IsThreadInList
-	cmp r0, #0
-	bne _080210D8
-	ldr r4, _08021118 @ =0x0300640C
-	ldr r1, [r4]
-	ldr r0, _0802111C @ =sub_080199B4
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	ldr r0, _08021120 @ =sub_0802173C
-	str r0, [r1, #0x24]
-	adds r0, r1, #0
-	movs r1, #0
-	bl CreateThread
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021118: .4byte 0x0300640C
-_0802111C: .4byte sub_080199B4
-_08021120: .4byte sub_0802173C
-
-	thumb_func_start sub_08021124
-sub_08021124: @ 0x08021124
-	push {r4, r5, r6, r7, lr}
-	adds r6, r0, #0
-	adds r7, r1, #0
-	ldr r4, _08021130 @ =0x03006410
-	b _08021138
-	.align 2, 0
-_08021130: .4byte 0x03006410
-_08021134:
-	bl WaitFrame
-_08021138:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _08021134
-	ldr r4, _08021178 @ =0x03006410
-	ldr r1, [r4]
-	ldr r0, _0802117C @ =sub_08019C40
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x56
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	adds r1, r6, #0
-	adds r2, r7, #0
-	bl CreateThread
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021178: .4byte 0x03006410
-_0802117C: .4byte sub_08019C40
-
-	thumb_func_start sub_08021180
-sub_08021180: @ 0x08021180
-	push {r4, r5, lr}
-	ldr r4, _08021188 @ =0x03006404
-	b _08021190
-	.align 2, 0
-_08021188: .4byte 0x03006404
-_0802118C:
-	bl WaitFrame
-_08021190:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _0802118C
-	ldr r4, _080211CC @ =0x03006404
-	ldr r1, [r4]
-	ldr r0, _080211D0 @ =sub_0801AF3C
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl sub_08001430
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080211CC: .4byte 0x03006404
-_080211D0: .4byte sub_0801AF3C
-
-	thumb_func_start sub_080211D4
-sub_080211D4: @ 0x080211D4
-	push {r4, r5, lr}
-	ldr r4, _080211DC @ =0x030063F0
-	b _080211E4
-	.align 2, 0
-_080211DC: .4byte 0x030063F0
-_080211E0:
-	bl WaitFrame
-_080211E4:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _080211E0
-	ldr r4, _08021220 @ =0x030063F0
-	ldr r1, [r4]
-	ldr r0, _08021224 @ =sub_0801CDE0
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021220: .4byte 0x030063F0
-_08021224: .4byte sub_0801CDE0
-
-	thumb_func_start sub_08021228
-sub_08021228: @ 0x08021228
-	push {r4, r5, lr}
-	ldr r4, _08021230 @ =0x030063FC
-	b _08021238
-	.align 2, 0
-_08021230: .4byte 0x030063FC
-_08021234:
-	bl WaitFrame
-_08021238:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _08021234
-	ldr r4, _08021274 @ =0x030063FC
-	ldr r1, [r4]
-	ldr r0, _08021278 @ =sub_0801CFB0
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021274: .4byte 0x030063FC
-_08021278: .4byte sub_0801CFB0
-
-	thumb_func_start sub_0802127C
-sub_0802127C: @ 0x0802127C
-	push {r4, r5, lr}
-	ldr r4, _08021284 @ =0x030063DC
-	b _0802128C
-	.align 2, 0
-_08021284: .4byte 0x030063DC
-_08021288:
-	bl WaitFrame
-_0802128C:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _08021288
-	ldr r4, _080212C8 @ =0x030063DC
-	ldr r1, [r4]
-	ldr r0, _080212CC @ =sub_0801D2C4
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080212C8: .4byte 0x030063DC
-_080212CC: .4byte sub_0801D2C4
-
-	thumb_func_start sub_080212D0
-sub_080212D0: @ 0x080212D0
-	push {r4, r5, lr}
-	ldr r4, _080212D8 @ =0x030063E0
-	b _080212E0
-	.align 2, 0
-_080212D8: .4byte 0x030063E0
-_080212DC:
-	bl WaitFrame
-_080212E0:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _080212DC
-	ldr r4, _0802131C @ =0x030063E0
-	ldr r1, [r4]
-	ldr r0, _08021320 @ =sub_0801D5D8
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0802131C: .4byte 0x030063E0
-_08021320: .4byte sub_0801D5D8
-
-	thumb_func_start sub_08021324
-sub_08021324: @ 0x08021324
-	push {r4, r5, lr}
-	ldr r4, _0802132C @ =0x030063E0
-	b _08021334
-	.align 2, 0
-_0802132C: .4byte 0x030063E0
-_08021330:
-	bl WaitFrame
-_08021334:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _08021330
-	ldr r4, _08021370 @ =0x030063CC
-	ldr r1, [r4]
-	ldr r0, _08021374 @ =sub_0801D928
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021370: .4byte 0x030063CC
-_08021374: .4byte sub_0801D928
-
-	thumb_func_start sub_08021378
-sub_08021378: @ 0x08021378
-	push {r4, r5, lr}
-	ldr r4, _08021380 @ =0x030063F8
-	b _08021388
-	.align 2, 0
-_08021380: .4byte 0x030063F8
-_08021384:
-	bl WaitFrame
-_08021388:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _08021384
-	ldr r4, _080213C4 @ =0x030063F8
-	ldr r1, [r4]
-	ldr r0, _080213C8 @ =sub_0801DBC8
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080213C4: .4byte 0x030063F8
-_080213C8: .4byte sub_0801DBC8
-
-	thumb_func_start sub_080213CC
-sub_080213CC: @ 0x080213CC
-	push {r4, r5, lr}
-	ldr r4, _080213D4 @ =0x030063E8
-	b _080213DC
-	.align 2, 0
-_080213D4: .4byte 0x030063E8
-_080213D8:
-	bl WaitFrame
-_080213DC:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _080213D8
-	ldr r4, _08021418 @ =0x030063E8
-	ldr r1, [r4]
-	ldr r0, _0802141C @ =sub_0801E014
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021418: .4byte 0x030063E8
-_0802141C: .4byte sub_0801E014
-
-	thumb_func_start sub_08021420
-sub_08021420: @ 0x08021420
-	push {r4, r5, lr}
-	ldr r4, _08021428 @ =0x030063D4
-	b _08021430
-	.align 2, 0
-_08021428: .4byte 0x030063D4
-_0802142C:
-	bl WaitFrame
-_08021430:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _0802142C
-	ldr r4, _0802146C @ =0x030063D4
-	ldr r1, [r4]
-	ldr r0, _08021470 @ =sub_0801E5C0
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0802146C: .4byte 0x030063D4
-_08021470: .4byte sub_0801E5C0
-
-	thumb_func_start sub_08021474
-sub_08021474: @ 0x08021474
-	push {r4, r5, lr}
-	ldr r4, _0802147C @ =0x03006414
-	b _08021484
-	.align 2, 0
-_0802147C: .4byte 0x03006414
-_08021480:
-	bl WaitFrame
-_08021484:
-	ldr r0, [r4]
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _08021480
-	ldr r4, _080214C0 @ =0x03006414
-	ldr r1, [r4]
-	ldr r0, _080214C4 @ =sub_0801EA78
-	str r0, [r1, #0xc]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	ldr r1, [r4]
-	str r0, [r1, #0x20]
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1, #0x10]
-	movs r0, #0x46
-	str r0, [r1, #8]
-	str r5, [r1, #0x24]
-	adds r0, r1, #0
-	bl CreateThread
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080214C0: .4byte 0x03006414
-_080214C4: .4byte sub_0801EA78
