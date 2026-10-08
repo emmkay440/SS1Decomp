@@ -128,6 +128,7 @@ gSoundThread = 0x03006850;
 gMusicEnabled = 0x0300687C;
 gUnknownThread_030068F0 = 0x030068F0;
 gUnknown_03006918 = 0x03006918;
+gUnknown_03006920 = 0x03006920;
 gSoundInfo = 0x03006960;
 gMPlayJumpTable = 0x030072E0;
 gCgbChans = 0x03007370;

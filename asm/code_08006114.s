@@ -63,7 +63,7 @@ _08006168:
 	adds r1, #0x44
 	movs r0, #0x10
 	strh r0, [r1]
-	ldr r0, _080061D4 @ =0x03006920
+	ldr r0, _080061D4 @ =gUnknown_03006920
 	strb r3, [r0]
 	bl sub_0804C9C4
 	bl WaitFrame
@@ -97,7 +97,7 @@ _080061BC:
 	b _080061F0
 	.align 2, 0
 _080061D0: .4byte gBgRegsBuffer
-_080061D4: .4byte 0x03006920
+_080061D4: .4byte gUnknown_03006920
 _080061D8: .4byte 0x11201100
 _080061DC: .4byte 0xFFFF0000
 _080061E0: .4byte 0x00001C08
@@ -314,7 +314,7 @@ _080063D0:
 	strb r0, [r1]
 	movs r0, #1
 	bl QuitToTitle
-	ldr r1, _0800640C @ =0x03006920
+	ldr r1, _0800640C @ =gUnknown_03006920
 	movs r0, #1
 	strb r0, [r1]
 	bl sub_0804C9C4
@@ -329,7 +329,7 @@ _080063D0:
 	.align 2, 0
 _08006404: .4byte gPlayerStats
 _08006408: .4byte 0x00000275
-_0800640C: .4byte 0x03006920
+_0800640C: .4byte gUnknown_03006920
 _08006410: .4byte 0x11201100
 
 	thumb_func_start sub_08006414

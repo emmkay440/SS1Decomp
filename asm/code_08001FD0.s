@@ -854,13 +854,13 @@ _08002728:
 	beq _08002734
 	bl sub_08001E40
 _08002734:
-	ldr r1, _08002740 @ =0x03006920
+	ldr r1, _08002740 @ =gUnknown_03006920
 	movs r0, #0
 	strb r0, [r1]
 	bl sub_0804C9C4
 	b _08002356
 	.align 2, 0
-_08002740: .4byte 0x03006920
+_08002740: .4byte gUnknown_03006920
 
 	thumb_func_start StartTitleMenu
 StartTitleMenu: @ 0x08002744
