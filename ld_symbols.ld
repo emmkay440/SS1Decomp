@@ -30,6 +30,7 @@ gUnknown_030004A8 = 0x030004A8;
 gMenuSelectedItem = 0x030004AC;
 gMenuStatBlock = 0x030004B0;
 gMenuSkillBlock = 0x030004B4;
+gUnknown_030004B8 = 0x030004B8;
 gMenuSelectedSlot = 0x030004BC;
 gUnknown_030004C0 = 0x030004C0;
 gUnknown_030005B8 = 0x030005B8;

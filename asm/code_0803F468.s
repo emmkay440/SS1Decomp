@@ -223,7 +223,7 @@ sub_0803F5E8: @ 0x0803F5E8
 	str r0, [r1]
 	ldr r1, _0803F69C @ =gMenuSkillBlock
 	str r0, [r1]
-	ldr r1, _0803F6A0 @ =0x030004B8
+	ldr r1, _0803F6A0 @ =gUnknown_030004B8
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -248,7 +248,7 @@ _0803F690: .4byte gUnknown_030004A8
 _0803F694: .4byte gMenuSelectedItem
 _0803F698: .4byte gMenuStatBlock
 _0803F69C: .4byte gMenuSkillBlock
-_0803F6A0: .4byte 0x030004B8
+_0803F6A0: .4byte gUnknown_030004B8
 
 	thumb_func_start sub_0803F6A4
 sub_0803F6A4: @ 0x0803F6A4
@@ -301,7 +301,7 @@ _0803F6FA:
 	beq _0803F706
 	bl Free
 _0803F706:
-	ldr r0, _0803F738 @ =0x030004B8
+	ldr r0, _0803F738 @ =gUnknown_030004B8
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0803F712
@@ -318,7 +318,7 @@ _0803F728: .4byte gUnknown_030004A4
 _0803F72C: .4byte gUnknown_030004A8
 _0803F730: .4byte gMenuStatBlock
 _0803F734: .4byte gMenuSkillBlock
-_0803F738: .4byte 0x030004B8
+_0803F738: .4byte gUnknown_030004B8
 
 	thumb_func_start sub_0803F73C
 sub_0803F73C: @ 0x0803F73C
@@ -512,7 +512,7 @@ _0803F8F4: .4byte gMenuSavedSkillPoints
 _0803F8F8:
 	cmp r1, #9
 	bne _0803F912
-	ldr r4, _0803F920 @ =0x030004B8
+	ldr r4, _0803F920 @ =gUnknown_030004B8
 	movs r0, #4
 	bl Alloc
 	str r0, [r4]
@@ -528,7 +528,7 @@ _0803F912:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803F920: .4byte 0x030004B8
+_0803F920: .4byte gUnknown_030004B8
 _0803F924: .4byte 0x03000488
 
 	thumb_func_start ApplyMenuChanges
@@ -594,7 +594,7 @@ _0803F9B0:
 	cmp r0, #9
 	bne _0803F9CA
 _0803F9B6:
-	ldr r4, _0803F9D0 @ =0x030004B8
+	ldr r4, _0803F9D0 @ =gUnknown_030004B8
 	ldr r0, [r4]
 	bl SetOptions
 	ldr r0, [r4]
@@ -607,7 +607,7 @@ _0803F9CA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803F9D0: .4byte 0x030004B8
+_0803F9D0: .4byte gUnknown_030004B8
 
 	thumb_func_start sub_0803F9D4
 sub_0803F9D4: @ 0x0803F9D4
