@@ -57,6 +57,8 @@ SECTIONS {
         asm/code_0801406C.o(.text);
         src/equipment.o(.text);
         asm/code_08014220.o(.text);
+        src/item_bonus.o(.text);
+        asm/code_08014CB8.o(.text);
         src/stats.o(.text);
         asm/code_08016F00.o(.text);
         src/player_stats_ptr.o(.text);
