@@ -217,7 +217,10 @@ def check(func):
     """(status, details): status in 'compile', 'differs', 'match'."""
     rc, out = sh("make 2>&1")
     if rc != 0:
-        errs = [l for l in out.splitlines() if "error" in l.lower() or "undefined" in l.lower()]
+        # agbcc messages don't always say "error" (e.g. "conflicting types"),
+        # so keep every line that points at a source line, plus linker errors.
+        errs = [l for l in out.splitlines()
+                if re.search(r"\.[ch]:\d+:", l) or "undefined reference" in l]
         return "compile", "\n".join(errs[:25]) or out[-2000:]
     rc, out = sh(f"python3 tools/scripts/fcheck.py {func}")
     if " OK " in out:
