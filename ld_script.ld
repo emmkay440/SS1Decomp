@@ -19,6 +19,7 @@ SECTIONS {
         src/intr_handlers.o(.text);
         src/copy_queue.o(.text);
         asm/code_08001210.o(.text);
+        src/lib/multi_sio.o(.text);
         src/save.o(.text);
         asm/code_08001970.o(.text);
         src/link.o(.text);

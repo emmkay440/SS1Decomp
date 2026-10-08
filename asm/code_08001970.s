@@ -61,7 +61,7 @@ sub_08001A00: @ 0x08001A00
 	mov r7, r8
 	push {r7}
 	sub sp, #0x10
-	bl sub_08001504
+	bl MultiSioInit
 	ldr r1, _08001A2C @ =gLinkStatus
 	movs r0, #1
 	str r0, [r1]
@@ -88,9 +88,9 @@ _08001A38:
 	str r0, [r5]
 	ldr r0, _08001AB8 @ =gUnknown_030030B0
 	ldr r1, _08001ABC @ =gUnknown_03003100
-	bl sub_080015FC
+	bl MultiSioMain
 	str r0, [r4]
-	bl sub_08001848
+	bl MultiSioStart
 	ldr r0, [r4]
 	movs r1, #0xe0
 	lsls r1, r1, #4
@@ -139,7 +139,7 @@ _08001A9A:
 	str r1, [r0]
 	ldr r0, _08001AB8 @ =gUnknown_030030B0
 	ldr r1, _08001ABC @ =gUnknown_03003100
-	bl sub_080015FC
+	bl MultiSioMain
 	mov r1, r8
 	str r0, [r1]
 	movs r5, #0
@@ -214,7 +214,7 @@ _08001B12:
 	lsls r0, r0, #5
 	bl _08000400
 _08001B3E:
-	bl sub_08001848
+	bl MultiSioStart
 	ldr r0, [r6]
 	movs r1, #0x80
 	lsls r1, r1, #0x17
@@ -222,7 +222,7 @@ _08001B3E:
 	cmp r0, #0
 	beq _08001A9A
 _08001B4E:
-	bl sub_0800185C
+	bl MultiSioStop
 	ldr r1, _08001B70 @ =gLinkStatus
 	movs r0, #0x80
 	lsls r0, r0, #0x18

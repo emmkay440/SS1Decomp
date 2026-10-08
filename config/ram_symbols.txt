@@ -177,3 +177,6 @@
 0300095A gUnknown_0300095A      # u16, save select mode7 (zeroed / allocated by its setup)
 0300095C gUnknown_0300095C      # void *, save select mode7 (zeroed / allocated by its setup)
 03006380 gUnknownThread_03006380 # struct Thread, entry sub_08013264 (sub_08014CB8)
+03002EB0 gMultiSioArea          # struct MultiSioArea (include/multi_sio.h); MultiSio library work area
+03003060 gMultiSioRecvFuncBuf   # u32[0x10]: RAM copy of MultiSioRecvBufChange (MultiSioInit)
+03002D90 gMultiSioIntrFuncBuf   # u32[0x48]: RAM copy of MultiSioIntr (MultiSioInit)

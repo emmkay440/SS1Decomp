@@ -19,7 +19,7 @@ are medium functions (menus, items, map) and the near misses below.
 - [ ] Turn the trace and watch results into names (`tools/scripts/rename.py`,
       `config/ram_symbols.txt` + `apply_syms.py`). Run `make progress RECORD=1`
       after each batch.
-- [ ] MultiSio link-cable library: functions that touch the SIO registers
+- [x] MultiSio link-cable library (`src/lib/multi_sio.c`, adapted from SAT-R/sa1). Left: the ARM `MultiSioRecvBufChange`/`MultiSioIntr` bytes in asm/code.s. Was: functions that touch the SIO registers
       around 0x080015xx-0x08001Dxx. It's a Nintendo SDK library ("MultiSio010214"
       string at 0x08052B50), so its names are known; match them by
       structure.

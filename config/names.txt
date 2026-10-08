@@ -333,3 +333,9 @@
 08000F7C SetVCountLine            # (u8 line): DISPSTAT VCount setting; was disassembled as data
 08000F98 sub_08000F98             # clears DISPSTAT bit 2; was disassembled as data
 08016F98 GetPlayerStats
+08001504 MultiSioInit
+080015FC MultiSioMain
+08001714 MultiSioSendDataSet
+08001788 MultiSioRecvDataCheck
+08001848 MultiSioStart
+0800185C MultiSioStop
