@@ -22,7 +22,7 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
 
 ## Current state (2026-10-08)
 
-318 / 989 game functions are matching C (`make progress`); every module in
+401 / 1000 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
