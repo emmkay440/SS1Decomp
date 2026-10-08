@@ -173,11 +173,17 @@ def chat(model, messages, temperature, timeout=900):
         return json.loads(resp.read())["message"]["content"]
 
 
+# Prompt lines the model tends to copy into its answer.
+ECHO = re.compile(r'^\s*(#include "global\.h"|// ---- .*\(matches the ROM\) ----'
+                  r'|// .*(no C declaration yet|has no name: refer to it as)).*\n', re.M)
+
+
 def extract_c(text):
     m = re.findall(r"```(?:c|C)?\n(.*?)```", text, re.S)
-    if m:
-        return max(m, key=len)
-    return text
+    code = max(m, key=len) if m else text
+    code = ECHO.sub("", code)
+    code = re.sub(r"[ \t]+// from src/\S+\.c$", "", code, flags=re.M)
+    return code.strip("\n")
 
 
 # ---------------------------------------------------------------- build

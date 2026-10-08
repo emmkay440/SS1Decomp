@@ -36,3 +36,7 @@ Rules for matching this compiler (agbcc, GCC 2.95 for THUMB):
 - Don't store pointers in integer variables or do pointer math on integers;
   use pointer types (a struct pointer for `[rX, #offset]` accesses).
 - Give variables real names, not register names.
+- Don't copy the prompt's comments (file headers, "no C declaration yet",
+  "has no name") into the code, and don't add `#include "global.h"` (it's
+  added for you). Only comment what the code shows; no comments that restate
+  the obvious ("returns 0").

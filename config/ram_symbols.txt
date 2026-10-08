@@ -106,7 +106,7 @@
 0300060C gUnknown_0300060C      # heap pointer
 03000610 gUnknown_03000610      # heap pointer
 03000764 gUnknown_03000764      # struct SaveSlotInfo * (passed to sub_0802F374)
-03000768 gUnknown_03000768      # u8: selects the cleanup in sub_08048614
+03000768 gUnknown_03000768      # u8: save-select mode 0-8; sub_080486C8, sub_08048740 and the cleanup sub_08048614 switch on it
 030068F0 gUnknownThread_030068F0 # struct Thread, entry sub_080485E0
 03006918 gUnknown_03006918      # u8
 030063E4 gUnknownThreadPtr_030063E4 # struct Thread *; src/thread_starters.c starts different entries on it
@@ -123,19 +123,19 @@
 030063BC gUnknown_030063BC      # u32, set to 0 by InitFieldItems
 03006430 gUnknown_03006430      # struct SpriteObj? (returned by sub_08026C78)
 03002D60 gUnknown_03002D60      # u32, cleared by InitVBlankState
-03000064 gUnknown_03000064      # added by autodecomp
-030004B8 gUnknown_030004B8      # added by autodecomp
-030004C8 gUnknown_030004C8      # added by autodecomp
-03006334 gUnknown_03006334      # added by autodecomp
-030064D8 gUnknown_030064D8      # added by autodecomp
-030066E8 gUnknown_030066E8      # added by autodecomp
-03000A48 gUnknown_03000A48      # added by autodecomp
-03000074 gUnknown_03000074      # added by autodecomp
-03000076 gUnknown_03000076      # added by autodecomp
-03000910 gUnknown_03000910      # added by autodecomp
-03000912 gUnknown_03000912      # added by autodecomp
-030031A8 gUnknown_030031A8      # added by autodecomp
-03000998 gUnknown_03000998      # added by autodecomp
-0300099A gUnknown_0300099A      # added by autodecomp
-0300099C gUnknown_0300099C      # added by autodecomp
-03006920 gUnknown_03006920      # added by autodecomp
+03000064 gUnknown_03000064      # struct * (3 x 0x28, Alloc'd by sub_08038924; +8 cleared)
+030004B8 gUnknown_030004B8      # u32, returned by sub_0804152C
+030004C8 gUnknown_030004C8      # u8, set by sub_08043D3C (value from sub_0803F5C8)
+03006334 gUnknown_03006334      # u16, set to 1 by sub_0800ED74
+030064D8 gUnknown_030064D8      # u32, cleared by sub_08026AD0; read in many modules
+030066E8 gUnknown_030066E8      # u32, cleared by sub_080292D0
+03000A48 gUnknown_03000A48      # u32, cleared by sub_0804E1E4
+03000074 gUnknown_03000074      # u16, set by sub_0803BEE8 (with 03000076)
+03000076 gUnknown_03000076      # u16, set by sub_0803BEE8
+03000910 gUnknown_03000910      # u16, cleared by sub_0804BB88 (save select mode 6 area)
+03000912 gUnknown_03000912      # u16, cleared by sub_0804BB88
+030031A8 gUnknown_030031A8      # u32; sub_0800277C tests == 2
+03000998 gUnknown_03000998      # u16, cleared by sub_0804C9A4 (save select mode 8 area)
+0300099A gUnknown_0300099A      # u16, cleared by sub_0804C9A4
+0300099C gUnknown_0300099C      # u16, cleared by sub_0804C9A4
+03006920 gUnknown_03006920      # u8; sub_0804CA6C calls sub_0804E1F0 when 0
