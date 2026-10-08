@@ -18,6 +18,7 @@ SECTIONS {
         asm/hblank.o(.text);
         src/intr_handlers.o(.text);
         asm/code_080010F4.o(.text);
+        src/ad_sub_080010f4.o(.text);
         src/copy_queue.o(.text);
         asm/code_08001210.o(.text);
         src/save.o(.text);
