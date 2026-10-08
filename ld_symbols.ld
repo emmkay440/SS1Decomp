@@ -10,6 +10,7 @@ gFadeDuration = 0x03000018;
 gFadeTimer = 0x0300001A;
 gFadeDirection = 0x0300001E;
 gFadeFlags = 0x03000020;
+gUnknown_03000064 = 0x03000064;
 gMenuPage = 0x03000478;
 gUnknown_03000479 = 0x03000479;
 gUnknown_0300047A = 0x0300047A;

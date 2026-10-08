@@ -123,3 +123,4 @@
 030063BC gUnknown_030063BC      # u32, set to 0 by InitFieldItems
 03006430 gUnknown_03006430      # struct SpriteObj? (returned by sub_08026C78)
 03002D60 gUnknown_03002D60      # u32, cleared by InitVBlankState
+03000064 gUnknown_03000064      # added by autodecomp
