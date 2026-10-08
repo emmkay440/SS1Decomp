@@ -21,6 +21,7 @@ gUnknown_0300047C = 0x0300047C;
 gMenuSavedStatPoints = 0x0300047E;
 gMenuSavedSkillPoints = 0x03000480;
 gMenuHeldCount = 0x03000484;
+gUnknown_03000488 = 0x03000488;
 gUnknown_0300048C = 0x0300048C;
 gUnknown_03000490 = 0x03000490;
 gUnknown_03000494 = 0x03000494;

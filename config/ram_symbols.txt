@@ -203,3 +203,4 @@
 030067D0 gUnknown_030067D0      # struct Thread *[]: pools for characters 4 and up
 030067F0 gUnknown_030067F0      # vu32[4]: in-use masks of the gUnknown_030067C0 pools
 03006814 gUnknown_03006814      # added by autodecomp
+03000488 gUnknown_03000488      # added by autodecomp

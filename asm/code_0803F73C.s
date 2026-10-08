@@ -205,14 +205,14 @@ _0803F8F8:
 	bl GetOptions
 _0803F912:
 	bl sub_08040D44
-	ldr r1, _0803F924 @ =0x03000488
+	ldr r1, _0803F924 @ =gUnknown_03000488
 	str r0, [r1]
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0803F920: .4byte gUnknown_030004B8
-_0803F924: .4byte 0x03000488
+_0803F924: .4byte gUnknown_03000488
 
 	thumb_func_start ApplyMenuChanges
 ApplyMenuChanges: @ 0x0803F928
@@ -2180,7 +2180,7 @@ _080407DE:
 	ldr r2, [r0]
 	movs r5, #0
 	movs r0, #0
-	ldr r6, _08040830 @ =0x03000488
+	ldr r6, _08040830 @ =gUnknown_03000488
 _080407E6:
 	movs r3, #0
 	adds r4, r0, #1
@@ -2220,7 +2220,7 @@ _0804081C:
 	b _08040860
 	.align 2, 0
 _0804082C: .4byte gUnknown_030004A4
-_08040830: .4byte 0x03000488
+_08040830: .4byte gUnknown_03000488
 _08040834:
 	movs r0, #0x80
 	bl PlaySE
