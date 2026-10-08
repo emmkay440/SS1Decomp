@@ -4,8 +4,10 @@
 For each candidate asm function (smallest first):
   1. carve it into its own module (tools/scripts/split_asm.py)
   2. ask the model for C, compile it, compare with the original
-  3. on compile errors / mismatches, show the model the error or the
-     instruction diff and let it try again (up to --attempts)
+  3. each round asks for --samples answers at spread temperatures; the
+     closest one (fewest differing lines) gets the error or diff back for
+     the next round (--attempts rounds); optionally decomp-permuter then
+     runs on the closest answer (--permute SECONDS)
   4. if the function and the whole ROM match: retire the asm, commit
      otherwise: roll everything back (git) and remember the failure
 
@@ -13,8 +15,9 @@ Safety: refuses to run on master or with a dirty tree, never pushes, only
 commits when `make compare` succeeds. Create tools/autodecomp/STOP to make it
 stop after the current function.
 
-usage: tools/autodecomp/autodecomp.py [--model gemma4:12b] [--attempts 6]
-                                      [--max-insns 80] [--once] [--func NAME]
+usage: tools/autodecomp/autodecomp.py [--model gemma4:12b] [--attempts 3] [--samples 4]
+                                      [--permute SECONDS] [--no-examples]
+                                      [--max-insns 80] [--once] [--func NAME] [--prompt NAME]
 """
 import argparse, glob, json, math, os, re, subprocess, sys, time, urllib.request
 
@@ -359,7 +362,7 @@ LINT = [
     (re.compile(r"\(\s*(?:const\s+)?(?:volatile\s+)?\w+\s*\*+\s*\)\s*0x0?[2-9][0-9A-Fa-f]{6}"),
      "Don't cast raw addresses to pointers. Use the named global instead: "
      "`extern <type> gUnknown_0300XXXX;` (or the name given in the declarations)."),
-    (re.compile(r"\basm\s*\("), "Don't use inline assembly."),
+    (re.compile(r"\b(?:__)?asm(?:__)?\s*(?:(?:__)?volatile(?:__)?\s*)?\("), "Don't use inline assembly (asm, __asm__): write C."),
     (re.compile(r"\b(?:u32|s32|u16|s16|u8|s8)\s+r\d+\b"),
      "Don't name variables after registers (r0, r1...): use descriptive names."),
 ]
@@ -391,7 +394,7 @@ def rollback():
     sh("git clean -fdq -- asm src include config")
 
 
-def build_prompt(func, body):
+def build_prompt(func, body, with_examples=True):
     """([system, user] messages, headers the C file gets included)."""
     decls, headers, structs = context_for(body)
     others = ", ".join(f"{h} ({', '.join('struct ' + s for s in ss)})" if ss else h
@@ -411,7 +414,7 @@ def build_prompt(func, body):
     user += f"Declarations of what it uses:\n```c\n{decls}\n```\n\n"
     if structs:
         user += f"Struct definitions (use these field names):\n```c\n{structs}\n```\n\n"
-    ex = examples(body)
+    ex = examples(body) if with_examples else ""
     if ex:
         user += ("Matched functions from this project that look similar (the "
                  f"original asm, then the C that compiles to it):\n\n{ex}")
@@ -431,9 +434,111 @@ def with_includes(code, headers):
     return inc + "\n" + code + "\n"
 
 
+# ---------------------------------------------------------------- permuter
+
+PERMUTER = "tools/decomp-permuter"
+
+
+def diff_score(details):
+    """Number of differing lines in a checkfunc.py diff (lower is closer)."""
+    return sum(1 for l in details.splitlines()
+               if " | " in l or l.rstrip().endswith(" <") or " > " in l) or 1
+
+
+def function_text(src, name):
+    """The definition of `name` in C source `src`, or None."""
+    m = re.search(rf"^[A-Za-z_][\w \t\*]*?\b{re.escape(name)}\(([^;{{)]*)\)\s*\n?\{{", src, re.M)
+    if not m:
+        return None
+    depth, i = 0, m.end() - 1
+    while i < len(src):
+        depth += {"{": 1, "}": -1}.get(src[i], 0)
+        if depth == 0:
+            return src[m.start():i + 1]
+        i += 1
+    return None
+
+
+def permute(func, module, seconds):
+    """Run decomp-permuter on src/<module>.c (already written) against the
+    original asm. Returns the permuted function's C text if it found a
+    perfect score, else None."""
+    if not os.path.exists(f"{PERMUTER}/permuter.py"):
+        log(func, "permuter: tools/decomp-permuter missing (run tools/setup.sh)")
+        return None
+    d = os.path.abspath(f"tmp/autodecomp/permute/{func}")
+    sh(f"rm -rf '{d}' && mkdir -p '{d}'")
+    rc, out = sh(f"arm-none-eabi-as -mcpu=arm7tdmi -I include -o '{d}/target.o' asm/{module}.s")
+    if rc != 0:
+        log(func, f"permuter: can't assemble the target: {out[-500:]}")
+        return None
+    rc, out = sh(f"arm-none-eabi-cpp -nostdinc -I include -I tools/agbcc/include -iquote include "
+                 f"-P src/{module}.c > '{d}/base.c'")
+    if rc != 0:
+        return None
+    root = os.getcwd()
+    with open(f"{d}/compile.sh", "w") as f:
+        f.write("#!/bin/sh\n# usage: compile.sh in.c -o out.o\nset -e\n"
+                f"'{root}/tools/agbcc/bin/agbcc' -mthumb-interwork -Wimplicit -Wparentheses "
+                "-O2 -fhex-asm -fprologue-bugfix -o \"$3.s\" \"$1\"\n"
+                "printf '\\t.text\\n\\t.align 2, 0\\n' >> \"$3.s\"\n"
+                "arm-none-eabi-as -mcpu=arm7tdmi -o \"$3\" \"$3.s\"\n")
+    os.chmod(f"{d}/compile.sh", 0o755)
+    with open(f"{d}/settings.toml", "w") as f:
+        f.write(f'func_name = "{func}"\ncompiler_type = "gcc"\n')
+    jobs = max(1, (os.cpu_count() or 2) - 1)
+    try:
+        subprocess.run([f"{PERMUTER}/.venv/bin/python", f"{PERMUTER}/permuter.py", d,
+                        "--stop-on-zero", "--better-only", "--quiet", "-j", str(jobs)],
+                       capture_output=True, timeout=seconds)
+    except subprocess.TimeoutExpired:
+        pass
+    outs = sorted(glob.glob(f"{d}/output-*"), key=lambda o: int(o.split("-")[-2]))
+    if not outs:
+        log(func, f"permuter: nothing better in {seconds}s")
+        return None
+    score = int(outs[0].split("-")[-2])
+    log(func, f"permuter: best score {score} ({outs[0]})")
+    if score != 0:
+        return None
+    return function_text(open(f"{outs[0]}/source.c").read(), func)
+
+
 # ---------------------------------------------------------------- main loop
 
-def attempt(func, path, body, nxt, model, attempts):
+def commit(func, module, model, how=""):
+    """True if the ROM matches and the function got committed."""
+    rc, out = sh("make compare")
+    if rc != 0:
+        return False, out
+    os.makedirs("tmp/autodecomp", exist_ok=True)
+    sh(f"mv asm/{module}.s tmp/autodecomp/ && rm -f asm/{module}.o")
+    rc, out = sh("make compare")
+    if rc != 0:
+        return False, out
+    sh("git add -A")
+    rc, out = sh(f"git commit -q -m 'autodecomp: {func}' "
+                 f"-m 'Decompiled by {model}{how} via tools/autodecomp.'")
+    return rc == 0, out
+
+
+def feedback(status, details):
+    if status == "lint":
+        return ("Rejected before compiling:\n- " + details +
+                "\nReply with the full corrected ```c block.")
+    if status == "compile":
+        return (f"That doesn't compile:\n```\n{details}\n```\nFix it. "
+                "Reply with the full corrected ```c block.")
+    return ("That compiles but doesn't match. Left column is your build, "
+            "right is the original (| = different, < > = missing). "
+            "Change the C (statement order, types, signedness, "
+            "temporaries, if/else layout) so the left matches the right.\n"
+            f"```\n{details}\n```\nReply with the full corrected ```c block.")
+
+
+def attempt(func, path, body, nxt, args):
+    """Rounds of `samples` answers each; every round refines the closest
+    answer so far. Then, optionally, decomp-permuter on the closest one."""
     module = "ad_" + func.lower()
     rc, out = sh(f"python3 tools/scripts/split_asm.py {path} {func} {nxt or '-'} {module}")
     if rc != 0:
@@ -442,63 +547,77 @@ def attempt(func, path, body, nxt, model, attempts):
     ld = open("ld_script.ld").read()
     open("ld_script.ld", "w").write(ld.replace(f"asm/{module}.o(.text);", f"src/{module}.o(.text);"))
 
-    messages, headers = build_prompt(func, body)
+    base, headers = build_prompt(func, body, not args.no_examples)
+    convo = list(base)
+    best = None      # (score, code, reply, status, details); lower score is closer
+    n = 0
+    for r in range(args.attempts):
+        for k in range(args.samples):
+            n += 1
+            temp = 0.2 + 0.6 * k / max(args.samples - 1, 1)
+            try:
+                reply = chat(args.model, convo, temp)
+            except Exception as e:
+                log(func, f"model error: {e}")
+                time.sleep(30)
+                continue
+            code = extract_c(reply)
+            problems = lint(code)
+            if problems:
+                status, details, score = "lint", "\n- ".join(problems), 10000
+            else:
+                unknown_symbols(code)
+                open(f"src/{module}.c", "w").write(with_includes(code, headers))
+                status, details = check(func)
+                score = {"match": 0, "differs": None, "compile": 1000}[status]
+                if status == "differs":
+                    score = diff_score(details)
+            log(func, f"--- attempt {n} (round {r + 1}, t={temp:.2f}): {status}\n{code}\n{details}")
+            if status == "match":
+                ok, out = commit(func, module, args.model)
+                if ok:
+                    return True
+                status, details, score = "differs", "The function matches but the ROM doesn't:\n" + out[-1500:], 1
+            if best is None or score < best[0]:
+                best = (score, code, reply, status, details)
+        if best is None:
+            continue
+        # next round: start over from the closest answer, not the last one
+        convo = base + [{"role": "assistant", "content": best[2]},
+                        {"role": "user", "content": feedback(best[3], best[4])}]
 
-    for i in range(attempts):
-        temp = 0.2 + 0.15 * i
-        try:
-            reply = chat(model, messages, temp)
-        except Exception as e:
-            log(func, f"model error: {e}")
-            time.sleep(30)
-            continue
-        code = extract_c(reply)
-        problems = lint(code)
-        if problems:
-            log(func, f"--- attempt {i + 1}: lint\n{code}\n" + "\n".join(problems))
-            messages.append({"role": "assistant", "content": reply})
-            messages.append({"role": "user", "content":
-                             "Rejected before compiling:\n- " + "\n- ".join(problems) +
-                             "\nReply with the full corrected ```c block."})
-            continue
+    if best is None:
+        return False
+    score, code, reply, status, details = best
+    os.makedirs("tmp/autodecomp/drafts", exist_ok=True)
+    with open(f"tmp/autodecomp/drafts/{func}.c", "w") as f:
+        f.write(f"// closest attempt: {status}, {score} differing lines ({args.model})\n"
+                + with_includes(code, headers))
+    if status == "differs" and args.permute > 0:
         unknown_symbols(code)
         open(f"src/{module}.c", "w").write(with_includes(code, headers))
-        status, details = check(func)
-        log(func, f"--- attempt {i + 1}: {status}\n{code}\n{details}")
-        if status == "match":
-            rc, out = sh("make compare")
-            if rc == 0:
-                os.makedirs("tmp/autodecomp", exist_ok=True)
-                sh(f"mv asm/{module}.s tmp/autodecomp/ && rm -f asm/{module}.o")
-                rc, out = sh("make compare")
-                if rc == 0:
-                    sh("git add -A")
-                    rc, out = sh(f"git commit -q -m 'autodecomp: {func}' "
-                                 f"-m 'Decompiled by {model} via tools/autodecomp.'")
-                    return rc == 0
-            details = "The function matches but the ROM doesn't:\n" + out[-1500:]
-        messages.append({"role": "assistant", "content": reply})
-        if status == "compile":
-            messages.append({"role": "user", "content":
-                             f"That doesn't compile:\n```\n{details}\n```\nFix it. "
-                             "Reply with the full corrected ```c block."})
-        else:
-            messages.append({"role": "user", "content":
-                             "That compiles but doesn't match. Left column is your build, "
-                             "right is the original (| = different, < > = missing). "
-                             "Change the C (statement order, types, signedness, "
-                             "temporaries, if/else layout) so the left matches the right.\n"
-                             f"```\n{details}\n```\nReply with the full corrected ```c block."})
-        # keep the conversation from outgrowing the context
-        if len(messages) > 8:
-            messages = messages[:2] + messages[-4:]
+        found = permute(func, module, args.permute)
+        if found:
+            fixed = function_text(code, func)
+            code = code.replace(fixed, found) if fixed else code
+            open(f"src/{module}.c", "w").write(with_includes(code, headers))
+            status, details = check(func)
+            log(func, f"--- permuter result: {status}\n{code}\n{details}")
+            if status == "match":
+                ok, out = commit(func, module, args.model, " + decomp-permuter")
+                return ok
     return False
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="gemma4:12b")
-    ap.add_argument("--attempts", type=int, default=6)
+    ap.add_argument("--attempts", type=int, default=3, help="refinement rounds")
+    ap.add_argument("--samples", type=int, default=4, help="answers per round (best one is refined)")
+    ap.add_argument("--permute", type=int, default=0, metavar="SECONDS",
+                    help="run decomp-permuter this long on the closest non-matching answer")
+    ap.add_argument("--no-examples", action="store_true",
+                    help="leave the similar-function examples out of the prompt")
     ap.add_argument("--max-insns", type=int, default=80)
     ap.add_argument("--once", action="store_true", help="do one function and stop")
     ap.add_argument("--func", help="try this function only")
@@ -508,7 +627,7 @@ def main():
     if args.prompt:
         for name, path, body, nxt in scan_functions():
             if name == args.prompt:
-                messages, headers = build_prompt(name, body)
+                messages, headers = build_prompt(name, body, not args.no_examples)
                 for m in messages:
                     print(f"===== {m['role']}\n{m['content']}")
                 print(f"===== file gets: global.h {' '.join(headers)}")
@@ -540,7 +659,7 @@ def main():
             break
         n, func, path, body, nxt = c
         log(func, f"===== {time.ctime()} {func} ({n} insns) in {path}")
-        ok = attempt(func, path, body, nxt, args.model, args.attempts)
+        ok = attempt(func, path, body, nxt, args)
         if ok:
             st["done"].append(func)
             log(func, f"MATCHED and committed: {func}")

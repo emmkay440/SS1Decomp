@@ -12,7 +12,10 @@ tail -f tools/autodecomp/logs/run.log   # watch it
 ```
 
 Or in the foreground: `tools/autodecomp/autodecomp.py [--once] [--func NAME]
-[--model NAME] [--attempts N] [--max-insns N]`.
+[--model NAME] [--attempts N] [--samples N] [--permute SECONDS] [--no-examples]
+[--max-insns N]`. Each function costs `--attempts` x `--samples` model calls
+(default 3 x 4) plus `--permute` seconds when it gets close. `--permute` needs
+decomp-permuter (`tools/setup.sh` installs it into `tools/decomp-permuter`).
 
 It refuses to run on `master` or with a dirty working tree, never pushes, and
 only commits when `make compare` passes. Don't edit the repo while it runs:
@@ -31,11 +34,17 @@ it resets the tree (`git reset --hard`) after every failed function.
    functions as original-asm -> C pairs (from the retired asm in `tmp/`,
    renamed to today's symbols) and `rules.md`.
    `autodecomp.py --prompt NAME` prints the prompt without running anything.
-4. Lints the answer (no raw addresses, no register-named variables, no
-   inline asm), compiles, runs `fcheck.py`; on errors or a diff, sends them
-   back and asks for a fix (`--attempts` rounds).
-5. Match: retires the asm to `tmp/autodecomp/`, `make compare`, commits
-   `autodecomp: <name>`. No match: `git reset --hard`, records the failure
+4. Asks for `--samples` answers per round at temperatures 0.2-0.8. Each one
+   is linted (no raw addresses, no register-named variables, no inline asm),
+   compiled and checked with `fcheck.py`, and scored by how many lines differ.
+   The next round sends the closest answer back with its error or diff
+   (`--attempts` rounds).
+5. If nothing matched and `--permute` is set, runs decomp-permuter on the
+   closest answer for that many seconds (`tmp/autodecomp/permute/<name>/`);
+   a perfect score is spliced back in and checked.
+6. Match: retires the asm to `tmp/autodecomp/`, `make compare`, commits
+   `autodecomp: <name>`. No match: saves the closest answer to
+   `tmp/autodecomp/drafts/<name>.c`, `git reset --hard`, records the failure
    in `state.json` (delete an entry to let it retry).
 
 ## Files
