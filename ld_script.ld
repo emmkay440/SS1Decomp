@@ -101,6 +101,8 @@ SECTIONS {
         asm/code_0802F618.o(.text);
         src/ad_sub_08033ee0.o(.text);
         asm/code_08033F48.o(.text);
+        src/ad_sub_08033f48.o(.text);
+        asm/code_08033FB0.o(.text);
         src/unk_08038924.o(.text);
         asm/code_08038948.o(.text);
         src/ad_sub_0803a3e4.o(.text);
