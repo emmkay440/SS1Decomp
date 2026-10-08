@@ -139,7 +139,7 @@
 0300099A gUnknown_0300099A      # u16, cleared by sub_0804C9A4
 0300099C gUnknown_0300099C      # u16, cleared by sub_0804C9A4
 03006920 gUnknown_03006920      # u8; sub_0804CA6C calls sub_0804E1F0 when 0
-030068C0 gUnknown_030068C0      # added by autodecomp
+030068C0 gSaveSelectThread      # struct Thread; StartSaveSelect, entry SaveSelectThread
 03000770 gUnknown_03000770      # u8, save select mode0 (zeroed / allocated by its setup)
 03000774 gUnknown_03000774      # void *, save select mode0 (zeroed / allocated by its setup)
 030007B0 gUnknown_030007B0      # u8, save select mode1 (zeroed / allocated by its setup)

@@ -7,7 +7,7 @@ void sub_08014114(void);
 void sub_08014160(void);
 void sub_0801574C(struct Player *player);
 void sub_08016270(struct Player *player);
-u16 sub_08014D98(void);
+u16 sub_08014D98(void *rec);
 
 // Called after equipment changes; probably recomputes the player's stats.
 void sub_08016DC0(void)
@@ -66,6 +66,5 @@ void SetSkillBlock(const struct SkillBlock *src)
 
 u16 sub_08016EDC(void)
 {
-    GetWeaponRecord((struct Item *)&gPlayerStats.weapons[gPlayerStats.currentWeapon]);
-    return sub_08014D98();
+    return sub_08014D98(GetWeaponRecord((struct Item *)&gPlayerStats.weapons[gPlayerStats.currentWeapon]));
 }

@@ -37,7 +37,7 @@ SECTIONS {
         src/enemy_damage.o(.text);
         src/enemy_util.o(.text);
         asm/code_0800EA00.o(.text);
-        src/ad_sub_0800ea5c.o(.text);
+        src/unk_0800EA5C.o(.text);
         asm/code_0800EA74.o(.text);
         src/unk_0800ED74.o(.text);
         asm/code_0800ED80.o(.text);
@@ -110,7 +110,7 @@ SECTIONS {
         asm/code_08041538.o(.text);
         src/unk_08043D3C.o(.text);
         asm/code_08043D48.o(.text);
-        src/ad_sub_08043db8.o(.text);
+        src/unk_08043DB8.o(.text);
         asm/code_08043DD0.o(.text);
         src/unk_030005B8.o(.text);
         asm/code_08046004.o(.text);
@@ -118,8 +118,7 @@ SECTIONS {
         asm/code_08046128.o(.text);
         src/unk_08046170.o(.text);
         asm/code_08046178.o(.text);
-        src/ad_startsaveselect.o(.text);
-        src/unk_0804632C.o(.text);
+        src/save_select_start.o(.text);
         asm/code_08046338.o(.text);
         src/save_select_misc.o(.text);
         asm/code_08048484.o(.text);
