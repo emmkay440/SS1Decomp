@@ -100,6 +100,8 @@ SECTIONS {
         asm/code_08046128.o(.text);
         src/ad_sub_08046170.o(.text);
         asm/code_08046178.o(.text);
+        src/ad_sub_0804632c.o(.text);
+        asm/code_08046338.o(.text);
         src/save_select_misc.o(.text);
         asm/code_08048484.o(.text);
         src/save_select_thread.o(.text);
