@@ -37,6 +37,8 @@ SECTIONS {
         src/enemy_damage.o(.text);
         src/enemy_util.o(.text);
         asm/code_0800EA00.o(.text);
+        src/ad_sub_0800ea5c.o(.text);
+        asm/code_0800EA74.o(.text);
         src/unk_0800ED74.o(.text);
         asm/code_0800ED80.o(.text);
         src/fade.o(.text);
