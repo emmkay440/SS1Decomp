@@ -60,6 +60,8 @@ SECTIONS {
         src/item_bonus2.o(.text);
         src/name_list.o(.text);
         asm/code_0801516C.o(.text);
+        src/skill_check2.o(.text);
+        asm/code_08016D4C.o(.text);
         src/stats.o(.text);
         asm/code_08016F00.o(.text);
         src/player_stats_ptr.o(.text);
