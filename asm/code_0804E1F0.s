@@ -2817,7 +2817,7 @@ _0804F77C:
 _0804F792:
 	strh r7, [r6]
 	strh r7, [r4]
-	bl sub_08016F98
+	bl GetPlayerStats
 	mov r1, r8
 	adds r1, #4
 	mov r8, r1

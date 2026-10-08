@@ -332,3 +332,4 @@
 08013C48 SetStorageSlot           # (slot, item *): slot > 59 -> 0; was disassembled as data
 08000F7C SetVCountLine            # (u8 line): DISPSTAT VCount setting; was disassembled as data
 08000F98 sub_08000F98             # clears DISPSTAT bit 2; was disassembled as data
+08016F98 GetPlayerStats

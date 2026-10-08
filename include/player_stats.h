@@ -109,5 +109,6 @@ void SetStatBlock(const void *src);
 u32 GetPlayerClass(void);
 void GetSkillBlock(struct SkillBlock *dest);
 void SetSkillBlock(const struct SkillBlock *src);
+struct PlayerStats *GetPlayerStats(void);
 
 #endif // GUARD_PLAYER_STATS_H

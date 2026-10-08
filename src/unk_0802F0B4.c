@@ -1,6 +1,5 @@
 #include "global.h"
 
-void sub_0804BB9C(void)
+void sub_0802F0B4(void)
 {
 }
-

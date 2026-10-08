@@ -3889,7 +3889,7 @@ _080434E8:
 	beq _080434F2
 	b _08043964
 _080434F2:
-	bl sub_08016F98
+	bl GetPlayerStats
 	adds r6, r0, #0
 	bl sub_08046004
 	adds r5, r0, #0
