@@ -60,6 +60,8 @@ SECTIONS {
         src/char_menu_threads.o(.text);
         asm/lerp.o(.text);
         asm/code_080270D8.o(.text);
+        src/ad_sub_0802f0b4.o(.text);
+        asm/code_0802F0B8.o(.text);
         src/save_game.o(.text);
         asm/save_slot_info.o(.text);
         asm/save_load_or_new.o(.text);
