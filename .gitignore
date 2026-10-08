@@ -15,6 +15,7 @@ tools/agbcc/
 tools/agbcc-src/
 tools/gbadisasm/
 tools/decomp-permuter/
+tools/m2c/
 
 # scratch
 tmp/

@@ -17,4 +17,9 @@ if [ ! -x decomp-permuter/.venv/bin/python ]; then
     [ -d decomp-permuter ] || git clone https://github.com/simonlindholm/decomp-permuter decomp-permuter
     (cd decomp-permuter && python3 -m venv .venv && .venv/bin/pip install -q toml pycparser)
 fi
+# m2c, for the draft in tools/autodecomp prompts (--target gba)
+if [ ! -x m2c/.venv/bin/python ]; then
+    [ -d m2c ] || git clone https://github.com/matt-kempster/m2c m2c
+    (cd m2c && python3 -m venv .venv && .venv/bin/pip install -q pycparser)
+fi
 echo "tools ready"

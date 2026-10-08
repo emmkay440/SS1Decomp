@@ -16,7 +16,7 @@ commits when `make compare` succeeds. Create tools/autodecomp/STOP to make it
 stop after the current function.
 
 usage: tools/autodecomp/autodecomp.py [--model gemma4:12b] [--attempts 3] [--samples 4]
-                                      [--permute SECONDS] [--no-examples]
+                                      [--permute SECONDS] [--no-examples] [--no-m2c]
                                       [--max-insns 80] [--once] [--func NAME] [--prompt NAME]
 """
 import argparse, glob, json, math, os, re, subprocess, sys, time, urllib.request
@@ -202,6 +202,34 @@ def context_for(body):
         if len(seen) < 6:
             todo += re.findall(r"\b(?:struct|union) (\w+)", text.split("{", 1)[1])
     return "\n".join(lines), headers, "\n\n".join(structs)
+
+
+# ---------------------------------------------------------------- m2c
+
+M2C = "tools/m2c"
+
+
+def m2c_draft(func, body):
+    """m2c's mechanical C for `body` (with the project headers as context so
+    it uses real types and field names), or "" if m2c isn't installed."""
+    if not os.path.exists(f"{M2C}/m2c.py"):
+        return ""
+    os.makedirs("tmp/autodecomp", exist_ok=True)
+    ctx = "tmp/autodecomp/m2c_context.h"
+    inc = "".join(f'#include "{os.path.basename(h)}"\n' for h in sorted(glob.glob("include/*.h"))
+                  if not h.endswith("global.h"))
+    with open("tmp/autodecomp/m2c_context.c", "w") as f:
+        f.write('#include "global.h"\n' + inc)
+    rc, _ = sh("arm-none-eabi-cpp -nostdinc -I include -I tools/agbcc/include -iquote include "
+               f"-P tmp/autodecomp/m2c_context.c > {ctx}")
+    lines = [l for l in body.splitlines() if "func_start" not in l]
+    with open("tmp/autodecomp/m2c_in.s", "w") as f:
+        f.write(".syntax unified\n.text\nglabel " + func + "\n" + "\n".join(lines[1:]) + "\n")
+    args = f"--context {ctx}" if rc == 0 else ""
+    rc, out = sh(f"{M2C}/.venv/bin/python {M2C}/m2c.py --target gba {args} tmp/autodecomp/m2c_in.s", timeout=60)
+    if rc != 0 or "Decompilation failure" in out:
+        return ""
+    return out.strip()
 
 
 # ---------------------------------------------------------------- examples
@@ -394,7 +422,7 @@ def rollback():
     sh("git clean -fdq -- asm src include config")
 
 
-def build_prompt(func, body, with_examples=True):
+def build_prompt(func, body, with_examples=True, with_m2c=True):
     """([system, user] messages, headers the C file gets included)."""
     decls, headers, structs = context_for(body)
     others = ", ".join(f"{h} ({', '.join('struct ' + s for s in ss)})" if ss else h
@@ -414,6 +442,11 @@ def build_prompt(func, body, with_examples=True):
     user += f"Declarations of what it uses:\n```c\n{decls}\n```\n\n"
     if structs:
         user += f"Struct definitions (use these field names):\n```c\n{structs}\n```\n\n"
+    draft = m2c_draft(func, body) if with_m2c else ""
+    if draft:
+        user += ("A mechanical decompilation by m2c. The logic and field accesses are "
+                 "usually right; the style isn't (gotos, temp_ names, casts). Rewrite it "
+                 f"as clean C that matches:\n```c\n{draft}\n```\n\n")
     ex = examples(body) if with_examples else ""
     if ex:
         user += ("Matched functions from this project that look similar (the "
@@ -557,7 +590,7 @@ def attempt(func, path, body, nxt, args):
     ld = open("ld_script.ld").read()
     open("ld_script.ld", "w").write(ld.replace(f"asm/{module}.o(.text);", f"src/{module}.o(.text);"))
 
-    base, headers = build_prompt(func, body, not args.no_examples)
+    base, headers = build_prompt(func, body, not args.no_examples, not args.no_m2c)
     convo = list(base)
     best = None      # (score, code, reply, status, details); lower score is closer
     n = 0
@@ -626,6 +659,8 @@ def main():
     ap.add_argument("--samples", type=int, default=4, help="answers per round (best one is refined)")
     ap.add_argument("--permute", type=int, default=0, metavar="SECONDS",
                     help="run decomp-permuter this long on the closest non-matching answer")
+    ap.add_argument("--no-m2c", action="store_true",
+                    help="leave the m2c draft out of the prompt")
     ap.add_argument("--no-examples", action="store_true",
                     help="leave the similar-function examples out of the prompt")
     ap.add_argument("--max-insns", type=int, default=80)
@@ -637,7 +672,7 @@ def main():
     if args.prompt:
         for name, path, body, nxt in scan_functions():
             if name == args.prompt:
-                messages, headers = build_prompt(name, body, not args.no_examples)
+                messages, headers = build_prompt(name, body, not args.no_examples, not args.no_m2c)
                 for m in messages:
                     print(f"===== {m['role']}\n{m['content']}")
                 print(f"===== file gets: global.h {' '.join(headers)}")
