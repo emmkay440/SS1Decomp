@@ -331,8 +331,12 @@ def main():
             print("STOP file found, stopping")
             break
         c = pick(st, args.max_insns, args.func)
+        if not c and not args.func and args.max_insns < 400:
+            args.max_insns += 40
+            print(f"no candidates left, raising --max-insns to {args.max_insns}")
+            continue
         if not c:
-            print("no candidates left (raise --max-insns, or clear state.json)")
+            print("no candidates left (clear state.json to retry failures)")
             break
         n, func, path, body, nxt = c
         log(func, f"===== {time.ctime()} {func} ({n} insns) in {path}")

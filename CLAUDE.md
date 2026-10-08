@@ -27,6 +27,14 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
 
+## Local-model loop (tools/autodecomp)
+
+The user may run `tools/autodecomp/run.sh` on a work branch: a local model
+decompiles small functions into `src/ad_<name>.c` and commits matches. Before
+working, check it isn't running (`pgrep -f autodecomp.py`); if it is, ask
+the user or `touch tools/autodecomp/STOP` and wait. Its output needs review:
+merge `ad_*` files into real modules, name things, fix style.
+
 ## Workflow
 
 - Decompiling: `tools/scripts/split_asm.py asm/code.s First Next module` →
