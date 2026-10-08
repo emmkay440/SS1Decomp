@@ -135,3 +135,6 @@
 03000910 gUnknown_03000910      # added by autodecomp
 03000912 gUnknown_03000912      # added by autodecomp
 030031A8 gUnknown_030031A8      # added by autodecomp
+03000998 gUnknown_03000998      # added by autodecomp
+0300099A gUnknown_0300099A      # added by autodecomp
+0300099C gUnknown_0300099C      # added by autodecomp
