@@ -56,7 +56,6 @@ SECTIONS {
         src/item_records.o(.text);
         asm/code_0801406C.o(.text);
         src/equipment.o(.text);
-        asm/code_08014220.o(.text);
         src/item_bonus.o(.text);
         asm/code_08014CB8.o(.text);
         src/inventory_misc.o(.text);

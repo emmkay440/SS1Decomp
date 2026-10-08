@@ -3,6 +3,22 @@
 #include "player_stats.h"
 
 bool32 CanEquipItem(void *item);
+void *GetDataRecord(u32 key);
+u16 sub_08011E54(void);
+
+extern const u8 gUnknown_080FB4CC[];
+
+// GetWeaponRecord (item_records.c), inlined into sub_08014220
+static inline void *GetWeaponRecordInline(struct Item *item)
+{
+    void *record = NULL;
+
+    if (item == NULL)
+        return NULL;
+    if (item->category == ITEM_CATEGORY_WEAPON)
+        record = GetDataRecord(item->id | 0x50000);
+    return record;
+}
 
 // The low half of an item word as these functions access it: byte loads
 // (ldrb) with shift extraction. agbcc aligns structs to 4 and then extracts
@@ -97,4 +113,14 @@ u32 sub_080141F8(struct Item *item, u32 slot)
     gPlayerStats.weapons[slot] = *(u32 *)item;
     item->category = ITEM_CATEGORY_NONE;
     return old & ~0x4000;
+}
+
+u8 sub_08014220(void)
+{
+    u8 *record = GetWeaponRecordInline((struct Item *)&gPlayerStats.weapons[gPlayerStats.currentWeapon]);
+    u16 value = sub_08011E54();
+
+    if (record != NULL)
+        return gUnknown_080FB4CC[record[0x151] - value];
+    return 0;
 }

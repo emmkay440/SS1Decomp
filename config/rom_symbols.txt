@@ -18,3 +18,4 @@
 080FB874 gExpTable              # u32 per level: total EXP needed to reach the next level (AddExp)
 080FC200 gDataArchive           # "SSDT" data archive: u32 magic, u32 1, u32 offset[24] per category; see docs/data.md
 08052B60 gKnownFlashIds         # u16[5]: flash chip ids InitSaveFlash checks (0 = no chip, terminator)
+080FB4CC gUnknown_080FB4CC      # u8[]: indexed by (weapon record +0x151) - sub_08011E54() in sub_08014220
