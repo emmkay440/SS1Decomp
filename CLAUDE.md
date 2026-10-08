@@ -56,6 +56,13 @@ merge `ad_*` files into real modules, name things, fix style.
   `__attribute__((packed))` struct of `u8` bitfields, with the field read
   into a temporary before comparing (`src/equipment.c`). Comparing the field
   directly with a constant folds into an `ands`/`cmp` mask test instead.
+- Thread setup (`t->stack = Alloc(n); t->sp = stack + n - 4`) comes in three
+  shapes that allocate registers differently: a `u8 *stack` local, a chained
+  `t->sp = (u8 *)(t->stack = Alloc(n)) + n - 4`, or no local with
+  `t->sp = (u8 *)t->stack + n - 4` (it doesn't reload). Try all three
+  (`src/thread_starters.c`, `src/item_use_effect.c`). A free-slot loop over
+  an in-use mask that re-reads the mask each iteration means the mask is
+  `volatile` (`src/effect_pool.c`).
 - Code that looks like an inlined call with a constant argument (e.g.
   `EnableIntr(INTR_FLAG_HBLANK)` inside another function) matches with a
   `static inline` helper taking the value as a parameter.

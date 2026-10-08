@@ -198,3 +198,7 @@
 030063CC gUnknownThreadPtr_030063CC # struct Thread *
 030063C0 gUnknown_030063C0      # struct Thread * (32): thread pool, src/effect_pool.c
 030063C4 gUnknown_030063C4      # u32: in-use mask of the gUnknown_030063C0 pool
+030067A0 gUnknown_030067A0      # vu32[]: in-use masks of the gUnknown_030067D0 thread pools (src/item_use_effect.c)
+030067C0 gUnknown_030067C0      # struct Thread *[4]: per-player pools of 16 effect threads
+030067D0 gUnknown_030067D0      # struct Thread *[]: pools for characters 4 and up
+030067F0 gUnknown_030067F0      # vu32[4]: in-use masks of the gUnknown_030067C0 pools

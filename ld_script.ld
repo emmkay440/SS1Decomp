@@ -85,6 +85,10 @@ SECTIONS {
         asm/code_080270D8.o(.text);
         src/unk_080292D0.o(.text);
         asm/code_080292DC.o(.text);
+        src/item_use_effect.o(.text);
+        asm/code_0802C798.o(.text);
+        src/item_use_effect2.o(.text);
+        asm/code_0802CA30.o(.text);
         src/unk_0802F0B4.o(.text);
         asm/code_0802F0B8.o(.text);
         src/save_game.o(.text);
