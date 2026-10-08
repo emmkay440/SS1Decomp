@@ -46,6 +46,67 @@ struct EquipView
 
 #define EQUIP ((struct EquipView *)&gPlayerStats)
 
+// Bits 15-19 of a weapon, armor or head item word: 1 + the index of a
+// category 0xD record (GetDataRecord(0xD0000 | n)); 0 = none. Unknown use.
+struct ItemExtra
+{
+    u32 unk0:15;
+    u32 extra:5;
+    u32 unk20:12;
+};
+
+void *sub_0801406C(struct ItemExtra *item)
+{
+    u32 extra;
+
+    if (item == NULL)
+        return NULL;
+    switch (((struct Item *)item)->category)
+    {
+    case ITEM_CATEGORY_WEAPON:
+        extra = item->extra;
+        break;
+    case ITEM_CATEGORY_ARMOR:
+        extra = item->extra;
+        break;
+    case ITEM_CATEGORY_HEAD:
+        extra = item->extra;
+        break;
+    case ITEM_CATEGORY_5:
+        return NULL;
+    }
+    if (extra != 0)
+        return GetDataRecord((extra - 1) | 0xD0000);
+    return NULL;
+}
+
+// Marks the current weapon equipped (bit 14) and the other two not, if it
+// can be equipped. FALSE if it can't.
+bool32 sub_080140AC(void)
+{
+    struct Item *weapon = (struct Item *)&gPlayerStats.weapons[gPlayerStats.currentWeapon];
+    u32 i;
+
+    if (CanEquipItem(weapon))
+    {
+        if (weapon->category == ITEM_CATEGORY_WEAPON)
+        {
+            if (!weapon->flag14)
+            {
+                weapon->flag14 = TRUE;
+                for (i = 0; i < 3; i++)
+                    if (gPlayerStats.currentWeapon != i)
+                        ((struct Item *)gPlayerStats.weapons)[i].flag14 = FALSE;
+            }
+        }
+    }
+    else
+    {
+        return FALSE;
+    }
+    return TRUE;
+}
+
 // Sets the equipped flag (bit 14) on the worn armor if it can still be
 // equipped, clears it otherwise; returns the flag.
 u32 sub_08014114(void)

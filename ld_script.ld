@@ -54,7 +54,6 @@ SECTIONS {
         src/items.o(.text);
         asm/take_item.o(.text);
         src/item_records.o(.text);
-        asm/code_0801406C.o(.text);
         src/equipment.o(.text);
         src/item_bonus.o(.text);
         asm/code_08014CB8.o(.text);
