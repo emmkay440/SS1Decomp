@@ -24,6 +24,8 @@ SECTIONS {
         asm/code_08001970.o(.text);
         src/link.o(.text);
         asm/code_08001FD0.o(.text);
+        src/ad_sub_080041d4.o(.text);
+        asm/code_080041E0.o(.text);
         src/map.o(.text);
         asm/map_coords.o(.text);
         asm/code_08006114.o(.text);
