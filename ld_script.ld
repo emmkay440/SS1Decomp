@@ -59,6 +59,8 @@ SECTIONS {
         src/inventory_misc.o(.text);
         src/item_bonus2.o(.text);
         asm/code_080150D4.o(.text);
+        src/name_list.o(.text);
+        asm/code_0801516C.o(.text);
         src/stats.o(.text);
         asm/code_08016F00.o(.text);
         src/player_stats_ptr.o(.text);
