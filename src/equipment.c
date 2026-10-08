@@ -1,0 +1,100 @@
+#include "global.h"
+#include "item.h"
+#include "player_stats.h"
+
+bool32 CanEquipItem(void *item);
+
+// The low half of an item word as these functions access it: byte loads
+// (ldrb) with shift extraction. agbcc aligns structs to 4 and then extracts
+// bitfields with word loads; packed brings it down to bytes. The category
+// goes through a temporary, else the compare folds into a mask test.
+struct ItemBytes
+{
+    u8 unk0:4;
+    u8 category:3;
+    u8 unk7:1;
+    u8 unk8:6;
+    u8 flag14:1;   // equipped
+    u8 unk15:1;
+    u16 unk16;
+} __attribute__((packed));
+
+// gPlayerStats seen with the equipment slots as ItemBytes.
+struct EquipView
+{
+    u8 unk0[0x7C];
+    struct ItemBytes head;   // +0x7C
+    struct ItemBytes armor;  // +0x80
+    struct ItemBytes unk84;  // +0x84
+};
+
+#define EQUIP ((struct EquipView *)&gPlayerStats)
+
+// Sets the equipped flag (bit 14) on the worn armor if it can still be
+// equipped, clears it otherwise; returns the flag.
+u32 sub_08014114(void)
+{
+    u8 category;
+    struct ItemBytes *item = &EQUIP->armor;
+
+    if (CanEquipItem(item))
+    {
+        if ((category = item->category) == ITEM_CATEGORY_ARMOR)
+            item->flag14 = TRUE;
+    }
+    else
+    {
+        if ((category = item->category) == ITEM_CATEGORY_ARMOR)
+            item->flag14 = FALSE;
+    }
+    return EQUIP->armor.flag14;
+}
+
+// Same for the head slot.
+u32 sub_08014160(void)
+{
+    u8 category;
+    struct ItemBytes *item = &EQUIP->head;
+
+    if (CanEquipItem(item))
+    {
+        if ((category = item->category) == ITEM_CATEGORY_HEAD)
+            item->flag14 = TRUE;
+    }
+    else
+    {
+        if ((category = item->category) == ITEM_CATEGORY_HEAD)
+            item->flag14 = FALSE;
+    }
+    return EQUIP->head.flag14;
+}
+
+// Same for the third equipment slot.
+u32 sub_080141AC(void)
+{
+    u8 category;
+    struct ItemBytes *item = &EQUIP->unk84;
+
+    if (CanEquipItem(item))
+    {
+        if ((category = item->category) == ITEM_CATEGORY_5)
+            item->flag14 = TRUE;
+    }
+    else
+    {
+        if ((category = item->category) == ITEM_CATEGORY_5)
+            item->flag14 = FALSE;
+    }
+    return EQUIP->unk84.flag14;
+}
+
+// Puts *item into weapon slot `slot`, empties *item, and returns the weapon
+// that was there with its equipped flag cleared.
+u32 sub_080141F8(struct Item *item, u32 slot)
+{
+    u32 old = gPlayerStats.weapons[slot];
+
+    gPlayerStats.weapons[slot] = *(u32 *)item;
+    item->category = ITEM_CATEGORY_NONE;
+    return old & ~0x4000;
+}

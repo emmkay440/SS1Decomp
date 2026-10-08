@@ -52,6 +52,10 @@ merge `ad_*` files into real modules, name things, fix style.
   branches (compiler merges tails); an unused parameter or `return arg` to
   keep r0 live; separate `rest`/temp variables to change register choice;
   an `inline` function's standalone copy moves to the end of the file.
+- Bitfields read with `ldrb` + `lsls`/`lsrs` extraction (not `ldr`): a
+  `__attribute__((packed))` struct of `u8` bitfields, with the field read
+  into a temporary before comparing (`src/equipment.c`). Comparing the field
+  directly with a constant folds into an `ands`/`cmp` mask test instead.
 - Code that looks like an inlined call with a constant argument (e.g.
   `EnableIntr(INTR_FLAG_HBLANK)` inside another function) matches with a
   `static inline` helper taking the value as a parameter.
