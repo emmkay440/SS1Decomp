@@ -96,6 +96,8 @@ SECTIONS {
         asm/code_0804BBA0.o(.text);
         src/ad_sub_0804c9c0.o(.text);
         asm/code_0804C9C4.o(.text);
+        src/ad_sub_0804f99c.o(.text);
+        asm/code_0804F9A0.o(.text);
         asm/lib/m4a_1.o(.text);
         src/lib/m4a.o(.text);
         asm/lib/libagbsyscall.o(.text);
