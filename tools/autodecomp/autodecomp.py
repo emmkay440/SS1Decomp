@@ -16,7 +16,7 @@ stop after the current function.
 usage: tools/autodecomp/autodecomp.py [--model gemma4:12b] [--attempts 6]
                                       [--max-insns 80] [--once] [--func NAME]
 """
-import argparse, glob, json, os, re, subprocess, sys, time, urllib.request
+import argparse, glob, json, math, os, re, subprocess, sys, time, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(ROOT)
@@ -127,15 +127,50 @@ def grep_decl(name):
     return None, None
 
 
+def project_headers():
+    """{header: [struct names it defines]} for include/*.h (not gba/, constants/)."""
+    out = {}
+    for p in sorted(glob.glob("include/*.h")):
+        if p.endswith("global.h"):
+            continue
+        out[os.path.basename(p)] = re.findall(r"^(?:struct|union) (\w+)\s*\n?\{", open(p).read(), re.M)
+    return out
+
+
+def find_struct(name):
+    """(definition text, path) of `struct name { ... };` in include/ or src/."""
+    head = re.compile(rf"^(?:struct|union) {re.escape(name)}\s*\n?\{{", re.M)
+    for p in glob.glob("include/*.h") + glob.glob("src/*.c"):
+        s = open(p).read()
+        m = head.search(s)
+        if not m:
+            continue
+        depth, i = 0, m.end() - 1
+        while i < len(s):
+            depth += {"{": 1, "}": -1}.get(s[i], 0)
+            if depth == 0:
+                break
+            i += 1
+        end = s.find("\n", s.find(";", i))
+        return s[m.start():end if end > 0 else len(s)].rstrip(), p
+    return None, None
+
+
 def context_for(body):
+    """(declarations, headers to include, struct definitions) for the prompt."""
     calls = sorted(set(re.findall(r"\tbl (\w+)", body)))
     syms = sorted(set(re.findall(r"\.4byte ([A-Za-z_]\w*)", body)) - set(calls))
     raw = sorted(set(re.findall(r"\.4byte (0x0[2-8][0-9A-F]{6})", body)))
-    lines = []
+    lines, headers = [], []
     for n in calls + syms:
         d, p = grep_decl(n)
-        if d:
-            lines.append(f"{d}    // from {p}")
+        if d and p.startswith("include/") and p.count("/") == 1:
+            h = os.path.basename(p)
+            if h not in headers and h != "global.h":
+                headers.append(h)
+            lines.append(f"{d}    // in {h} (already included)")
+        elif d:
+            lines.append(d)
         else:
             lines.append(f"// {n}: no C declaration yet; declare it yourself (guess the type)")
     for a in raw:
@@ -143,17 +178,130 @@ def context_for(body):
         kind = "RAM" if v < 0x08000000 else "ROM data"
         lines.append(f"// {a} ({kind}) has no name: refer to it as gUnknown_{v:08X} "
                      f"(declare it extern with a fitting type)")
-    return "\n".join(lines)
+
+    # struct types the declarations use, and the struct types inside those
+    structs, todo, seen = [], re.findall(r"\b(?:struct|union) (\w+)", "\n".join(lines)), set()
+    while todo:
+        n = todo.pop(0)
+        if n in seen:
+            continue
+        seen.add(n)
+        text, p = find_struct(n)
+        if not text:
+            continue
+        if p.startswith("include/"):
+            h = os.path.basename(p)
+            if h not in headers and h != "global.h":
+                headers.append(h)
+            structs.append(f"// in {h} (already included)\n{text}")
+        else:
+            structs.append(f"// defined in {p}: copy it into your code if you use it\n{text}")
+        if len(seen) < 6:
+            todo += re.findall(r"\b(?:struct|union) (\w+)", text.split("{", 1)[1])
+    return "\n".join(lines), headers, "\n\n".join(structs)
 
 
-def examples():
-    """Two short matched C files as style/idiom examples."""
-    picks = ["src/game_flags.c", "src/fade.c"]
-    out = []
-    for p in picks:
-        if os.path.exists(p):
-            s = open(p).read()
-            out.append(f"// ---- {p} (matches the ROM) ----\n" + s[:2500])
+# ---------------------------------------------------------------- examples
+
+_EXAMPLES = None
+
+
+def c_functions():
+    """{name: source text} for function definitions in game modules (src/*.c)."""
+    head = re.compile(r"^[A-Za-z_][\w \t\*]*?\b(\w+)\(([^;{)]*)\)\s*\n\{", re.M)
+    out = {}
+    for p in glob.glob("src/*.c"):
+        s = open(p).read()
+        for m in head.finditer(s):
+            depth, i = 0, m.end() - 1
+            while i < len(s):
+                depth += {"{": 1, "}": -1}.get(s[i], 0)
+                if depth == 0:
+                    break
+                i += 1
+            out.setdefault(m.group(1), s[m.start():i + 1])
+    return out
+
+
+def example_index():
+    """[(features, asm, c)] for every matched function whose original asm was
+    kept in tmp/ (retired modules). Keyed by address, so renames don't matter."""
+    global _EXAMPLES
+    if _EXAMPLES is not None:
+        return _EXAMPLES
+    rc, nm = sh("arm-none-eabi-nm shiningsoul.elf")
+    names, ram = {}, {}
+    for l in nm.splitlines():
+        f = l.split()
+        if len(f) == 3 and f[1] in "tT" and not f[2].startswith("_"):
+            names.setdefault(int(f[0], 16) & ~1, f[2])
+        elif len(f) == 3 and f[1] == "A" and f[0].startswith("03"):
+            ram.setdefault(int(f[0], 16), f[2])
+
+    def current(asm):
+        """Old asm, but with today's function and RAM names."""
+        asm = re.sub(r"\bsub_([0-9A-F]{8})\b",
+                     lambda m: names.get(int(m.group(1), 16), m.group(0)), asm)
+        return re.sub(r"(=|\.4byte )0x(0[23][0-9A-F]{6})\b",
+                      lambda m: m.group(1) + ram.get(int(m.group(2), 16), "0x" + m.group(2)), asm)
+    cfuncs = c_functions()
+    seen, out = set(), []
+    for p in sorted(glob.glob("tmp/*.s") + glob.glob("tmp/*.s.replaced") + glob.glob("tmp/autodecomp/*.s")):
+        s = open(p).read()
+        starts = [m.start() for m in FUNC_RE.finditer(s)]
+        for i, pos in enumerate(starts):
+            body = s[pos:starts[i + 1] if i + 1 < len(starts) else len(s)].rstrip()
+            m = re.search(r"^\w+: @ 0x([0-9A-F]{8})", body, re.M)
+            if not m:
+                continue
+            addr = int(m.group(1), 16)
+            name = names.get(addr)
+            if addr in seen or name not in cfuncs or len(body) > 2500:
+                continue
+            seen.add(addr)
+            out.append((features(body), current(body), cfuncs[name]))
+    _EXAMPLES = out
+    return out
+
+
+def features(body):
+    insns = [l.split()[0] for l in body.splitlines()
+             if l.startswith("\t") and not l.startswith("\t.") and "func_start" not in l]
+    labels = re.findall(r"^(_\w+):", body, re.M)
+    back = any(re.search(rf"\tb\w* {re.escape(lb)}\b", body[body.find(lb + ":"):]) for lb in labels)
+    return {
+        "n": max(len(insns), 1),
+        "switch": "jump table" in body,
+        "loop": back,
+        "calls": sum(1 for x in insns if x == "bl"),
+        "fields": len(re.findall(r"\[r\d+, #0x[0-9a-f]+\]", body)),
+        "signed": any(x in ("ldrsh", "ldrsb", "asrs") for x in insns),
+        "bytes": any(x in ("ldrb", "strb", "ldrh", "strh") for x in insns),
+        "push": "push" in insns,
+    }
+
+
+def examples(body, k=3, budget=6000):
+    """The k matched functions most like `body`, as asm -> C pairs."""
+    t = features(body)
+
+    def score(f):
+        s = -2.0 * abs(math.log(f["n"] / t["n"]))
+        for key in ("switch", "loop", "signed", "bytes", "push"):
+            s += 1.0 if f[key] == t[key] else -0.5
+        s += 1.0 if (f["calls"] > 0) == (t["calls"] > 0) else -0.5
+        s += 1.0 if (f["fields"] > 0) == (t["fields"] > 0) else -0.5
+        return s
+
+    out, used = [], 0
+    for f, asm, c in sorted(example_index(), key=lambda e: -score(e[0])):
+        piece = f"```asm\n{asm}\n```\nmatches:\n```c\n{c}\n```"
+        if used + len(piece) > budget:
+            continue
+        out.append(piece)
+        used += len(piece)
+        if len(out) == k:
+            break
     return "\n\n".join(out)
 
 
@@ -175,14 +323,16 @@ def chat(model, messages, temperature, timeout=900):
 
 # Prompt lines the model tends to copy into its answer.
 ECHO = re.compile(r'^\s*(#include "global\.h"|// ---- .*\(matches the ROM\) ----'
-                  r'|// .*(no C declaration yet|has no name: refer to it as)).*\n', re.M)
+                  r'|// .*(no C declaration yet|has no name: refer to it as)'
+                  r'|// in \w+\.h \(already included\)$'
+                  r'|// defined in src/\S+: copy it into your code).*\n', re.M)
 
 
 def extract_c(text):
     m = re.findall(r"```(?:c|C)?\n(.*?)```", text, re.S)
     code = max(m, key=len) if m else text
     code = ECHO.sub("", code)
-    code = re.sub(r"[ \t]+// from src/\S+\.c$", "", code, flags=re.M)
+    code = re.sub(r"[ \t]+// (from src/\S+\.c|in \w+\.h \(already included\))$", "", code, flags=re.M)
     return code.strip("\n")
 
 
@@ -241,6 +391,46 @@ def rollback():
     sh("git clean -fdq -- asm src include config")
 
 
+def build_prompt(func, body):
+    """([system, user] messages, headers the C file gets included)."""
+    decls, headers, structs = context_for(body)
+    others = ", ".join(f"{h} ({', '.join('struct ' + s for s in ss)})" if ss else h
+                       for h, ss in project_headers().items() if h not in headers)
+    included = ", ".join(['"global.h"'] + [f'"{h}"' for h in headers])
+    system = ("You decompile Game Boy Advance THUMB assembly into C that compiles "
+              "byte-for-byte to the same machine code with agbcc (GCC 2.95, -O2 "
+              "-fprologue-bugfix). Output ONE ```c block containing the needed "
+              "extern/prototype declarations and the function.\n"
+              f"These headers are included for you: {included}. global.h gives "
+              "u8/u16/u32/s8/s16/s32, bool32, TRUE/FALSE, NULL, REG_* registers, "
+              "CpuSet/CpuFastSet, Dma* macros. Don't redeclare what they declare and "
+              "don't invent struct fields: use the struct definitions you are given. "
+              f"If you need types from another project header, #include it: {others}.\n\n"
+              + rules())
+    user = f"Decompile `{func}`.\n\n```asm\n{body}\n```\n\n"
+    user += f"Declarations of what it uses:\n```c\n{decls}\n```\n\n"
+    if structs:
+        user += f"Struct definitions (use these field names):\n```c\n{structs}\n```\n\n"
+    ex = examples(body)
+    if ex:
+        user += ("Matched functions from this project that look similar (the "
+                 f"original asm, then the C that compiles to it):\n\n{ex}")
+    return [{"role": "system", "content": system}, {"role": "user", "content": user}], headers
+
+
+def with_includes(code, headers):
+    """The C file: global.h, the context headers, then the model's code. Its
+    own #include lines are kept only for project headers that exist."""
+    extra = []
+    for m in re.finditer(r'^\s*#include\s+["<]([^">]+)[">].*$', code, re.M):
+        h = m.group(1)
+        if h != "global.h" and h not in headers and h not in extra and os.path.exists(f"include/{h}"):
+            extra.append(h)
+    code = re.sub(r'^\s*#include\s+["<][^">]+[">].*\n?', "", code, flags=re.M).strip("\n")
+    inc = "".join(f'#include "{h}"\n' for h in ["global.h"] + headers + extra)
+    return inc + "\n" + code + "\n"
+
+
 # ---------------------------------------------------------------- main loop
 
 def attempt(func, path, body, nxt, model, attempts):
@@ -252,17 +442,7 @@ def attempt(func, path, body, nxt, model, attempts):
     ld = open("ld_script.ld").read()
     open("ld_script.ld", "w").write(ld.replace(f"asm/{module}.o(.text);", f"src/{module}.o(.text);"))
 
-    system = ("You decompile Game Boy Advance THUMB assembly into C that compiles "
-              "byte-for-byte to the same machine code with agbcc (GCC 2.95, -O2 "
-              "-fprologue-bugfix). Output ONE ```c block containing the needed "
-              "extern/prototype declarations and the function. No #include lines "
-              "(\"global.h\" is included for you: u8/u16/u32/s8/s16/s32, bool32, "
-              "TRUE/FALSE, NULL, REG_* registers, CpuSet/CpuFastSet, Dma* macros).\n\n"
-              + rules())
-    user = (f"Decompile `{func}`.\n\n```asm\n{body}\n```\n\n"
-            f"Known declarations of what it uses:\n```c\n{context_for(body)}\n```\n\n"
-            f"Example of matched code in this project:\n```c\n{examples()}\n```")
-    messages = [{"role": "system", "content": system}, {"role": "user", "content": user}]
+    messages, headers = build_prompt(func, body)
 
     for i in range(attempts):
         temp = 0.2 + 0.15 * i
@@ -282,7 +462,7 @@ def attempt(func, path, body, nxt, model, attempts):
                              "\nReply with the full corrected ```c block."})
             continue
         unknown_symbols(code)
-        open(f"src/{module}.c", "w").write('#include "global.h"\n\n' + code + "\n")
+        open(f"src/{module}.c", "w").write(with_includes(code, headers))
         status, details = check(func)
         log(func, f"--- attempt {i + 1}: {status}\n{code}\n{details}")
         if status == "match":
@@ -322,7 +502,18 @@ def main():
     ap.add_argument("--max-insns", type=int, default=80)
     ap.add_argument("--once", action="store_true", help="do one function and stop")
     ap.add_argument("--func", help="try this function only")
+    ap.add_argument("--prompt", metavar="FUNC", help="print the prompt for FUNC and exit")
     args = ap.parse_args()
+
+    if args.prompt:
+        for name, path, body, nxt in scan_functions():
+            if name == args.prompt:
+                messages, headers = build_prompt(name, body)
+                for m in messages:
+                    print(f"===== {m['role']}\n{m['content']}")
+                print(f"===== file gets: global.h {' '.join(headers)}")
+                return
+        sys.exit(f"{args.prompt}: not an asm function")
 
     rc, branch = sh("git rev-parse --abbrev-ref HEAD")
     if branch.strip() in ("master", "main"):

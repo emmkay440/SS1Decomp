@@ -26,7 +26,11 @@ it resets the tree (`git reset --hard`) after every failed function.
 2. Carves it into `asm/ad_<name>.s` with `tools/scripts/split_asm.py` and
    links `src/ad_<name>.c` instead.
 3. Prompts the model with the asm, declarations of what it calls/uses,
-   two matched example files and `rules.md`.
+   the struct definitions those declarations mention (their headers are
+   `#include`d in the generated file), the three most similar matched
+   functions as original-asm -> C pairs (from the retired asm in `tmp/`,
+   renamed to today's symbols) and `rules.md`.
+   `autodecomp.py --prompt NAME` prints the prompt without running anything.
 4. Lints the answer (no raw addresses, no register-named variables, no
    inline asm), compiles, runs `fcheck.py`; on errors or a diff, sends them
    back and asks for a fix (`--attempts` rounds).
