@@ -48,6 +48,8 @@ SECTIONS {
         asm/code_0801406C.o(.text);
         src/stats.o(.text);
         asm/code_08016F00.o(.text);
+        src/ad_sub_08016f98.o(.text);
+        asm/code_08016FA0.o(.text);
         src/exp_gain.o(.text);
         src/exp.o(.text);
         asm/code_08017150.o(.text);
