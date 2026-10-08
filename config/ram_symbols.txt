@@ -196,3 +196,5 @@
 03006410 gUnknownThreadPtr_03006410 # struct Thread *
 03006414 gUnknownThreadPtr_03006414 # struct Thread *
 030063CC gUnknownThreadPtr_030063CC # struct Thread *
+030063C0 gUnknown_030063C0      # struct Thread * (32): thread pool, src/effect_pool.c
+030063C4 gUnknown_030063C4      # u32: in-use mask of the gUnknown_030063C0 pool
