@@ -110,6 +110,7 @@ SECTIONS {
         asm/code_08048484.o(.text);
         src/save_select_thread.o(.text);
         asm/code_080486A4.o(.text);
+        src/ad_sub_0804bb88.o(.text);
         src/ad_sub_0804bb9c.o(.text);
         asm/code_0804BBA0.o(.text);
         src/ad_sub_0804c9c0.o(.text);

@@ -5842,7 +5842,7 @@ _0804B68C:
 	ldr r7, _0804B820 @ =0x03000918
 	movs r3, #3
 	mov sl, r3
-	ldr r0, _0804B824 @ =0x03000910
+	ldr r0, _0804B824 @ =gUnknown_03000910
 	mov sb, r0
 _0804B6E4:
 	movs r1, #0
@@ -5860,7 +5860,7 @@ _0804B6E4:
 	adds r0, r7, #0
 	movs r1, #1
 	mov r2, sb
-	ldr r3, _0804B828 @ =0x03000912
+	ldr r3, _0804B828 @ =gUnknown_03000912
 	bl sub_08026C40
 	lsls r5, r6, #0x10
 	asrs r5, r5, #0x10
@@ -5895,10 +5895,10 @@ _0804B6E4:
 	bl StopSE
 	movs r0, #0x79
 	bl PlaySE
-	ldr r1, _0804B824 @ =0x03000910
+	ldr r1, _0804B824 @ =gUnknown_03000910
 	mov r0, r8
 	strh r0, [r1]
-	ldr r0, _0804B828 @ =0x03000912
+	ldr r0, _0804B828 @ =gUnknown_03000912
 	mov r2, r8
 	strh r2, [r0]
 	movs r6, #0
@@ -5923,7 +5923,7 @@ _0804B76E:
 	adds r0, r5, #0
 	movs r1, #5
 	mov r2, r8
-	ldr r3, _0804B828 @ =0x03000912
+	ldr r3, _0804B828 @ =gUnknown_03000912
 	bl sub_08026C40
 	lsls r1, r6, #0x10
 	asrs r4, r1, #0x10
@@ -5969,7 +5969,7 @@ _0804B7DE:
 	movs r2, #0x64
 	movs r3, #3
 	bl sub_0802706C
-	ldr r0, _0804B824 @ =0x03000910
+	ldr r0, _0804B824 @ =gUnknown_03000910
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	str r0, [sp]
@@ -5994,8 +5994,8 @@ _0804B7DE:
 	.align 2, 0
 _0804B81C: .4byte gBgRegsBuffer
 _0804B820: .4byte 0x03000918
-_0804B824: .4byte 0x03000910
-_0804B828: .4byte 0x03000912
+_0804B824: .4byte gUnknown_03000910
+_0804B828: .4byte gUnknown_03000912
 _0804B82C:
 	strh r7, [r4, #8]
 _0804B82E:
@@ -6038,7 +6038,7 @@ _0804B84A:
 	asrs r0, r0, #0x10
 	cmp r0, #0x1d
 	ble _0804B84A
-	ldr r4, _0804BB80 @ =0x03000910
+	ldr r4, _0804BB80 @ =gUnknown_03000910
 	movs r0, #0
 	strh r0, [r4]
 	movs r0, #0x7a
@@ -6064,7 +6064,7 @@ _0804B89A:
 	adds r0, r5, #0
 	movs r1, #1
 	adds r2, r7, #0
-	ldr r3, _0804BB84 @ =0x03000912
+	ldr r3, _0804BB84 @ =gUnknown_03000912
 	bl sub_08026C40
 	lsls r4, r6, #0x10
 	asrs r4, r4, #0x10
@@ -6153,10 +6153,10 @@ _0804B944:
 	asrs r0, r0, #0x10
 	cmp r0, #0x1d
 	ble _0804B944
-	ldr r4, _0804BB80 @ =0x03000910
+	ldr r4, _0804BB80 @ =gUnknown_03000910
 	movs r1, #0
 	strh r1, [r4]
-	ldr r0, _0804BB84 @ =0x03000912
+	ldr r0, _0804BB84 @ =gUnknown_03000912
 	strh r1, [r0]
 	movs r0, #0x7b
 	bl PlaySE
@@ -6178,7 +6178,7 @@ _0804B994:
 	adds r0, r5, #0
 	movs r1, #0
 	adds r2, r4, #0
-	ldr r3, _0804BB84 @ =0x03000912
+	ldr r3, _0804BB84 @ =gUnknown_03000912
 	bl sub_08026C40
 	movs r1, #0
 	ldrsh r0, [r4, r1]
@@ -6231,10 +6231,10 @@ _0804B9EC:
 	asrs r0, r0, #0x10
 	cmp r0, #0x3b
 	ble _0804B9EC
-	ldr r2, _0804BB80 @ =0x03000910
+	ldr r2, _0804BB80 @ =gUnknown_03000910
 	movs r1, #0
 	strh r1, [r2]
-	ldr r0, _0804BB84 @ =0x03000912
+	ldr r0, _0804BB84 @ =gUnknown_03000912
 	strh r1, [r0]
 	movs r6, #0
 	ldr r5, _0804BB78 @ =0x03000918
@@ -6255,7 +6255,7 @@ _0804BA3A:
 	adds r0, r5, #0
 	movs r1, #2
 	adds r2, r7, #0
-	ldr r3, _0804BB84 @ =0x03000912
+	ldr r3, _0804BB84 @ =gUnknown_03000912
 	bl sub_08026C40
 	movs r1, #0
 	ldrsh r0, [r7, r1]
@@ -6309,10 +6309,10 @@ _0804BA92:
 	asrs r0, r0, #0x10
 	cmp r0, #0x3b
 	ble _0804BA92
-	ldr r4, _0804BB80 @ =0x03000910
+	ldr r4, _0804BB80 @ =gUnknown_03000910
 	movs r1, #0
 	strh r1, [r4]
-	ldr r0, _0804BB84 @ =0x03000912
+	ldr r0, _0804BB84 @ =gUnknown_03000912
 	strh r1, [r0]
 	movs r0, #0x78
 	bl PlaySE
@@ -6346,7 +6346,7 @@ _0804BAFA:
 	mov r0, r8
 	movs r1, #1
 	mov r2, sb
-	ldr r3, _0804BB84 @ =0x03000912
+	ldr r3, _0804BB84 @ =gUnknown_03000912
 	bl sub_08026C40
 	movs r1, #0x78
 	subs r4, r1, r5
@@ -6390,17 +6390,5 @@ _0804BAFA:
 	.align 2, 0
 _0804BB78: .4byte 0x03000918
 _0804BB7C: .4byte gBgRegsBuffer
-_0804BB80: .4byte 0x03000910
-_0804BB84: .4byte 0x03000912
-
-	thumb_func_start sub_0804BB88
-sub_0804BB88: @ 0x0804BB88
-	ldr r0, _0804BB94 @ =0x03000910
-	movs r1, #0
-	strh r1, [r0]
-	ldr r0, _0804BB98 @ =0x03000912
-	strh r1, [r0]
-	bx lr
-	.align 2, 0
-_0804BB94: .4byte 0x03000910
-_0804BB98: .4byte 0x03000912
+_0804BB80: .4byte gUnknown_03000910
+_0804BB84: .4byte gUnknown_03000912
