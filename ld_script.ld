@@ -28,6 +28,8 @@ SECTIONS {
         asm/code_08002790.o(.text);
         src/unk_080041D4.o(.text);
         asm/code_080041E0.o(.text);
+        src/ad_sub_080044dc.o(.text);
+        asm/code_080044E4.o(.text);
         src/map.o(.text);
         asm/map_coords.o(.text);
         asm/code_08006114.o(.text);
