@@ -1,26 +1,21 @@
 #include "global.h"
+#include "heap.h"
 
-extern u32* gUnknown_03000064;
+struct Unknown_03000064
+{
+    u8 unk0[0x8];
+    u32 unk8;
+    u8 unkC[0x1C];
+};                     // size 0x28
 
-void *Alloc(u32 size);
+extern struct Unknown_03000064 *gUnknown_03000064;
 
 void sub_08038924(void)
 {
-    u32* r4;
-    u32 p0;
-    u32 r1;
-    u32 r2;
+    struct Unknown_03000064 *entry;
+    u32 i;
 
-    r4 = (u32*)0x03000064;
-    p0 = (u32)Alloc(0x78);
-    *r4 = p0;
-
-    r1 = 0;
-    r2 = 0;
-    while (r1 <= 2) {
-        *(u32*)(p0 + 8) = r2;
-        r1++;
-        p0 += 0x28;
-    }
+    gUnknown_03000064 = entry = Alloc(sizeof(struct Unknown_03000064) * 3);
+    for (i = 0; i < 3; i++, entry++)
+        entry->unk8 = 0;
 }
-

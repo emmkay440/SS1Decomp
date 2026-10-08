@@ -199,6 +199,20 @@ def unknown_symbols(code):
     return added
 
 
+LINT = [
+    (re.compile(r"\(\s*(?:const\s+)?(?:volatile\s+)?\w+\s*\*+\s*\)\s*0x0?[2-9][0-9A-Fa-f]{6}"),
+     "Don't cast raw addresses to pointers. Use the named global instead: "
+     "`extern <type> gUnknown_0300XXXX;` (or the name given in the declarations)."),
+    (re.compile(r"\basm\s*\("), "Don't use inline assembly."),
+    (re.compile(r"\b(?:u32|s32|u16|s16|u8|s8)\s+r\d+\b"),
+     "Don't name variables after registers (r0, r1...): use descriptive names."),
+]
+
+
+def lint(code):
+    return [msg for rx, msg in LINT if rx.search(code)]
+
+
 def check(func):
     """(status, details): status in 'compile', 'differs', 'match'."""
     rc, out = sh("make 2>&1")
@@ -250,6 +264,14 @@ def attempt(func, path, body, nxt, model, attempts):
             time.sleep(30)
             continue
         code = extract_c(reply)
+        problems = lint(code)
+        if problems:
+            log(func, f"--- attempt {i + 1}: lint\n{code}\n" + "\n".join(problems))
+            messages.append({"role": "assistant", "content": reply})
+            messages.append({"role": "user", "content":
+                             "Rejected before compiling:\n- " + "\n- ".join(problems) +
+                             "\nReply with the full corrected ```c block."})
+            continue
         unknown_symbols(code)
         open(f"src/{module}.c", "w").write('#include "global.h"\n\n' + code + "\n")
         status, details = check(func)

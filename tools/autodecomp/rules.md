@@ -30,3 +30,9 @@ Rules for matching this compiler (agbcc, GCC 2.95 for THUMB):
   a particular order: write the cases in that order.
 - Do not use inline assembly. Do not use goto unless the code really jumps
   backwards in a way loops can't express.
+- Never cast a raw address (0x02xxxxxx/0x03xxxxxx/0x08xxxxxx) to a
+  pointer: use the global's name, or `gUnknown_<ADDRESS>` if it has none.
+  Hardware registers: use the REG_* macros.
+- Don't store pointers in integer variables or do pointer math on integers;
+  use pointer types (a struct pointer for `[rX, #offset]` accesses).
+- Give variables real names, not register names.
