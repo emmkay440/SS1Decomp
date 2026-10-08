@@ -17,8 +17,6 @@ SECTIONS {
         asm/code_08000F40.o(.text);
         asm/hblank.o(.text);
         src/intr_handlers.o(.text);
-        asm/code_080010F4.o(.text);
-        src/ad_sub_080010f4.o(.text);
         src/copy_queue.o(.text);
         asm/code_08001210.o(.text);
         src/save.o(.text);
@@ -116,8 +114,6 @@ SECTIONS {
         src/save_select_misc.o(.text);
         asm/code_08048484.o(.text);
         src/save_select_thread.o(.text);
-        asm/code_080486A4.o(.text);
-        src/ad_sub_080486a4.o(.text);
         asm/code_080486C8.o(.text);
         src/ad_sub_08048740.o(.text);
         asm/code_080487B8.o(.text);

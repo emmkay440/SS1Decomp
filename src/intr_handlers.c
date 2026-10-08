@@ -98,3 +98,19 @@ void VBlankIntr(void)
     REG_IF |= INTR_FLAG_VBLANK;
     INTR_CHECK |= INTR_FLAG_VBLANK;
 }
+
+// Stores the flag and returns it as 0/1. Nothing calls it directly.
+// (The store is in both branches; that's how the ROM has it.)
+bool32 sub_080010F4(u32 value)
+{
+    if (value == 0)
+    {
+        gUnknown_03002D60 = value;
+        return FALSE;
+    }
+    else
+    {
+        gUnknown_03002D60 = value;
+        return TRUE;
+    }
+}
