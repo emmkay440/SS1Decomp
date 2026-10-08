@@ -113,6 +113,8 @@ SECTIONS {
         asm/code_0803F468.o(.text);
         src/unk_0803F5B4.o(.text);
         asm/code_0803F5E8.o(.text);
+        src/ad_sub_0803f6a4.o(.text);
+        asm/code_0803F73C.o(.text);
         src/menu_state.o(.text);
         asm/code_08040CAC.o(.text);
         src/menu_items.o(.text);
