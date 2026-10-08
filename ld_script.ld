@@ -84,6 +84,8 @@ SECTIONS {
         asm/code_0803BEFC.o(.text);
         src/sound.o(.text);
         asm/code_0803F468.o(.text);
+        src/ad_sub_0803f5b4.o(.text);
+        asm/code_0803F5C8.o(.text);
         src/menu_state.o(.text);
         asm/code_08040CAC.o(.text);
         src/menu_items.o(.text);
