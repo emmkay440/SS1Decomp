@@ -125,3 +125,4 @@
 03002D60 gUnknown_03002D60      # u32, cleared by InitVBlankState
 03000064 gUnknown_03000064      # added by autodecomp
 030004B8 gUnknown_030004B8      # added by autodecomp
+030004C8 gUnknown_030004C8      # added by autodecomp
