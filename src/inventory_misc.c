@@ -145,3 +145,37 @@ bool32 sub_08014EB4(struct Item *item)
         return FALSE;
     return TRUE;
 }
+
+// Slot of the largest gold stack (category 7) that isn't full, searching
+// from `start`; -1 if none.
+s32 sub_08014EE4(s32 start)
+{
+    struct Item *item;
+    s32 best;
+    s32 i;
+    s32 count;
+
+    if (start < 0)
+        start = 0;
+    item = &gPlayerStats.inventory[start];
+    best = -1;
+    for (i = start; i < INVENTORY_SIZE; i++, item++)
+    {
+        if (item->category == ITEM_CATEGORY_STACK)
+        {
+            count = item->count;
+            if (best < count && count != 100000)
+            {
+                start = i;
+                best = count;
+            }
+        }
+    }
+    if (best < 0)
+        return -1;
+    return start;
+}
+
+void sub_08014F3C(void)
+{
+}

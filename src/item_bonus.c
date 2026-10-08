@@ -1,30 +1,8 @@
 #include "global.h"
+#include "item_bonus.h"
 
-// Stat bonuses on equipment records (GetDataRecord): three slots, each a
-// type byte and a signed amount. The record kind decides where they sit.
-// What each bonus type means is unknown; the functions are grouped by
-// record kind, one per type (0x11 and 0x12 are only ever tested).
-
-struct BonusesAt153
-{
-    u8 unk0[0x153];
-    u8 type[3];
-    s8 value[3];
-};
-
-struct BonusesAtF2
-{
-    u8 unk0[0xF2];
-    u8 type[3];
-    s8 value[3];
-};
-
-struct BonusesAt150
-{
-    u8 unk0[0x150];
-    u8 type[3];
-    s8 value[3];
-};
+// One function per record group and bonus type (0x11 and 0x12 are only
+// ever tested).
 
 s16 sub_08014288(struct BonusesAt153 *rec)
 {
