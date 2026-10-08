@@ -19,7 +19,7 @@ usage: tools/autodecomp/autodecomp.py [--model gemma4:12b] [--attempts 3] [--sam
                                       [--permute SECONDS] [--no-examples] [--no-m2c]
                                       [--max-insns 80] [--once] [--func NAME] [--prompt NAME]
 """
-import argparse, glob, json, math, os, re, subprocess, sys, time, urllib.request
+import argparse, glob, json, math, os, re, signal, subprocess, sys, time, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(ROOT)
@@ -364,6 +364,7 @@ def extract_c(text):
     code = max(m, key=len) if m else text
     code = ECHO.sub("", code)
     code = re.sub(r"[ \t]+// (from src/\S+\.c|in \w+\.h \(already included\))$", "", code, flags=re.M)
+    code = re.sub(r"[ \t]*/\* (extern|irregular|compiler-managed) \*/", "", code)
     return code.strip("\n")
 
 
@@ -387,12 +388,16 @@ def unknown_symbols(code):
 
 
 LINT = [
-    (re.compile(r"\(\s*(?:const\s+)?(?:volatile\s+)?\w+\s*\*+\s*\)\s*0x0?[2-9][0-9A-Fa-f]{6}"),
+    (re.compile(r"\(\s*(?:const\s+)?(?:volatile\s+)?(?:struct\s+|union\s+)?\w+\s*\*+\s*\)\s*0x0?[2-9][0-9A-Fa-f]{6}"),
      "Don't cast raw addresses to pointers. Use the named global instead: "
      "`extern <type> gUnknown_0300XXXX;` (or the name given in the declarations)."),
     (re.compile(r"\b(?:__)?asm(?:__)?\s*(?:(?:__)?volatile(?:__)?\s*)?\("), "Don't use inline assembly (asm, __asm__): write C."),
     (re.compile(r"\b(?:u32|s32|u16|s16|u8|s8)\s+r\d+\b"),
      "Don't name variables after registers (r0, r1...): use descriptive names."),
+    (re.compile(r"\b(?:temp|var|saved)_(?:r\d+|[0-9a-f]+)(?:_\d+)?\b|\bsp[0-9A-F]+\b"),
+     "Don't keep m2c's temp_rN / var_N / spN names: give variables real names."),
+    (re.compile(r"\bgoto\b|^\s*block_\d+:", re.M),
+     "Don't use goto or m2c's block_N labels: write the control flow as if/else and loops."),
 ]
 
 
@@ -530,12 +535,19 @@ def permute(func, module, seconds):
     with open(f"{d}/settings.toml", "w") as f:
         f.write(f'func_name = "{func}"\ncompiler_type = "gcc"\n')
     jobs = max(1, (os.cpu_count() or 2) - 1)
+    # own process group: on timeout, kill permuter's worker processes too
+    proc = subprocess.Popen([f"{PERMUTER}/.venv/bin/python", f"{PERMUTER}/permuter.py", d,
+                             "--stop-on-zero", "--better-only", "--quiet", "-j", str(jobs)],
+                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                            start_new_session=True)
     try:
-        subprocess.run([f"{PERMUTER}/.venv/bin/python", f"{PERMUTER}/permuter.py", d,
-                        "--stop-on-zero", "--better-only", "--quiet", "-j", str(jobs)],
-                       capture_output=True, timeout=seconds)
+        proc.wait(timeout=seconds)
     except subprocess.TimeoutExpired:
-        pass
+        os.killpg(proc.pid, signal.SIGTERM)
+        try:
+            proc.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            os.killpg(proc.pid, signal.SIGKILL)
     outs = sorted(glob.glob(f"{d}/output-*"), key=lambda o: int(o.split("-")[-2]))
     if not outs:
         log(func, f"permuter: nothing better in {seconds}s")
