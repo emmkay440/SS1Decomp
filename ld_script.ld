@@ -135,6 +135,7 @@ SECTIONS {
         asm/code_08046128.o(.text);
         src/unk_08046170.o(.text);
         asm/code_08046178.o(.text);
+        src/ad_saveselectthread.o(.text);
         src/save_select_start.o(.text);
         asm/code_08046338.o(.text);
         src/save_select_misc.o(.text);
