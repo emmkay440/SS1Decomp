@@ -130,6 +130,7 @@ SECTIONS {
         asm/code_08043D48.o(.text);
         src/unk_08043DB8.o(.text);
         asm/code_08043DD0.o(.text);
+        src/ad_sub_08045ea8.o(.text);
         src/unk_030005B8.o(.text);
         asm/code_08046004.o(.text);
         src/unk_030005B8_2.o(.text);
