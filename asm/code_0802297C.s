@@ -3912,7 +3912,7 @@ _080248B8:
 	adds r0, r4, #0
 	bl KillThread
 _080248CA:
-	ldr r4, _08024978 @ =0x03006380
+	ldr r4, _08024978 @ =gUnknownThread_03006380
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -3983,7 +3983,7 @@ _08024968: .4byte 0x030044B0
 _0802496C: .4byte gCharacterMenuThread
 _08024970: .4byte gUnknownThread_03003CB0
 _08024974: .4byte gUnknownThread_030064E0
-_08024978: .4byte 0x03006380
+_08024978: .4byte gUnknownThread_03006380
 _0802497C: .4byte 0x030048D0
 _08024980: .4byte 0x030065E0
 _08024984: .4byte 0x03006630
@@ -4456,7 +4456,7 @@ _08024D9C:
 	adds r0, r4, #0
 	bl KillThread
 _08024DAE:
-	ldr r4, _08024E48 @ =0x03006380
+	ldr r4, _08024E48 @ =gUnknownThread_03006380
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -4519,7 +4519,7 @@ _08024E38: .4byte 0x030044B0
 _08024E3C: .4byte gCharacterMenuThread
 _08024E40: .4byte gUnknownThread_03003CB0
 _08024E44: .4byte gUnknownThread_030064E0
-_08024E48: .4byte 0x03006380
+_08024E48: .4byte gUnknownThread_03006380
 _08024E4C: .4byte 0xFFFF0000
 _08024E50: .4byte 0x00001C08
 _08024E54: .4byte 0x030065E0

@@ -468,7 +468,17 @@ def permute(func, module, seconds):
         return None
     d = os.path.abspath(f"tmp/autodecomp/permute/{func}")
     sh(f"rm -rf '{d}' && mkdir -p '{d}'")
-    rc, out = sh(f"arm-none-eabi-as -mcpu=arm7tdmi -I include -o '{d}/target.o' asm/{module}.s")
+    # only this function: the asm has no .size, so permuter would take the
+    # rest of the module as part of it
+    s = open(f"asm/{module}.s").read()
+    m = re.search(rf"^\t(?:non_word_aligned_)?thumb_func_start {re.escape(func)}\n.*?"
+                  r"(?=^\t(?:non_word_aligned_)?thumb_func_start |\Z)", s, re.S | re.M)
+    if not m:
+        log(func, f"permuter: {func} not found in asm/{module}.s")
+        return None
+    with open(f"{d}/target.s", "w") as f:
+        f.write('\t.include "asm/macros.inc"\n\t.syntax unified\n\t.text\n' + m.group(0))
+    rc, out = sh(f"arm-none-eabi-as -mcpu=arm7tdmi -I include -o '{d}/target.o' '{d}/target.s'")
     if rc != 0:
         log(func, f"permuter: can't assemble the target: {out[-500:]}")
         return None

@@ -176,3 +176,4 @@
 03000958 gUnknown_03000958      # u16, save select mode7 (zeroed / allocated by its setup)
 0300095A gUnknown_0300095A      # u16, save select mode7 (zeroed / allocated by its setup)
 0300095C gUnknown_0300095C      # void *, save select mode7 (zeroed / allocated by its setup)
+03006380 gUnknownThread_03006380 # struct Thread, entry sub_08013264 (sub_08014CB8)

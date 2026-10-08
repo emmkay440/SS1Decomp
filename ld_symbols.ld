@@ -144,6 +144,7 @@ gEnemies = 0x03005DA4;
 gActiveEnemyMask = 0x03005DAC;
 gUnknown_03005DD4 = 0x03005DD4;
 gUnknown_03006334 = 0x03006334;
+gUnknownThread_03006380 = 0x03006380;
 gUnknown_030063A8 = 0x030063A8;
 gUnknown_030063AC = 0x030063AC;
 gFieldItems = 0x030063B0;
