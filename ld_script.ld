@@ -107,6 +107,8 @@ SECTIONS {
         asm/code_0802F618.o(.text);
         src/thread_pools.o(.text);
         asm/code_08033FB0.o(.text);
+        src/thread_pools2.o(.text);
+        asm/code_0803578C.o(.text);
         src/enemy_threads.o(.text);
         asm/code_08038AF8.o(.text);
         src/unk_0803A3E4.o(.text);
