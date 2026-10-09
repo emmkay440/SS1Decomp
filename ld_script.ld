@@ -24,6 +24,9 @@ SECTIONS {
         asm/code_08001970.o(.text);
         src/link.o(.text);
         asm/code_08001FD0.o(.text);
+        src/unk_080022BC.o(.text);
+        asm/code_080022F8.o(.text);
+        src/title_menu_start.o(.text);
         src/unk_0800277C.o(.text);
         asm/code_08002790.o(.text);
         src/unk_080041D4.o(.text);

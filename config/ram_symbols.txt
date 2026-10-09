@@ -215,3 +215,5 @@
 03006828 gUnknown_03006828      # struct Thread *: src/enemy_threads2.c
 0300682C gUnknown_0300682C      # struct Thread *: src/enemy_threads2.c
 03006830 gUnknown_03006830      # struct Thread *: src/enemy_threads2.c
+03003150 gUnknownThread_03003150 # struct Thread, entry sub_08001FD0 (sub_080022BC)
+03003180 gTitleMenuThread       # struct Thread, entry TitleMenuThread (StartTitleMenu)
