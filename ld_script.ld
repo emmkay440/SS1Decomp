@@ -66,6 +66,7 @@ SECTIONS {
         asm/code_080119DC.o(.text);
         src/equip_bonus3.o(.text);
         asm/code_08012230.o(.text);
+        src/materials.o(.text);
         src/player_stats.o(.text);
         src/field_items.o(.text);
         asm/item_lists.o(.text);
