@@ -46,6 +46,8 @@ SECTIONS {
         asm/code_0800C1E8.o(.text);
         src/hud_start.o(.text);
         asm/code_0800C304.o(.text);
+        src/enemy_unload.o(.text);
+        asm/code_0800C504.o(.text);
         src/enemy_damage.o(.text);
         src/enemy_util.o(.text);
         asm/code_0800EA00.o(.text);
