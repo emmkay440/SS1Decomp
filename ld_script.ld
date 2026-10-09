@@ -204,6 +204,8 @@ SECTIONS {
         asm/code_0804CA84.o(.text);
         src/unk_0804E1E4.o(.text);
         asm/code_0804E1F0.o(.text);
+        src/palette_save.o(.text);
+        asm/code_0804ED04.o(.text);
         src/unk_0804F99C.o(.text);
         asm/code_0804F9A0.o(.text);
         asm/lib/m4a_1.o(.text);
