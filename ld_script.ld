@@ -83,6 +83,8 @@ SECTIONS {
         asm/code_08017150.o(.text);
         src/effect_pool.o(.text);
         asm/code_08018600.o(.text);
+        src/enemy_spawner_start.o(.text);
+        asm/code_080199B4.o(.text);
         src/thread_starters.o(.text);
         asm/code_080216E0.o(.text);
         src/window_checks.o(.text);
