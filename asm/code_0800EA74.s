@@ -76,7 +76,7 @@ _0800EAEC:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _0800EB10
-	ldr r0, _0800EB28 @ =0x030063D8
+	ldr r0, _0800EB28 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -96,7 +96,7 @@ _0800EB10:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800EB28: .4byte 0x030063D8
+_0800EB28: .4byte gUnknown_030063D8
 _0800EB2C: .4byte gUnknown_03005DD4
 
 	thumb_func_start sub_0800EB30

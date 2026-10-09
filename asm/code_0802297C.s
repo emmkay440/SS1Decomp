@@ -2462,7 +2462,7 @@ _08023CBE:
 	bl sub_08007544
 	cmp r0, #0
 	bne _08023CD8
-	ldr r0, _08023D0C @ =0x030063D8
+	ldr r0, _08023D0C @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -2497,13 +2497,13 @@ _08023CFE:
 _08023D00: .4byte gPlayerStats
 _08023D04: .4byte gUnknown_03006430
 _08023D08: .4byte gPlayers
-_08023D0C: .4byte 0x030063D8
+_08023D0C: .4byte gUnknown_030063D8
 _08023D10: .4byte 0xFFFF0000
 _08023D14:
 	bl sub_08007544
 	cmp r0, #0
 	bne _08023D2E
-	ldr r0, _08023E5C @ =0x030063D8
+	ldr r0, _08023E5C @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -2663,7 +2663,7 @@ _08023E4C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08023E5C: .4byte 0x030063D8
+_08023E5C: .4byte gUnknown_030063D8
 _08023E60: .4byte 0x0000FFFF
 _08023E64: .4byte 0x0000FFE4
 _08023E68: .4byte gPlayerStats
@@ -3035,7 +3035,7 @@ _080240C4:
 	bl sub_08007544
 	cmp r0, #0
 	bne _08024162
-	ldr r0, _080241B0 @ =0x030063D8
+	ldr r0, _080241B0 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -3077,13 +3077,13 @@ _080241A0: .4byte 0x03006510
 _080241A4: .4byte gUnknown_03006430
 _080241A8: .4byte 0x0300644C
 _080241AC: .4byte gPlayers
-_080241B0: .4byte 0x030063D8
+_080241B0: .4byte gUnknown_030063D8
 _080241B4: .4byte 0xFFFF0000
 _080241B8:
 	bl sub_08007544
 	cmp r0, #0
 	bne _080241D2
-	ldr r0, _0802430C @ =0x030063D8
+	ldr r0, _0802430C @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -3248,7 +3248,7 @@ _080242FA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802430C: .4byte 0x030063D8
+_0802430C: .4byte gUnknown_030063D8
 _08024310: .4byte gPlayerStats
 _08024314: .4byte 0x0300644C
 _08024318: .4byte 0x010B0000
@@ -6966,7 +6966,7 @@ _0802626E:
 	strh r0, [r1, #6]
 	movs r0, #6
 	bl sub_0800F308
-	ldr r0, _0802630C @ =0x030063D8
+	ldr r0, _0802630C @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -7004,7 +7004,7 @@ _080262FC: .4byte 0x00000FFF
 _08026300: .4byte 0xFFFFF000
 _08026304: .4byte 0x0600E800
 _08026308: .4byte gBgRegsBuffer
-_0802630C: .4byte 0x030063D8
+_0802630C: .4byte gUnknown_030063D8
 _08026310: .4byte 0x03004650
 _08026314:
 	ldr r0, _08026330 @ =gKeysHeld
@@ -7314,7 +7314,7 @@ _0802654A:
 	movs r3, #0
 	bl sub_08003518
 	bl WaitFrame
-	ldr r0, _0802659C @ =0x030063D8
+	ldr r0, _0802659C @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -7337,7 +7337,7 @@ _0802657E:
 	.align 2, 0
 _08026594: .4byte 0x080FB630
 _08026598: .4byte 0x03004650
-_0802659C: .4byte 0x030063D8
+_0802659C: .4byte gUnknown_030063D8
 
 	thumb_func_start sub_080265A0
 sub_080265A0: @ 0x080265A0

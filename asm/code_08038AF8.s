@@ -12,7 +12,7 @@ sub_08038AF8: @ 0x08038AF8
 	push {r5, r6, r7}
 	sub sp, #0x12c
 	adds r7, r0, #0
-	ldr r0, _08038B38 @ =0x030063D8
+	ldr r0, _08038B38 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	ldr r1, [r0, #4]
 	movs r2, #0
@@ -39,7 +39,7 @@ _08038B2C:
 	adds r4, r1, r0
 	b _08038B46
 	.align 2, 0
-_08038B38: .4byte 0x030063D8
+_08038B38: .4byte gUnknown_030063D8
 _08038B3C:
 	cmp r0, #3
 	bne _08038B46
@@ -1398,7 +1398,7 @@ _08039610:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _08039646
-	ldr r0, _080396CC @ =0x030063D8
+	ldr r0, _080396CC @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -1476,7 +1476,7 @@ _0803969A:
 	bl sub_08007798
 	b _08039882
 	.align 2, 0
-_080396CC: .4byte 0x030063D8
+_080396CC: .4byte gUnknown_030063D8
 _080396D0: .4byte gPlayers
 _080396D4: .4byte 0x0009007C
 _080396D8:
@@ -1696,7 +1696,7 @@ _08039882:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _080398AC
-	ldr r0, _08039AFC @ =0x030063D8
+	ldr r0, _08039AFC @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -1774,7 +1774,7 @@ _08039942:
 	bl sub_08007578
 	cmp r0, #0
 	bne _08039A44
-	ldr r0, _08039AFC @ =0x030063D8
+	ldr r0, _08039AFC @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9e
 	movs r1, #1
@@ -1892,7 +1892,7 @@ _08039A44:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _08039AE2
-	ldr r4, _08039AFC @ =0x030063D8
+	ldr r4, _08039AFC @ =gUnknown_030063D8
 	ldr r0, [r4]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -1969,7 +1969,7 @@ _08039AE2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08039AFC: .4byte 0x030063D8
+_08039AFC: .4byte gUnknown_030063D8
 _08039B00: .4byte gPlayers
 _08039B04: .4byte 0x0000FFFE
 _08039B08: .4byte gActiveEnemyMask
@@ -2370,7 +2370,7 @@ _08039E5E:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _08039EA2
-	ldr r0, _08039EC0 @ =0x030063D8
+	ldr r0, _08039EC0 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -2408,7 +2408,7 @@ _08039EA2:
 	bx r0
 	.align 2, 0
 _08039EBC: .4byte gPlayers
-_08039EC0: .4byte 0x030063D8
+_08039EC0: .4byte gUnknown_030063D8
 _08039EC4: .4byte 0xFFFF0000
 
 	thumb_func_start sub_08039EC8
@@ -2853,7 +2853,7 @@ _0803A25A:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _0803A290
-	ldr r0, _0803A2AC @ =0x030063D8
+	ldr r0, _0803A2AC @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -2883,7 +2883,7 @@ _0803A290:
 	bx r0
 	.align 2, 0
 _0803A2A8: .4byte gPlayers
-_0803A2AC: .4byte 0x030063D8
+_0803A2AC: .4byte gUnknown_030063D8
 
 	thumb_func_start sub_0803A2B0
 sub_0803A2B0: @ 0x0803A2B0

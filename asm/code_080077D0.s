@@ -363,7 +363,7 @@ _08007AA2:
 	bl sub_08007544
 	cmp r0, #0
 	bne _08007ABA
-	ldr r0, _08007ADC @ =0x030063D8
+	ldr r0, _08007ADC @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -390,7 +390,7 @@ _08007AC2:
 	movs r0, #1
 	b _08007AEA
 	.align 2, 0
-_08007ADC: .4byte 0x030063D8
+_08007ADC: .4byte gUnknown_030063D8
 _08007AE0: .4byte gPlayerStats
 _08007AE4:
 	movs r0, #1
@@ -1215,7 +1215,7 @@ _08008164:
 	bl sub_08007544
 	cmp r0, #0
 	beq _080081F6
-	ldr r0, _08008224 @ =0x030063D8
+	ldr r0, _08008224 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -1309,7 +1309,7 @@ _08008210:
 	.align 2, 0
 _0800821C: .4byte gKeysNew
 _08008220: .4byte gUnknown_030064D8
-_08008224: .4byte 0x030063D8
+_08008224: .4byte gUnknown_030063D8
 _08008228: .4byte 0x00090015
 _0800822C: .4byte _08008230
 _08008230: @ jump table
@@ -4222,7 +4222,7 @@ _080098FC: .4byte 0xFFFFF000
 _08009900: .4byte 0xFFFFFC0F
 _08009904: .4byte gMapLayer_03003C00
 _08009908:
-	ldr r4, _08009980 @ =0x030063D8
+	ldr r4, _08009980 @ =gUnknown_030063D8
 	ldr r0, [r4]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -4281,7 +4281,7 @@ _08009926:
 	str r0, [r7, #0x64]
 	b _08009C7A
 	.align 2, 0
-_08009980: .4byte 0x030063D8
+_08009980: .4byte gUnknown_030063D8
 _08009984: .4byte gMapLayer_03003910
 _08009988: .4byte 0x000900DD
 _0800998C: .4byte 0x0000FFFE

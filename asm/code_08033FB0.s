@@ -12,7 +12,7 @@ sub_08033FB0: @ 0x08033FB0
 	push {r5, r6, r7}
 	sub sp, #0xf8
 	adds r7, r0, #0
-	ldr r0, _08033FF0 @ =0x030063D8
+	ldr r0, _08033FF0 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	ldr r1, [r0, #4]
 	movs r5, #0
@@ -38,7 +38,7 @@ _08033FE2:
 	adds r4, r1, r0
 	b _08033FFE
 	.align 2, 0
-_08033FF0: .4byte 0x030063D8
+_08033FF0: .4byte gUnknown_030063D8
 _08033FF4:
 	cmp r0, #3
 	bne _08033FFE
@@ -1584,7 +1584,7 @@ _08034C6A:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _08034CA0
-	ldr r0, _08034F00 @ =0x030063D8
+	ldr r0, _08034F00 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -1667,7 +1667,7 @@ _08034D38:
 	beq _08034D42
 	b _08034E44
 _08034D42:
-	ldr r4, _08034F00 @ =0x030063D8
+	ldr r4, _08034F00 @ =gUnknown_030063D8
 	ldr r0, [r4]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -1789,7 +1789,7 @@ _08034E44:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _08034EE2
-	ldr r4, _08034F00 @ =0x030063D8
+	ldr r4, _08034F00 @ =gUnknown_030063D8
 	ldr r0, [r4]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -1867,7 +1867,7 @@ _08034EE2:
 	bx r0
 	.align 2, 0
 _08034EFC: .4byte 0x0000FFEC
-_08034F00: .4byte 0x030063D8
+_08034F00: .4byte gUnknown_030063D8
 _08034F04: .4byte gActiveEnemyMask
 _08034F08: .4byte gPlayers
 _08034F0C: .4byte gUnknown_030064D8
@@ -2199,7 +2199,7 @@ _080351CA:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _08035290
-	ldr r0, _080352B8 @ =0x030063D8
+	ldr r0, _080352B8 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -2252,7 +2252,7 @@ _0803523A:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _08035270
-	ldr r0, _080352B8 @ =0x030063D8
+	ldr r0, _080352B8 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -2300,7 +2300,7 @@ _08035290:
 _080352AC: .4byte 0x0805289C
 _080352B0: .4byte gPlayers
 _080352B4: .4byte 0x0000FFFE
-_080352B8: .4byte 0x030063D8
+_080352B8: .4byte gUnknown_030063D8
 _080352BC: .4byte 0xFFFF0000
 _080352C0: .4byte 0x0000FFFF
 
@@ -2449,7 +2449,7 @@ _080353E0:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _08035410
-	ldr r0, _08035508 @ =0x030063D8
+	ldr r0, _08035508 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -2578,7 +2578,7 @@ _08035468:
 	b _08035528
 	.align 2, 0
 _08035504: .4byte 0x0805289C
-_08035508: .4byte 0x030063D8
+_08035508: .4byte gUnknown_030063D8
 _0803550C: .4byte 0xFFFF0000
 _08035510: .4byte gPlayers
 _08035514: .4byte 0x0000FFFE
@@ -2661,7 +2661,7 @@ _080355B2:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _080355F6
-	ldr r0, _08035608 @ =0x030063D8
+	ldr r0, _08035608 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -2694,5 +2694,5 @@ _080355F6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08035608: .4byte 0x030063D8
+_08035608: .4byte gUnknown_030063D8
 _0803560C: .4byte 0xFFFF0000

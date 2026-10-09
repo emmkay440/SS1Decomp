@@ -2330,7 +2330,7 @@ _08007446:
 	adds r0, r0, r2
 	ldrh r1, [r6]
 	strh r1, [r0, #0x16]
-	ldr r0, _0800747C @ =0x030063D8
+	ldr r0, _0800747C @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9a
 	strh r5, [r0]
@@ -2348,5 +2348,5 @@ _08007464:
 	.align 2, 0
 _08007474: .4byte gUnknownThreadPtr_03006410
 _08007478: .4byte gPlayers
-_0800747C: .4byte 0x030063D8
+_0800747C: .4byte gUnknown_030063D8
 _08007480: .4byte 0x00000BB9

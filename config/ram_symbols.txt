@@ -223,3 +223,9 @@
 03006880 gUnknown_03006880      # u8, argument of StartMenuScreen (menu screen start)
 03000078 gMenuThreadStack       # u8[0x400]: static stack of the MenuScreen thread
 03006890 gMenuScreenThread      # struct Thread, entry MenuScreen (StartMenuScreen)
+03006720 gUnknown_03006720      # struct * (12-byte entries): queue of the threads at 0x03006730/0x030066F0
+03006758 gUnknown_03006758      # u32: entries in gUnknown_03006720
+030063D8 gUnknown_030063D8      # struct *; +0xDA cleared by sub_0802934C
+03006730 gUnknownThread_03006730 # struct Thread, entry sub_08027A90
+030066F0 gUnknownThread_030066F0 # struct Thread, entry sub_08027E40
+03006760 gUnknownThread_03006760 # struct Thread, entry sub_08028DB0

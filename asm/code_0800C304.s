@@ -1213,7 +1213,7 @@ _0800CC3C:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _0800CC58
-	ldr r0, _0800CC6C @ =0x030063D8
+	ldr r0, _0800CC6C @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -1231,7 +1231,7 @@ _0800CC58:
 	str r0, [r2]
 	bl _0800E2D2
 	.align 2, 0
-_0800CC6C: .4byte 0x030063D8
+_0800CC6C: .4byte gUnknown_030063D8
 _0800CC70: .4byte gActiveEnemyMask
 _0800CC74:
 	bl WaitFrame
@@ -3900,7 +3900,7 @@ _0800E0F6:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _0800E112
-	ldr r0, _0800E138 @ =0x030063D8
+	ldr r0, _0800E138 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -3910,7 +3910,7 @@ _0800E0F6:
 	beq _0800E112
 	bl sub_0800CD40
 _0800E112:
-	ldr r0, _0800E138 @ =0x030063D8
+	ldr r0, _0800E138 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -3928,7 +3928,7 @@ _0800E124:
 	.align 2, 0
 _0800E130: .4byte 0x0000FFFF
 _0800E134: .4byte gFrameCounter
-_0800E138: .4byte 0x030063D8
+_0800E138: .4byte gUnknown_030063D8
 _0800E13C:
 	bl WaitFrame
 _0800E140:

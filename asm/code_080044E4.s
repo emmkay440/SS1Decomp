@@ -1770,7 +1770,7 @@ _08005294: .4byte gMapLayer_03003910
 _08005298:
 	bl WaitFrame
 _0800529C:
-	ldr r0, _080052EC @ =0x030063D8
+	ldr r0, _080052EC @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -1809,7 +1809,7 @@ _080052B4:
 	strh r0, [r2]
 	b _080052FC
 	.align 2, 0
-_080052EC: .4byte 0x030063D8
+_080052EC: .4byte gUnknown_030063D8
 _080052F0: .4byte gPlayers
 _080052F4:
 	add r0, sp, #8
@@ -1958,7 +1958,7 @@ sub_08005420: @ 0x08005420
 	bne _08005468
 	cmp r2, #8
 	beq _08005448
-	ldr r0, _08005444 @ =0x030063D8
+	ldr r0, _08005444 @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9e
 	ldrh r0, [r0]
@@ -1970,9 +1970,9 @@ sub_08005420: @ 0x08005420
 	.align 2, 0
 _0800543C: .4byte 0x000514C8
 _08005440: .4byte 0x080FB0F8
-_08005444: .4byte 0x030063D8
+_08005444: .4byte gUnknown_030063D8
 _08005448:
-	ldr r0, _0800545C @ =0x030063D8
+	ldr r0, _0800545C @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9e
 	ldrh r0, [r0]
@@ -1982,7 +1982,7 @@ _08005448:
 	bl PlayBGM
 	b _0800547A
 	.align 2, 0
-_0800545C: .4byte 0x030063D8
+_0800545C: .4byte gUnknown_030063D8
 _08005460:
 	movs r0, #0xc
 	bl PlayBGM
@@ -2207,7 +2207,7 @@ _08005614: .4byte gMapLayer_03003C00
 _08005618:
 	bl WaitFrame
 _0800561C:
-	ldr r0, _0800566C @ =0x030063D8
+	ldr r0, _0800566C @ =gUnknown_030063D8
 	ldr r0, [r0]
 	adds r0, #0x9c
 	ldrh r1, [r0]
@@ -2246,7 +2246,7 @@ _08005634:
 	strh r0, [r2]
 	b _0800567C
 	.align 2, 0
-_0800566C: .4byte 0x030063D8
+_0800566C: .4byte gUnknown_030063D8
 _08005670: .4byte gPlayers
 _08005674:
 	mov r0, sp
