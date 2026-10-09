@@ -105,7 +105,7 @@ SECTIONS {
         src/save_check.o(.text);
         src/save_options.o(.text);
         asm/code_0802F618.o(.text);
-        src/unk_08033EE0.o(.text);
+        src/thread_pools.o(.text);
         asm/code_08033FB0.o(.text);
         src/enemy_threads.o(.text);
         asm/code_08038AF8.o(.text);
