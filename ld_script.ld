@@ -40,6 +40,8 @@ SECTIONS {
         asm/code_080077D0.o(.text);
         src/player_damage.o(.text);
         asm/code_0800B4B4.o(.text);
+        src/player_skill_threads0.o(.text);
+        asm/code_0800BF50.o(.text);
         src/player_skill_threads.o(.text);
         asm/code_0800C1E8.o(.text);
         src/hud_start.o(.text);
