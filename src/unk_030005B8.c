@@ -17,6 +17,22 @@ extern u8 gUnknown_030005BD;
 extern u8 gUnknown_030005C8[2];
 extern struct Unknown_030005E0 gUnknown_030005E0;
 
+// Splits value (up to 999999) into gUnknown_030005E0.digits, least
+// significant first.
+void sub_08045EA8(u32 value)
+{
+    gUnknown_030005E0.digits[5] = value / 100000;
+    value -= 100000 * gUnknown_030005E0.digits[5];
+    gUnknown_030005E0.digits[4] = value / 10000;
+    value -= 10000 * gUnknown_030005E0.digits[4];
+    gUnknown_030005E0.digits[3] = value / 1000;
+    value -= gUnknown_030005E0.digits[3] * 1000;
+    gUnknown_030005E0.digits[2] = value / 100;
+    value -= 100 * gUnknown_030005E0.digits[2];
+    gUnknown_030005E0.digits[1] = value / 10;
+    gUnknown_030005E0.digits[0] = value - gUnknown_030005E0.digits[1] * 10;
+}
+
 void sub_08045F24(void)
 {
 }

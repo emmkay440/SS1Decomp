@@ -14,7 +14,7 @@ void sub_08048428(void)
         Free(gUnknown_03000764);
 }
 
-bool32 sub_08048440(void)
+u8 sub_08048440(void)
 {
     u8 state = gUnknown_030005F0;
 

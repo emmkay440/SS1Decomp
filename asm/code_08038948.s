@@ -3127,7 +3127,7 @@ _0803A2AC: .4byte 0x030063D8
 	thumb_func_start sub_0803A2B0
 sub_0803A2B0: @ 0x0803A2B0
 	push {r4, lr}
-	ldr r4, _0803A2D4 @ =0x03006818
+	ldr r4, _0803A2D4 @ =gUnknown_03006818
 	movs r0, #0xb4
 	lsls r0, r0, #2
 	bl Alloc
@@ -3144,12 +3144,12 @@ _0803A2C2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803A2D4: .4byte 0x03006818
+_0803A2D4: .4byte gUnknown_03006818
 
 	thumb_func_start sub_0803A2D8
 sub_0803A2D8: @ 0x0803A2D8
 	push {r4, r5, r6, r7, lr}
-	ldr r0, _0803A2E8 @ =0x03006818
+	ldr r0, _0803A2E8 @ =gUnknown_03006818
 	ldr r4, [r0]
 	movs r0, #0
 _0803A2E0:
@@ -3158,7 +3158,7 @@ _0803A2E0:
 	adds r7, #0x28
 	b _0803A2F0
 	.align 2, 0
-_0803A2E8: .4byte 0x03006818
+_0803A2E8: .4byte gUnknown_03006818
 _0803A2EC:
 	bl WaitFrame
 _0803A2F0:
@@ -3171,7 +3171,7 @@ _0803A2F0:
 	adds r4, r7, #0
 	cmp r0, #0x11
 	bls _0803A2E0
-	ldr r4, _0803A314 @ =0x03006818
+	ldr r4, _0803A314 @ =gUnknown_03006818
 	ldr r0, [r4]
 	bl Free
 	str r5, [r4]
@@ -3179,7 +3179,7 @@ _0803A2F0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803A314: .4byte 0x03006818
+_0803A314: .4byte gUnknown_03006818
 
 	thumb_func_start sub_0803A318
 sub_0803A318: @ 0x0803A318
@@ -3188,12 +3188,12 @@ sub_0803A318: @ 0x0803A318
 	push {r7}
 	adds r7, r0, #0
 	mov r8, r1
-	ldr r0, _0803A32C @ =0x03006818
+	ldr r0, _0803A32C @ =gUnknown_03006818
 	ldr r4, [r0]
 	movs r6, #0
 	b _0803A334
 	.align 2, 0
-_0803A32C: .4byte 0x03006818
+_0803A32C: .4byte gUnknown_03006818
 _0803A330:
 	adds r6, #1
 	adds r4, #0x28
@@ -3238,12 +3238,12 @@ sub_0803A37C: @ 0x0803A37C
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r6, r1, #0
-	ldr r0, _0803A38C @ =0x03006818
+	ldr r0, _0803A38C @ =gUnknown_03006818
 	ldr r4, [r0]
 	movs r5, #0
 	b _0803A394
 	.align 2, 0
-_0803A38C: .4byte 0x03006818
+_0803A38C: .4byte gUnknown_03006818
 _0803A390:
 	adds r5, #1
 	adds r4, #0x28
