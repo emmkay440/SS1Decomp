@@ -3510,7 +3510,7 @@ _08024512:
 	bl DisableSoundVSync
 	bl sub_08007500
 	bl sub_0802297C
-	ldr r4, _08024588 @ =0x030065E0
+	ldr r4, _08024588 @ =gUnknown_030065E0
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -3526,7 +3526,7 @@ _08024538:
 	adds r0, r4, #0
 	bl KillThread
 _0802454A:
-	ldr r4, _0802458C @ =0x03006630
+	ldr r4, _0802458C @ =gUnknown_03006630
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -3552,8 +3552,8 @@ _0802456E:
 	movs r5, #0
 	b _080245BC
 	.align 2, 0
-_08024588: .4byte 0x030065E0
-_0802458C: .4byte 0x03006630
+_08024588: .4byte gUnknown_030065E0
+_0802458C: .4byte gUnknown_03006630
 _08024590: .4byte 0x00000BB9
 _08024594: .4byte 0x000514C9
 _08024598: .4byte 0x000514C8
@@ -3937,7 +3937,7 @@ _080248F4:
 	cmp r5, #4
 	bls _080248E0
 	bl sub_08021C44
-	ldr r4, _08024980 @ =0x030065E0
+	ldr r4, _08024980 @ =gUnknown_030065E0
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -3953,7 +3953,7 @@ _08024912:
 	adds r0, r4, #0
 	bl KillThread
 _08024924:
-	ldr r4, _08024984 @ =0x03006630
+	ldr r4, _08024984 @ =gUnknown_03006630
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -3985,8 +3985,8 @@ _08024970: .4byte gUnknownThread_03003CB0
 _08024974: .4byte gUnknownThread_030064E0
 _08024978: .4byte gUnknownThread_03006380
 _0802497C: .4byte 0x030048D0
-_08024980: .4byte 0x030065E0
-_08024984: .4byte 0x03006630
+_08024980: .4byte gUnknown_030065E0
+_08024984: .4byte gUnknown_03006630
 _08024988:
 	ldr r0, _08024A7C @ =0x03003F90
 	adds r4, r6, r0
@@ -4476,7 +4476,7 @@ _08024DC0:
 	strh r5, [r6, #4]
 	strh r5, [r6, #6]
 	bl sub_08021C44
-	ldr r4, _08024E54 @ =0x030065E0
+	ldr r4, _08024E54 @ =gUnknown_030065E0
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -4492,7 +4492,7 @@ _08024DEE:
 	adds r0, r4, #0
 	bl KillThread
 _08024E00:
-	ldr r4, _08024E58 @ =0x03006630
+	ldr r4, _08024E58 @ =gUnknown_03006630
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -4522,8 +4522,8 @@ _08024E44: .4byte gUnknownThread_030064E0
 _08024E48: .4byte gUnknownThread_03006380
 _08024E4C: .4byte 0xFFFF0000
 _08024E50: .4byte 0x00001C08
-_08024E54: .4byte 0x030065E0
-_08024E58: .4byte 0x03006630
+_08024E54: .4byte gUnknown_030065E0
+_08024E58: .4byte gUnknown_03006630
 _08024E5C:
 	ldr r0, _08024ED0 @ =0x03003F90
 	adds r4, r6, r0

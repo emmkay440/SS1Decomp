@@ -207,3 +207,5 @@
 03006818 gUnknown_03006818      # struct Thread * (18): thread pool, sub_0803A3E4
 03000068 gUnknown_03000068      # struct Thread * (2): enemy thread pool (src/enemy_threads.c)
 0300006C gUnknown_0300006C      # struct Thread * (3): thread pool (src/enemy_threads.c)
+030065E0 gUnknown_030065E0      # struct Thread[]: threads started by slot (src/thread_slots.c)
+03006630 gUnknown_03006630      # struct Thread[]: threads started by slot (src/thread_slots.c)

@@ -86,7 +86,8 @@ SECTIONS {
         src/unk_08026AD0.o(.text);
         asm/code_08026ADC.o(.text);
         src/sprite_obj.o(.text);
-        asm/code_08026C80.o(.text);
+        src/thread_slots.o(.text);
+        asm/code_08026D98.o(.text);
         src/char_menu_threads.o(.text);
         asm/lerp.o(.text);
         asm/code_080270D8.o(.text);

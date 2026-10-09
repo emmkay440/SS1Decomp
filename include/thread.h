@@ -34,6 +34,7 @@ struct Thread
 
 s32 CreateThread(struct Thread *thread, ...);
 void ThreadExit(void);
+void KillThread(struct Thread *thread);
 void WaitFrame(void);
 void SignalEvent(u32 event);
 bool32 IsThreadInList(struct Thread *thread);
