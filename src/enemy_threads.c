@@ -11,8 +11,28 @@ extern struct Thread *gUnknown_03000068;   // 2 slots
 extern struct Thread *gUnknown_0300006C;   // 3 slots
 extern u32 gActiveEnemyMask;
 
+void sub_08037B58(void);
 void sub_08037D98(void);
 void sub_0803861C(void);
+
+// Starts sub_08037B58 in a free slot of gUnknown_03000064.
+void sub_080388D0(u32 arg)
+{
+    struct Thread *thread = gUnknown_03000064;
+    u32 i;
+
+    for (i = 0; i < 3; i++, thread++)
+        if (thread->priority == 0)
+            break;
+    if (i > 2)
+        return;
+    thread->priority = 0x3C;
+    thread->stack = Alloc(0x400);
+    thread->sp = (u8 *)thread->stack + 0x3FC;
+    thread->entry = sub_08037B58;
+    thread->onExit = NULL;
+    CreateThread(thread, arg);
+}
 
 void sub_08038924(void)
 {
