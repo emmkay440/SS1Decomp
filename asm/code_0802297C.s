@@ -3577,7 +3577,7 @@ _080245BC:
 	bl sub_08001EC4
 	cmp r5, r0
 	blo _0802459C
-	ldr r4, _0802466C @ =0x03006890
+	ldr r4, _0802466C @ =gMenuScreenThread
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -3593,7 +3593,7 @@ _080245D6:
 	adds r0, r4, #0
 	bl KillThread
 _080245E8:
-	ldr r4, _08024674 @ =0x030044B0
+	ldr r4, _08024674 @ =gHudThread
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -3646,9 +3646,9 @@ _08024630:
 	mov pc, r0
 	.align 2, 0
 _08024668: .4byte 0x03003F90
-_0802466C: .4byte 0x03006890
+_0802466C: .4byte gMenuScreenThread
 _08024670: .4byte gUnknownThread_030068F0
-_08024674: .4byte 0x030044B0
+_08024674: .4byte gHudThread
 _08024678: .4byte gCharacterMenuThread
 _0802467C: .4byte gUnknownThread_03003CB0
 _08024680: .4byte gUnknownThread_030064E0
@@ -3864,7 +3864,7 @@ _08024830:
 	adds r0, r4, #0
 	bl KillThread
 _0802485E:
-	ldr r4, _08024960 @ =0x03006890
+	ldr r4, _08024960 @ =gMenuScreenThread
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -3880,7 +3880,7 @@ _08024870:
 	adds r0, r4, #0
 	bl KillThread
 _08024882:
-	ldr r4, _08024968 @ =0x030044B0
+	ldr r4, _08024968 @ =gHudThread
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -3977,9 +3977,9 @@ _08024950: .4byte gBgRegsBuffer
 _08024954: .4byte gMapLayer_03003910
 _08024958: .4byte gMapLayer_03003C00
 _0802495C: .4byte gUnknownThread_030066B0
-_08024960: .4byte 0x03006890
+_08024960: .4byte gMenuScreenThread
 _08024964: .4byte gUnknownThread_030068F0
-_08024968: .4byte 0x030044B0
+_08024968: .4byte gHudThread
 _0802496C: .4byte gCharacterMenuThread
 _08024970: .4byte gUnknownThread_03003CB0
 _08024974: .4byte gUnknownThread_030064E0
@@ -4408,7 +4408,7 @@ _08024D30:
 	movs r1, #0
 	movs r2, #1
 	bl DisableDisplayLayers
-	ldr r4, _08024E30 @ =0x03006890
+	ldr r4, _08024E30 @ =gMenuScreenThread
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -4424,7 +4424,7 @@ _08024D54:
 	adds r0, r4, #0
 	bl KillThread
 _08024D66:
-	ldr r4, _08024E38 @ =0x030044B0
+	ldr r4, _08024E38 @ =gHudThread
 	adds r0, r4, #0
 	bl IsThreadInList
 	cmp r0, #0
@@ -4513,9 +4513,9 @@ _08024E24:
 	b _08024E74
 	.align 2, 0
 _08024E2C: .4byte gBgRegsBuffer
-_08024E30: .4byte 0x03006890
+_08024E30: .4byte gMenuScreenThread
 _08024E34: .4byte gUnknownThread_030068F0
-_08024E38: .4byte 0x030044B0
+_08024E38: .4byte gHudThread
 _08024E3C: .4byte gCharacterMenuThread
 _08024E40: .4byte gUnknownThread_03003CB0
 _08024E44: .4byte gUnknownThread_030064E0
@@ -5614,7 +5614,7 @@ _0802573E:
 	movs r2, #0
 	ldrsh r6, [r4, r2]
 	movs r0, #1
-	bl sub_0803F570
+	bl StartMenuScreen
 	bl sub_08007520
 	ldr r0, _080257BC @ =0x11201100
 	bl _08000400
@@ -5677,7 +5677,7 @@ _080257D6:
 	strh r0, [r1, #0xe]
 	strh r0, [r1, #0xc]
 	movs r0, #8
-	bl sub_0803F570
+	bl StartMenuScreen
 	bl sub_08007520
 	ldr r4, _08025848 @ =gMapLayer_03003910
 	adds r5, r4, #0
@@ -5747,7 +5747,7 @@ _0802587A:
 	strh r0, [r1, #0xe]
 	strh r0, [r1, #0xc]
 	movs r0, #9
-	bl sub_0803F570
+	bl StartMenuScreen
 	bl sub_08007520
 	ldr r4, _080258D8 @ =gMapLayer_03003910
 	adds r5, r4, #0

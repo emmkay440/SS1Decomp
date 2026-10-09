@@ -180,7 +180,7 @@ _08007932:
 	movs r0, #1
 	bl sub_08026D0C
 	adds r0, r7, #0
-	bl sub_0800C2C8
+	bl StartHudThread
 	ldr r0, _08007964 @ =0x080FB0F8
 	ldr r0, [r0, #0x10]
 	bl GetDataRecord

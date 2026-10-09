@@ -5457,7 +5457,7 @@ _0801B1A6:
 	strh r0, [r1, #0xe]
 	strh r0, [r1, #0xc]
 	adds r0, r4, #0
-	bl sub_0803F570
+	bl StartMenuScreen
 	bl sub_08007520
 	ldr r0, _0801B1F8 @ =0x11201100
 	bl _08000400

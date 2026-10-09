@@ -29,6 +29,8 @@ SECTIONS {
         src/title_menu_start.o(.text);
         src/unk_0800277C.o(.text);
         asm/code_08002790.o(.text);
+        src/unk_08002B58.o(.text);
+        asm/code_08002B8C.o(.text);
         src/unk_080041D4.o(.text);
         asm/code_080041E0.o(.text);
         src/unk_080044DC.o(.text);
@@ -40,6 +42,8 @@ SECTIONS {
         asm/code_080077D0.o(.text);
         src/player_damage.o(.text);
         asm/code_0800B4B4.o(.text);
+        src/hud_start.o(.text);
+        asm/code_0800C304.o(.text);
         src/enemy_damage.o(.text);
         src/enemy_util.o(.text);
         asm/code_0800EA00.o(.text);
@@ -169,6 +173,8 @@ SECTIONS {
         asm/code_0804C34C.o(.text);
         src/save_select_mode8.o(.text);
         asm/code_0804C9C4.o(.text);
+        src/unk_0804C9C4.o(.text);
+        asm/code_0804CA04.o(.text);
         src/unk_0804CA6C.o(.text);
         asm/code_0804CA84.o(.text);
         src/unk_0804E1E4.o(.text);

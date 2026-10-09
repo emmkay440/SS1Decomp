@@ -339,3 +339,5 @@
 08001788 MultiSioRecvDataCheck
 08001848 MultiSioStart
 0800185C MultiSioStop
+0800C2C8 StartHudThread
+0803F570 StartMenuScreen

@@ -217,3 +217,9 @@
 03006830 gUnknown_03006830      # struct Thread *: src/enemy_threads2.c
 03003150 gUnknownThread_03003150 # struct Thread, entry sub_08001FD0 (sub_080022BC)
 03003180 gTitleMenuThread       # struct Thread, entry TitleMenuThread (StartTitleMenu)
+030031B0 gUnknownThread_030031B0 # struct Thread, entry sub_08002790 (sub_08002B58)
+030044B0 gHudThread             # struct Thread, entry HudThread (StartHudThread)
+03006930 gUnknownThread_03006930 # struct Thread, entry sub_0804CA04, onExit sub_0804CA6C
+03006880 gUnknown_03006880      # u8, argument of StartMenuScreen (menu screen start)
+03000078 gMenuThreadStack       # u8[0x400]: static stack of the MenuScreen thread
+03006890 gMenuScreenThread      # struct Thread, entry MenuScreen (StartMenuScreen)

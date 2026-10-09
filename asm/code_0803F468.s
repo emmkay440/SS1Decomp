@@ -16,7 +16,7 @@ MenuScreen: @ 0x0803F468
 	bl sub_08043E0C
 	bl sub_08043BD8
 	bl sub_0803F5E8
-	ldr r4, _0803F4B8 @ =0x03006880
+	ldr r4, _0803F4B8 @ =gUnknown_03006880
 	ldrb r0, [r4]
 	bl sub_0803F5C8
 	bl sub_08022AB4
@@ -37,7 +37,7 @@ _0803F4A4:
 	b _0803F4C0
 	.align 2, 0
 _0803F4B4: .4byte gBgRegsBuffer
-_0803F4B8: .4byte 0x03006880
+_0803F4B8: .4byte gUnknown_03006880
 _0803F4BC:
 	bl WaitFrame
 _0803F4C0:
@@ -87,7 +87,7 @@ _0803F51E:
 	strh r0, [r1, #4]
 	strh r0, [r1, #0xc]
 	strh r0, [r1, #0xe]
-	ldr r4, _0803F568 @ =0x03006880
+	ldr r4, _0803F568 @ =gUnknown_03006880
 	ldrb r0, [r4]
 	subs r0, #6
 	lsls r0, r0, #0x18
@@ -113,37 +113,5 @@ _0803F550:
 	bx r0
 	.align 2, 0
 _0803F564: .4byte gBgRegsBuffer
-_0803F568: .4byte 0x03006880
+_0803F568: .4byte gUnknown_03006880
 _0803F56C: .4byte 0x11201100
-
-	thumb_func_start sub_0803F570
-sub_0803F570: @ 0x0803F570
-	push {lr}
-	ldr r1, _0803F5A0 @ =0x03006880
-	strb r0, [r1]
-	ldr r2, _0803F5A4 @ =0x03000078
-	ldr r0, _0803F5A8 @ =0x03006890
-	ldr r1, _0803F5AC @ =MenuScreen
-	str r1, [r0, #0xc]
-	movs r3, #0xff
-	lsls r3, r3, #2
-	adds r1, r2, r3
-	str r1, [r0, #0x10]
-	str r2, [r0, #0x20]
-	movs r1, #0x37
-	str r1, [r0, #8]
-	movs r1, #0
-	str r1, [r0, #0x18]
-	str r1, [r0]
-	ldr r1, _0803F5B0 @ =sub_0803F5B4
-	str r1, [r0, #0x24]
-	movs r1, #0
-	bl CreateThread
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0803F5A0: .4byte 0x03006880
-_0803F5A4: .4byte 0x03000078
-_0803F5A8: .4byte 0x03006890
-_0803F5AC: .4byte MenuScreen
-_0803F5B0: .4byte sub_0803F5B4

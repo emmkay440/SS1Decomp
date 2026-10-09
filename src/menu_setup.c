@@ -2,6 +2,7 @@
 #include "heap.h"
 #include "item.h"
 #include "player_stats.h"
+#include "thread.h"
 
 // Menu screen (MenuScreen) working state: sub_0803F5E8 resets it,
 // sub_0803F6A4 frees its buffers.
@@ -27,6 +28,12 @@ extern struct Item *gMenuSelectedItem;
 extern struct StatBlock *gMenuStatBlock;
 extern struct SkillBlock *gMenuSkillBlock;
 extern void *gUnknown_030004B8;
+extern u8 gUnknown_03006880;
+extern u8 gMenuThreadStack[0x400];
+extern struct Thread gMenuScreenThread;
+
+void MenuScreen(void);
+void sub_0803F5B4(void);
 
 void sub_08045F24(void);
 void sub_08043C5C(void);
@@ -34,6 +41,23 @@ void sub_0803F6A4(void);
 void sub_08045234(u8 value);
 void sub_08043D3C(u8 value);
 void sub_0803F73C(u8 value);
+
+// Starts MenuScreen on its static stack; sub_0803F5B4 cleans up after it.
+void StartMenuScreen(u8 arg)
+{
+    u8 *stack;
+
+    gUnknown_03006880 = arg;
+    stack = gMenuThreadStack;
+    gMenuScreenThread.entry = MenuScreen;
+    gMenuScreenThread.sp = stack + 0x3FC;
+    gMenuScreenThread.stack = stack;
+    gMenuScreenThread.priority = 0x37;
+    gMenuScreenThread.prev = NULL;
+    gMenuScreenThread.next = NULL;
+    gMenuScreenThread.onExit = sub_0803F5B4;
+    CreateThread(&gMenuScreenThread, 0);
+}
 
 void sub_0803F5B4(void)
 {
