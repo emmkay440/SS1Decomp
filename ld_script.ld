@@ -104,6 +104,12 @@ SECTIONS {
         asm/code_0802C798.o(.text);
         src/item_use_effect2.o(.text);
         asm/code_0802CA30.o(.text);
+        src/unk_0802CE40.o(.text);
+        asm/code_0802CED4.o(.text);
+        src/unk_0802D49C.o(.text);
+        asm/code_0802D53C.o(.text);
+        src/unk_0802D98C.o(.text);
+        asm/code_0802DA2C.o(.text);
         src/unk_0802F0B4.o(.text);
         asm/code_0802F0B8.o(.text);
         src/save_game.o(.text);
