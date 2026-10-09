@@ -238,3 +238,4 @@
 03006800 gUnknown_03006800      # vu32: in-use mask of the gUnknown_03006790 pool
 03006790 gUnknown_03006790      # struct Thread * (32): pool, sub_08029BB4
 030048D0 gEnemyThreads          # struct Thread[]: one per enemy slot (sub_08036D28; name is a guess)
+030044E0 gUnknownThreads_030044E0 # struct Thread[MAX_PLAYERS]: per-player threads (src/player_skill_threads.c)

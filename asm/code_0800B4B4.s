@@ -1304,7 +1304,7 @@ sub_0800BE8C: @ 0x0800BE8C
 	lsls r0, r6, #2
 	adds r0, r0, r6
 	lsls r4, r0, #3
-	ldr r5, _0800BEB4 @ =0x030044E0
+	ldr r5, _0800BEB4 @ =gUnknownThreads_030044E0
 	adds r0, r4, r5
 	bl IsThreadInList
 	cmp r0, #0
@@ -1317,7 +1317,7 @@ sub_0800BE8C: @ 0x0800BE8C
 	strh r1, [r0, #0xc]
 	b _0800BF40
 	.align 2, 0
-_0800BEB4: .4byte 0x030044E0
+_0800BEB4: .4byte gUnknownThreads_030044E0
 _0800BEB8: .4byte gPlayers
 _0800BEBC:
 	bl sub_080102C4
@@ -1355,7 +1355,7 @@ _0800BEF4:
 	ldr r1, _0800BF48 @ =sub_0800BE2C
 _0800BEFC:
 	str r1, [r0]
-	ldr r5, _0800BF4C @ =0x030044E0
+	ldr r5, _0800BF4C @ =gUnknownThreads_030044E0
 	lsls r4, r6, #2
 	adds r4, r4, r6
 	lsls r4, r4, #3
@@ -1392,7 +1392,7 @@ _0800BF40:
 	bx r0
 	.align 2, 0
 _0800BF48: .4byte sub_0800BE2C
-_0800BF4C: .4byte 0x030044E0
+_0800BF4C: .4byte gUnknownThreads_030044E0
 
 	thumb_func_start sub_0800BF50
 sub_0800BF50: @ 0x0800BF50
@@ -1565,278 +1565,3 @@ _0800C088:
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
-
-	thumb_func_start sub_0800C09C
-sub_0800C09C: @ 0x0800C09C
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	lsls r0, r6, #2
-	adds r0, r0, r6
-	lsls r4, r0, #3
-	ldr r5, _0800C134 @ =0x030044E0
-	adds r0, r4, r5
-	bl IsThreadInList
-	cmp r0, #0
-	bne _0800C12C
-	ldr r1, _0800C138 @ =gPlayers
-	movs r0, #0xd4
-	muls r0, r6, r0
-	adds r1, #0xd0
-	adds r0, r0, r1
-	ldr r0, [r0]
-	ldrb r0, [r0, #5]
-	lsls r0, r0, #0x1c
-	lsrs r0, r0, #0x1e
-	cmp r0, #1
-	beq _0800C0CC
-	cmp r0, #2
-	bne _0800C12C
-_0800C0CC:
-	adds r0, r5, #0
-	adds r0, #0xc
-	adds r0, r4, r0
-	ldr r1, _0800C13C @ =sub_0800BF50
-	str r1, [r0]
-	ldr r5, _0800C134 @ =0x030044E0
-	lsls r4, r6, #2
-	adds r4, r4, r6
-	lsls r4, r4, #3
-	adds r0, r5, #0
-	adds r0, #8
-	adds r0, r4, r0
-	movs r1, #0x34
-	str r1, [r0]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	adds r1, r5, #0
-	adds r1, #0x20
-	adds r1, r4, r1
-	str r0, [r1]
-	adds r1, r5, #0
-	adds r1, #0x10
-	adds r1, r4, r1
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1]
-	adds r0, r5, #0
-	adds r0, #0x24
-	adds r0, r4, r0
-	movs r1, #0
-	str r1, [r0]
-	adds r4, r4, r5
-	ldr r1, _0800C138 @ =gPlayers
-	movs r0, #0xd4
-	muls r0, r6, r0
-	adds r1, #0xd0
-	adds r0, r0, r1
-	ldr r0, [r0]
-	ldrb r2, [r0, #5]
-	lsls r2, r2, #0x1c
-	lsrs r2, r2, #0x1e
-	adds r0, r4, #0
-	adds r1, r6, #0
-	bl CreateThread
-_0800C12C:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0800C134: .4byte 0x030044E0
-_0800C138: .4byte gPlayers
-_0800C13C: .4byte sub_0800BF50
-
-	thumb_func_start sub_0800C140
-sub_0800C140: @ 0x0800C140
-	push {r4, r5, r6, lr}
-	bl GetMultiplayerId
-	adds r6, r0, #0
-	lsls r0, r6, #2
-	adds r0, r0, r6
-	lsls r4, r0, #3
-	ldr r5, _0800C168 @ =0x030044E0
-	adds r0, r4, r5
-	bl IsThreadInList
-	cmp r0, #0
-	beq _0800C170
-	ldr r1, _0800C16C @ =gPlayers
-	movs r0, #0xd4
-	muls r0, r6, r0
-	adds r0, r0, r1
-	movs r1, #0
-	strh r1, [r0, #0xc]
-	b _0800C1D8
-	.align 2, 0
-_0800C168: .4byte 0x030044E0
-_0800C16C: .4byte gPlayers
-_0800C170:
-	bl sub_080102C4
-	cmp r0, #1
-	beq _0800C17E
-	cmp r0, #2
-	beq _0800C18C
-	b _0800C1D8
-_0800C17E:
-	adds r0, r5, #0
-	adds r0, #0xc
-	adds r0, r4, r0
-	ldr r1, _0800C188 @ =sub_0800C304
-	b _0800C194
-	.align 2, 0
-_0800C188: .4byte sub_0800C304
-_0800C18C:
-	adds r0, r5, #0
-	adds r0, #0xc
-	adds r0, r4, r0
-	ldr r1, _0800C1E0 @ =sub_0800C374
-_0800C194:
-	str r1, [r0]
-	ldr r5, _0800C1E4 @ =0x030044E0
-	lsls r4, r6, #2
-	adds r4, r4, r6
-	lsls r4, r4, #3
-	adds r0, r5, #0
-	adds r0, #8
-	adds r0, r4, r0
-	movs r1, #0x34
-	str r1, [r0]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	adds r1, r5, #0
-	adds r1, #0x20
-	adds r1, r4, r1
-	str r0, [r1]
-	adds r1, r5, #0
-	adds r1, #0x10
-	adds r1, r4, r1
-	movs r2, #0xff
-	lsls r2, r2, #2
-	adds r0, r0, r2
-	str r0, [r1]
-	adds r0, r5, #0
-	adds r0, #0x24
-	adds r0, r4, r0
-	movs r1, #0
-	str r1, [r0]
-	adds r4, r4, r5
-	adds r0, r4, #0
-	bl CreateThread
-_0800C1D8:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0800C1E0: .4byte sub_0800C374
-_0800C1E4: .4byte 0x030044E0
-
-	thumb_func_start SpawnPlayer
-SpawnPlayer: @ 0x0800C1E8
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	adds r5, r1, #0
-	movs r1, #1
-	bl sub_080191FC
-	movs r4, #0
-	strh r4, [r6, #0x16]
-	ldrh r1, [r5, #0x18]
-	lsls r1, r1, #0xf
-	str r1, [r6, #0x58]
-	ldrh r0, [r5, #0x1a]
-	adds r0, #2
-	lsls r0, r0, #0xf
-	str r0, [r6, #0x5c]
-	adds r5, r6, #0
-	adds r5, #0xd0
-	ldr r3, [r5]
-	lsrs r1, r1, #8
-	ldrh r2, [r3]
-	movs r0, #0xf
-	ands r0, r2
-	orrs r0, r1
-	strh r0, [r3]
-	ldr r3, [r5]
-	ldr r1, [r6, #0x5c]
-	lsls r1, r1, #8
-	lsrs r1, r1, #0x14
-	ldrh r2, [r3, #2]
-	ldr r0, _0800C2B4 @ =0xFFFFF000
-	ands r0, r2
-	orrs r0, r1
-	strh r0, [r3, #2]
-	strh r4, [r6, #0xc]
-	adds r0, r6, #0
-	adds r0, #0x54
-	strh r4, [r0]
-	adds r0, #2
-	strh r4, [r0]
-	movs r0, #4
-	strh r0, [r6, #0xa]
-	ldr r1, _0800C2B8 @ =gMapLayer_03003C00
-	adds r0, r1, #0
-	adds r0, #0x5c
-	strh r4, [r0]
-	ldr r0, [r5]
-	ldrh r0, [r0, #2]
-	lsls r0, r0, #0x14
-	lsrs r0, r0, #0x14
-	adds r1, #0x5e
-	strh r0, [r1]
-	adds r0, r6, #0
-	adds r0, #0x50
-	ldrh r0, [r0]
-	adds r1, r6, #0
-	adds r1, #0x7a
-	strh r0, [r1]
-	adds r0, r6, #0
-	adds r0, #0x4e
-	ldrh r1, [r0]
-	adds r0, #0x2a
-	strh r1, [r0]
-	movs r3, #0
-	ldr r0, _0800C2BC @ =gPlayerStats
-	subs r4, #0x71
-	adds r2, r0, #0
-	adds r2, #0x88
-_0800C26E:
-	ldrb r1, [r2]
-	lsls r0, r1, #0x19
-	lsrs r0, r0, #0x1d
-	cmp r0, #7
-	bne _0800C27E
-	adds r0, r4, #0
-	ands r0, r1
-	strb r0, [r2]
-_0800C27E:
-	adds r2, #4
-	adds r3, #1
-	cmp r3, #0x18
-	bls _0800C26E
-	movs r3, #0
-	movs r1, #0
-	ldr r0, [r6, #0x1c]
-_0800C28C:
-	strh r1, [r0]
-	adds r0, #2
-	adds r3, #1
-	cmp r3, #2
-	bls _0800C28C
-	bl sub_08021000
-	ldr r2, _0800C2C0 @ =gMapLayer_03003910
-	ldr r0, [r2, #0x78]
-	movs r1, #0xc
-	orrs r0, r1
-	str r0, [r2, #0x78]
-	ldr r0, _0800C2C4 @ =0x000514C9
-	bl SignalEvent
-	bl sub_08007554
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0800C2B4: .4byte 0xFFFFF000
-_0800C2B8: .4byte gMapLayer_03003C00
-_0800C2BC: .4byte gPlayerStats
-_0800C2C0: .4byte gMapLayer_03003910
-_0800C2C4: .4byte 0x000514C9

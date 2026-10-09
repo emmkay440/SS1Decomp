@@ -154,6 +154,7 @@ gUnknownThread_03003CE0 = 0x03003CE0;
 gUnknown_03003D08 = 0x03003D08;
 gPlayerStats = 0x03003D10;
 gHudThread = 0x030044B0;
+gUnknownThreads_030044E0 = 0x030044E0;
 gPlayers = 0x03004580;
 gEnemyThreads = 0x030048D0;
 gUnknown_03004998 = 0x03004998;
