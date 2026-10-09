@@ -12,9 +12,7 @@ SECTIONS {
         src/display.o(.text);
         asm/display_layers.o(.text);
         src/display_misc.o(.text);
-        asm/code_08000AF8.o(.text);
         src/interrupts.o(.text);
-        asm/code_08000F40.o(.text);
         asm/hblank.o(.text);
         src/intr_handlers.o(.text);
         src/copy_queue.o(.text);
@@ -60,7 +58,6 @@ SECTIONS {
         src/equip_bonus3.o(.text);
         asm/code_08012230.o(.text);
         src/player_stats.o(.text);
-        asm/code_08013AF8.o(.text);
         src/field_items.o(.text);
         asm/item_lists.o(.text);
         src/field_items2.o(.text);
@@ -128,9 +125,7 @@ SECTIONS {
         src/menu_setup.o(.text);
         asm/code_0803F73C.o(.text);
         src/menu_state.o(.text);
-        asm/code_08040CAC.o(.text);
         src/menu_items.o(.text);
-        asm/code_08041074.o(.text);
         src/menu_stats.o(.text);
         asm/skill_check.o(.text);
         src/menu_stats2.o(.text);
@@ -142,7 +137,6 @@ SECTIONS {
         src/unk_08043DB8.o(.text);
         asm/code_08043DD0.o(.text);
         src/unk_030005B8.o(.text);
-        asm/code_08046004.o(.text);
         src/unk_030005B8_2.o(.text);
         asm/code_08046128.o(.text);
         src/unk_08046170.o(.text);
@@ -172,7 +166,6 @@ SECTIONS {
         src/save_select_mode7.o(.text);
         asm/code_0804C34C.o(.text);
         src/save_select_mode8.o(.text);
-        asm/code_0804C9C4.o(.text);
         src/unk_0804C9C4.o(.text);
         asm/code_0804CA04.o(.text);
         src/unk_0804CA6C.o(.text);
