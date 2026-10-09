@@ -229,3 +229,4 @@
 03006730 gUnknownThread_03006730 # struct Thread, entry sub_08027A90
 030066F0 gUnknownThread_030066F0 # struct Thread, entry sub_08027E40
 03006760 gUnknownThread_03006760 # struct Thread, entry sub_08028DB0
+03006680 gUnknownThread_03006680 # struct Thread, entry sub_080270D8 (sub_08027140)

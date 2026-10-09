@@ -12222,7 +12222,7 @@ _0801E71C:
 	bne _0801E724
 	b _0801E9CE
 _0801E724:
-	ldr r0, _0801E7F8 @ =0x03006680
+	ldr r0, _0801E7F8 @ =gUnknownThread_03006680
 	bl IsThreadInList
 	cmp r0, #0
 	bne _0801E786
@@ -12322,7 +12322,7 @@ _0801E7EC:
 	b _0801E80C
 	.align 2, 0
 _0801E7F4: .4byte gFrameCounter
-_0801E7F8: .4byte 0x03006680
+_0801E7F8: .4byte gUnknownThread_03006680
 _0801E7FC: .4byte gPlayers
 _0801E800: .4byte gKeysNew
 _0801E804:

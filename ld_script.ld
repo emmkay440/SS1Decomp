@@ -95,6 +95,8 @@ SECTIONS {
         src/char_menu_threads.o(.text);
         asm/lerp.o(.text);
         asm/code_080270D8.o(.text);
+        src/player_threads.o(.text);
+        asm/code_08027280.o(.text);
         src/unk_080292D0.o(.text);
         asm/code_080292DC.o(.text);
         asm/code_08029484.o(.text);
