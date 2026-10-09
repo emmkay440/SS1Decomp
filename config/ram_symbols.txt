@@ -212,3 +212,6 @@
 03006810 gUnknown_03006810      # struct Thread * (30): thread pool (src/thread_pools.c)
 0300005C gUnknown_0300005C      # struct Thread * (64): thread pool (src/thread_pools2.c)
 03000060 gUnknown_03000060      # struct Thread *: one thread (src/thread_pools2.c)
+03006828 gUnknown_03006828      # struct Thread *: src/enemy_threads2.c
+0300682C gUnknown_0300682C      # struct Thread *: src/enemy_threads2.c
+03006830 gUnknown_03006830      # struct Thread *: src/enemy_threads2.c

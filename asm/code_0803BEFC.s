@@ -5389,7 +5389,7 @@ _0803EC28: .4byte gActiveEnemyMask
 	thumb_func_start sub_0803EC2C
 sub_0803EC2C: @ 0x0803EC2C
 	push {r4, r5, r6, r7, lr}
-	ldr r0, _0803EC3C @ =0x03006828
+	ldr r0, _0803EC3C @ =gUnknown_03006828
 	ldr r4, [r0]
 	movs r0, #0
 _0803EC34:
@@ -5398,7 +5398,7 @@ _0803EC34:
 	adds r5, #0x28
 	b _0803EC44
 	.align 2, 0
-_0803EC3C: .4byte 0x03006828
+_0803EC3C: .4byte gUnknown_03006828
 _0803EC40:
 	bl WaitFrame
 _0803EC44:
@@ -5410,11 +5410,11 @@ _0803EC44:
 	adds r4, r5, #0
 	cmp r0, #2
 	bls _0803EC34
-	ldr r0, _0803EC5C @ =0x0300682C
+	ldr r0, _0803EC5C @ =gUnknown_0300682C
 	ldr r4, [r0]
 	b _0803EC64
 	.align 2, 0
-_0803EC5C: .4byte 0x0300682C
+_0803EC5C: .4byte gUnknown_0300682C
 _0803EC60:
 	bl WaitFrame
 _0803EC64:
@@ -5422,11 +5422,11 @@ _0803EC64:
 	bl IsThreadInList
 	cmp r0, #0
 	bne _0803EC60
-	ldr r0, _0803EC74 @ =0x03006830
+	ldr r0, _0803EC74 @ =gUnknown_03006830
 	ldr r4, [r0]
 	b _0803EC7C
 	.align 2, 0
-_0803EC74: .4byte 0x03006830
+_0803EC74: .4byte gUnknown_03006830
 _0803EC78:
 	bl WaitFrame
 _0803EC7C:
@@ -5436,13 +5436,13 @@ _0803EC7C:
 	cmp r7, #0
 	bne _0803EC78
 	str r7, [r4, #8]
-	ldr r6, _0803ECB0 @ =0x03006828
+	ldr r6, _0803ECB0 @ =gUnknown_03006828
 	ldr r0, [r6]
 	bl Free
-	ldr r5, _0803ECB4 @ =0x0300682C
+	ldr r5, _0803ECB4 @ =gUnknown_0300682C
 	ldr r0, [r5]
 	bl Free
-	ldr r4, _0803ECB8 @ =0x03006830
+	ldr r4, _0803ECB8 @ =gUnknown_03006830
 	ldr r0, [r4]
 	bl Free
 	str r7, [r6]
@@ -5452,9 +5452,9 @@ _0803EC7C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803ECB0: .4byte 0x03006828
-_0803ECB4: .4byte 0x0300682C
-_0803ECB8: .4byte 0x03006830
+_0803ECB0: .4byte gUnknown_03006828
+_0803ECB4: .4byte gUnknown_0300682C
+_0803ECB8: .4byte gUnknown_03006830
 
 	thumb_func_start sub_0803ECBC
 sub_0803ECBC: @ 0x0803ECBC
@@ -5913,15 +5913,15 @@ _0803F05C: .4byte 0x030063D8
 	thumb_func_start sub_0803F060
 sub_0803F060: @ 0x0803F060
 	push {r4, r5, lr}
-	ldr r5, _0803F0A4 @ =0x03006828
+	ldr r5, _0803F0A4 @ =gUnknown_03006828
 	movs r0, #0x78
 	bl Alloc
 	str r0, [r5]
-	ldr r4, _0803F0A8 @ =0x0300682C
+	ldr r4, _0803F0A8 @ =gUnknown_0300682C
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
-	ldr r4, _0803F0AC @ =0x03006830
+	ldr r4, _0803F0AC @ =gUnknown_03006830
 	movs r0, #0x28
 	bl Alloc
 	str r0, [r4]
@@ -5934,152 +5934,17 @@ _0803F086:
 	adds r0, #0x28
 	cmp r1, #2
 	bls _0803F086
-	ldr r0, _0803F0A8 @ =0x0300682C
+	ldr r0, _0803F0A8 @ =gUnknown_0300682C
 	ldr r0, [r0]
 	movs r1, #0
 	str r1, [r0, #8]
-	ldr r0, _0803F0AC @ =0x03006830
+	ldr r0, _0803F0AC @ =gUnknown_03006830
 	ldr r0, [r0]
 	str r1, [r0, #8]
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803F0A4: .4byte 0x03006828
-_0803F0A8: .4byte 0x0300682C
-_0803F0AC: .4byte 0x03006830
-
-	thumb_func_start sub_0803F0B0
-sub_0803F0B0: @ 0x0803F0B0
-	push {r4, r5, r6, r7, lr}
-	adds r7, r0, #0
-	ldr r0, _0803F0BC @ =0x03006828
-	ldr r4, [r0]
-	movs r6, #0
-	b _0803F0C4
-	.align 2, 0
-_0803F0BC: .4byte 0x03006828
-_0803F0C0:
-	adds r6, #1
-	adds r4, #0x28
-_0803F0C4:
-	cmp r6, #2
-	bhi _0803F10C
-	adds r0, r4, #0
-	bl IsThreadInList
-	cmp r0, #0
-	bne _0803F0C0
-	ldr r5, [r4, #8]
-	cmp r5, #0
-	bne _0803F0C0
-	ldr r2, _0803F114 @ =gActiveEnemyMask
-	adds r0, r6, #1
-	movs r1, #1
-	lsls r1, r0
-	ldr r0, [r2]
-	orrs r0, r1
-	str r0, [r2]
-	movs r0, #0x46
-	str r0, [r4, #8]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	str r0, [r4, #0x20]
-	movs r1, #0xff
-	lsls r1, r1, #2
-	adds r0, r0, r1
-	str r0, [r4, #0x10]
-	ldr r0, _0803F118 @ =sub_0803E364
-	str r0, [r4, #0xc]
-	str r5, [r4, #0x24]
-	adds r0, r4, #0
-	adds r1, r7, #0
-	adds r2, r6, #0
-	bl CreateThread
-_0803F10C:
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0803F114: .4byte gActiveEnemyMask
-_0803F118: .4byte sub_0803E364
-
-	thumb_func_start sub_0803F11C
-sub_0803F11C: @ 0x0803F11C
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	ldr r0, _0803F128 @ =0x0300682C
-	ldr r4, [r0]
-	b _0803F130
-	.align 2, 0
-_0803F128: .4byte 0x0300682C
-_0803F12C:
-	bl WaitFrame
-_0803F130:
-	adds r0, r4, #0
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _0803F12C
-	movs r0, #0x46
-	str r0, [r4, #8]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	str r0, [r4, #0x20]
-	movs r1, #0xff
-	lsls r1, r1, #2
-	adds r0, r0, r1
-	str r0, [r4, #0x10]
-	ldr r0, _0803F168 @ =sub_0803ECBC
-	str r0, [r4, #0xc]
-	str r5, [r4, #0x24]
-	adds r0, r4, #0
-	adds r1, r6, #0
-	bl CreateThread
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0803F168: .4byte sub_0803ECBC
-
-	thumb_func_start sub_0803F16C
-sub_0803F16C: @ 0x0803F16C
-	push {r4, r5, r6, r7, lr}
-	adds r6, r0, #0
-	adds r7, r1, #0
-	ldr r0, _0803F1AC @ =0x03006830
-	ldr r4, [r0]
-	adds r0, r4, #0
-	bl IsThreadInList
-	adds r5, r0, #0
-	cmp r5, #0
-	bne _0803F1B4
-	movs r0, #0x46
-	str r0, [r4, #8]
-	movs r0, #0x80
-	lsls r0, r0, #3
-	bl Alloc
-	str r0, [r4, #0x20]
-	movs r1, #0xff
-	lsls r1, r1, #2
-	adds r0, r0, r1
-	str r0, [r4, #0x10]
-	ldr r0, _0803F1B0 @ =sub_0803EDD8
-	str r0, [r4, #0xc]
-	str r5, [r4, #0x24]
-	adds r0, r4, #0
-	adds r1, r6, #0
-	adds r2, r7, #0
-	bl CreateThread
-	movs r0, #1
-	b _0803F1B6
-	.align 2, 0
-_0803F1AC: .4byte 0x03006830
-_0803F1B0: .4byte sub_0803EDD8
-_0803F1B4:
-	movs r0, #0
-_0803F1B6:
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
+_0803F0A4: .4byte gUnknown_03006828
+_0803F0A8: .4byte gUnknown_0300682C
+_0803F0AC: .4byte gUnknown_03006830
