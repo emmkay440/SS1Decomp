@@ -1,4 +1,6 @@
 #include "global.h"
+#include "display.h"
+#include "heap.h"
 #include "thread.h"
 
 // Probably the screen fade: these set up a fade and wake the thread that
@@ -7,6 +9,32 @@ extern u16 gFadeDuration;
 extern u16 gFadeTimer;
 extern s16 gFadeDirection;
 extern s16 gFadeFlags;
+extern u16 gUnknown_0300001C;
+extern struct Thread gUnknownThread_03000028;
+
+void sub_0800EEA0(void);
+
+// Resets the fade state and starts sub_0800EEA0 (the fade thread?).
+void sub_0800F174(void)
+{
+    u8 *stack;
+
+    gBgRegsBuffer[0x20] = 0xBF;
+    gBgRegsBuffer[0x22] = 0x10;
+    gUnknown_0300001C = 0;
+    gFadeDuration = 0;
+    gFadeTimer = 0;
+    gFadeDirection = 0;
+    gFadeFlags = 0;
+    CopyBgRegsBuffer();
+    stack = Alloc(0x400);
+    gUnknownThread_03000028.entry = sub_0800EEA0;
+    gUnknownThread_03000028.sp = stack + 0x3FC;
+    gUnknownThread_03000028.stack = stack;
+    gUnknownThread_03000028.priority = 1;
+    gUnknownThread_03000028.onExit = NULL;
+    CreateThread(&gUnknownThread_03000028, 0);
+}
 
 void sub_0800F1EC(u16 duration)
 {

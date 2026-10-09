@@ -231,3 +231,5 @@
 03006760 gUnknownThread_03006760 # struct Thread, entry sub_08028DB0
 03006680 gUnknownThread_03006680 # struct Thread, entry sub_080270D8 (sub_08027140)
 0300681C gUnknown_0300681C      # struct Thread * (1): src/unk_0803BE28.c
+0300001C gUnknown_0300001C      # u16, cleared by sub_0800F174 with the fade state
+03000028 gUnknownThread_03000028 # struct Thread, entry sub_0800EEA0 (fade thread?) (sub_0800F174)
