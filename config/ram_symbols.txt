@@ -240,3 +240,7 @@
 030048D0 gEnemyThreads          # struct Thread[]: one per enemy slot (sub_08036D28; name is a guess)
 030044E0 gUnknownThreads_030044E0 # struct Thread[MAX_PLAYERS]: per-player threads (src/player_skill_threads.c)
 03005DA0 gUnknown_03005DA0      # struct Thread * (16): freed by sub_0800C46C
+03006418 gUnknown_03006418      # struct * (4 x 0x34, thread first): records with mask gUnknown_03006424
+0300641C gUnknown_0300641C      # struct * (4 x 0x88, thread first): records with mask gUnknown_03006420
+03006420 gUnknown_03006420      # u8: live mask of gUnknown_0300641C
+03006424 gUnknown_03006424      # u8: live mask of gUnknown_03006418

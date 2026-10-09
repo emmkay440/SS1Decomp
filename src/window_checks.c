@@ -1,4 +1,5 @@
 #include "global.h"
+#include "thread.h"
 
 // State checks on a structure that is probably the message window
 // (fields are unknown).
@@ -52,4 +53,29 @@ bool32 sub_08022964(struct Unknown_0802292C *p)
     if (p->unk80 == 0)
         result = TRUE;
     return result;
+}
+
+// Stops the live 0x34-byte records (see window_kill.c).
+struct Unknown_03006418
+{
+    struct Thread thread;
+    u8 unk28[0xC];
+};
+
+extern struct Unknown_03006418 *gUnknown_03006418;
+extern u8 gUnknown_03006424;
+
+void sub_0802297C(void)
+{
+    u32 i;
+
+    for (i = 0; i < 4; i++)
+    {
+        if ((gUnknown_03006424 >> i) & 1)
+        {
+            if (IsThreadInList(&gUnknown_03006418[i].thread))
+                KillThread(&gUnknown_03006418[i].thread);
+            gUnknown_03006424 &= ~(1 << i);
+        }
+    }
 }
