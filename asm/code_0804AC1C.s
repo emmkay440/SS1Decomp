@@ -3,45 +3,6 @@
 	.syntax unified
 	.text
 
-	thumb_func_start sub_0804ABD8
-sub_0804ABD8: @ 0x0804ABD8
-	push {r4, lr}
-	movs r3, #0
-	movs r1, #0
-	ldr r0, _0804AC14 @ =gUnknown_03000888
-	ldrb r2, [r0]
-	cmp r3, r2
-	bhs _0804AC0C
-	ldr r0, _0804AC18 @ =gUnknown_0300088C
-	ldr r4, [r0]
-_0804ABEA:
-	lsls r0, r1, #1
-	adds r0, r0, r1
-	lsls r0, r0, #2
-	adds r0, r0, r4
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _0804AC02
-	cmp r0, #2
-	beq _0804AC02
-	adds r0, r3, #1
-	lsls r0, r0, #0x18
-	lsrs r3, r0, #0x18
-_0804AC02:
-	adds r0, r1, #1
-	lsls r0, r0, #0x18
-	lsrs r1, r0, #0x18
-	cmp r1, r2
-	blo _0804ABEA
-_0804AC0C:
-	adds r0, r3, #0
-	pop {r4}
-	pop {r1}
-	bx r1
-	.align 2, 0
-_0804AC14: .4byte gUnknown_03000888
-_0804AC18: .4byte gUnknown_0300088C
-
 	thumb_func_start sub_0804AC1C
 sub_0804AC1C: @ 0x0804AC1C
 	push {r4, r5, r6, lr}

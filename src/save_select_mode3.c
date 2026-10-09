@@ -34,3 +34,22 @@ void sub_0804A450(void)
     if (gUnknown_0300084C != NULL)
         Free(gUnknown_0300084C);
 }
+
+// Number of entries (12 bytes each, kind in the first byte) whose kind
+// isn't 0 or 5.
+struct Entry_sub_0804A468
+{
+    u8 kind;
+    u8 unk1[11];
+};
+
+u8 sub_0804A468(void)
+{
+    u8 count = 0;
+    u8 i;
+
+    for (i = 0; i < gUnknown_03000838; i++)
+        if (((struct Entry_sub_0804A468 *)gUnknown_0300084C)[i].kind != 0 && ((struct Entry_sub_0804A468 *)gUnknown_0300084C)[i].kind != 5)
+            count++;
+    return count;
+}
