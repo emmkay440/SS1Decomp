@@ -49,6 +49,10 @@ are medium functions (menus, items, map) and the near misses below.
       `Enable/DisableDisplayLayers` (asm/display_layers.s),
       `sub_08005FC4`..`sub_080060A0` (asm/map_coords.s), `LoadSaveSlotInfo`
       (asm/save_slot_info.s), `sub_0802F374` (asm/save_load_or_new.s).
+      `sub_08010B48` / `sub_08012230` (asm/equip_has.s, has-bonus 0x12 / 0x11
+      over equipped items; the sum versions in src/equip_bonus*.c match, the
+      has versions come out 12-50 bytes long: drafts tmp/drafts/equip_has_*.c,
+      permuter got to score 1445).
       Many earlier near misses turned out to be the compiler (fixed by
       agbcc -fprologue-bugfix); these remaining ones are source shape.
 - [x] Old near-miss list (now matching): `ApplyEnemyDamage` (asm/enemy_damage.s),
