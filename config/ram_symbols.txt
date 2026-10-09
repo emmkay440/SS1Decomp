@@ -123,7 +123,7 @@
 030063BC gUnknown_030063BC      # u32, set to 0 by InitFieldItems
 03006430 gUnknown_03006430      # struct SpriteObj? (returned by sub_08026C78)
 03002D60 gUnknown_03002D60      # u32, cleared by InitVBlankState
-03000064 gUnknown_03000064      # struct * (3 x 0x28, Alloc'd by sub_08038924; +8 cleared)
+03000064 gUnknown_03000064      # struct Thread * (3): thread pool (src/enemy_threads.c)
 030004B8 gUnknown_030004B8      # u32, returned by sub_0804152C
 030004C8 gUnknown_030004C8      # u8, set by sub_08043D3C (value from sub_0803F5C8)
 03006334 gUnknown_03006334      # u16, set to 1 by sub_0800ED74
@@ -205,3 +205,5 @@
 03006814 gUnknown_03006814      # struct Thread * (4): thread pool, sub_08033EE0 / sub_08033F48
 03000488 gUnknown_03000488      # u32, menu state (reset by sub_0803F5E8)
 03006818 gUnknown_03006818      # struct Thread * (18): thread pool, sub_0803A3E4
+03000068 gUnknown_03000068      # struct Thread * (2): enemy thread pool (src/enemy_threads.c)
+0300006C gUnknown_0300006C      # struct Thread * (3): thread pool (src/enemy_threads.c)
