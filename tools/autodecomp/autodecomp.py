@@ -534,6 +534,10 @@ def permute(func, module, seconds):
     os.chmod(f"{d}/compile.sh", 0o755)
     with open(f"{d}/settings.toml", "w") as f:
         f.write(f'func_name = "{func}"\ncompiler_type = "gcc"\n')
+    rc, out = sh(f"cd '{d}' && ./compile.sh base.c -o base.o")
+    if rc != 0:
+        log(func, f"permuter: base.c doesn't compile: {out[-500:]}")
+        return None
     jobs = max(1, (os.cpu_count() or 2) - 1)
     # own process group: on timeout, kill permuter's worker processes too
     proc = subprocess.Popen([f"{PERMUTER}/.venv/bin/python", f"{PERMUTER}/permuter.py", d,
