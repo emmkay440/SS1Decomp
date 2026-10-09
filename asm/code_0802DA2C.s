@@ -2628,7 +2628,7 @@ sub_0802EF7C: @ 0x0802EF7C
 	adds r0, r4, r0
 	movs r1, #0
 	str r1, [r0]
-	ldr r0, _0802EFC4 @ =0x03006800
+	ldr r0, _0802EFC4 @ =gUnknown_03006800
 	str r1, [r0]
 	movs r0, #0xa0
 	lsls r0, r0, #2
@@ -2638,7 +2638,7 @@ sub_0802EF7C: @ 0x0802EF7C
 	str r0, [r4]
 	cmp r5, #0
 	bne _0802EFB8
-	ldr r4, _0802EFCC @ =0x03006790
+	ldr r4, _0802EFCC @ =gUnknown_03006790
 	movs r0, #0xa0
 	lsls r0, r0, #3
 	bl Alloc
@@ -2654,9 +2654,9 @@ _0802EFB8:
 	bx r0
 	.align 2, 0
 _0802EFC0: .4byte gUnknown_030067F0
-_0802EFC4: .4byte 0x03006800
+_0802EFC4: .4byte gUnknown_03006800
 _0802EFC8: .4byte gUnknown_030067C0
-_0802EFCC: .4byte 0x03006790
+_0802EFCC: .4byte gUnknown_03006790
 _0802EFD0: .4byte 0x03006808
 
 	thumb_func_start sub_0802EFD4
@@ -2690,7 +2690,7 @@ _0802EFFE:
 	bl Free
 	movs r0, #0
 	str r0, [r4]
-	ldr r1, _0802F020 @ =0x03006790
+	ldr r1, _0802F020 @ =gUnknown_03006790
 	ldr r0, [r1]
 	cmp r0, #0
 	beq _0802F032
@@ -2698,7 +2698,7 @@ _0802EFFE:
 	b _0802F028
 	.align 2, 0
 _0802F01C: .4byte gUnknown_030067C0
-_0802F020: .4byte 0x03006790
+_0802F020: .4byte gUnknown_03006790
 _0802F024:
 	bl WaitFrame
 _0802F028:
@@ -2707,7 +2707,7 @@ _0802F028:
 	cmp r0, #0
 	bne _0802F024
 _0802F032:
-	ldr r5, _0802F050 @ =0x03006790
+	ldr r5, _0802F050 @ =gUnknown_03006790
 	ldr r0, [r5]
 	bl Free
 	ldr r4, _0802F054 @ =0x03006808
@@ -2720,7 +2720,7 @@ _0802F032:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802F050: .4byte 0x03006790
+_0802F050: .4byte gUnknown_03006790
 _0802F054: .4byte 0x03006808
 
 	thumb_func_start sub_0802F058

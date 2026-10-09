@@ -235,3 +235,6 @@
 03000028 gUnknownThread_03000028 # struct Thread, entry sub_0800EEA0 (fade thread?) (sub_0800F174)
 0300680C gUnknown_0300680C      # vu32: in-use mask of the gUnknown_03000058 pool
 03000058 gUnknown_03000058      # struct Thread * (16): pool, sub_08031250
+03006800 gUnknown_03006800      # vu32: in-use mask of the gUnknown_03006790 pool
+03006790 gUnknown_03006790      # struct Thread * (32): pool, sub_08029BB4
+030048D0 gEnemyThreads          # struct Thread[]: one per enemy slot (sub_08036D28; name is a guess)

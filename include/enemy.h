@@ -21,7 +21,9 @@ struct Enemy
     s32 homeY;           // +0x1C
     u8 unk20[0x8];
     u16 pendingDamage;   // +0x28
-    u8 unk2A[0xE];
+    u8 unk2A[0x2];
+    u32 unk2C;           // +0x2C slot << 24 (sub_08036D28)
+    u8 unk30[0x8];
     u16 hp;              // +0x38
     u8 unk3A[0x5A];
 };                       // size 0x94

@@ -3923,7 +3923,7 @@ _080248DC:
 	movs r5, #0
 	movs r6, #0
 _080248E0:
-	ldr r0, _0802497C @ =0x030048D0
+	ldr r0, _0802497C @ =gEnemyThreads
 	adds r4, r6, r0
 	adds r0, r4, #0
 	bl IsThreadInList
@@ -3984,7 +3984,7 @@ _0802496C: .4byte gCharacterMenuThread
 _08024970: .4byte gUnknownThread_03003CB0
 _08024974: .4byte gUnknownThread_030064E0
 _08024978: .4byte gUnknownThread_03006380
-_0802497C: .4byte 0x030048D0
+_0802497C: .4byte gEnemyThreads
 _08024980: .4byte gUnknown_030065E0
 _08024984: .4byte gUnknown_03006630
 _08024988:

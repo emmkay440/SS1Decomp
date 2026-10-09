@@ -102,6 +102,8 @@ SECTIONS {
         src/unk_080292D0.o(.text);
         asm/code_080292DC.o(.text);
         asm/code_08029484.o(.text);
+        src/unk_08029BB4.o(.text);
+        asm/code_08029C44.o(.text);
         src/item_use_effect.o(.text);
         asm/code_0802C798.o(.text);
         src/item_use_effect2.o(.text);
@@ -126,6 +128,8 @@ SECTIONS {
         asm/code_08033FB0.o(.text);
         src/thread_pools2.o(.text);
         asm/code_0803578C.o(.text);
+        src/enemy_start.o(.text);
+        asm/code_08036DC0.o(.text);
         src/enemy_threads.o(.text);
         asm/code_08038AF8.o(.text);
         src/thread_pool18.o(.text);

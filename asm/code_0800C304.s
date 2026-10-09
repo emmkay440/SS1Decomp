@@ -219,7 +219,7 @@ _0800C49C:
 	lsls r0, r4, #2
 	adds r0, r0, r4
 	lsls r0, r0, #3
-	ldr r1, _0800C4F8 @ =0x030048D0
+	ldr r1, _0800C4F8 @ =gEnemyThreads
 	adds r0, r0, r1
 	bl KillThread
 _0800C4B6:
@@ -250,7 +250,7 @@ _0800C4B6:
 _0800C4EC: .4byte 0x03005DA0
 _0800C4F0: .4byte gUnknown_03005DD4
 _0800C4F4: .4byte gActiveEnemyMask
-_0800C4F8: .4byte 0x030048D0
+_0800C4F8: .4byte gEnemyThreads
 _0800C4FC: .4byte gEnemies
 _0800C500: .4byte gUnknown_03004998
 
@@ -463,7 +463,7 @@ _0800C648:
 	adds r1, r1, r3
 	ldr r0, _0800C710 @ =0x0000FFFF
 	strh r0, [r1]
-	ldr r5, _0800C714 @ =0x030048D0
+	ldr r5, _0800C714 @ =gEnemyThreads
 	ldr r2, [sp]
 	lsls r3, r2, #2
 	adds r3, r3, r2
@@ -515,7 +515,7 @@ _0800C6FA:
 	.align 2, 0
 _0800C70C: .4byte gPlayers
 _0800C710: .4byte 0x0000FFFF
-_0800C714: .4byte 0x030048D0
+_0800C714: .4byte gEnemyThreads
 _0800C718: .4byte EnemyThread
 _0800C71C: .4byte 0x03004D9C
 
@@ -555,7 +555,7 @@ _0800C740:
 	strh r2, [r5]
 	lsls r0, r2, #0x18
 	str r0, [r5, #0x2c]
-	ldr r7, _0800C7C0 @ =0x030048D0
+	ldr r7, _0800C7C0 @ =gEnemyThreads
 	lsls r4, r2, #2
 	adds r4, r4, r2
 	lsls r4, r4, #3
@@ -599,7 +599,7 @@ _0800C740:
 	.align 2, 0
 _0800C7B8: .4byte gActiveEnemyMask
 _0800C7BC: .4byte gEnemies
-_0800C7C0: .4byte 0x030048D0
+_0800C7C0: .4byte gEnemyThreads
 _0800C7C4: .4byte 0x000007FC
 _0800C7C8:
 	adds r2, r4, #0
