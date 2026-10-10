@@ -22,7 +22,7 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
 
 ## Current state (2026-10-10)
 
-628 / 1001 game functions are matching C (`make progress`); every module in
+643 / 981 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -112,6 +112,20 @@ merge `ad_*` files into real modules, name things, fix style.
     with the real `size_t` prototype the compiler expands `memcpy` inline and
     the ROM stops matching (the "conflicting types for built-in" warning in
     `src/palette_save.c` is expected).
+- Variable reuse decides registers. When everything matches except which
+  register holds a value, look for a variable the original used twice:
+  a parameter used as a temporary (`b = (b * t) / 1024;` in Lerp1024,
+  `layers &= 0x1F00`), one `u8` for two unrelated bytes (`hi` in Random),
+  one pointer for two globals (`thread` in sub_0803F060). Other things that
+  showed up the same day: a `u8`-returning `static inline` keeps the
+  `movs r0, #1 / #0; cmp r0, #0` of an inlined bool test (sub_08041208);
+  32-bit temporaries for 16-bit register math (EnableDisplayLayers);
+  `record[0]` twice instead of `*record++` (sub_080060A0).
+- decomp-permuter (`tools/decomp-permuter`, driven like
+  `tools/autodecomp/autodecomp.py:permute`) rarely finishes a function, but
+  its best candidates point at the idea (a reused variable, a volatile
+  read). Its compile script must delete the `.s` it writes next to the
+  output: otherwise /tmp fills with millions of files (happened 2026-10-10).
 - `split_asm.py FILE Func -` takes everything from Func to the end of the
   file. Only use `-` after checking Func is the last `func_start`.
 - Before replacing an asm module with C, check it holds only the functions

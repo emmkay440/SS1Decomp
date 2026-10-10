@@ -1,7 +1,7 @@
 # What's next (decomp)
 
-Status as of 2026-10-10 (`make progress`): ROM matches; 628 / 1001 game
-functions in C (13.6% of game code bytes: the small ones are mostly done).
+Status as of 2026-10-10 (`make progress`): ROM matches; 643 / 981 game
+functions in C (14.0% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
 
@@ -43,28 +43,35 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - [x] `src/enemy_util.c`: `IsEnemyTypeActive`.
 - [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
       block copies, `GetPlayerClass`, 10 functions).
-- [ ] Near misses still open (drafts in `tmp/drafts/`): `TakeItemFromSlot`
-      (asm/take_item.s), `sub_08041208` (asm/skill_check.s, inlines
-      sub_080411D0 but keeps the 1/0 result), `Lerp1024` (asm/lerp.s),
-      `Enable/DisableDisplayLayers` (asm/display_layers.s),
-      `sub_08005FC4`..`sub_080060A0` (asm/map_coords.s), `LoadSaveSlotInfo`
-      (asm/save_slot_info.s), `sub_0802F374` (asm/save_load_or_new.s).
-      `sub_08010B48` / `sub_08012230` (asm/equip_has.s, has-bonus 0x12 / 0x11
-      over equipped items; the sum versions in src/equip_bonus*.c match, the
-      has versions come out 12-50 bytes long: drafts tmp/drafts/equip_has_*.c,
-      permuter got to score 1445).
-      `sub_0803F060` (asm/enemy_threads2_alloc.s, allocs three pools; draft
-      tmp/drafts/sub_0803F060.c).
-      `sub_0800EDBC` (asm/text_draw_string.s, draws a u16 string as sprites;
-      5 lines off: the original loop isn't optimized as a loop, only a
-      `goto check; do { ... check: ; } while` shape gets close; draft
-      tmp/drafts/sub_0800EDBC.c). `sub_0804087C` (asm/menu_slot_item.s, item
-      in a menu slot; 4-8 lines off in the operand order of the index
-      additions; draft tmp/drafts/sub_0804087C.c). `Random` (asm/random.s;
-      loop and return match, the feedback-bit setup swaps r0/r1; draft
-      tmp/drafts/Random.c).
-      Many earlier near misses turned out to be the compiler (fixed by
-      agbcc -fprologue-bugfix); these remaining ones are source shape.
+- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-10:
+      - `DisableDisplayLayers` (asm/display_disable.s): 2 lines off. Needs
+        the read of gDispCnt through a volatile pointer; the literal load
+        then comes one instruction early (draft DisableDisplayLayers.c).
+      - `Free` (asm/heap_free.s): 6 lines off, all in the first instructions
+        (ptr stays in r4 with a copy in r2; the original copies it to r1 and
+        derives the block from that). The loop needs a goto (draft Free.c).
+      - `sub_0804087C` (asm/menu_slot_item.s): 6 lines off; which register
+        holds the type 4 index (draft sub_0804087C.c).
+      - `sub_0800EDBC` (asm/text_draw_string.s): 5 lines off; the loop is
+        entered by a jump to its test and nothing is hoisted, only a goto
+        gets close (draft sub_0800EDBC.c).
+      - `sub_08005FC4`, `sub_08006008`, `GetMapTileAttributes`
+        (asm/map_fc4.s, map_6008.s, map_attr.s; drafts in map_all.c): the
+        layer pointer has to land in r0/r1 while x and y move to other
+        registers, and `sub_08005FC4` keeps a sign extension that every C
+        version drops. 13-20 lines off.
+      - `LoadSaveSlotInfo` (asm/save_slot_info.s), `sub_0802F374`
+        (asm/save_load_or_new.s): the original loads the constant 0x1000
+        twice (for Alloc and ReadSaveSector); every C version shares it in a
+        register, which shifts the whole register assignment. The matched
+        `LoadSaveSlot` (src/save_check.c) does share it, so these two were
+        written differently.
+      - `sub_08010B48` / `sub_08012230` (asm/equip_has.s, about 700 bytes
+        each): not retried; drafts equip_has_*.c, permuter score 1445.
+      Solved on 2026-10-10: `Random`, `sub_0803F060`, `Lerp1024`,
+      `TakeItemFromSlot`, `sub_08041208`, `sub_08029270`,
+      `EnableDisplayLayers`, `sub_080060A0`. What solved most of them:
+      reusing one variable for two values (see CLAUDE.md).
 - [x] Old near-miss list (now matching): `ApplyEnemyDamage` (asm/enemy_damage.s),
       `ApplyPendingDamage` (asm/player_damage.s), `CalcExpGain`
       (asm/exp_gain.s, 12 bytes off), `InitSaveFlash` (asm/save_init.s),
@@ -76,7 +83,8 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       variant tried leaves the sum in the wrong register. Solve it once in
       `CalcSaveChecksum` (4 lines off) and the rest should follow. `include/player.h` / `include/enemy.h` hold the
       struct layouts.
-- [ ] Heap (`InitHeap`/`Alloc`/`Free`, 0x08001210): 16-byte block header
+- [x] Heap (src/heap.c, src/heap_top.c; only `Free` is still asm, see the
+      near misses). Was: 16-byte block header
       {prev:31 + used:1 in one word, next, freePrev, freeNext}; the code
       reads the first word as a plain pointer too, so the struct probably
       needs a union. `gHeap` = free-list sentinel + start + size.
@@ -119,8 +127,8 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - The ARM part of the m4a mixer (`SoundMainRAM`, 0x0804FB3C-0x0804FE6C) was
   disassembled partly as Thumb. It's byte-exact but unreadable. Replace it with an
   m4a_1 source matching this older version.
-- Bogus function starts still in asm/ (each is the middle of the function
-  before it, so the "small function" lists are wrong about them):
+- Bogus function starts: fixed on 2026-10-10 (24 unaligned or far-jump
+  targets turned into local labels). The ones that were listed:
   `sub_080273F6` (inside `sub_080273DC`, asm/code_080273DC.s),
   `sub_08027E7C` / `sub_08028D92` (inside `sub_08027E40`,
   asm/code_08027828.s; one function of about 3.9 KB) and `sub_0800AF24`
