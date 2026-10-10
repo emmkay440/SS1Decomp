@@ -15,7 +15,8 @@ struct Unknown_030063D8
     u16 unk9C;          // +0x9C flags; bit 1: enemies may spawn (sub_0800EAD8)
     u8 unk9E[0xD];
     u8 unkAB;           // +0xAB set once SignalEvent(3000) has been sent
-    u8 unkAC[0x2E];
+    u8 unkAC[0x20];
+    u8 unkCC[0xE];      // +0xCC indexed past its end: row * 15 + entry (sub_080216E0)
     u8 unkDA;           // +0xDA
 };
 

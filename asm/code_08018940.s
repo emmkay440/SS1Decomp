@@ -1109,7 +1109,7 @@ sub_080191FC: @ 0x080191FC
 	adds r7, r1, #0
 	cmp r6, r2
 	bhs _080192F6
-	ldr r1, _0801923C @ =0x0300397C
+	ldr r1, _0801923C @ =gUnknown_0300397C
 	movs r0, #0x80
 	lsls r0, r0, #8
 	mov r8, r0
@@ -1128,7 +1128,7 @@ _08019224:
 	b _0801924C
 	.align 2, 0
 _08019238: .4byte gUnknown_030063D8
-_0801923C: .4byte 0x0300397C
+_0801923C: .4byte gUnknown_0300397C
 _08019240: .4byte 0xFFFF8000
 _08019244:
 	ldrh r0, [r1]
@@ -1465,10 +1465,10 @@ _080194B8: .4byte gMapLayer_03003910
 _080194BC: .4byte 0xFFC03FFF
 _080194C0: .4byte gUnknown_030063D8
 _080194C4:
-	ldr r4, _080194C8 @ =0x0300397C
+	ldr r4, _080194C8 @ =gUnknown_0300397C
 	b _080194EC
 	.align 2, 0
-_080194C8: .4byte 0x0300397C
+_080194C8: .4byte gUnknown_0300397C
 _080194CC:
 	bl WaitFrame
 	bl sub_080074CC

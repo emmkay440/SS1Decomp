@@ -283,3 +283,4 @@
 0300061C gUnknown_0300061C      # u16[3], cleared by sub_080484F0
 03003CA0 gUnknown_03003CA0      # u16: character advance in pixels (sub_0800EDBC); GameMain sets 13 or 7
 030005D8 gUnknown_030005D8      # struct MenuSlot: sub_08046128 sets type 3, subSlot = first empty inventory slot (12 if none)
+0300397C gUnknown_0300397C      # u16: row (15 bytes each) of Unknown_030063D8.unkCC that sub_080216E0 reads

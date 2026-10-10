@@ -96,7 +96,7 @@ SECTIONS {
         src/enemy_spawner_start.o(.text);
         asm/code_080199B4.o(.text);
         src/thread_starters.o(.text);
-        asm/code_080216E0.o(.text);
+        src/area_start_pos.o(.text);
         src/unk_0802173C.o(.text);
         src/window_gfx.o(.text);
         asm/code_08021874.o(.text);
