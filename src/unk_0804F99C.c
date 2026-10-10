@@ -6,6 +6,35 @@ extern struct SpriteObj gUnknown_03001258;
 
 void sub_0804E5A4(u8 a, s8 level, u8 c);
 void sub_0804F0E8(void);
+extern u16 gUnknown_03001398[6];
+extern u16 gUnknown_030013A8[6];
+extern u32 gUnknown_030013B8[6];
+extern u32 gUnknown_030013D0[6];
+extern u32 gUnknown_030013E8[5];
+
+void sub_0804F944(void)
+{
+    s32 i;
+
+    for (i = 0; i < 6; i++)
+    {
+        gUnknown_03001398[i] = 0;
+        gUnknown_030013A8[i] = 0;
+        gUnknown_030013B8[i] = 0;
+        gUnknown_030013D0[i] = 240;
+    }
+    gUnknown_030013E8[0] = 30;
+    gUnknown_030013E8[1] = 36;
+    gUnknown_030013E8[2] = 40;
+    gUnknown_030013E8[3] = 37;
+    gUnknown_030013E8[4] = 34;
+}
+
+// Nothing calls it.
+void sub_0804F998(void)
+{
+}
+
 u32 sub_0804F99C(void);
 
 u32 sub_0804F99C(void)

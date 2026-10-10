@@ -285,3 +285,9 @@
 030005D8 gUnknown_030005D8      # struct MenuSlot: sub_08046128 sets type 3, subSlot = first empty inventory slot (12 if none)
 0300397C gUnknown_0300397C      # u16: row (15 bytes each) of Unknown_030063D8.unkCC that sub_080216E0 reads
 03001258 gUnknown_03001258      # struct SpriteObj drawn at (120, 148) by sub_0804F9A0
+03000890 gUnknown_03000890      # struct SpriteObj: the falling sprites of save select mode 4 (sub_0804AB10)
+03001398 gUnknown_03001398      # u16[6], cleared by sub_0804F944
+030013A8 gUnknown_030013A8      # u16[6], cleared by sub_0804F944
+030013B8 gUnknown_030013B8      # u32[6], cleared by sub_0804F944
+030013D0 gUnknown_030013D0      # u32[6], set to 240 by sub_0804F944
+030013E8 gUnknown_030013E8      # u32[5]: 30, 36, 40, 37, 34 (sub_0804F944)
