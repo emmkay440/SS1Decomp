@@ -297,3 +297,6 @@
 030004CC gUnknown_030004CC      # u8, cleared by sub_08043BD8
 030004D0 gUnknown_030004D0      # u16[10], cleared by sub_08043BD8
 030004E8 gUnknown_030004E8      # u16[10], cleared by sub_08043BD8
+030066E0 gUnknown_030066E0      # u32, cleared when the queue is allocated (sub_08027280)
+03006788 gUnknown_03006788      # u32, set to 1 when the queue is allocated (sub_08027280)
+03006718 gUnknown_03006718      # u8[4], cleared when the queue is allocated (sub_08027280)

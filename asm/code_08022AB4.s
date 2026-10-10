@@ -6541,11 +6541,11 @@ _08026080:
 	bl sub_08001F64
 	cmp r0, #0
 	beq _080260A2
-	ldr r1, _080260D8 @ =0x03006788
+	ldr r1, _080260D8 @ =gUnknown_03006788
 	movs r0, #1
 	str r0, [r1]
 	movs r6, #0
-	ldr r2, _080260DC @ =0x03006718
+	ldr r2, _080260DC @ =gUnknown_03006718
 	movs r1, #0
 _08026094:
 	adds r0, r6, r2
@@ -6580,8 +6580,8 @@ _080260A2:
 _080260CC: .4byte gPlayers
 _080260D0: .4byte 0x03004648
 _080260D4: .4byte 0x0000FFFF
-_080260D8: .4byte 0x03006788
-_080260DC: .4byte 0x03006718
+_080260D8: .4byte gUnknown_03006788
+_080260DC: .4byte gUnknown_03006718
 _080260E0: .4byte 0x0000FEFF
 _080260E4: .4byte gUnknown_030064D8
 

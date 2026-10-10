@@ -98,6 +98,8 @@ SECTIONS {
         asm/code_08018940.o(.text);
         src/enemy_spawner_start.o(.text);
         asm/code_080199B4.o(.text);
+        src/menu_open.o(.text);
+        asm/code_0801B210.o(.text);
         src/thread_starters.o(.text);
         src/area_start_pos.o(.text);
         src/unk_0802173C.o(.text);
@@ -114,7 +116,8 @@ SECTIONS {
         asm/lerp.o(.text);
         src/centered_text.o(.text);
         src/player_threads.o(.text);
-        asm/code_08027280.o(.text);
+        src/queue_init.o(.text);
+        asm/code_08027318.o(.text);
         src/queue_push.o(.text);
         asm/queue_push_bytes.o(.text);
         src/unk_080292D0.o(.text);
@@ -152,6 +155,8 @@ SECTIONS {
         asm/code_0803A448.o(.text);
         src/unk_0803BE28.o(.text);
         asm/code_0803BEFC.o(.text);
+        src/enemy_threads2_free.o(.text);
+        asm/code_0803ECBC.o(.text);
         asm/enemy_threads2_alloc.o(.text);
         src/enemy_threads2.o(.text);
         src/sound.o(.text);
