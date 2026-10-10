@@ -75,7 +75,6 @@ SECTIONS {
         src/field_items2.o(.text);
         asm/code_08013D9C.o(.text);
         src/unk_08013E20.o(.text);
-        asm/code_08013E40.o(.text);
         src/items.o(.text);
         asm/take_item.o(.text);
         src/item_records.o(.text);
