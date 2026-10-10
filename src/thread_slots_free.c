@@ -1,4 +1,5 @@
 #include "global.h"
+#include "area_state.h"
 #include "heap.h"
 #include "thread.h"
 
@@ -21,7 +22,6 @@ extern struct Thread *gUnknownThreadPtr_03006408;
 extern struct Thread *gUnknownThreadPtr_0300640C;
 extern struct Thread *gUnknownThreadPtr_03006410;
 extern struct Thread *gUnknownThreadPtr_03006414;
-extern void *gUnknown_030063D8;
 
 // Frees the area's thread slots (allocated elsewhere) and gUnknown_030063D8.
 void sub_080187E8(void)

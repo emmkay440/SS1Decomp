@@ -1,4 +1,5 @@
 #include "global.h"
+#include "area_state.h"
 #include "heap.h"
 #include "thread.h"
 
@@ -14,6 +15,28 @@ void sub_0801FE1C(void);
 void sub_08020604(void);
 void sub_08020ADC(void);
 void sub_080201B0(void);
+
+// Sends event 3000 once (unkAB remembers it) if `flag` is set.
+void sub_08020F24(u32 flag)
+{
+    if (flag != 0 && gUnknown_030063D8->unkAB == 0)
+    {
+        SignalEvent(3000);
+        gUnknown_030063D8->unkAB = 1;
+    }
+}
+
+void sub_08020F54(void)
+{
+    u32 i;
+
+    gUnknown_030063D8->unk9C &= ~2;
+    gUnknown_030063D8->unk0 = NULL;
+    gUnknown_030063D8->unk4 = NULL;
+    gUnknown_030063D8->unk84 = 0;
+    for (i = 0; i < 5; i++)
+        gUnknown_030063D8->unkC[i] = 0;
+}
 
 // Threads started on fixed slots; most wait until the slot's previous
 // thread has finished.

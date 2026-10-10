@@ -1,4 +1,5 @@
 #include "global.h"
+#include "area_state.h"
 #include "enemy.h"
 #include "thread.h"
 
@@ -46,15 +47,8 @@ struct Unknown_03005DB0
     u32 unk8;
 };
 
-struct Unknown_030063D8
-{
-    u8 unk0[0x9C];
-    u16 unk9C;
-};
-
 extern u32 gUnknown_03005DA8;
 extern struct Unknown_03005DB0 gUnknown_03005DB0[3];
-extern struct Unknown_030063D8 *gUnknown_030063D8;
 
 u32 sub_080074CC(void);
 u32 sub_080076A8(void);

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "area_state.h"
 #include "heap.h"
 #include "thread.h"
 
@@ -14,16 +15,9 @@ struct Unknown_03006720
     u16 unkA;
 };
 
-struct Unknown_030063D8
-{
-    u8 unk0[0xDA];
-    u8 unkDA;
-};
-
 extern u32 gUnknown_030066E8;
 extern struct Unknown_03006720 *gUnknown_03006720;
 extern u32 gUnknown_03006758;
-extern struct Unknown_030063D8 *gUnknown_030063D8;
 extern struct Thread gUnknownThread_03006730;
 extern struct Thread gUnknownThread_030066F0;
 extern struct Thread gUnknownThread_03006760;
