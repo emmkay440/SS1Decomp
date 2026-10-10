@@ -11,6 +11,24 @@ void sub_0803E364(void);
 void sub_0803ECBC(void);
 void sub_0803EDD8(void);
 
+// Allocates the three pools and marks every slot free.
+void sub_0803F060(void)
+{
+    struct Thread *thread;
+    u32 i;
+
+    gUnknown_03006828 = Alloc(3 * sizeof(struct Thread));
+    gUnknown_0300682C = Alloc(sizeof(struct Thread));
+    gUnknown_03006830 = Alloc(sizeof(struct Thread));
+    thread = gUnknown_03006828;
+    for (i = 0; i < 3; i++, thread++)
+        thread->priority = 0;
+    thread = gUnknown_0300682C;
+    thread->priority = 0;
+    thread = gUnknown_03006830;
+    thread->priority = 0;
+}
+
 // Starts enemy thread sub_0803E364 in a free slot (enemy slot i + 1).
 void sub_0803F0B0(u32 arg)
 {

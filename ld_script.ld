@@ -159,7 +159,6 @@ SECTIONS {
         asm/code_0803BEFC.o(.text);
         src/enemy_threads2_free.o(.text);
         asm/code_0803ECBC.o(.text);
-        asm/enemy_threads2_alloc.o(.text);
         src/enemy_threads2.o(.text);
         src/sound.o(.text);
         asm/code_0803F468.o(.text);
