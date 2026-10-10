@@ -3,58 +3,6 @@
 	.syntax unified
 	.text
 
-	thumb_func_start GameMain
-GameMain: @ 0x08001970
-	push {r4, lr}
-	ldr r4, _080019CC @ =0x03003CA8
-	movs r0, #1
-	strh r0, [r4]
-	bl sub_0800EC38
-	bl sub_0802177C
-	bl sub_08022A38
-	bl sub_0800EE58
-	bl sub_0800F174
-	bl sub_08001DF8
-	bl sub_08026AD0
-	bl InitSaveFlash
-	bl sub_08022AB4
-	bl WaitFrame
-	bl WaitFrame
-	bl WaitFrame
-	bl WaitFrame
-	bl WaitFrame
-	bl WaitFrame
-	bl StartSoundThread
-	ldr r1, _080019D0 @ =0x03006878
-	movs r0, #0
-	str r0, [r1]
-	ldrh r0, [r4]
-	cmp r0, #0
-	bne _080019D8
-	ldr r1, _080019D4 @ =gUnknown_03003CA0
-	movs r0, #0xd
-	b _080019DC
-	.align 2, 0
-_080019CC: .4byte 0x03003CA8
-_080019D0: .4byte 0x03006878
-_080019D4: .4byte gUnknown_03003CA0
-_080019D8:
-	ldr r1, _080019FC @ =gUnknown_03003CA0
-	movs r0, #7
-_080019DC:
-	strh r0, [r1]
-	bl sub_080022BC
-	bl StartTitleMenu
-	bl WaitFrame
-	bl WaitFrame
-_080019EE:
-	bl WaitFrame
-	bl sub_0800EC74
-	bl sub_080041E0
-	b _080019EE
-	.align 2, 0
-_080019FC: .4byte gUnknown_03003CA0
-
 	thumb_func_start sub_08001A00
 sub_08001A00: @ 0x08001A00
 	push {r4, r5, r6, r7, lr}

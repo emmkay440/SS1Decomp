@@ -3772,7 +3772,7 @@ _0801B7C0:
 	bl AddItemToInventory
 	movs r0, #0x26
 	bl PlaySE
-	ldr r0, _0801B83C @ =0x03003CA8
+	ldr r0, _0801B83C @ =gLanguage
 	ldrh r0, [r0]
 	cmp r0, #4
 	bne _0801B80C
@@ -3814,7 +3814,7 @@ _0801B826:
 	b _0801B86E
 	.align 2, 0
 _0801B838: .4byte 0x000F0006
-_0801B83C: .4byte 0x03003CA8
+_0801B83C: .4byte gLanguage
 _0801B840: .4byte 0x000900FF
 _0801B844: .4byte 0x00090100
 _0801B848:

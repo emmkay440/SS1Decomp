@@ -291,3 +291,5 @@
 030013B8 gUnknown_030013B8      # u32[6], cleared by sub_0804F944
 030013D0 gUnknown_030013D0      # u32[6], set to 240 by sub_0804F944
 030013E8 gUnknown_030013E8      # u32[5]: 30, 36, 40, 37, 34 (sub_0804F944)
+03003CA8 gLanguage              # u16 (guess): 1 in this ROM; 0 picks the wide (13 px) font advance and the first 56-byte string of name records
+03006878 gUnknown_03006878      # u32, cleared by GameMain

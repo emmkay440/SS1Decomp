@@ -7,7 +7,9 @@
 // (fields are unknown).
 struct Unknown_0802292C
 {
-    u8 unk0[0x30];
+    u8 unk0[0x28];
+    struct Unknown_0802292C *unk28;   // the record sub_080228D4 checks
+    u8 unk2C[0x4];
     u8 unk30;          // state: 3 -> 4 in sub_08022A0C
     u8 unk31;          // slot in gUnknown_03006424
     u8 unk32[0x42];
@@ -15,6 +17,52 @@ struct Unknown_0802292C
     u8 unk78[0x8];
     u16 unk80;
 };
+
+static inline bool32 IsState3(struct Unknown_0802292C *p)
+{
+    bool32 result = FALSE;
+
+    if (p->unk30 == 3)
+        result = TRUE;
+    return result;
+}
+
+static inline bool32 IsState0(struct Unknown_0802292C *p)
+{
+    bool32 result = FALSE;
+
+    if (p->unk30 == 0)
+        result = TRUE;
+    return result;
+}
+
+static inline void Advance(struct Unknown_0802292C *p)
+{
+    if (((gUnknown_03006424 >> p->unk31) & 1) && p->unk30 == 3)
+        p->unk30 = 4;
+}
+
+// If p's record is in state 3, moves it on to 4 and sets unk74 = 7.
+// Returns FALSE while the record is in a state other than 0 or 3.
+// (Inlined copies of sub_0802292C, sub_08022A0C and sub_0802293C.)
+bool32 sub_080228D4(struct Unknown_0802292C *p)
+{
+    if (p != NULL)
+    {
+        struct Unknown_0802292C *record = p->unk28;
+
+        if (IsState3(record))
+        {
+            Advance(record);
+            p->unk74 = 7;
+        }
+        else if (!IsState0(record))
+        {
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
 
 bool32 sub_0802292C(struct Unknown_0802292C *p)
 {

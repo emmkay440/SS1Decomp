@@ -195,7 +195,7 @@ _0800248A:
 	mov r1, r8
 	movs r2, #0x10
 	bl LoadPalette
-	ldr r0, _080024C4 @ =0x03003CA8
+	ldr r0, _080024C4 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -207,7 +207,7 @@ _0800248A:
 	mov pc, r0
 	.align 2, 0
 _080024C0: .4byte 0x0600E800
-_080024C4: .4byte 0x03003CA8
+_080024C4: .4byte gLanguage
 _080024C8: .4byte _080024CC
 _080024CC: @ jump table
 	.4byte _080024E0 @ case 0

@@ -202,7 +202,7 @@ _08022C3E:
 	movs r3, #8
 	bl sub_08026C64
 _08022C56:
-	ldr r0, _08022C9C @ =0x03003CA8
+	ldr r0, _08022C9C @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -227,7 +227,7 @@ _08022C8C: .4byte 0x0011004A
 _08022C90: .4byte 0x00100048
 _08022C94: .4byte 0x030065AC
 _08022C98: .4byte 0x00110048
-_08022C9C: .4byte 0x03003CA8
+_08022C9C: .4byte gLanguage
 _08022CA0: .4byte _08022CA4
 _08022CA4: @ jump table
 	.4byte _08022CB8 @ case 0
@@ -1112,7 +1112,7 @@ _080233A4:
 	beq _080233F4
 	b _08023764
 _080233C4:
-	ldr r0, _080233D4 @ =0x03003CA8
+	ldr r0, _080233D4 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #3
 	subs r0, r0, r1
@@ -1121,9 +1121,9 @@ _080233C4:
 	adds r5, r3, r0
 	b _08023764
 	.align 2, 0
-_080233D4: .4byte 0x03003CA8
+_080233D4: .4byte gLanguage
 _080233D8:
-	ldr r0, _080233F0 @ =0x03003CA8
+	ldr r0, _080233F0 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #4
 	adds r0, r0, r1
@@ -1135,9 +1135,9 @@ _080233D8:
 	adds r5, r2, r0
 	b _08023764
 	.align 2, 0
-_080233F0: .4byte 0x03003CA8
+_080233F0: .4byte gLanguage
 _080233F4:
-	ldr r0, _0802340C @ =0x03003CA8
+	ldr r0, _0802340C @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #4
 	adds r0, r0, r1
@@ -1149,7 +1149,7 @@ _080233F4:
 	adds r5, r1, r0
 	b _08023764
 	.align 2, 0
-_0802340C: .4byte 0x03003CA8
+_0802340C: .4byte gLanguage
 _08023410:
 	ldr r0, [r7]
 	lsls r0, r0, #0x12
@@ -1180,7 +1180,7 @@ _0802343A:
 	beq _08023474
 	b _080234A8
 _0802344A:
-	ldr r0, _08023458 @ =0x03003CA8
+	ldr r0, _08023458 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #3
 	subs r0, r0, r1
@@ -1188,9 +1188,9 @@ _0802344A:
 	adds r5, r4, r0
 	b _080234A8
 	.align 2, 0
-_08023458: .4byte 0x03003CA8
+_08023458: .4byte gLanguage
 _0802345C:
-	ldr r0, _08023470 @ =0x03003CA8
+	ldr r0, _08023470 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #4
 	adds r0, r0, r1
@@ -1201,12 +1201,12 @@ _0802345C:
 	adds r5, r4, r0
 	b _080234A8
 	.align 2, 0
-_08023470: .4byte 0x03003CA8
+_08023470: .4byte gLanguage
 _08023474:
 	mov r0, sl
 	cmp r0, #0
 	bne _08023494
-	ldr r0, _08023490 @ =0x03003CA8
+	ldr r0, _08023490 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -1217,9 +1217,9 @@ _08023474:
 	adds r5, r4, r0
 	b _080234A8
 	.align 2, 0
-_08023490: .4byte 0x03003CA8
+_08023490: .4byte gLanguage
 _08023494:
-	ldr r0, _080234CC @ =0x03003CA8
+	ldr r0, _080234CC @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #4
 	adds r0, r0, r1
@@ -1250,7 +1250,7 @@ _080234C2:
 	str r0, [sp, #0xa4]
 	b _08023764
 	.align 2, 0
-_080234CC: .4byte 0x03003CA8
+_080234CC: .4byte gLanguage
 _080234D0: .4byte 0x0000015B
 _080234D4:
 	ldr r0, [r7]
@@ -1282,7 +1282,7 @@ _080234FE:
 	beq _08023524
 	b _080235F4
 _0802350E:
-	ldr r0, _08023520 @ =0x03003CA8
+	ldr r0, _08023520 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #4
 	adds r0, r0, r1
@@ -1291,12 +1291,12 @@ _0802350E:
 	lsls r3, r3, #1
 	b _080235D4
 	.align 2, 0
-_08023520: .4byte 0x03003CA8
+_08023520: .4byte gLanguage
 _08023524:
 	mov r0, sl
 	cmp r0, #0
 	bne _08023540
-	ldr r0, _0802353C @ =0x03003CA8
+	ldr r0, _0802353C @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -1305,9 +1305,9 @@ _08023524:
 	lsls r1, r1, #2
 	b _080235B6
 	.align 2, 0
-_0802353C: .4byte 0x03003CA8
+_0802353C: .4byte gLanguage
 _08023540:
-	ldr r0, _08023558 @ =0x03003CA8
+	ldr r0, _08023558 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #4
 	adds r0, r0, r1
@@ -1319,7 +1319,7 @@ _08023540:
 	adds r5, r3, r0
 	b _080235F4
 	.align 2, 0
-_08023558: .4byte 0x03003CA8
+_08023558: .4byte gLanguage
 _0802355C:
 	ldr r0, [r7]
 	lsls r0, r0, #0x12
@@ -1350,7 +1350,7 @@ _08023586:
 	beq _080235C0
 	b _080235F4
 _08023596:
-	ldr r0, _080235A4 @ =0x03003CA8
+	ldr r0, _080235A4 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #2
 	adds r0, r0, r1
@@ -1358,9 +1358,9 @@ _08023596:
 	adds r5, r4, r0
 	b _080235F4
 	.align 2, 0
-_080235A4: .4byte 0x03003CA8
+_080235A4: .4byte gLanguage
 _080235A8:
-	ldr r0, _080235BC @ =0x03003CA8
+	ldr r0, _080235BC @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #4
 	adds r0, r0, r1
@@ -1372,12 +1372,12 @@ _080235B6:
 	adds r5, r4, r0
 	b _080235F4
 	.align 2, 0
-_080235BC: .4byte 0x03003CA8
+_080235BC: .4byte gLanguage
 _080235C0:
 	mov r2, sl
 	cmp r2, #0
 	bne _080235E0
-	ldr r0, _080235DC @ =0x03003CA8
+	ldr r0, _080235DC @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -1389,9 +1389,9 @@ _080235D4:
 	adds r5, r4, r0
 	b _080235F4
 	.align 2, 0
-_080235DC: .4byte 0x03003CA8
+_080235DC: .4byte gLanguage
 _080235E0:
-	ldr r0, _0802360C @ =0x03003CA8
+	ldr r0, _0802360C @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #4
 	adds r0, r0, r1
@@ -1414,7 +1414,7 @@ _080235F4:
 	str r0, [sp, #0xa4]
 	b _08023764
 	.align 2, 0
-_0802360C: .4byte 0x03003CA8
+_0802360C: .4byte gLanguage
 _08023610:
 	lsls r0, r2, #0x12
 	lsrs r0, r0, #0x19
@@ -1434,16 +1434,16 @@ _08023610:
 	beq _0802365C
 	b _0802366E
 _08023634:
-	ldr r0, _08023640 @ =0x03003CA8
+	ldr r0, _08023640 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #3
 	subs r0, r0, r1
 	lsls r0, r0, #3
 	b _0802366C
 	.align 2, 0
-_08023640: .4byte 0x03003CA8
+_08023640: .4byte gLanguage
 _08023644:
-	ldr r0, _08023658 @ =0x03003CA8
+	ldr r0, _08023658 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #4
 	adds r0, r0, r1
@@ -1453,9 +1453,9 @@ _08023644:
 	adds r0, r0, r1
 	b _0802366C
 	.align 2, 0
-_08023658: .4byte 0x03003CA8
+_08023658: .4byte gLanguage
 _0802365C:
-	ldr r0, _08023678 @ =0x03003CA8
+	ldr r0, _08023678 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #4
 	adds r0, r0, r1
@@ -1472,7 +1472,7 @@ _0802366E:
 	str r1, [sp, #0xa0]
 	b _08023764
 	.align 2, 0
-_08023678: .4byte 0x03003CA8
+_08023678: .4byte gLanguage
 _0802367C:
 	lsls r0, r2, #0x12
 	lsrs r0, r0, #0x19
@@ -1494,7 +1494,7 @@ _0802367C:
 	.align 2, 0
 _080236A4: .4byte 0x000900E9
 _080236A8:
-	ldr r0, _080236B8 @ =0x03003CA8
+	ldr r0, _080236B8 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #4
 	adds r0, r0, r1
@@ -1502,7 +1502,7 @@ _080236A8:
 	adds r5, r4, r0
 	b _08023764
 	.align 2, 0
-_080236B8: .4byte 0x03003CA8
+_080236B8: .4byte gLanguage
 _080236BC:
 	adds r5, r0, #0
 	adds r5, #0xa
@@ -1587,7 +1587,7 @@ _08023748:
 	lsls r1, r1, #0xd
 	orrs r0, r1
 	bl GetDataRecord
-	ldr r1, _08023778 @ =0x03003CA8
+	ldr r1, _08023778 @ =gLanguage
 	ldrh r2, [r1]
 	lsls r1, r2, #2
 	adds r1, r1, r2
@@ -1607,7 +1607,7 @@ _0802376C:
 _08023776:
 	b _08023A50
 	.align 2, 0
-_08023778: .4byte 0x03003CA8
+_08023778: .4byte gLanguage
 _0802377C:
 	ldr r3, [sp, #0x9c]
 	cmp r3, #0
@@ -1677,7 +1677,7 @@ _080237EC:
 	cmp r3, #0
 	beq _08023834
 	movs r4, #0
-	ldr r0, _0802389C @ =0x03003CA8
+	ldr r0, _0802389C @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #3
 	subs r0, r0, r1
@@ -1764,7 +1764,7 @@ _0802387E:
 	strh r0, [r1]
 	b _08023A46
 	.align 2, 0
-_0802389C: .4byte 0x03003CA8
+_0802389C: .4byte gLanguage
 _080238A0:
 	movs r4, #0
 	ldr r0, [r7]
@@ -3475,7 +3475,7 @@ _08024630:
 	bl WaitFrame
 	bl WaitFrame
 	bl WaitFrame
-	ldr r0, _08024684 @ =0x03003CA8
+	ldr r0, _08024684 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -3493,7 +3493,7 @@ _08024674: .4byte gHudThread
 _08024678: .4byte gCharacterMenuThread
 _0802467C: .4byte gUnknownThread_03003CB0
 _08024680: .4byte gUnknownThread_030064E0
-_08024684: .4byte 0x03003CA8
+_08024684: .4byte gLanguage
 _08024688: .4byte _0802468C
 _0802468C: @ jump table
 	.4byte _080246A0 @ case 0
@@ -4580,7 +4580,7 @@ _08025048: .4byte 0x080548DC
 _0802504C: .4byte gUnknown_030064D8
 _08025050:
 	bl sub_080076B8
-	ldr r0, _08025068 @ =0x03003CA8
+	ldr r0, _08025068 @ =gLanguage
 	ldrh r0, [r0]
 	cmp r0, #5
 	bhi _08025120
@@ -4590,7 +4590,7 @@ _08025050:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08025068: .4byte 0x03003CA8
+_08025068: .4byte gLanguage
 _0802506C: .4byte _08025070
 _08025070: @ jump table
 	.4byte _08025120 @ case 0
@@ -4834,7 +4834,7 @@ _08025236:
 	ldr r0, _08025294 @ =0x000003FF
 	cmp r8, r0
 	ble _080251BE
-	ldr r0, _080252A0 @ =0x03003CA8
+	ldr r0, _080252A0 @ =gLanguage
 	ldrh r0, [r0]
 	cmp r0, #3
 	bne _080252A4
@@ -4848,7 +4848,7 @@ _08025290: .4byte 0x080FBAC4
 _08025294: .4byte 0x000003FF
 _08025298: .4byte 0x080FBAC8
 _0802529C: .4byte 0x080FBAE8
-_080252A0: .4byte 0x03003CA8
+_080252A0: .4byte gLanguage
 _080252A4:
 	movs r0, #0xa
 	movs r1, #0xf
@@ -7188,7 +7188,7 @@ sub_080265A0: @ 0x080265A0
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #0x88
-	ldr r0, _080265C4 @ =0x03003CA8
+	ldr r0, _080265C4 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	add r5, sp, #0x44
@@ -7202,7 +7202,7 @@ _080265BA:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080265C4: .4byte 0x03003CA8
+_080265C4: .4byte gLanguage
 _080265C8: .4byte _080265CC
 _080265CC: @ jump table
 	.4byte _080265E0 @ case 0

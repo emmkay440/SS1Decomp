@@ -337,7 +337,7 @@ _0804CD70:
 	movs r2, #1
 	movs r3, #0x10
 	bl sub_080044E4
-	ldr r0, _0804CD98 @ =0x03003CA8
+	ldr r0, _0804CD98 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -350,7 +350,7 @@ _0804CD8E:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0804CD98: .4byte 0x03003CA8
+_0804CD98: .4byte gLanguage
 _0804CD9C: .4byte _0804CDA0
 _0804CDA0: @ jump table
 	.4byte _0804CDB4 @ case 0
@@ -402,7 +402,7 @@ _0804CE04:
 	movs r2, #1
 	movs r3, #4
 	bl sub_080044E4
-	ldr r0, _0804CE2C @ =0x03003CA8
+	ldr r0, _0804CE2C @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -415,7 +415,7 @@ _0804CE22:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0804CE2C: .4byte 0x03003CA8
+_0804CE2C: .4byte gLanguage
 _0804CE30: .4byte _0804CE34
 _0804CE34: @ jump table
 	.4byte _0804CE48 @ case 0
@@ -471,7 +471,7 @@ _0804CEA0:
 	movs r2, #1
 	movs r3, #0x10
 	bl sub_080044E4
-	ldr r0, _0804CEC8 @ =0x03003CA8
+	ldr r0, _0804CEC8 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -482,7 +482,7 @@ _0804CEA0:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0804CEC8: .4byte 0x03003CA8
+_0804CEC8: .4byte gLanguage
 _0804CECC: .4byte _0804CED0
 _0804CED0: @ jump table
 	.4byte _0804CEE4 @ case 0

@@ -697,7 +697,7 @@ _08006758:
 	ldrb r0, [r0]
 	movs r1, #0xc
 	ands r1, r0
-	ldr r0, _08006818 @ =0x03003CA8
+	ldr r0, _08006818 @ =gLanguage
 	ldrh r0, [r0]
 	lsls r0, r0, #4
 	adds r1, r1, r0
@@ -780,7 +780,7 @@ _0800680C:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08006818: .4byte 0x03003CA8
+_08006818: .4byte gLanguage
 _0800681C: .4byte gUnknown_03003D08
 _08006820: .4byte gPlayers
 _08006824: .4byte gKeysRepeat

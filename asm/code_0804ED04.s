@@ -137,7 +137,7 @@ _0804EDF4:
 	movs r2, #1
 	bl EnableDisplayLayers
 _0804EE0C:
-	ldr r0, _0804EE2C @ =0x03003CA8
+	ldr r0, _0804EE2C @ =gLanguage
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _0804EE16
@@ -154,7 +154,7 @@ _0804EE1C:
 	mov pc, r0
 	.align 2, 0
 _0804EE28: .4byte 0x00001F03
-_0804EE2C: .4byte 0x03003CA8
+_0804EE2C: .4byte gLanguage
 _0804EE30: .4byte _0804EE34
 _0804EE34: @ jump table
 	.4byte _0804EEB0 @ case 0
@@ -367,7 +367,7 @@ _0804EFD4:
 	beq _0804F064
 	b _0804F0DA
 _0804EFDA:
-	ldr r0, _0804EFF0 @ =0x03003CA8
+	ldr r0, _0804EFF0 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -380,7 +380,7 @@ _0804EFE6:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0804EFF0: .4byte 0x03003CA8
+_0804EFF0: .4byte gLanguage
 _0804EFF4: .4byte _0804EFF8
 _0804EFF8: @ jump table
 	.4byte _0804F00C @ case 0

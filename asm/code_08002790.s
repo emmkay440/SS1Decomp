@@ -27,7 +27,7 @@ sub_08002790: @ 0x08002790
 	movs r1, #0
 	movs r2, #1
 	bl EnableDisplayLayers
-	ldr r0, _080027D8 @ =0x03003CA8
+	ldr r0, _080027D8 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -38,7 +38,7 @@ sub_08002790: @ 0x08002790
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080027D8: .4byte 0x03003CA8
+_080027D8: .4byte gLanguage
 _080027DC: .4byte _080027E0
 _080027E0: @ jump table
 	.4byte _080027F4 @ case 0

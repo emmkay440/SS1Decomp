@@ -63,7 +63,7 @@ _08021D20:
 	ldr r1, [sp, #0x14]
 	cmp r1, r0
 	bne _08021DD4
-	ldr r0, _08021D6C @ =0x03003CA8
+	ldr r0, _08021D6C @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -75,7 +75,7 @@ _08021D20:
 	mov pc, r0
 	.align 2, 0
 _08021D68: .4byte gUnknown_0300641C
-_08021D6C: .4byte 0x03003CA8
+_08021D6C: .4byte gLanguage
 _08021D70: .4byte _08021D74
 _08021D74: @ jump table
 	.4byte _08021D88 @ case 0
@@ -339,13 +339,13 @@ _08021F6C:
 	lsls r1, r1, #0xb
 	orrs r0, r1
 	bl GetDataRecord
-	ldr r1, _08021F84 @ =0x03003CA8
+	ldr r1, _08021F84 @ =gLanguage
 	ldrh r2, [r1]
 	lsls r1, r2, #2
 	adds r1, r1, r2
 	b _08021FBA
 	.align 2, 0
-_08021F84: .4byte 0x03003CA8
+_08021F84: .4byte gLanguage
 _08021F88:
 	lsls r0, r1, #0x12
 	lsrs r0, r0, #0x19
@@ -353,13 +353,13 @@ _08021F88:
 	lsls r1, r1, #0xb
 	orrs r0, r1
 	bl GetDataRecord
-	ldr r1, _08021FA0 @ =0x03003CA8
+	ldr r1, _08021FA0 @ =gLanguage
 	ldrh r2, [r1]
 	lsls r1, r2, #2
 	adds r1, r1, r2
 	b _08021FBA
 	.align 2, 0
-_08021FA0: .4byte 0x03003CA8
+_08021FA0: .4byte gLanguage
 _08021FA4:
 	lsls r0, r1, #0x12
 	lsrs r0, r0, #0x19
@@ -368,7 +368,7 @@ _08021FA4:
 _08021FAC:
 	orrs r0, r1
 	bl GetDataRecord
-	ldr r1, _08022004 @ =0x03003CA8
+	ldr r1, _08022004 @ =gLanguage
 	ldrh r2, [r1]
 	lsls r1, r2, #3
 	subs r1, r1, r2
@@ -411,7 +411,7 @@ _08021FFE:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08022004: .4byte 0x03003CA8
+_08022004: .4byte gLanguage
 _08022008: .4byte MessageWindowThread
 _0802200C: .4byte gUnknown_03006420
 
@@ -670,7 +670,7 @@ _080221F8:
 	bgt _08022250
 	movs r0, #6
 	str r0, [r7, #0x74]
-	ldr r0, _0802222C @ =0x03003CA8
+	ldr r0, _0802222C @ =gLanguage
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _08022230
@@ -683,7 +683,7 @@ _080221F8:
 _08022228:
 	b _0802223C
 	.align 2, 0
-_0802222C: .4byte 0x03003CA8
+_0802222C: .4byte gLanguage
 _08022230:
 	adds r1, r7, #0
 	adds r1, #0x6e
@@ -1560,56 +1560,3 @@ _0802288E:
 _080228CE:
 	bl WaitFrame
 	b _08022186
-
-	thumb_func_start sub_080228D4
-sub_080228D4: @ 0x080228D4
-	push {r4, lr}
-	adds r3, r0, #0
-	cmp r3, #0
-	beq _08022924
-	ldr r1, [r3, #0x28]
-	movs r0, #0
-	adds r4, r1, #0
-	adds r4, #0x30
-	ldrb r2, [r4]
-	cmp r2, #3
-	bne _080228EC
-	movs r0, #1
-_080228EC:
-	cmp r0, #0
-	beq _08022914
-	ldr r0, _08022910 @ =gUnknown_03006424
-	ldrb r0, [r0]
-	adds r1, #0x31
-	ldrb r1, [r1]
-	asrs r0, r1
-	movs r1, #1
-	ands r0, r1
-	cmp r0, #0
-	beq _0802290A
-	cmp r2, #3
-	bne _0802290A
-	movs r0, #4
-	strb r0, [r4]
-_0802290A:
-	movs r0, #7
-	str r0, [r3, #0x74]
-	b _08022924
-	.align 2, 0
-_08022910: .4byte gUnknown_03006424
-_08022914:
-	movs r0, #0
-	cmp r2, #0
-	bne _0802291C
-	movs r0, #1
-_0802291C:
-	cmp r0, #0
-	bne _08022924
-	movs r0, #0
-	b _08022926
-_08022924:
-	movs r0, #1
-_08022926:
-	pop {r4}
-	pop {r1}
-	bx r1

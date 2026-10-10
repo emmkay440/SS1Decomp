@@ -233,7 +233,7 @@ _08026F42:
 	bl GetDataRecord
 	adds r2, r0, #0
 	movs r3, #0
-	ldr r0, _08026F90 @ =0x03003CA8
+	ldr r0, _08026F90 @ =gLanguage
 	ldrh r1, [r0]
 	lsls r0, r1, #3
 	subs r0, r0, r1
@@ -264,5 +264,5 @@ _08026F8A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08026F90: .4byte 0x03003CA8
+_08026F90: .4byte gLanguage
 _08026F94: .4byte gUnknown_03003CA0

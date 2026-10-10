@@ -116,7 +116,7 @@ _08041638:
 	movs r0, #2
 	bl GetDataRecord
 	mov r8, r0
-	ldr r0, _08041658 @ =0x03003CA8
+	ldr r0, _08041658 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -129,7 +129,7 @@ _0804164C:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08041658: .4byte 0x03003CA8
+_08041658: .4byte gLanguage
 _0804165C: .4byte _08041660
 _08041660: @ jump table
 	.4byte _08041674 @ case 0
@@ -156,7 +156,7 @@ _08041688:
 	movs r0, #6
 	bl GetDataRecord
 	mov r8, r0
-	ldr r0, _080416A8 @ =0x03003CA8
+	ldr r0, _080416A8 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -169,7 +169,7 @@ _0804169C:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080416A8: .4byte 0x03003CA8
+_080416A8: .4byte gLanguage
 _080416AC: .4byte _080416B0
 _080416B0: @ jump table
 	.4byte _080416C4 @ case 0
@@ -196,7 +196,7 @@ _080416D8:
 	movs r0, #0x12
 	bl GetDataRecord
 	mov r8, r0
-	ldr r0, _080416F8 @ =0x03003CA8
+	ldr r0, _080416F8 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -209,7 +209,7 @@ _080416EC:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080416F8: .4byte 0x03003CA8
+_080416F8: .4byte gLanguage
 _080416FC: .4byte _08041700
 _08041700: @ jump table
 	.4byte _08041714 @ case 0
@@ -236,7 +236,7 @@ _08041728:
 	movs r0, #3
 	bl GetDataRecord
 	mov r8, r0
-	ldr r0, _08041748 @ =0x03003CA8
+	ldr r0, _08041748 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -249,7 +249,7 @@ _0804173C:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08041748: .4byte 0x03003CA8
+_08041748: .4byte gLanguage
 _0804174C: .4byte _08041750
 _08041750: @ jump table
 	.4byte _08041764 @ case 0
@@ -276,7 +276,7 @@ _08041778:
 	movs r0, #4
 	bl GetDataRecord
 	mov r8, r0
-	ldr r0, _08041798 @ =0x03003CA8
+	ldr r0, _08041798 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -289,7 +289,7 @@ _0804178C:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08041798: .4byte 0x03003CA8
+_08041798: .4byte gLanguage
 _0804179C: .4byte _080417A0
 _080417A0: @ jump table
 	.4byte _080417B4 @ case 0
@@ -316,7 +316,7 @@ _080417C8:
 	movs r0, #7
 	bl GetDataRecord
 	mov r8, r0
-	ldr r0, _080417E4 @ =0x03003CA8
+	ldr r0, _080417E4 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -327,7 +327,7 @@ _080417C8:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080417E4: .4byte 0x03003CA8
+_080417E4: .4byte gLanguage
 _080417E8: .4byte _080417EC
 _080417EC: @ jump table
 	.4byte _08041800 @ case 0
@@ -354,7 +354,7 @@ _08041814:
 	movs r0, #0x25
 	bl GetDataRecord
 	mov r8, r0
-	ldr r0, _08041830 @ =0x03003CA8
+	ldr r0, _08041830 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -365,7 +365,7 @@ _08041814:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08041830: .4byte 0x03003CA8
+_08041830: .4byte gLanguage
 _08041834: .4byte _08041838
 _08041838: @ jump table
 	.4byte _0804184C @ case 0
@@ -392,7 +392,7 @@ _08041860:
 	movs r0, #0xa
 	bl GetDataRecord
 	mov r8, r0
-	ldr r0, _0804187C @ =0x03003CA8
+	ldr r0, _0804187C @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -403,7 +403,7 @@ _08041860:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0804187C: .4byte 0x03003CA8
+_0804187C: .4byte gLanguage
 _08041880: .4byte _08041884
 _08041884: @ jump table
 	.4byte _08041898 @ case 0
@@ -468,7 +468,7 @@ _080418FC:
 	beq _08041906
 	b _08041A3A
 _08041906:
-	ldr r0, _08041928 @ =0x03003CA8
+	ldr r0, _08041928 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -484,7 +484,7 @@ _08041912:
 _0804191C: .4byte 0x0600F800
 _08041920: .4byte 0x0600F000
 _08041924: .4byte gUnknown_030004C8
-_08041928: .4byte 0x03003CA8
+_08041928: .4byte gLanguage
 _0804192C: .4byte _08041930
 _08041930: @ jump table
 	.4byte _08041944 @ case 0
@@ -816,7 +816,7 @@ _08041B9A:
 	movs r0, #0
 	movs r2, #0xf
 	bl LoadPalette
-	ldr r0, _08041BC8 @ =0x03003CA8
+	ldr r0, _08041BC8 @ =gLanguage
 	ldrh r0, [r0]
 	subs r0, #1
 	cmp r0, #4
@@ -827,7 +827,7 @@ _08041B9A:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08041BC8: .4byte 0x03003CA8
+_08041BC8: .4byte gLanguage
 _08041BCC: .4byte _08041BD0
 _08041BD0: @ jump table
 	.4byte _08041BE4 @ case 0
