@@ -583,7 +583,7 @@ _08021B2C:
 	adds r0, r5, r0
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
-	ldr r7, _08021C24 @ =0x03005DF0
+	ldr r7, _08021C24 @ =gUnknown_03005DF0
 	ldr r0, [sp, #0xc]
 	subs r0, #1
 	lsls r6, r0, #1
@@ -620,13 +620,13 @@ _08021BB2:
 	lsls r3, r1, #6
 	ldr r2, [sp, #0x18]
 	adds r0, r2, r3
-	ldr r7, _08021C24 @ =0x03005DF0
+	ldr r7, _08021C24 @ =gUnknown_03005DF0
 	adds r0, r0, r7
 	ldr r2, _08021C30 @ =0xFFFFF004
 	strh r2, [r0]
 	ldr r7, [sp, #0x1c]
 	adds r0, r7, r3
-	ldr r2, _08021C24 @ =0x03005DF0
+	ldr r2, _08021C24 @ =gUnknown_03005DF0
 	adds r0, r0, r2
 	ldr r7, _08021C34 @ =0xFFFFF006
 	strh r7, [r0]
@@ -635,7 +635,7 @@ _08021BB2:
 	mov sb, r1
 	cmp r2, ip
 	bhi _08021C14
-	ldr r4, _08021C24 @ =0x03005DF0
+	ldr r4, _08021C24 @ =gUnknown_03005DF0
 	ldr r0, [sp, #0x10]
 	subs r0, #1
 	lsls r0, r0, #6
@@ -677,7 +677,7 @@ _08021C1E:
 	bl WaitFrame
 	b _08021A00
 	.align 2, 0
-_08021C24: .4byte 0x03005DF0
+_08021C24: .4byte gUnknown_03005DF0
 _08021C28: .4byte 0x0000F001
 _08021C2C: .4byte 0x0000F003
 _08021C30: .4byte 0xFFFFF004

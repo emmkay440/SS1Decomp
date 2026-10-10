@@ -53,9 +53,8 @@ SECTIONS {
         src/enemy_slot.o(.text);
         src/enemy_damage.o(.text);
         src/enemy_util.o(.text);
-        asm/code_0800EA74.o(.text);
         asm/code_0800EB30.o(.text);
-        src/unk_0800ED74.o(.text);
+        src/text_layer.o(.text);
         asm/code_0800ED80.o(.text);
         src/fade.o(.text);
         asm/code_0800F470.o(.text);

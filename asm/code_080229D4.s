@@ -708,7 +708,7 @@ sub_08022F60: @ 0x08022F60
 	mov ip, r5
 	cmp r0, #0
 	beq _08022FE0
-	ldr r5, _08023044 @ =0x03005DF0
+	ldr r5, _08023044 @ =gUnknown_03005DF0
 	mov r1, r8
 	subs r1, #2
 	lsls r1, r1, #1
@@ -733,7 +733,7 @@ sub_08022F60: @ 0x08022F60
 _08022FE0:
 	mov r0, sp
 	ldrb r0, [r0, #1]
-	ldr r5, _08023044 @ =0x03005DF0
+	ldr r5, _08023044 @ =gUnknown_03005DF0
 	subs r4, r6, #1
 	mov r1, sb
 	lsls r3, r1, #1
@@ -781,7 +781,7 @@ _08023010:
 	bx r0
 	.align 2, 0
 _08023040: .4byte 0x080548BC
-_08023044: .4byte 0x03005DF0
+_08023044: .4byte gUnknown_03005DF0
 
 	thumb_func_start sub_08023048
 sub_08023048: @ 0x08023048

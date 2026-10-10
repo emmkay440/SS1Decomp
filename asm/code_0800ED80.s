@@ -116,7 +116,7 @@ _0800EE40: .4byte 0x03003CA0
 	thumb_func_start sub_0800EE44
 sub_0800EE44: @ 0x0800EE44
 	adds r1, r0, #0
-	ldr r2, _0800EE54 @ =0x03005DE0
+	ldr r2, _0800EE54 @ =gUnknown_03005DE0
 	ldrh r0, [r2]
 	cmp r0, r1
 	bls _0800EE50
@@ -124,7 +124,7 @@ sub_0800EE44: @ 0x0800EE44
 _0800EE50:
 	bx lr
 	.align 2, 0
-_0800EE54: .4byte 0x03005DE0
+_0800EE54: .4byte gUnknown_03005DE0
 
 	thumb_func_start sub_0800EE58
 sub_0800EE58: @ 0x0800EE58

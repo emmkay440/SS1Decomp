@@ -255,3 +255,6 @@
 03003F80 gUnknown_03003F80      # = gPlayerStats + 0x270 (two 10-bit masks); own symbol for sub_0801702C
 03005DA8 gUnknown_03005DA8      # u32: in-use mask of gUnknown_03005DB0
 03005DB0 gUnknown_03005DB0      # 3 x 12 bytes (sub_0800EA00)
+03006330 gUnknown_03006330      # u16: text layer palette needs loading (src/text_layer.c)
+03005DE0 gUnknown_03005DE0      # u16: text layer first changed row (0x12 = none)
+03005DF0 gUnknown_03005DF0      # u16[21][32]: text layer tilemap buffer
