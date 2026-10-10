@@ -37,7 +37,10 @@ SECTIONS {
         src/draw_list.o(.text);
         asm/code_0800454C.o(.text);
         src/map.o(.text);
-        asm/map_coords.o(.text);
+        asm/map_fc4.o(.text);
+        asm/map_6008.o(.text);
+        asm/map_attr.o(.text);
+        src/map_bg.o(.text);
         src/unk_08006114.o(.text);
         asm/code_08006144.o(.text);
         src/game_flags.o(.text);
