@@ -245,3 +245,10 @@
 03006420 gUnknown_03006420      # u8: live mask of gUnknown_0300641C
 03006424 gUnknown_03006424      # u8: live mask of gUnknown_03006418
 03000A58 gUnknown_03000A58      # u32[32][16]: saved palette rows (src/palette_save.c)
+030004CB gUnknown_030004CB      # u8 (src/menu_misc.c)
+030004FC gUnknown_030004FC      # buffer (src/menu_misc.c)
+03000500 gUnknown_03000500      # buffer (src/menu_misc.c)
+03000504 gUnknown_03000504      # buffer (src/menu_misc.c)
+03000508 gUnknown_03000508      # buffer (src/menu_misc.c)
+0300050C gUnknown_0300050C      # buffer (src/menu_misc.c)
+03000510 gUnknown_03000510      # struct SpriteObj (src/menu_misc.c)

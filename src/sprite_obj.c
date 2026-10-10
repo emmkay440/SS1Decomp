@@ -1,23 +1,6 @@
 #include "global.h"
 #include "display.h"
-
-// A sprite object used by menus/windows; field meanings are guesses from
-// how these functions use them.
-struct SpriteObj
-{
-    u32 unk0;
-    u32 unk4;
-    u32 unk8;
-    u8 *palettes;      // +0x0C
-    s32 unk10;
-    u32 palette;       // +0x14
-    u32 paletteCount;  // +0x18
-    u8 unk1C[0x10];
-    s16 scale;         // +0x2C 0x100 = 1.0
-    s16 scaleStep;     // +0x2E
-    s16 scaleMax;      // +0x30
-    s16 scaleMin;      // +0x32
-};
+#include "sprite_obj.h"
 
 extern struct SpriteObj gUnknown_03006430;
 
