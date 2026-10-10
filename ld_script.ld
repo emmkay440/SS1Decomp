@@ -110,7 +110,7 @@ SECTIONS {
         asm/code_08026D98.o(.text);
         src/char_menu_threads.o(.text);
         asm/lerp.o(.text);
-        asm/code_080270D8.o(.text);
+        src/centered_text.o(.text);
         src/player_threads.o(.text);
         asm/code_08027280.o(.text);
         src/queue_push.o(.text);
