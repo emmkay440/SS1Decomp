@@ -37,11 +37,14 @@ struct Player
     u16 pendingDamage[2]; // +0x54
     s32 x;                // +0x58 fixed point
     s32 y;                // +0x5C
-    u8 unk60[0x16];
+    u8 unk60[0x12];
+    u16 unk72;            // +0x72 sub_0800BE2C counts its changes to even values
+    u16 unk74;
     u16 unk76;            // +0x76 nonzero ends the state 5 loops (sub_0800C304)
     s16 sp;               // +0x78 probably current SP (equal to maxSp when checked)
     s16 hp;               // +0x7A
-    u8 unk7C[0x2A];
+    u32 unk7C;            // +0x7C counter (sub_0800BE2C)
+    u8 unk80[0x26];
     u16 status;           // +0xA6 (unverified)
     u8 unkA8[0x28];
     void *unkD0;          // +0xD0

@@ -4,7 +4,12 @@
 #include "sprite_obj.h"
 
 extern u8 gUnknown_030004C8;
+extern u8 gUnknown_030004C9;
+extern u8 gUnknown_030004CA;
 extern u8 gUnknown_030004CB;
+extern u8 gUnknown_030004CC;
+extern u16 gUnknown_030004D0[10];
+extern u16 gUnknown_030004E8[10];
 extern void *gUnknown_030004FC;
 extern void *gUnknown_03000500;
 extern void *gUnknown_03000504;
@@ -18,6 +23,28 @@ void sub_080420EC(void);
 void sub_0804288C(void);
 void sub_08043378(void);
 void sub_08046110(void);
+
+// Resets this screen's state.
+void sub_08043BD8(void)
+{
+    u8 i;
+
+    gUnknown_030004C8 = 0;
+    gUnknown_030004CB = 0;
+    gUnknown_030004CA = 0;
+    gUnknown_030004C9 = 1;
+    gUnknown_030004CC = 0;
+    gUnknown_030004FC = NULL;
+    gUnknown_03000500 = NULL;
+    gUnknown_03000504 = NULL;
+    gUnknown_03000508 = NULL;
+    gUnknown_0300050C = NULL;
+    for (i = 0; i < 10; i++)
+    {
+        gUnknown_030004D0[i] = 0;
+        gUnknown_030004E8[i] = 0;
+    }
+}
 
 // Frees the five buffers at gUnknown_030004FC.
 void sub_08043C5C(void)
