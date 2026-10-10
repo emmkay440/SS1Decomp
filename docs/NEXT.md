@@ -129,7 +129,7 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - Functions nothing calls show up as `.byte` runs after a function's
   literal pool (e.g. the tail of asm/code.s after `sub_080004A4`, which is
   ARM code). Decode them by hand when decompiling the function before them;
-  six were turned into C on 2026-10-10 (`FindFreeInventorySlot`,
+  five were turned into C on 2026-10-10 (`FindFreeInventorySlot`,
   `sub_0804E1F4`, `sub_080294D8`, `sub_08029544`, `sub_08013E08`).
 - Some function starts came from heuristics (`push {..., lr}` scans). If
   `checkfunc.py` or the traces show a "function" that is really the middle of
