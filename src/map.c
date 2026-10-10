@@ -30,3 +30,23 @@ void sub_08005F94(u16 i, u16 a, u16 b)
         gMapLayer_03003910.entries[i].unk6 = b;
     }
 }
+
+// Position relative to the layer's origin.
+bool32 sub_08005FC4(u16 x, s16 y, s16 *outX, s16 *outY, u32 unused, u32 second)
+{
+    s16 sx;
+
+    if (second)
+    {
+        sx = x;
+        *outX = sx - (s16)gMapLayer_03003C00.originX;
+        *outY = (s16)y - (s16)gMapLayer_03003C00.originY;
+    }
+    else
+    {
+        sx = x;
+        *outX = sx - (s16)gMapLayer_03003910.originX;
+        *outY = (s16)y - (s16)gMapLayer_03003910.originY;
+    }
+    return TRUE;
+}

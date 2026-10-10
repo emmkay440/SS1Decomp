@@ -40,7 +40,6 @@ SECTIONS {
         src/map_init.o(.text);
         asm/code_080045C8.o(.text);
         src/map.o(.text);
-        asm/map_fc4.o(.text);
         asm/map_6008.o(.text);
         asm/map_attr.o(.text);
         src/map_bg.o(.text);
