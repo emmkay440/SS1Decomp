@@ -1,6 +1,8 @@
 #include "global.h"
 #include "heap.h"
 #include "thread.h"
+#include "data_record.h"
+#include "item.h"
 
 extern struct Thread gCharacterMenuThread;
 extern struct Thread gUnknownThread_030064E0;
@@ -11,6 +13,46 @@ void CharacterMenuThread(void);
 void sub_08025940(void);
 void sub_080260E8(void);
 void sub_08003518(u32 a, u32 b, u16 c, u16 d, u8 e, void *f, u32 g, u32 h);
+
+extern u16 gLanguage;
+extern u16 gUnknown_03003CA0;      // character advance
+
+u32 sub_0800ED80(u16 *str);
+void sub_0800EB30(u16 *str, s32 x, s32 y);
+
+// Draws the name of a weapon, armor or head item (category 13 record picked
+// by bits 15-19 of the item word; one 56-byte string per language) at
+// (x, y), or centered on x if `centered` is negative.
+void sub_08026F20(s32 x, s32 y, struct Item *item, s32 centered)
+{
+    u8 *record;
+    u16 *name;
+    s16 offset;
+
+    if (item == NULL)
+        return;
+    switch (item->category)
+    {
+    case ITEM_CATEGORY_USABLE:
+        return;
+    case ITEM_CATEGORY_WEAPON:
+        record = GetDataRecord(((*(u32 *)item << 12) >> 27) | 0xD0000);
+        break;
+    case ITEM_CATEGORY_ARMOR:
+        record = GetDataRecord(((*(u32 *)item << 12) >> 27) | 0xD0000);
+        break;
+    case ITEM_CATEGORY_HEAD:
+        record = GetDataRecord(((*(u32 *)item << 12) >> 27) | 0xD0000);
+        break;
+    default:
+        return;
+    }
+    offset = 0;
+    name = (u16 *)(record + gLanguage * 56);
+    if (centered < 0)
+        offset = -((s32)(sub_0800ED80(name) * gUnknown_03003CA0) / 2);
+    sub_0800EB30(name, x + offset, y);
+}
 
 void StartCharacterMenu(void)
 {
