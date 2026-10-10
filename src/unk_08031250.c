@@ -28,3 +28,21 @@ void sub_08031250(u32 a, u32 b)
     CreateThread(&gUnknown_03000058[i], i | (a << 16), b);
     gUnknown_0300680C |= 1 << i;
 }
+
+// Allocates the pool.
+void sub_080312E0(void)
+{
+    struct Thread **pool = &gUnknown_03000058;
+
+    *pool = Alloc(16 * sizeof(struct Thread));
+    gUnknown_0300680C = 0;
+}
+
+// Waits until every thread of the pool has finished, then frees it.
+void sub_08031304(void)
+{
+    while (gUnknown_0300680C != 0)
+        WaitFrame();
+    Free(gUnknown_03000058);
+    gUnknown_03000058 = NULL;
+}

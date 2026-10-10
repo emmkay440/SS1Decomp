@@ -3,50 +3,6 @@
 	.syntax unified
 	.text
 
-	thumb_func_start sub_080312E0
-sub_080312E0: @ 0x080312E0
-	push {r4, lr}
-	ldr r4, _080312FC @ =gUnknown_03000058
-	movs r0, #0xa0
-	lsls r0, r0, #2
-	bl Alloc
-	str r0, [r4]
-	ldr r1, _08031300 @ =gUnknown_0300680C
-	movs r0, #0
-	str r0, [r1]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080312FC: .4byte gUnknown_03000058
-_08031300: .4byte gUnknown_0300680C
-
-	thumb_func_start sub_08031304
-sub_08031304: @ 0x08031304
-	push {r4, lr}
-	ldr r1, _0803132C @ =gUnknown_0300680C
-	ldr r0, [r1]
-	cmp r0, #0
-	beq _0803131A
-	adds r4, r1, #0
-_08031310:
-	bl WaitFrame
-	ldr r0, [r4]
-	cmp r0, #0
-	bne _08031310
-_0803131A:
-	ldr r4, _08031330 @ =gUnknown_03000058
-	ldr r0, [r4]
-	bl Free
-	movs r0, #0
-	str r0, [r4]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0803132C: .4byte gUnknown_0300680C
-_08031330: .4byte gUnknown_03000058
-
 	thumb_func_start sub_08031334
 sub_08031334: @ 0x08031334
 	push {r4, r5, r6, r7, lr}
