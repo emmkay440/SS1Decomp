@@ -15,6 +15,16 @@ struct MenuSlot
 #define MENU_SLOT_TYPE(slot)    (((u8 *)&(slot)->pos)[0])
 #define MENU_SLOT_SUBSLOT(slot) (((u8 *)&(slot)->pos)[1])
 
+// Same layout with type/subSlot as separate bytes, for code that accesses
+// them as base + offset.
+struct MenuSlotBytes
+{
+    u8 unk0;
+    u8 unk1;
+    u8 type;
+    u8 subSlot;
+};
+
 struct MenuSlot *sub_08040CA4(void);
 void sub_08040C54(void);
 

@@ -173,9 +173,9 @@ SECTIONS {
         asm/code_08043E0C.o(.text);
         src/unk_030005B8.o(.text);
         src/unk_030005B8_2.o(.text);
-        asm/code_08046128.o(.text);
+        src/unk_08046128.o(.text);
         src/unk_08046170.o(.text);
-        asm/code_08046178.o(.text);
+        src/unk_08046178.o(.text);
         src/save_select_start.o(.text);
         asm/code_08046338.o(.text);
         src/save_select_misc.o(.text);
