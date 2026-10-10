@@ -56,6 +56,8 @@ SECTIONS {
         asm/code_0800EB30.o(.text);
         src/text_layer.o(.text);
         asm/code_0800ED80.o(.text);
+        src/unk_0800EE44.o(.text);
+        asm/code_0800EEA0.o(.text);
         src/fade.o(.text);
         asm/code_0800F470.o(.text);
         src/equip_bonus.o(.text);

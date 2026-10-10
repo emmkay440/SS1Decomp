@@ -20,7 +20,7 @@ sub_0800EB30: @ 0x0800EB30
 	movs r1, #0xf
 	add r0, sp, #0x10
 	strb r1, [r0]
-	ldr r0, _0800EB70 @ =0x03006340
+	ldr r0, _0800EB70 @ =gUnknown_03006340
 	ldr r0, [r0]
 	movs r1, #0xf0
 	lsls r1, r1, #1
@@ -37,7 +37,7 @@ sub_0800EB30: @ 0x0800EB30
 	mov r8, r0
 	b _0800EC16
 	.align 2, 0
-_0800EB70: .4byte 0x03006340
+_0800EB70: .4byte gUnknown_03006340
 _0800EB74:
 	ldrh r2, [r7]
 	subs r0, r2, #1
@@ -46,7 +46,7 @@ _0800EB74:
 	lsls r4, r4, #0x14
 	ands r4, r0
 	lsrs r4, r4, #0x18
-	ldr r1, _0800EBC4 @ =0x03006340
+	ldr r1, _0800EBC4 @ =gUnknown_03006340
 	lsls r0, r4, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
@@ -79,7 +79,7 @@ _0800EB74:
 	adds r0, #8
 	b _0800EBE6
 	.align 2, 0
-_0800EBC4: .4byte 0x03006340
+_0800EBC4: .4byte gUnknown_03006340
 _0800EBC8:
 	adds r0, r6, #0
 	adds r0, #0xd

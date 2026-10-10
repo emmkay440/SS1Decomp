@@ -258,3 +258,4 @@
 03006330 gUnknown_03006330      # u16: text layer palette needs loading (src/text_layer.c)
 03005DE0 gUnknown_03005DE0      # u16: text layer first changed row (0x12 = none)
 03005DF0 gUnknown_03005DF0      # u16[21][32]: text layer tilemap buffer
+03006340 gUnknown_03006340      # u32 *[]: the category 8 data records (sub_0800EE58)
