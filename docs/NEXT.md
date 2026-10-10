@@ -1,7 +1,7 @@
 # What's next (decomp)
 
-Status as of 2026-10-10 (`make progress`): ROM matches; 608 / 1000 game
-functions in C (12.9% of game code bytes: the small ones are mostly done).
+Status as of 2026-10-10 (`make progress`): ROM matches; 628 / 1001 game
+functions in C (13.6% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
 
@@ -53,8 +53,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       over equipped items; the sum versions in src/equip_bonus*.c match, the
       has versions come out 12-50 bytes long: drafts tmp/drafts/equip_has_*.c,
       permuter got to score 1445).
-      `sub_08029270` (asm/queue_push_bytes.s, queue push with three byte
-      args: needs one register too many; draft tmp/drafts/sub_08029270.c) and
       `sub_0803F060` (asm/enemy_threads2_alloc.s, allocs three pools; draft
       tmp/drafts/sub_0803F060.c).
       `sub_0800EDBC` (asm/text_draw_string.s, draws a u16 string as sprites;
@@ -123,9 +121,10 @@ m4a's C part is fully C. What's left is mostly medium and large functions
   m4a_1 source matching this older version.
 - Bogus function starts still in asm/ (each is the middle of the function
   before it, so the "small function" lists are wrong about them):
-  `sub_080273F6` (inside `sub_080273DC`, asm/code_08027280.s) and
-  `sub_08027E7C` / `sub_08028D92` (inside `sub_08027E40`, same file; one
-  function of about 3.9 KB).
+  `sub_080273F6` (inside `sub_080273DC`, asm/code_080273DC.s),
+  `sub_08027E7C` / `sub_08028D92` (inside `sub_08027E40`,
+  asm/code_08027828.s; one function of about 3.9 KB) and `sub_0800AF24`
+  (the tail of the function before it, asm/code_080077D0.s).
 - Functions nothing calls show up as `.byte` runs after a function's
   literal pool (e.g. the tail of asm/code.s after `sub_080004A4`, which is
   ARM code). Decode them by hand when decompiling the function before them;

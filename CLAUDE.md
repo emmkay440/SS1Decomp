@@ -22,7 +22,7 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
 
 ## Current state (2026-10-10)
 
-608 / 1000 game functions are matching C (`make progress`); every module in
+628 / 1001 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -96,6 +96,24 @@ merge `ad_*` files into real modules, name things, fix style.
   - A byte built as `14 | (x << 4)` with `movs r0, #14; orrs r0, r2`: two
     4-bit bitfield stores, not shifts.
   - `while (--n != -1)` (not `n-- != 0`) for `subs; cmp rX, #-1`.
+  - Compare trees: three case values tested as `== 2; <= 2 -> out; == 3;
+    == 4` (pivot on the second of four) mean the switch had a fourth case
+    below them that does nothing (`case 1: return;`). Cases that share one
+    body but are tested one by one each had their own copy of the statement
+    (`case 2: x = f(); break; case 3: x = f(); break;`).
+  - A 4-bit field read as `ldrb; lsls #28; lsrs #28; cmp`: read the `u8`
+    bitfield into a `u32` local first (`u32 kind = e->unk4.k.kind;`);
+    comparing it directly folds into a mask test.
+  - Swapped callee-saved registers in a search loop: cache the global count
+    in a local (`for (i = 0, count = gCount; i < count; ...)`).
+  - Selecting one of two globals and then updating a field: write the update
+    in both branches (`if (c) gA.flags |= 0xC; else gB.flags |= 0xC;`).
+  - Don't swap the local `bzero`/`memcpy` prototypes for agbcc's `<string.h>`:
+    with the real `size_t` prototype the compiler expands `memcpy` inline and
+    the ROM stops matching (the "conflicting types for built-in" warning in
+    `src/palette_save.c` is expected).
+- `split_asm.py FILE Func -` takes everything from Func to the end of the
+  file. Only use `-` after checking Func is the last `func_start`.
 - Before replacing an asm module with C, check it holds only the functions
   you wrote (`grep func_start`), and look for `.byte` runs after literal
   pools: those are uncalled functions and need C too.
