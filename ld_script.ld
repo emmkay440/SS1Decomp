@@ -112,7 +112,6 @@ SECTIONS {
         src/thread_slots.o(.text);
         asm/code_08026D98.o(.text);
         src/char_menu_threads.o(.text);
-        asm/lerp.o(.text);
         src/centered_text.o(.text);
         src/player_threads.o(.text);
         src/queue_init.o(.text);

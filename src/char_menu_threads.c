@@ -119,3 +119,11 @@ void sub_0802706C(struct Unknown_0802706C *p, u32 a, u32 b, u16 c, u16 d, u8 e)
 {
     sub_08003518(a, b, c, d, e, p->unk1C, p->unk8, p->unk0);
 }
+
+// out = a + (b - a) * t / 1024, as two rounded-toward-zero products.
+void Lerp1024(s32 *out, s32 a, s32 b, s32 t)
+{
+    b = (b * t) / 1024;
+    a = (a * (1024 - t)) / 1024;
+    *out = b + a;
+}
