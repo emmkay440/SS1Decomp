@@ -162,7 +162,7 @@ SECTIONS {
         src/menu_stats.o(.text);
         asm/skill_check.o(.text);
         src/menu_stats2.o(.text);
-        asm/code_08041454.o(.text);
+        src/menu_inventory_scan.o(.text);
         src/unk_0804152C.o(.text);
         asm/code_08041538.o(.text);
         src/menu_misc.o(.text);
