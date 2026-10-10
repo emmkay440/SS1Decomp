@@ -1,13 +1,13 @@
 #include "global.h"
 #include "display.h"
 
-// An entry of the list at gUnknown_030031EC; each one is drawn with
+// The sprite draw list: nodes come from a pool of 50 (gUnknown_03003200,
+// gUnknown_030031F4 used), are appended by sub_08004418 and drawn with
 // sub_08003518 once per frame (sub_0800449C is the first call in
-// FrameUpdate).
+// FrameUpdate). sub_080041E0 empties it.
 struct DrawNode
 {
-    u16 unk0;
-    u16 unk2;
+    struct DrawNode *prev;
     struct DrawNode *next;
     u32 unk8;
     u32 unkC;
@@ -18,11 +18,47 @@ struct DrawNode
     void *unk1C;
     u8 unk20[2];
     u8 unk22;
-};
+};                     // size 0x24
 
-extern struct DrawNode *gUnknown_030031EC;
+extern struct DrawNode *gUnknown_030031EC;   // head
+extern struct DrawNode *gUnknown_030031F0;   // tail
+extern u32 gUnknown_030031F4;                // nodes used
+extern struct DrawNode gUnknown_03003200[50];
 
 void sub_08003518(u32 a, u32 b, u16 c, u16 d, u8 e, void *f, u32 g, u32 h);
+
+struct DrawNode *sub_08004418(u32 a, u32 b, u16 c, u16 d, u8 e, void *f, u32 g, u32 h)
+{
+    struct DrawNode *node;
+
+    if (gUnknown_030031F4 > 49)
+        return NULL;
+    node = &gUnknown_03003200[gUnknown_030031F4];
+    gUnknown_030031F4++;
+    node->unk8 = a;
+    node->unkC = b;
+    node->unk10 = c;
+    node->unk12 = d;
+    node->unk22 = e;
+    node->unk1C = f;
+    node->unk14 = g;
+    node->unk18 = h;
+    if (gUnknown_030031F0 != NULL)
+    {
+        gUnknown_030031F0->next = node;
+        node->prev = gUnknown_030031F0;
+        node->next = NULL;
+        gUnknown_030031F0 = node;
+    }
+    else
+    {
+        gUnknown_030031EC = node;
+        gUnknown_030031F0 = node;
+        node->prev = NULL;
+        node->next = NULL;
+    }
+    return node;
+}
 
 void sub_0800449C(void)
 {
@@ -33,9 +69,15 @@ void sub_0800449C(void)
                      node->unk1C, node->unk14, node->unk18);
 }
 
-s32 sub_080044DC(struct DrawNode *node)
+struct Unknown_080044DC
 {
-    return node->unk2 - 1;
+    u16 unk0;
+    u16 unk2;
+};
+
+s32 sub_080044DC(struct Unknown_080044DC *p)
+{
+    return p->unk2 - 1;
 }
 
 // Blend registers in the buffer: control (targets a / b, effect c), alpha

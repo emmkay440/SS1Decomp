@@ -265,3 +265,4 @@
 030031EC gUnknown_030031EC      # pointer, cleared by sub_080041E0 (draw lists?)
 030031F0 gUnknown_030031F0      # pointer, cleared by sub_080041E0 (draw lists?)
 030031F4 gUnknown_030031F4      # pointer, cleared by sub_080041E0 (draw lists?)
+03003200 gUnknown_03003200      # struct DrawNode[50] (0x24 each): draw list pool (src/draw_list.c)

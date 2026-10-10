@@ -30,7 +30,8 @@ SECTIONS {
         src/unk_08002B58.o(.text);
         asm/code_08002B8C.o(.text);
         src/unk_080041D4.o(.text);
-        asm/code_08004214.o(.text);
+        src/anim_step.o(.text);
+        asm/code_08004288.o(.text);
         src/draw_list.o(.text);
         asm/code_0800454C.o(.text);
         src/map.o(.text);
