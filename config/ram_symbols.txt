@@ -271,3 +271,9 @@
 030067B4 gUnknown_030067B4      # u32, cleared by sub_0802F0B8
 03006804 gUnknown_03006804      # struct Thread * (32): shared effect pool (src/effect_pools.c)
 030004CA gUnknown_030004CA      # u8: nonzero hides the selected item's icon in its slot (guess; sub_08043D48)
+030009D8 gUnknown_030009D8      # struct SpriteObj (src/unk_0804E1E4.c)
+03000A44 gUnknown_03000A44      # u16: animation frame of gUnknown_030009D8
+03000A46 gUnknown_03000A46      # u16: animation timer of gUnknown_030009D8
+03000A4C gUnknown_03000A4C      # u32: toggles 0/1 each step (sub_0804E230)
+03000A50 gUnknown_03000A50      # s32: x of gUnknown_030009D8, moves left
+03000A54 gUnknown_03000A54      # s32: y of gUnknown_030009D8
