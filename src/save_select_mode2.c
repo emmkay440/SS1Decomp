@@ -30,3 +30,22 @@ void sub_08049E08(void)
     if (gUnknown_030007F8 != NULL)
         Free(gUnknown_030007F8);
 }
+
+// Number of entries (16 bytes each, kind in the first byte) whose kind
+// isn't 0 or 3.
+struct Entry_sub_08049E30
+{
+    u8 kind;
+    u8 unk1[15];
+};
+
+u8 sub_08049E30(void)
+{
+    u8 count = 0;
+    u8 i;
+
+    for (i = 0; i < gUnknown_030007F0; i++)
+        if (((struct Entry_sub_08049E30 *)gUnknown_030007F8)[i].kind != 0 && ((struct Entry_sub_08049E30 *)gUnknown_030007F8)[i].kind != 3)
+            count++;
+    return count;
+}
