@@ -125,6 +125,7 @@ gUnknown_03000A4C = 0x03000A4C;
 gUnknown_03000A50 = 0x03000A50;
 gUnknown_03000A54 = 0x03000A54;
 gUnknown_03000A58 = 0x03000A58;
+gUnknown_03001258 = 0x03001258;
 SoundMainRAM_Buffer = 0x030018C4;
 gCurrentThread = 0x03001C44;
 gThreadList = 0x03001C48;
