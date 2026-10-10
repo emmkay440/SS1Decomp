@@ -118,3 +118,43 @@ u32 sub_0800ED80(u16 *str)
     }
     return length;
 }
+
+extern u16 gUnknown_03003CA0;      // character advance
+
+void sub_08003518(u32 a, u32 b, u16 c, u16 d, u8 e, void *f, u32 g, u32 h);
+
+// Draws a 0-terminated u16 string as sprites: the high byte of a character
+// picks the font record, the low byte - 1 the glyph.
+// Matching needs three odd things, all found by decomp-permuter: the loop
+// is entered by a jump to its test (and that goto has to sit in its own
+// do/while(0)), and the font index is shifted in two steps into an int.
+// A plain `while (*str != 0)` is 16 instructions off.
+void sub_0800EDBC(u16 *str, u16 x, u16 y, u16 d)
+{
+    s32 page;
+    u8 color = 15;
+    u32 *font;
+
+    do { goto check; } while (0);
+    do
+    {
+        page = ((*str & 0xF00) >> 6) >> 2;
+        font = gUnknown_03006340[page];
+        sub_08003518(x, y, 0, (*str & 0xFF) - 1, d, &color, (u32)(font + 2), font[0] + (u32)font);
+        switch (*str)
+        {
+        case 0xFB:
+        case 0xFC:
+        case 0xFD:
+        case 0xFE:
+            x += 8;
+            break;
+        default:
+            x += gUnknown_03003CA0;
+            break;
+        }
+        str++;
+    check:
+        ;
+    } while (*str != 0);
+}

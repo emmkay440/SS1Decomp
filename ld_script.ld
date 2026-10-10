@@ -67,7 +67,6 @@ SECTIONS {
         src/enemy_util.o(.text);
         asm/code_0800EB30.o(.text);
         src/text_layer.o(.text);
-        asm/text_draw_string.o(.text);
         src/unk_0800EE44.o(.text);
         asm/code_0800EEA0.o(.text);
         src/fade.o(.text);
