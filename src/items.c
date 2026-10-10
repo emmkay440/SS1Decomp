@@ -87,3 +87,21 @@ bool32 PickUpFieldItem(struct FieldItem *fieldItem)
     }
     return FALSE;
 }
+
+// Empties the slot and returns what was in it (with flag14 cleared).
+struct Item TakeItemFromSlot(u32 slot)
+{
+    struct PlayerStats *stats = &gPlayerStats;
+    struct Item item;
+    struct Item *p;
+
+    item = stats->inventory[slot];
+    // The original adds the slot offset to the struct base before the
+    // inventory offset; plain &stats->inventory[slot] is 2 instructions off.
+    p = &((struct PlayerStats *)((u8 *)stats + slot * 4))->inventory[0];
+    ((struct ItemData *)p)->data = 0;
+    ((struct ItemData *)p)->count = 0;
+    p->category = ITEM_CATEGORY_NONE;
+    item.flag14 = 0;
+    return item;
+}

@@ -78,7 +78,6 @@ SECTIONS {
         asm/item_lists.o(.text);
         src/field_items2.o(.text);
         src/items.o(.text);
-        asm/take_item.o(.text);
         src/item_records.o(.text);
         src/equipment.o(.text);
         src/item_bonus.o(.text);
