@@ -13,7 +13,9 @@ struct Player
     u16 state;            // +0x0C 8, 9 are special (see ApplyPendingDamage, UseItem)
     u16 unk0E;
     u16 unk10;            // +0x10 bit 7 set by sub_08027228
-    u8 unk12[0xA];
+    u16 unk12;            // +0x12 cleared with unk14 (sub_0800C304)
+    u16 unk14;            // +0x14 index (0-5) into the table sub_0800C304 copies
+    u8 unk16[0x6];
     u16 *unk1C;           // +0x1C 3 ids; CalcExpGain doubles EXP for each 11 (equipped item ids?)
     u8 unk20[0xC];
     // +0x2C: copy of gPlayerStats' stat block, plus resistances
@@ -35,7 +37,8 @@ struct Player
     u16 pendingDamage[2]; // +0x54
     s32 x;                // +0x58 fixed point
     s32 y;                // +0x5C
-    u8 unk60[0x18];
+    u8 unk60[0x16];
+    u16 unk76;            // +0x76 nonzero ends the state 5 loops (sub_0800C304)
     s16 sp;               // +0x78 probably current SP (equal to maxSp when checked)
     s16 hp;               // +0x7A
     u8 unk7C[0x2A];

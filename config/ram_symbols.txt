@@ -277,3 +277,4 @@
 03000A4C gUnknown_03000A4C      # u32: toggles 0/1 each step (sub_0804E230)
 03000A50 gUnknown_03000A50      # s32: x of gUnknown_030009D8, moves left
 03000A54 gUnknown_03000A54      # s32: y of gUnknown_030009D8
+03005DD8 gUnknown_03005DD8      # u16, cleared when the enemy pool is allocated (sub_0800C3C0)

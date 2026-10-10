@@ -27,3 +27,4 @@
 08052BDC gUnknown_08052BDC      # text layer palette (16 colors, palette 14)
 080FB0F8 gUnknown_080FB0F8      # 0x60-byte records indexed by gMapLayer_03003910.unk68 (sub_08006114)
 080FBB84 gUnknown_080FBB84      # 16-byte records: u32, u16 cost[6] (sub_0802F058, SP costs?)
+08052BC4 gUnknown_08052BC4      # u32[6]: 0, 80, 85, 90, 95, 100; indexed by Player.unk14 (sub_0800C304)

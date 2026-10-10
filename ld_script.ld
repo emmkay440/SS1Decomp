@@ -47,7 +47,7 @@ SECTIONS {
         src/player_skill_threads.o(.text);
         asm/code_0800C1E8.o(.text);
         src/hud_start.o(.text);
-        asm/code_0800C304.o(.text);
+        src/enemy_pool_alloc.o(.text);
         src/enemy_unload.o(.text);
         asm/code_0800C504.o(.text);
         src/enemy_start0.o(.text);
