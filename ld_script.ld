@@ -18,7 +18,8 @@ SECTIONS {
         src/intr_handlers.o(.text);
         src/copy_queue.o(.text);
         src/heap.o(.text);
-        asm/code_08001344.o(.text);
+        asm/heap_free.o(.text);
+        src/heap_top.o(.text);
         src/lib/multi_sio.o(.text);
         src/save.o(.text);
         src/game_main.o(.text);

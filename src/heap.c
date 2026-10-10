@@ -1,36 +1,6 @@
 #include "global.h"
 #include "heap.h"
 
-// A heap block header. The first word is the previous block's address with
-// the "in use" flag in bit 31; code also reads it as a plain pointer while
-// the flag is clear.
-struct HeapBlock
-{
-    union
-    {
-        struct HeapBlock *prevPtr;
-        struct
-        {
-            u32 prev:31;
-            u32 used:1;
-        } b;
-    } u;
-    struct HeapBlock *next;
-    struct HeapBlock *freePrev;
-    struct HeapBlock *freeNext;
-};
-
-struct Heap
-{
-    struct HeapBlock sentinel;   // free list head
-    u32 start;
-    u32 size;
-};
-
-extern struct Heap gHeap;
-
-#define HEAP_SIZE 0x40000
-
 // One free block covering all of EWRAM, between two "used" marker blocks
 // at its start and end.
 void InitHeap(void)
