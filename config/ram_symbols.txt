@@ -301,3 +301,6 @@
 03006788 gUnknown_03006788      # u32, set to 1 when the queue is allocated (sub_08027280)
 03006718 gUnknown_03006718      # u8[4], cleared when the queue is allocated (sub_08027280)
 03003C90 gUnknown_03003C90      # void *[4]: [0] cleared, [1]-[3] 0x800-byte buffers allocated by sub_0800454C (map layer tilemaps?)
+030005F2 gUnknown_030005F2      # u8: name entry character page (0-2); picks the cursor layout (sub_08047E78)
+030005FC gUnknown_030005FC      # u8 x, y: name entry cursor sprite position (sub_08047E78)
+03000600 gUnknown_03000600      # u8 column, row: name entry cursor cell; 12, 6 is the END button (sub_08047E78)
