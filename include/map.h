@@ -24,7 +24,11 @@ struct MapLayer
     u16 originY;       // +0x5E
     u16 unk60;
     u16 unk62;
-    u8 unk64[0x14];
+    u8 unk64[0x4];
+    u16 unk68;         // +0x68 index into gUnknown_080FB0F8 (area id?)
+    u8 unk6A[0x2];
+    u16 unk6C;         // +0x6C
+    u8 unk6E[0xA];
     u32 flags;         // +0x78
 };
 

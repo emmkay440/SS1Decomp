@@ -3,33 +3,6 @@
 	.syntax unified
 	.text
 
-	thumb_func_start sub_08006114
-sub_08006114: @ 0x08006114
-	ldr r3, _08006138 @ =0x080FB0F8
-	ldr r2, _0800613C @ =gMapLayer_03003910
-	adds r0, r2, #0
-	adds r0, #0x68
-	ldrh r1, [r0]
-	lsls r0, r1, #1
-	adds r0, r0, r1
-	lsls r0, r0, #5
-	adds r0, r0, r3
-	ldrh r0, [r0]
-	subs r0, #2
-	adds r2, #0x6c
-	ldrh r2, [r2]
-	cmp r0, r2
-	beq _08006140
-	movs r0, #0
-	b _08006142
-	.align 2, 0
-_08006138: .4byte 0x080FB0F8
-_0800613C: .4byte gMapLayer_03003910
-_08006140:
-	movs r0, #1
-_08006142:
-	bx lr
-
 	thumb_func_start sub_08006144
 sub_08006144: @ 0x08006144
 	push {r4, r5, lr}

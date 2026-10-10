@@ -36,7 +36,8 @@ SECTIONS {
         asm/code_0800454C.o(.text);
         src/map.o(.text);
         asm/map_coords.o(.text);
-        asm/code_08006114.o(.text);
+        src/unk_08006114.o(.text);
+        asm/code_08006144.o(.text);
         src/game_flags.o(.text);
         asm/code_080077D0.o(.text);
         src/player_damage.o(.text);

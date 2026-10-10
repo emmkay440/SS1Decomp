@@ -355,6 +355,7 @@ gCgb3Vol = 0x08054BD0;
 gXcmdTable = 0x08054C14;
 gMPlayTable = 0x08055420;
 gSongTable = 0x08055450;
+gUnknown_080FB0F8 = 0x080FB0F8;
 gUnknown_080FB4CC = 0x080FB4CC;
 gUnknown_080FB750 = 0x080FB750;
 gUnknown_080FB7C0 = 0x080FB7C0;
