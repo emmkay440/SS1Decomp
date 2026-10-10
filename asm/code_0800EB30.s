@@ -102,12 +102,12 @@ _0800EBE4:
 _0800EBE6:
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
-	ldr r1, _0800EBF0 @ =0x03003CA0
+	ldr r1, _0800EBF0 @ =gUnknown_03003CA0
 	b _0800EBFE
 	.align 2, 0
-_0800EBF0: .4byte 0x03003CA0
+_0800EBF0: .4byte gUnknown_03003CA0
 _0800EBF4:
-	ldr r1, _0800EC2C @ =0x03003CA0
+	ldr r1, _0800EC2C @ =gUnknown_03003CA0
 	ldrh r0, [r1]
 	adds r0, r6, r0
 	lsls r0, r0, #0x10
@@ -138,6 +138,6 @@ _0800EC16:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800EC2C: .4byte 0x03003CA0
+_0800EC2C: .4byte gUnknown_03003CA0
 _0800EC30:
 	.byte 0x0C, 0xB4, 0x02, 0xB0, 0x70, 0x47, 0x00, 0x00

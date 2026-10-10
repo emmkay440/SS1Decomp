@@ -2894,7 +2894,7 @@ _08047A7C:
 	bl sub_0800ED80
 	ldr r1, [sp, #0xc]
 	adds r1, #0x4c
-	ldr r2, _08047AAC @ =0x03003CA0
+	ldr r2, _08047AAC @ =gUnknown_03003CA0
 	ldrh r2, [r2]
 	muls r0, r2, r0
 	lsrs r2, r0, #0x1f
@@ -2910,7 +2910,7 @@ _08047A7C:
 	b _08047B42
 	.align 2, 0
 _08047AA8: .4byte 0x00090026
-_08047AAC: .4byte 0x03003CA0
+_08047AAC: .4byte gUnknown_03003CA0
 _08047AB0:
 	cmp r0, #4
 	bne _08047B42
@@ -2975,7 +2975,7 @@ _08047B18:
 	bl sub_0800ED80
 	ldr r1, [sp, #0xc]
 	adds r1, #0x4c
-	ldr r2, _08047B5C @ =0x03003CA0
+	ldr r2, _08047B5C @ =gUnknown_03003CA0
 	ldrh r2, [r2]
 	muls r0, r2, r0
 	lsrs r2, r0, #0x1f
@@ -3002,7 +3002,7 @@ _08047B4C:
 	mov pc, r0
 	.align 2, 0
 _08047B58: .4byte 0x0009002A
-_08047B5C: .4byte 0x03003CA0
+_08047B5C: .4byte gUnknown_03003CA0
 _08047B60: .4byte gUnknown_030005F0
 _08047B64: .4byte _08047B68
 _08047B68: @ jump table
@@ -3022,7 +3022,7 @@ _08047B8C:
 	adds r4, #0xa
 	adds r0, r4, #0
 	bl sub_0800ED80
-	ldr r1, _08047BB4 @ =0x03003CA0
+	ldr r1, _08047BB4 @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r0, r1, r0
 	lsrs r1, r0, #0x1f
@@ -3034,7 +3034,7 @@ _08047B8C:
 	b _08047CF2
 	.align 2, 0
 _08047BB0: .4byte 0x00090007
-_08047BB4: .4byte 0x03003CA0
+_08047BB4: .4byte gUnknown_03003CA0
 _08047BB8:
 	ldr r0, _08047BDC @ =0x00090014
 	bl GetDataRecord
@@ -3042,7 +3042,7 @@ _08047BB8:
 	adds r4, #0xa
 	adds r0, r4, #0
 	bl sub_0800ED80
-	ldr r1, _08047BE0 @ =0x03003CA0
+	ldr r1, _08047BE0 @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r0, r1, r0
 	lsrs r1, r0, #0x1f
@@ -3054,7 +3054,7 @@ _08047BB8:
 	b _08047CF2
 	.align 2, 0
 _08047BDC: .4byte 0x00090014
-_08047BE0: .4byte 0x03003CA0
+_08047BE0: .4byte gUnknown_03003CA0
 _08047BE4:
 	ldr r0, _08047C08 @ =0x00090008
 	bl GetDataRecord
@@ -3062,7 +3062,7 @@ _08047BE4:
 	adds r4, #0xa
 	adds r0, r4, #0
 	bl sub_0800ED80
-	ldr r1, _08047C0C @ =0x03003CA0
+	ldr r1, _08047C0C @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r0, r1, r0
 	lsrs r1, r0, #0x1f
@@ -3074,7 +3074,7 @@ _08047BE4:
 	b _08047CF2
 	.align 2, 0
 _08047C08: .4byte 0x00090008
-_08047C0C: .4byte 0x03003CA0
+_08047C0C: .4byte gUnknown_03003CA0
 _08047C10:
 	ldr r0, _08047C34 @ =0x00090009
 	bl GetDataRecord
@@ -3082,7 +3082,7 @@ _08047C10:
 	adds r4, #0xa
 	adds r0, r4, #0
 	bl sub_0800ED80
-	ldr r1, _08047C38 @ =0x03003CA0
+	ldr r1, _08047C38 @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r0, r1, r0
 	lsrs r1, r0, #0x1f
@@ -3094,7 +3094,7 @@ _08047C10:
 	b _08047CF2
 	.align 2, 0
 _08047C34: .4byte 0x00090009
-_08047C38: .4byte 0x03003CA0
+_08047C38: .4byte gUnknown_03003CA0
 _08047C3C:
 	add r1, sp, #8
 	movs r0, #0
@@ -3116,7 +3116,7 @@ _08047C46:
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	strh r0, [r5]
-	ldr r4, _08047CB0 @ =0x03003CA0
+	ldr r4, _08047CB0 @ =gUnknown_03003CA0
 	ldrh r0, [r4]
 	mov r1, sl
 	muls r1, r0, r1
@@ -3151,7 +3151,7 @@ _08047C46:
 	.align 2, 0
 _08047CA8: .4byte gUnknown_030005F5
 _08047CAC: .4byte gUnknown_03000764
-_08047CB0: .4byte 0x03003CA0
+_08047CB0: .4byte gUnknown_03003CA0
 _08047CB4: .4byte 0x00000201
 _08047CB8: .4byte 0x030005F4
 _08047CBC:
@@ -3161,7 +3161,7 @@ _08047CBC:
 	adds r4, #0xa
 	adds r0, r4, #0
 	bl sub_0800ED80
-	ldr r1, _08047CE4 @ =0x03003CA0
+	ldr r1, _08047CE4 @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r0, r1, r0
 	lsrs r1, r0, #0x1f
@@ -3173,7 +3173,7 @@ _08047CBC:
 	b _08047CF2
 	.align 2, 0
 _08047CE0: .4byte 0x0009000D
-_08047CE4: .4byte 0x03003CA0
+_08047CE4: .4byte gUnknown_03003CA0
 _08047CE8:
 	ldr r0, _08047CFC @ =0x0009000B
 	bl GetDataRecord
@@ -3192,7 +3192,7 @@ _08047D00:
 	adds r4, #0xa
 	adds r0, r4, #0
 	bl sub_0800ED80
-	ldr r1, _08047D3C @ =0x03003CA0
+	ldr r1, _08047D3C @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r0, r1, r0
 	lsrs r1, r0, #0x1f
@@ -3214,7 +3214,7 @@ _08047D28:
 	bx r0
 	.align 2, 0
 _08047D38: .4byte 0x0009000C
-_08047D3C: .4byte 0x03003CA0
+_08047D3C: .4byte gUnknown_03003CA0
 
 	thumb_func_start sub_08047D40
 sub_08047D40: @ 0x08047D40

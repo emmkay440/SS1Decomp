@@ -281,3 +281,4 @@
 030005F8 gUnknown_030005F8      # u8: save select; 2 skips sub_080472FC while copying (sub_08048484)
 03000614 gUnknown_03000614      # u16[3], cleared by sub_080484F0
 0300061C gUnknown_0300061C      # u16[3], cleared by sub_080484F0
+03003CA0 gUnknown_03003CA0      # u16: character advance in pixels (sub_0800EDBC); GameMain sets 13 or 7

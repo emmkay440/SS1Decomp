@@ -243,7 +243,7 @@ _08026F42:
 	bge _08026F7C
 	adds r0, r4, #0
 	bl sub_0800ED80
-	ldr r1, _08026F94 @ =0x03003CA0
+	ldr r1, _08026F94 @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r0, r1, r0
 	lsrs r1, r0, #0x1f
@@ -265,4 +265,4 @@ _08026F8A:
 	bx r0
 	.align 2, 0
 _08026F90: .4byte 0x03003CA8
-_08026F94: .4byte 0x03003CA0
+_08026F94: .4byte gUnknown_03003CA0

@@ -2002,7 +2002,7 @@ _08023A50:
 	bge _08023A70
 	mov r0, sp
 	bl sub_0800ED80
-	ldr r1, _08023A90 @ =0x03003CA0
+	ldr r1, _08023A90 @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r0, r1, r0
 	lsrs r1, r0, #0x1f
@@ -2029,7 +2029,7 @@ _08023A80:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08023A90: .4byte 0x03003CA0
+_08023A90: .4byte gUnknown_03003CA0
 
 	thumb_func_start sub_08023A94
 sub_08023A94: @ 0x08023A94
@@ -4980,7 +4980,7 @@ _08025392:
 	ldr r0, [r4]
 	adds r0, #0xa
 	bl sub_0800ED80
-	ldr r1, _08025404 @ =0x03003CA0
+	ldr r1, _08025404 @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r1, r0, r1
 	lsrs r0, r1, #0x1f
@@ -5022,7 +5022,7 @@ _080253EE:
 	bl PlaySE
 	b _080255F0
 	.align 2, 0
-_08025404: .4byte 0x03003CA0
+_08025404: .4byte gUnknown_03003CA0
 _08025408: .4byte gKeysNew
 _0802540C: .4byte gPlayers
 _08025410:

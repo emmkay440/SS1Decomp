@@ -31,15 +31,15 @@ GameMain: @ 0x08001970
 	ldrh r0, [r4]
 	cmp r0, #0
 	bne _080019D8
-	ldr r1, _080019D4 @ =0x03003CA0
+	ldr r1, _080019D4 @ =gUnknown_03003CA0
 	movs r0, #0xd
 	b _080019DC
 	.align 2, 0
 _080019CC: .4byte 0x03003CA8
 _080019D0: .4byte 0x03006878
-_080019D4: .4byte 0x03003CA0
+_080019D4: .4byte gUnknown_03003CA0
 _080019D8:
-	ldr r1, _080019FC @ =0x03003CA0
+	ldr r1, _080019FC @ =gUnknown_03003CA0
 	movs r0, #7
 _080019DC:
 	strh r0, [r1]
@@ -53,7 +53,7 @@ _080019EE:
 	bl sub_080041E0
 	b _080019EE
 	.align 2, 0
-_080019FC: .4byte 0x03003CA0
+_080019FC: .4byte gUnknown_03003CA0
 
 	thumb_func_start sub_08001A00
 sub_08001A00: @ 0x08001A00

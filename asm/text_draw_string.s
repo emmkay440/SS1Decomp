@@ -3,43 +3,6 @@
 	.syntax unified
 	.text
 
-	thumb_func_start sub_0800ED80
-sub_0800ED80: @ 0x0800ED80
-	push {r4, lr}
-	adds r1, r0, #0
-	movs r2, #0
-	ldrh r0, [r1]
-	adds r1, #2
-	cmp r0, #0
-	beq _0800EDB2
-	movs r4, #0xf0
-	lsls r4, r4, #4
-_0800ED92:
-	adds r2, #1
-	ldrh r0, [r1]
-	subs r0, #1
-	ands r0, r4
-	lsrs r0, r0, #8
-	cmp r0, #4
-	bne _0800EDAA
-	cmp r3, #0x2b
-	bgt _0800EDA8
-	cmp r3, #0x28
-	bge _0800EDAA
-_0800EDA8:
-	adds r2, #1
-_0800EDAA:
-	ldrh r0, [r1]
-	adds r1, #2
-	cmp r0, #0
-	bne _0800ED92
-_0800EDB2:
-	adds r0, r2, #0
-	pop {r4}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
 	thumb_func_start sub_0800EDBC
 sub_0800EDBC: @ 0x0800EDBC
 	push {r4, r5, r6, r7, lr}
@@ -95,7 +58,7 @@ _0800EDD6:
 	.align 2, 0
 _0800EE20: .4byte gUnknown_03006340
 _0800EE24:
-	ldr r0, _0800EE40 @ =0x03003CA0
+	ldr r0, _0800EE40 @ =gUnknown_03003CA0
 	ldrh r0, [r0]
 	adds r0, r4, r0
 _0800EE2A:
@@ -111,4 +74,4 @@ _0800EE30:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800EE40: .4byte 0x03003CA0
+_0800EE40: .4byte gUnknown_03003CA0

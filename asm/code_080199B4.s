@@ -9688,7 +9688,7 @@ _0801E664:
 _0801E672:
 	mov r0, sl
 	bl sub_0800ED80
-	ldr r1, _0801E6A0 @ =0x03003CA0
+	ldr r1, _0801E6A0 @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r0, r1, r0
 	lsrs r1, r0, #0x1f
@@ -9707,7 +9707,7 @@ _0801E672:
 	bl sub_08026ADC
 	b _0801EA44
 	.align 2, 0
-_0801E6A0: .4byte 0x03003CA0
+_0801E6A0: .4byte gUnknown_03003CA0
 _0801E6A4: .4byte 0x00100043
 _0801E6A8:
 	bl sub_080075AC

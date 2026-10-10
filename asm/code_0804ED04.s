@@ -1335,7 +1335,7 @@ _0804F7BC:
 	ldr r4, [sp, #4]
 	adds r0, r4, #0
 	bl sub_0800ED80
-	ldr r1, _0804F8FC @ =0x03003CA0
+	ldr r1, _0804F8FC @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r0, r1, r0
 	lsrs r1, r0, #0x1f
@@ -1466,7 +1466,7 @@ _0804F8EC: .4byte 0x00000167
 _0804F8F0: .4byte 0x03001398
 _0804F8F4: .4byte 0x030013A8
 _0804F8F8: .4byte 0x03001290
-_0804F8FC: .4byte 0x03003CA0
+_0804F8FC: .4byte gUnknown_03003CA0
 _0804F900: .4byte 0x00000257
 _0804F904:
 	bl WaitFrame

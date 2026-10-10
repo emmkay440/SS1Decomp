@@ -19,7 +19,7 @@ sub_080270D8: @ 0x080270D8
 	adds r5, r0, #0
 	adds r0, #0xa
 	bl sub_0800ED80
-	ldr r1, _08027108 @ =0x03003CA0
+	ldr r1, _08027108 @ =gUnknown_03003CA0
 	ldrh r1, [r1]
 	muls r0, r1, r0
 	lsrs r1, r0, #0x1f
@@ -28,7 +28,7 @@ sub_080270D8: @ 0x080270D8
 	rsbs r6, r0, #0
 	b _08027128
 	.align 2, 0
-_08027108: .4byte 0x03003CA0
+_08027108: .4byte gUnknown_03003CA0
 _0802710C:
 	bl sub_08022A88
 	cmp r0, #0
