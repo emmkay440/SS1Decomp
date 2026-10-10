@@ -105,7 +105,6 @@ SECTIONS {
         src/window_checks.o(.text);
         asm/code_08022AB4.o(.text);
         src/unk_08026AD0.o(.text);
-        asm/code_08026ADC.o(.text);
         src/sprite_obj.o(.text);
         src/thread_slots.o(.text);
         asm/code_08026D98.o(.text);
