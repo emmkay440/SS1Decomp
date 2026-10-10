@@ -27,7 +27,7 @@ extern u16 gBgRegsBuffer[];
 void DisplayOn(void);
 void DisplayOff(void);
 void SetBgMode(u16 mode, u16 apply);
-void EnableDisplayLayers(s16 layers, s16 windows, u16 apply);
+void EnableDisplayLayers(u16 layers, u16 windows, u16 apply);
 void DisableDisplayLayers(u16 layers, u16 windows, u16 apply);
 void SetDispCntFlags(u16 obj1dMapping, u16 hblankOamAccess, u16 bmpFrame, u16 unused, u16 apply);
 void SetBgCnt(u16 bg, const u16 *cnt);

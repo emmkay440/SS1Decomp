@@ -27,3 +27,17 @@ void SetBgMode(u16 mode, u16 apply)
     if (apply)
         REG_DISPCNT = gDispCnt.raw;
 }
+
+// Turns on layers (DISPCNT bits 8-12) and windows (bits 13-15).
+void EnableDisplayLayers(u16 layers, u16 windows, u16 apply)
+{
+    u32 value = layers & 0x1F00;
+    u32 mask;
+
+    value |= gDispCnt.raw;
+    mask = windows & 0xE000;
+    mask |= value;
+    gDispCnt.raw = mask;
+    if (apply)
+        REG_DISPCNT = mask;
+}
