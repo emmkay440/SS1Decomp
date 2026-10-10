@@ -304,3 +304,10 @@
 030005F2 gUnknown_030005F2      # u8: name entry character page (0-2); picks the cursor layout (sub_08047E78)
 030005FC gUnknown_030005FC      # u8 x, y: name entry cursor sprite position (sub_08047E78)
 03000600 gUnknown_03000600      # u8 column, row: name entry cursor cell; 12, 6 is the END button (sub_08047E78)
+030005F1 gUnknown_030005F1      # u8, cleared by sub_08046338 (save select setup)
+030005F3 gUnknown_030005F3      # u8, cleared by sub_08046338
+030005F4 gUnknown_030005F4      # u8, cleared by sub_08046338
+030005F6 gUnknown_030005F6      # u8, cleared by sub_08046338
+030005F7 gUnknown_030005F7      # u8, set to 1 by sub_08046338
+03000604 gUnknown_03000604      # u16, cleared by sub_08046338
+03000606 gUnknown_03000606      # u16, cleared by sub_08046338

@@ -18,7 +18,7 @@ _08047F78:
 	adds r3, r0, #0
 	cmp r2, r1
 	bne _08048008
-	ldr r0, _08047FFC @ =0x03000604
+	ldr r0, _08047FFC @ =gUnknown_03000604
 	ldrh r1, [r0]
 	adds r4, r0, #0
 	ldr r2, _08048000 @ =gUnknown_030005F2
@@ -83,7 +83,7 @@ _08047FEE:
 _08047FF0: .4byte gUnknown_030005F0
 _08047FF4: .4byte gUnknown_03000600
 _08047FF8: .4byte 0x0000060C
-_08047FFC: .4byte 0x03000604
+_08047FFC: .4byte gUnknown_03000604
 _08048000: .4byte gUnknown_030005F2
 _08048004: .4byte gLanguage
 _08048008:
@@ -93,7 +93,7 @@ _08048008:
 	ldrb r0, [r3]
 	cmp r0, #9
 	bls _0804801C
-	ldr r0, _08048034 @ =0x03000604
+	ldr r0, _08048034 @ =gUnknown_03000604
 	ldrh r0, [r0]
 	cmp r0, #0x80
 	beq _0804802C
@@ -102,7 +102,7 @@ _0804801C:
 	ldr r0, _08048038 @ =0x00000609
 	cmp r1, r0
 	bne _0804803C
-	ldr r0, _08048034 @ =0x03000604
+	ldr r0, _08048034 @ =gUnknown_03000604
 	ldrh r0, [r0]
 	cmp r0, #0x10
 	bne _0804803C
@@ -112,7 +112,7 @@ _0804802C:
 	movs r0, #6
 	b _08048238
 	.align 2, 0
-_08048034: .4byte 0x03000604
+_08048034: .4byte gUnknown_03000604
 _08048038: .4byte 0x00000609
 _0804803C:
 	ldr r0, _08048050 @ =gUnknown_030005F2
@@ -129,7 +129,7 @@ _08048046:
 	.align 2, 0
 _08048050: .4byte gUnknown_030005F2
 _08048054:
-	ldr r0, _08048068 @ =0x03000604
+	ldr r0, _08048068 @ =gUnknown_03000604
 	ldrh r0, [r0]
 	cmp r0, #0x20
 	beq _0804807E
@@ -139,7 +139,7 @@ _08048054:
 	beq _08048076
 	b _0804823A
 	.align 2, 0
-_08048068: .4byte 0x03000604
+_08048068: .4byte gUnknown_03000604
 _0804806C:
 	cmp r0, #0x40
 	beq _08048098
@@ -188,7 +188,7 @@ _080480B4:
 	movs r0, #6
 	b _08048238
 _080480B8:
-	ldr r0, _080480CC @ =0x03000604
+	ldr r0, _080480CC @ =gUnknown_03000604
 	ldrh r0, [r0]
 	cmp r0, #0x20
 	beq _08048122
@@ -198,7 +198,7 @@ _080480B8:
 	beq _080480DC
 	b _0804823A
 	.align 2, 0
-_080480CC: .4byte 0x03000604
+_080480CC: .4byte gUnknown_03000604
 _080480D0:
 	cmp r0, #0x40
 	bne _080480D6
@@ -592,7 +592,7 @@ sub_0804837C: @ 0x0804837C
 	movs r1, #5
 	adds r3, r4, #0
 	bl sub_08026C40
-	ldr r0, _080483EC @ =0x030005F7
+	ldr r0, _080483EC @ =gUnknown_030005F7
 	ldrb r4, [r0]
 	cmp r4, #0
 	beq _080483F0
@@ -622,7 +622,7 @@ sub_0804837C: @ 0x0804837C
 _080483E0: .4byte 0x03000730
 _080483E4: .4byte gUnknown_03000614
 _080483E8: .4byte gUnknown_0300061C
-_080483EC: .4byte 0x030005F7
+_080483EC: .4byte gUnknown_030005F7
 _080483F0:
 	ldrh r0, [r7]
 	str r0, [sp]

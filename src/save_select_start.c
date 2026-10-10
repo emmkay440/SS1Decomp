@@ -1,6 +1,7 @@
 #include "global.h"
 #include "display.h"
 #include "heap.h"
+#include "save.h"
 #include "sound.h"
 #include "thread.h"
 
@@ -87,4 +88,52 @@ void StartSaveSelect(void)
 void sub_0804632C(void)
 {
     sub_08048428();
+}
+
+extern u8 gUnknown_030005F0;
+extern u8 gUnknown_030005F1;
+extern u8 gUnknown_030005F2;
+extern u8 gUnknown_030005F3;
+extern u8 gUnknown_030005F4;
+extern u8 gUnknown_030005F5;
+extern u8 gUnknown_030005F6;
+extern u8 gUnknown_030005F7;
+extern u8 gUnknown_030005F8;
+extern u8 gUnknown_030005FC[2];
+extern u8 gUnknown_03000600[2];
+extern u16 gUnknown_03000604;
+extern u16 gUnknown_03000606;
+extern void *gUnknown_03000608;
+extern void *gUnknown_0300060C;
+extern void *gUnknown_03000610;
+extern struct SaveSlotInfo *gUnknown_03000764;
+
+void sub_080484F0(void);
+void bzero(void *dest, u32 size);
+
+// Resets the save select screen's state and loads the info of all slots.
+void sub_08046338(void)
+{
+    gUnknown_030005F0 = 0;
+    gUnknown_030005F1 = 0;
+    gUnknown_030005F2 = 2;
+    gUnknown_030005F4 = 0;
+    gUnknown_030005F5 = 0;
+    gUnknown_03000604 = 0;
+    gUnknown_03000606 = 0;
+    gUnknown_030005F7 = 1;
+    gUnknown_03000608 = NULL;
+    gUnknown_0300060C = NULL;
+    gUnknown_03000610 = NULL;
+    gUnknown_030005FC[0] = 0;
+    gUnknown_030005FC[1] = 0;
+    gUnknown_03000600[0] = 0;
+    gUnknown_03000600[1] = 0;
+    gUnknown_030005F6 = 0;
+    gUnknown_030005F3 = 0;
+    gUnknown_030005F8 = 0;
+    sub_080484F0();
+    gUnknown_03000764 = Alloc(NUM_SAVE_SLOTS * sizeof(struct SaveSlotInfo));
+    bzero(gUnknown_03000764, NUM_SAVE_SLOTS * sizeof(struct SaveSlotInfo));
+    LoadSaveSlotInfo(gUnknown_03000764);
 }
