@@ -166,7 +166,6 @@ SECTIONS {
         src/unk_0804152C.o(.text);
         asm/code_08041538.o(.text);
         src/menu_misc.o(.text);
-        asm/code_08043D48.o(.text);
         src/unk_08043DB8.o(.text);
         asm/code_08043DD0.o(.text);
         src/unk_030005B8.o(.text);

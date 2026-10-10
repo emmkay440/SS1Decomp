@@ -270,3 +270,4 @@
 03006808 gUnknown_03006808      # buffer (0x180), allocated with the effect pools
 030067B4 gUnknown_030067B4      # u32, cleared by sub_0802F0B8
 03006804 gUnknown_03006804      # struct Thread * (32): shared effect pool (src/effect_pools.c)
+030004CA gUnknown_030004CA      # u8: nonzero hides the selected item's icon in its slot (guess; sub_08043D48)

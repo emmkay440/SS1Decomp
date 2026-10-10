@@ -1145,15 +1145,15 @@ _08041E86:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08041EA0
-	ldr r1, _08041E9C @ =0x030004CA
+	ldr r1, _08041E9C @ =gUnknown_030004CA
 	movs r0, #0
 	strb r0, [r1]
 	b _08041EAA
 	.align 2, 0
 _08041E98: .4byte gUnknown_030004C8
-_08041E9C: .4byte 0x030004CA
+_08041E9C: .4byte gUnknown_030004CA
 _08041EA0:
-	ldr r0, _08041EB4 @ =0x030004CA
+	ldr r0, _08041EB4 @ =gUnknown_030004CA
 	ldrb r1, [r0]
 	movs r2, #1
 	eors r1, r2
@@ -1164,7 +1164,7 @@ _08041EAA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08041EB4: .4byte 0x030004CA
+_08041EB4: .4byte gUnknown_030004CA
 
 	thumb_func_start sub_08041EB8
 sub_08041EB8: @ 0x08041EB8
@@ -1191,7 +1191,7 @@ _08041EDC:
 _08041EE2:
 	cmp r8, r4
 	bne _08041EEE
-	ldr r0, _08041F10 @ =0x030004CA
+	ldr r0, _08041F10 @ =gUnknown_030004CA
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _08041F14
@@ -1212,7 +1212,7 @@ _08041EFC:
 	bl sub_08023048
 	b _08041F16
 	.align 2, 0
-_08041F10: .4byte 0x030004CA
+_08041F10: .4byte gUnknown_030004CA
 _08041F14:
 	adds r4, #4
 _08041F16:
@@ -1260,7 +1260,7 @@ _08041F62:
 _08041F64:
 	cmp r5, r4
 	bne _08041F70
-	ldr r0, _08041F80 @ =0x030004CA
+	ldr r0, _08041F80 @ =gUnknown_030004CA
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _08041F84
@@ -1272,7 +1272,7 @@ _08041F70:
 	bl sub_08023048
 	b _08041F86
 	.align 2, 0
-_08041F80: .4byte 0x030004CA
+_08041F80: .4byte gUnknown_030004CA
 _08041F84:
 	adds r4, #4
 _08041F86:
@@ -1419,7 +1419,7 @@ _08042090:
 _08042096:
 	cmp r8, r4
 	bne _080420A2
-	ldr r0, _080420C8 @ =0x030004CA
+	ldr r0, _080420C8 @ =gUnknown_030004CA
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _080420CC
@@ -1441,7 +1441,7 @@ _080420B0:
 	b _080420CE
 	.align 2, 0
 _080420C4: .4byte gUnknown_030004C8
-_080420C8: .4byte 0x030004CA
+_080420C8: .4byte gUnknown_030004CA
 _080420CC:
 	adds r4, #4
 _080420CE:
@@ -4753,7 +4753,7 @@ sub_08043BD8: @ 0x08043BD8
 	strb r1, [r0]
 	ldr r0, _08043C30 @ =gUnknown_030004CB
 	strb r1, [r0]
-	ldr r0, _08043C34 @ =0x030004CA
+	ldr r0, _08043C34 @ =gUnknown_030004CA
 	strb r1, [r0]
 	ldr r2, _08043C38 @ =0x030004C9
 	movs r0, #1
@@ -4792,7 +4792,7 @@ _08043C10:
 	.align 2, 0
 _08043C2C: .4byte gUnknown_030004C8
 _08043C30: .4byte gUnknown_030004CB
-_08043C34: .4byte 0x030004CA
+_08043C34: .4byte gUnknown_030004CA
 _08043C38: .4byte 0x030004C9
 _08043C3C: .4byte 0x030004CC
 _08043C40: .4byte gUnknown_030004FC
