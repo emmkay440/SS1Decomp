@@ -177,7 +177,7 @@ SECTIONS {
         src/save_select_start.o(.text);
         asm/code_08046338.o(.text);
         src/save_select_misc.o(.text);
-        asm/code_08048484.o(.text);
+        src/save_select_misc2.o(.text);
         src/save_select_thread.o(.text);
         asm/code_080486C8.o(.text);
         src/save_select_dispatch.o(.text);
