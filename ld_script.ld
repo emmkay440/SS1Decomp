@@ -31,8 +31,10 @@ SECTIONS {
         asm/code_08002B8C.o(.text);
         src/unk_080041D4.o(.text);
         asm/code_080041E0.o(.text);
-        src/unk_080044DC.o(.text);
+        asm/code_08004214.o(.text);
+        src/draw_list.o(.text);
         asm/code_080044E4.o(.text);
+        asm/code_0800454C.o(.text);
         src/map.o(.text);
         asm/map_coords.o(.text);
         asm/code_08006114.o(.text);
