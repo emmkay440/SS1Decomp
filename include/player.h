@@ -15,7 +15,8 @@ struct Player
     u16 unk10;            // +0x10 bit 7 set by sub_08027228
     u16 unk12;            // +0x12 cleared with unk14 (sub_0800C304)
     u16 unk14;            // +0x14 index (0-5) into the table sub_0800C304 copies
-    u8 unk16[0x6];
+    u16 layer;            // +0x16 map layer the player is on (field items are drawn when it matches)
+    u8 unk18[0x4];
     u16 *unk1C;           // +0x1C 3 ids; CalcExpGain doubles EXP for each 11 (equipped item ids?)
     u8 unk20[0xC];
     // +0x2C: copy of gPlayerStats' stat block, plus resistances
