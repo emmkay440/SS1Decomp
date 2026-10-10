@@ -248,6 +248,9 @@ _080003F8: .4byte gThreadCount
 WaitFrame: @ 0x080003FC
 	movs r0, #1
 	b _08000400
+	.global WaitEvent
+	.thumb_func
+WaitEvent:
 	.global _08000400
 _08000400:
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}

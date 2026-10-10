@@ -114,6 +114,8 @@ SECTIONS {
         asm/code_080270D8.o(.text);
         src/player_threads.o(.text);
         asm/code_08027280.o(.text);
+        src/queue_push.o(.text);
+        asm/queue_push_bytes.o(.text);
         src/unk_080292D0.o(.text);
         asm/code_08029484.o(.text);
         src/unk_08029BB4.o(.text);
@@ -149,9 +151,9 @@ SECTIONS {
         src/thread_pool18.o(.text);
         asm/code_0803A448.o(.text);
         src/unk_0803BE28.o(.text);
-        asm/code_0803BE84.o(.text);
         src/unk_0803BEE8.o(.text);
         asm/code_0803BEFC.o(.text);
+        asm/enemy_threads2_alloc.o(.text);
         src/enemy_threads2.o(.text);
         src/sound.o(.text);
         asm/code_0803F468.o(.text);

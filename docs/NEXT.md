@@ -53,6 +53,10 @@ are medium functions (menus, items, map) and the near misses below.
       over equipped items; the sum versions in src/equip_bonus*.c match, the
       has versions come out 12-50 bytes long: drafts tmp/drafts/equip_has_*.c,
       permuter got to score 1445).
+      `sub_08029270` (asm/queue_push_bytes.s, queue push with three byte
+      args: needs one register too many; draft tmp/drafts/sub_08029270.c) and
+      `sub_0803F060` (asm/enemy_threads2_alloc.s, allocs three pools; draft
+      tmp/drafts/sub_0803F060.c).
       Many earlier near misses turned out to be the compiler (fixed by
       agbcc -fprologue-bugfix); these remaining ones are source shape.
 - [x] Old near-miss list (now matching): `ApplyEnemyDamage` (asm/enemy_damage.s),

@@ -1,23 +1,14 @@
 #include "global.h"
 #include "area_state.h"
 #include "heap.h"
+#include "queue.h"
 #include "thread.h"
 
 // Two threads (gUnknownThread_03006730 / _030066F0) that share a queue of
 // 12-byte entries (gUnknown_03006720, gUnknown_03006758 of them), and a
 // third thread (gUnknownThread_03006760).
 
-struct Unknown_03006720
-{
-    u32 unk0;
-    u32 unk4;
-    u16 unk8;
-    u16 unkA;
-};
 
-extern u32 gUnknown_030066E8;
-extern struct Unknown_03006720 *gUnknown_03006720;
-extern u32 gUnknown_03006758;
 extern struct Thread gUnknownThread_03006730;
 extern struct Thread gUnknownThread_030066F0;
 extern struct Thread gUnknownThread_03006760;

@@ -7,6 +7,29 @@ extern struct Thread *gUnknown_03006818;   // pool of 18 threads
 void sub_08039B3C(void);
 void sub_08039EC8(void);
 
+void sub_0803A2B0(void)
+{
+    struct Thread *thread;
+    u32 i;
+
+    gUnknown_03006818 = thread = Alloc(sizeof(struct Thread) * 18);
+    for (i = 0; i < 18; i++, thread++)
+        thread->priority = 0;
+}
+
+// Waits for every thread of the pool to finish, then frees it.
+void sub_0803A2D8(void)
+{
+    struct Thread *thread = gUnknown_03006818;
+    u32 i;
+
+    for (i = 0; i < 18; i++, thread++)
+        while (IsThreadInList(thread))
+            WaitFrame();
+    Free(gUnknown_03006818);
+    gUnknown_03006818 = NULL;
+}
+
 void sub_0803A318(s32 a, s32 b)
 {
     struct Thread *thread = gUnknown_03006818;
