@@ -41,3 +41,36 @@ void UpdateInput(void)
         gKeyRepeatCounter = gKeyRepeatTimer = 0;
     }
 }
+
+extern u8 gRngState[8];
+
+// Shifts the 64-bit state right by one bit, feeding in the XOR of bit 1 of
+// its first two bytes, and returns two state bytes picked by bytes 2 and 3.
+s16 Random(void)
+{
+    u8 hi;
+    u8 lo;
+    u32 carry;
+    s32 i;
+
+    hi = gRngState[0] ^ gRngState[1];
+    hi &= 2;
+    carry = (hi != 0);
+
+    for (i = 0; i < 8; i++)
+    {
+        u8 byte = gRngState[i];
+        u8 shifted = (byte >> 1) | (carry << 7);
+
+        carry = byte & 1;
+        gRngState[i] = shifted;
+    }
+    lo = gRngState[gRngState[2] & 7];
+    hi = gRngState[gRngState[3] & 7];
+    return lo | (hi << 8);
+}
+
+// Nothing calls it.
+void sub_0800088C(void)
+{
+}

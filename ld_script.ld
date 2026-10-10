@@ -10,7 +10,6 @@ SECTIONS {
         asm/crt0.o(.text);
         asm/code.o(.text);
         src/input.o(.text);
-        asm/random.o(.text);
         src/display.o(.text);
         asm/display_layers.o(.text);
         src/display_misc.o(.text);
