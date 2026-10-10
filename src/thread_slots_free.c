@@ -2,28 +2,30 @@
 #include "heap.h"
 #include "thread.h"
 
-extern void *gSpawnerThreads;
-extern void *gUnknownThreadPtr_030063CC;
-extern void *gUnknownThreadPtr_030063D0;
-extern void *gUnknownThreadPtr_030063D4;
-extern void *gUnknownThreadPtr_030063DC;
-extern void *gUnknownThreadPtr_030063E0;
-extern void *gUnknownThreadPtr_030063E4;
-extern void *gUnknownThreadPtr_030063E8;
-extern void *gUnknownThreadPtr_030063EC;
-extern void *gUnknownThreadPtr_030063F0;
-extern void *gUnknownThreadPtr_030063F4;
-extern void *gUnknownThreadPtr_030063F8;
-extern void *gUnknownThreadPtr_030063FC;
-extern void *gUnknownThreadPtr_03006400;
-extern void *gUnknownThreadPtr_03006404;
-extern void *gUnknownThreadPtr_03006408;
-extern void *gUnknownThreadPtr_0300640C;
-extern void *gUnknownThreadPtr_03006410;
-extern void *gUnknownThreadPtr_03006414;
+extern struct Thread *gSpawnerThreads;
+extern struct Thread *gUnknownThreadPtr_030063CC;
+extern struct Thread *gUnknownThreadPtr_030063D0;
+extern struct Thread *gUnknownThreadPtr_030063D4;
+extern struct Thread *gUnknownThreadPtr_030063DC;
+extern struct Thread *gUnknownThreadPtr_030063E0;
+extern struct Thread *gUnknownThreadPtr_030063E4;
+extern struct Thread *gUnknownThreadPtr_030063E8;
+extern struct Thread *gUnknownThreadPtr_030063EC;
+extern struct Thread *gUnknownThreadPtr_030063F0;
+extern struct Thread *gUnknownThreadPtr_030063F4;
+extern struct Thread *gUnknownThreadPtr_030063F8;
+extern struct Thread *gUnknownThreadPtr_030063FC;
+extern struct Thread *gUnknownThreadPtr_03006400;
+extern struct Thread *gUnknownThreadPtr_03006404;
+extern struct Thread *gUnknownThreadPtr_03006408;
+extern struct Thread *gUnknownThreadPtr_0300640C;
+extern struct Thread *gUnknownThreadPtr_03006410;
+extern struct Thread *gUnknownThreadPtr_03006414;
 extern void *gUnknown_030063D8;
 
-void sub_080187E8(void) {
+// Frees the area's thread slots (allocated elsewhere) and gUnknown_030063D8.
+void sub_080187E8(void)
+{
     Free(gUnknown_030063D8);
     Free(gSpawnerThreads);
     Free(gUnknownThreadPtr_0300640C);
