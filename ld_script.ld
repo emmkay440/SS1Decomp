@@ -117,7 +117,7 @@ SECTIONS {
         src/centered_text.o(.text);
         src/player_threads.o(.text);
         src/queue_init.o(.text);
-        asm/code_08027318.o(.text);
+        asm/code_080273DC.o(.text);
         src/queue_push2.o(.text);
         asm/code_08027828.o(.text);
         src/queue_push.o(.text);

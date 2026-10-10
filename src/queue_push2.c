@@ -3,6 +3,41 @@
 
 u32 sub_08001F98(void);
 
+// Queues kind 8 with *data unless the queue already holds a kind 8 entry.
+bool32 sub_08027648(u32 type, u32 arg, u32 unk20, u32 *data)
+{
+    struct Unknown_03006720 *entry;
+    u32 i;
+    u32 count;
+
+    if (sub_08001F98())
+    {
+        if (gUnknown_03006758 >= QUEUE_SIZE)
+            return FALSE;
+        entry = gUnknown_03006720;
+        for (i = 0, count = gUnknown_03006758; i < count; i++, entry++)
+        {
+            if (entry->unkA != 0)
+            {
+                u32 kind = entry->unk4.k.kind;
+
+                if (kind == 8)
+                    return TRUE;
+            }
+        }
+        entry = &gUnknown_03006720[gUnknown_03006758];
+        gUnknown_03006758++;
+        entry->unkA = 1;
+        entry->unk8 = 0;
+        entry->arg = arg;
+        entry->unk20 = unk20;
+        entry->type = type;
+        entry->unk4.raw = *data;
+        entry->unk4.f.kind = 8;
+    }
+    return TRUE;
+}
+
 // Queues kind 1 with `value` unless the queue already holds one.
 bool32 sub_08027700(u32 value)
 {

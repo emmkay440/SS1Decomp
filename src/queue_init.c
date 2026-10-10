@@ -37,3 +37,26 @@ void sub_08027280(void)
         sub_080292DC();
     }
 }
+
+// Queues kind 3 for player `who` with two small values.
+bool32 sub_08027318(u32 type, u32 arg, u32 unk20, u32 who, u32 a, u32 b)
+{
+    struct Unknown_03006720 *entry;
+
+    if (!sub_08001F98())
+        return TRUE;
+    if (gUnknown_03006758 >= QUEUE_SIZE)
+        return FALSE;
+    entry = &gUnknown_03006720[gUnknown_03006758];
+    gUnknown_03006758++;
+    entry->unkA = 1;
+    entry->unk8 = 0;
+    entry->arg = arg;
+    entry->unk20 = unk20;
+    entry->type = type;
+    entry->unk4.k.kind = 3;
+    entry->unk4.k.who = who;
+    entry->unk4.n.unk8 = a;
+    entry->unk4.n.unk14 = b;
+    return TRUE;
+}
