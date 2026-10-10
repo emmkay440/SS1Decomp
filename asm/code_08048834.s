@@ -3,62 +3,6 @@
 	.syntax unified
 	.text
 
-	thumb_func_start sub_080487B8
-sub_080487B8: @ 0x080487B8
-	push {lr}
-	ldr r1, _080487D0 @ =gUnknown_03000768
-	strb r0, [r1]
-	ldrb r0, [r1]
-	cmp r0, #8
-	bhi _08048830
-	lsls r0, r0, #2
-	ldr r1, _080487D4 @ =_080487D8
-	adds r0, r0, r1
-	ldr r0, [r0]
-	mov pc, r0
-	.align 2, 0
-_080487D0: .4byte gUnknown_03000768
-_080487D4: .4byte _080487D8
-_080487D8: @ jump table
-	.4byte _080487FC @ case 0
-	.4byte _08048802 @ case 1
-	.4byte _08048808 @ case 2
-	.4byte _0804880E @ case 3
-	.4byte _08048814 @ case 4
-	.4byte _0804881A @ case 5
-	.4byte _08048820 @ case 6
-	.4byte _08048826 @ case 7
-	.4byte _0804882C @ case 8
-_080487FC:
-	bl sub_08048F38
-	b _08048830
-_08048802:
-	bl sub_08049678
-	b _08048830
-_08048808:
-	bl sub_08049DBC
-	b _08048830
-_0804880E:
-	bl sub_0804A3F4
-	b _08048830
-_08048814:
-	bl sub_0804AB7C
-	b _08048830
-_0804881A:
-	bl sub_0804B4CC
-	b _08048830
-_08048820:
-	bl sub_0804BB88
-	b _08048830
-_08048826:
-	bl sub_0804C2E0
-	b _08048830
-_0804882C:
-	bl sub_0804C9A4
-_08048830:
-	pop {r0}
-	bx r0
-
 	thumb_func_start sub_08048834
 sub_08048834: @ 0x08048834
 	push {r4, r5, lr}
