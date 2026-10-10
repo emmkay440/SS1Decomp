@@ -26,3 +26,4 @@
 08052C5C gUnknown_08052C5C      # text layer font tiles (0x1C00 bytes, copied to VRAM 0x0600C000)
 08052BDC gUnknown_08052BDC      # text layer palette (16 colors, palette 14)
 080FB0F8 gUnknown_080FB0F8      # 0x60-byte records indexed by gMapLayer_03003910.unk68 (sub_08006114)
+080FBB84 gUnknown_080FBB84      # 16-byte records: u32, u16 cost[6] (sub_0802F058, SP costs?)

@@ -130,8 +130,7 @@ SECTIONS {
         asm/code_0802D53C.o(.text);
         src/unk_0802D98C.o(.text);
         asm/code_0802DA2C.o(.text);
-        src/unk_0802F0B4.o(.text);
-        asm/code_0802F0B8.o(.text);
+        src/effect_pools.o(.text);
         src/save_game.o(.text);
         asm/save_slot_info.o(.text);
         asm/save_load_or_new.o(.text);

@@ -732,7 +732,7 @@ _08029A34:
 _08029A46:
 	cmp r7, #0x1f
 	bhi _08029AB0
-	ldr r1, _08029AC0 @ =0x03006808
+	ldr r1, _08029AC0 @ =gUnknown_03006808
 	lsls r0, r7, #1
 	adds r0, r0, r7
 	lsls r0, r0, #2
@@ -790,7 +790,7 @@ _08029AB0:
 	bx r0
 	.align 2, 0
 _08029ABC: .4byte gUnknown_03006800
-_08029AC0: .4byte 0x03006808
+_08029AC0: .4byte gUnknown_03006808
 _08029AC4: .4byte gUnknown_03006790
 _08029AC8: .4byte sub_080298C0
 
