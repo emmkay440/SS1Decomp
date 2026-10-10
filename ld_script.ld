@@ -30,10 +30,8 @@ SECTIONS {
         src/unk_08002B58.o(.text);
         asm/code_08002B8C.o(.text);
         src/unk_080041D4.o(.text);
-        asm/code_080041E0.o(.text);
         asm/code_08004214.o(.text);
         src/draw_list.o(.text);
-        asm/code_080044E4.o(.text);
         asm/code_0800454C.o(.text);
         src/map.o(.text);
         asm/map_coords.o(.text);
@@ -101,7 +99,6 @@ SECTIONS {
         src/window_kill.o(.text);
         asm/code_08021CE4.o(.text);
         src/window_checks.o(.text);
-        asm/code_0802297C.o(.text);
         asm/code_080229D4.o(.text);
         src/unk_08026AD0.o(.text);
         asm/code_08026ADC.o(.text);
@@ -114,7 +111,6 @@ SECTIONS {
         src/player_threads.o(.text);
         asm/code_08027280.o(.text);
         src/unk_080292D0.o(.text);
-        asm/code_080292DC.o(.text);
         asm/code_08029484.o(.text);
         src/unk_08029BB4.o(.text);
         asm/code_08029C44.o(.text);
