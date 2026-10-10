@@ -526,11 +526,14 @@ def permute(func, module, seconds):
         return None
     root = os.getcwd()
     with open(f"{d}/compile.sh", "w") as f:
-        f.write("#!/bin/sh\n# usage: compile.sh in.c -o out.o\nset -e\n"
+        f.write("#!/bin/sh\n# usage: compile.sh in.c -o out.o\n"
                 f"'{root}/tools/agbcc/bin/agbcc' -mthumb-interwork -Wimplicit -Wparentheses "
                 "-O2 -fhex-asm -fprologue-bugfix -o \"$3.s\" \"$1\"\n"
                 "printf '\\t.text\\n\\t.align 2, 0\\n' >> \"$3.s\"\n"
-                "arm-none-eabi-as -mcpu=arm7tdmi -o \"$3\" \"$3.s\"\n")
+                "arm-none-eabi-as -mcpu=arm7tdmi -o \"$3\" \"$3.s\"\n"
+                # the permuter only removes its own temp files: without this,
+                # every candidate leaves a .s behind in /tmp
+                "rc=$?\nrm -f \"$3.s\"\nexit $rc\n")
     os.chmod(f"{d}/compile.sh", 0o755)
     with open(f"{d}/settings.toml", "w") as f:
         f.write(f'func_name = "{func}"\ncompiler_type = "gcc"\n')
