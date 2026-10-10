@@ -10,7 +10,8 @@ struct MapEntry
     u16 unk2;
     u16 unk4;
     u16 unk6;
-    u8 unk8[0xC];
+    u32 unk8;
+    u8 unkC[0x8];
 };                     // size 0x14
 
 struct MapLayer

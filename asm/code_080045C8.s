@@ -3,68 +3,6 @@
 	.syntax unified
 	.text
 
-	thumb_func_start sub_0800454C
-sub_0800454C: @ 0x0800454C
-	push {r4, r5, r6, r7, lr}
-	mov r7, r8
-	push {r7}
-	sub sp, #8
-	ldr r1, _080045C0 @ =0x03003C90
-	movs r0, #0
-	stm r1!, {r0}
-	ldr r2, _080045C4 @ =gMapLayer_03003910
-	str r0, [r2, #8]
-	movs r3, #1
-	adds r5, r2, #0
-	movs r2, #0
-	adds r4, r5, #0
-	adds r4, #0x18
-	movs r6, #0x14
-	mov r8, r1
-_0800456C:
-	movs r0, #0x80
-	lsls r0, r0, #4
-	str r2, [sp]
-	str r3, [sp, #4]
-	bl Alloc
-	mov r1, r8
-	adds r1, #4
-	mov r8, r1
-	subs r1, #4
-	stm r1!, {r0}
-	adds r7, r5, #0
-	adds r7, #8
-	adds r0, r6, r7
-	ldr r2, [sp]
-	str r2, [r0]
-	strh r2, [r4]
-	strh r2, [r4, #2]
-	adds r4, #0x14
-	adds r6, #0x14
-	ldr r3, [sp, #4]
-	adds r3, #1
-	cmp r3, #3
-	bls _0800456C
-	movs r1, #0
-	adds r0, r7, #0
-	subs r0, #8
-	str r1, [r0, #0x54]
-	adds r0, #0x6c
-	strh r1, [r0]
-	bl sub_0801702C
-	adds r1, r7, #0
-	adds r1, #0x60
-	strh r0, [r1]
-	add sp, #8
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080045C0: .4byte 0x03003C90
-_080045C4: .4byte gMapLayer_03003910
-
 	thumb_func_start sub_080045C8
 sub_080045C8: @ 0x080045C8
 	push {r4, r5, r6, r7, lr}
@@ -257,7 +195,7 @@ _0800471C:
 	strh r1, [r5, #4]
 	strh r1, [r5, #6]
 	lsls r4, r6, #1
-	ldr r0, _08004814 @ =0x03003C90
+	ldr r0, _08004814 @ =gUnknown_03003C90
 	adds r2, r2, r0
 	ldr r2, [r2]
 	str r2, [sp, #8]
@@ -351,7 +289,7 @@ _080047DE:
 	bx r0
 	.align 2, 0
 _08004810: .4byte gMapLayer_03003910
-_08004814: .4byte 0x03003C90
+_08004814: .4byte gUnknown_03003C90
 _08004818: .4byte REG_BG0CNT
 
 	thumb_func_start sub_0800481C
@@ -401,7 +339,7 @@ sub_0800481C: @ 0x0800481C
 	strh r1, [r7]
 	strh r1, [r7, #2]
 	lsls r4, r0, #1
-	ldr r0, _0800492C @ =0x03003C90
+	ldr r0, _0800492C @ =gUnknown_03003C90
 	adds r5, r5, r0
 	ldr r5, [r5]
 	str r5, [sp, #8]
@@ -491,7 +429,7 @@ _080048F4:
 	bx r0
 	.align 2, 0
 _08004928: .4byte gMapLayer_03003C00
-_0800492C: .4byte 0x03003C90
+_0800492C: .4byte gUnknown_03003C90
 _08004930: .4byte REG_BG0CNT
 
 	thumb_func_start sub_08004934
@@ -502,7 +440,7 @@ sub_08004934: @ 0x08004934
 	lsls r1, r1, #0x10
 	lsls r2, r2, #0x10
 	lsrs r3, r2, #0x10
-	ldr r2, _08004A18 @ =0x03003C90
+	ldr r2, _08004A18 @ =gUnknown_03003C90
 	ldrh r0, [r6, #0x10]
 	lsls r0, r0, #2
 	adds r0, r0, r2
@@ -617,7 +555,7 @@ _08004A0E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08004A18: .4byte 0x03003C90
+_08004A18: .4byte gUnknown_03003C90
 
 	thumb_func_start sub_08004A1C
 sub_08004A1C: @ 0x08004A1C
@@ -629,7 +567,7 @@ sub_08004A1C: @ 0x08004A1C
 	lsls r1, r1, #0x10
 	lsls r2, r2, #0x10
 	lsrs r4, r2, #0x10
-	ldr r2, _08004ADC @ =0x03003C90
+	ldr r2, _08004ADC @ =gUnknown_03003C90
 	ldrh r0, [r6, #0x10]
 	lsls r0, r0, #2
 	adds r0, r0, r2
@@ -718,7 +656,7 @@ _08004AB2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08004ADC: .4byte 0x03003C90
+_08004ADC: .4byte gUnknown_03003C90
 _08004AE0: .4byte 0x001FFFFF
 
 	thumb_func_start sub_08004AE4
@@ -1043,7 +981,7 @@ _08004D36:
 	cmp r2, #0
 	beq _08004D6E
 _08004D5E:
-	ldr r0, _08004DDC @ =0x03003C90
+	ldr r0, _08004DDC @ =gUnknown_03003C90
 	ldr r3, [sp, #0xc]
 	adds r0, r3, r0
 	ldr r0, [r0]
@@ -1111,7 +1049,7 @@ _08004DC2:
 	.align 2, 0
 _08004DD4: .4byte 0xFFF80000
 _08004DD8: .4byte REG_BG0CNT
-_08004DDC: .4byte 0x03003C90
+_08004DDC: .4byte gUnknown_03003C90
 
 	thumb_func_start sub_08004DE0
 sub_08004DE0: @ 0x08004DE0
@@ -2095,7 +2033,7 @@ _0800559E:
 	ands r4, r0
 	cmp r4, #0
 	bne _080055BE
-	ldr r1, _080055F4 @ =0x03003C90
+	ldr r1, _080055F4 @ =gUnknown_03003C90
 	lsls r0, r6, #2
 	adds r5, r0, r1
 	ldr r0, [r5]
@@ -2129,7 +2067,7 @@ _080055BE:
 _080055E8: .4byte 0x030045DC
 _080055EC: .4byte gMapLayer_03003910
 _080055F0: .4byte 0x0300396E
-_080055F4: .4byte 0x03003C90
+_080055F4: .4byte gUnknown_03003C90
 
 	thumb_func_start sub_080055F8
 sub_080055F8: @ 0x080055F8
@@ -2401,7 +2339,7 @@ _08005822:
 	ands r4, r0
 	cmp r4, #0
 	bne _08005842
-	ldr r1, _08005888 @ =0x03003C90
+	ldr r1, _08005888 @ =gUnknown_03003C90
 	lsls r0, r6, #2
 	adds r5, r0, r1
 	ldr r0, [r5]
@@ -2439,7 +2377,7 @@ _08005878: .4byte gPlayers
 _0800587C: .4byte 0x030045DC
 _08005880: .4byte 0x03003C5E
 _08005884: .4byte gMapLayer_03003C00
-_08005888: .4byte 0x03003C90
+_08005888: .4byte gUnknown_03003C90
 
 	thumb_func_start sub_0800588C
 sub_0800588C: @ 0x0800588C

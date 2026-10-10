@@ -37,7 +37,8 @@ SECTIONS {
         src/anim_step.o(.text);
         asm/code_08004288.o(.text);
         src/draw_list.o(.text);
-        asm/code_0800454C.o(.text);
+        src/map_init.o(.text);
+        asm/code_080045C8.o(.text);
         src/map.o(.text);
         asm/map_fc4.o(.text);
         asm/map_6008.o(.text);
