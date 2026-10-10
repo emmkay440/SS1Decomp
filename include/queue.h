@@ -20,6 +20,11 @@ struct Unknown_03006720
             u32 value:28;
         } f;
         u8 bytes[4];
+        struct
+        {
+            u8 kind:4;
+            u8 who:4;      // kind 14 (sub_08029484)
+        } k;
     } unk4;
     u16 unk8;
     u16 unkA;

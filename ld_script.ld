@@ -116,7 +116,7 @@ SECTIONS {
         src/queue_push.o(.text);
         asm/queue_push_bytes.o(.text);
         src/unk_080292D0.o(.text);
-        asm/code_08029484.o(.text);
+        asm/code_08029560.o(.text);
         src/unk_08029BB4.o(.text);
         asm/code_08029C44.o(.text);
         src/item_use_effect.o(.text);

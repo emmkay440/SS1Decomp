@@ -96,3 +96,60 @@ void sub_08029468(void)
         gUnknown_03006720 = NULL;
     }
 }
+
+u32 sub_08001F98(void);
+
+// Queues kind 14 with `who` in the upper half of the kind byte.
+bool32 sub_08029484(u32 who, u32 type, u32 value)
+{
+    struct Unknown_03006720 *entry;
+
+    if (!sub_08001F98())
+        return TRUE;
+    if (gUnknown_03006758 >= QUEUE_SIZE)
+        return FALSE;
+    entry = &gUnknown_03006720[gUnknown_03006758];
+    gUnknown_03006758++;
+    entry->unk8 = 0;
+    entry->unkA = 1;
+    entry->unk4.f.kind = 14;
+    entry->unk4.k.who = who;
+    entry->type = type;
+    entry->unk4.bytes[1] = value;
+    return TRUE;
+}
+
+// The first entry if its unkA has bit 0 set, else NULL. Nothing calls it.
+struct Unknown_03006720 *sub_080294D8(void)
+{
+    struct Unknown_03006720 *entry = gUnknown_03006720;
+
+    if (entry->unkA & 1)
+        return entry;
+    return NULL;
+}
+
+// The first entry of the given kind with unkA bits 0, 1 or 3 set and bit 2
+// clear, or NULL.
+struct Unknown_03006720 *sub_080294F4(u32 kind)
+{
+    struct Unknown_03006720 *entry = gUnknown_03006720;
+    u32 i;
+
+    for (i = 0; i < gUnknown_03006758; i++, entry++)
+    {
+        if ((entry->unkA & 0xB) && !(entry->unkA & 4) && entry->unk4.f.kind == kind)
+            return entry;
+    }
+    return NULL;
+}
+
+// Like sub_080294D8, for bit 1. Nothing calls it.
+struct Unknown_03006720 *sub_08029544(void)
+{
+    struct Unknown_03006720 *entry = gUnknown_03006720;
+
+    if (entry->unkA & 2)
+        return entry;
+    return NULL;
+}
