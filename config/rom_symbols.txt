@@ -21,3 +21,5 @@
 080FB4CC gUnknown_080FB4CC      # u8[]: indexed by (weapon record +0x151) - sub_08011E54() in sub_08014220
 080004C4 MultiSioRecvBufChange  # ARM, stored as data in asm/code.s; copied to gMultiSioRecvFuncBuf
 08000504 MultiSioIntr           # ARM, stored as data in asm/code.s; copied to gMultiSioIntrFuncBuf
+080FB750 gUnknown_080FB750      # struct StatBlock[]: per-class stat blocks (sub_08016FF8)
+080FB7C0 gUnknown_080FB7C0      # 12 bytes per class (sub_08016FF8)

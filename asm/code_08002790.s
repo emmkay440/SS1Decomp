@@ -162,7 +162,7 @@ _080028E6:
 	bl sub_0800F298
 	cmp r0, #0
 	beq _080028CA
-	ldr r0, _08002914 @ =0x03003F80
+	ldr r0, _08002914 @ =gUnknown_03003F80
 	mov sl, r0
 _080028F2:
 	bl GetMultiplayerId
@@ -182,7 +182,7 @@ _080028FC:
 	adds r6, r4, #4
 	b _08002946
 	.align 2, 0
-_08002914: .4byte 0x03003F80
+_08002914: .4byte gUnknown_03003F80
 _08002918: .4byte 0x08052B6C
 _0800291C:
 	adds r0, r5, #0

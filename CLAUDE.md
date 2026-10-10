@@ -56,6 +56,8 @@ merge `ad_*` files into real modules, name things, fix style.
   `__attribute__((packed))` struct of `u8` bitfields, with the field read
   into a temporary before comparing (`src/equipment.c`). Comparing the field
   directly with a constant folds into an `ands`/`cmp` mask test instead.
+  For a halfword load (`ldrh`) of a bitfield: `__attribute__((packed, aligned(2)))`
+  on a struct of `u16` bitfields (`src/stats.c`, sub_0801702C).
 - Thread setup (`t->stack = Alloc(n); t->sp = stack + n - 4`) comes in three
   shapes that allocate registers differently: a `u8 *stack` local, a chained
   `t->sp = (u8 *)(t->stack = Alloc(n)) + n - 4`, or no local with

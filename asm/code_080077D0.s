@@ -7542,13 +7542,13 @@ _0800B300:
 	str r4, [r0]
 	ldr r3, [sp, #0xc]
 	strh r4, [r3]
-	ldr r0, _0800B3E0 @ =0x03003F80
+	ldr r0, _0800B3E0 @ =gUnknown_03003F80
 	ldrh r1, [r0]
 	ldr r0, _0800B3E4 @ =0xFFFFFC00
 	ands r0, r1
 	movs r1, #3
 	orrs r0, r1
-	ldr r1, _0800B3E0 @ =0x03003F80
+	ldr r1, _0800B3E0 @ =gUnknown_03003F80
 	strh r0, [r1]
 	ldr r1, [r1]
 	ldr r0, _0800B3E8 @ =0xFFF003FF
@@ -7556,7 +7556,7 @@ _0800B300:
 	movs r0, #0xc0
 	lsls r0, r0, #4
 	orrs r1, r0
-	ldr r3, _0800B3E0 @ =0x03003F80
+	ldr r3, _0800B3E0 @ =gUnknown_03003F80
 	str r1, [r3]
 	ldr r0, _0800B3EC @ =0x03003F82
 	ldrh r1, [r0]
@@ -7609,7 +7609,7 @@ _0800B3D0: .4byte gPlayers
 _0800B3D4: .4byte 0xFFFFC07F
 _0800B3D8: .4byte 0x00007FFF
 _0800B3DC: .4byte 0xFFFF8000
-_0800B3E0: .4byte 0x03003F80
+_0800B3E0: .4byte gUnknown_03003F80
 _0800B3E4: .4byte 0xFFFFFC00
 _0800B3E8: .4byte 0xFFF003FF
 _0800B3EC: .4byte 0x03003F82

@@ -25,7 +25,9 @@ struct Enemy
     u32 unk2C;           // +0x2C slot << 24 (sub_08036D28)
     u8 unk30[0x8];
     u16 hp;              // +0x38
-    u8 unk3A[0x5A];
+    u8 unk3A[0x36];
+    u16 unk70;           // +0x70 reduced by sub_08016F44 (amount * 12), floor 0
+    u8 unk72[0x22];
 };                       // size 0x94
 
 extern struct Enemy *gEnemies;

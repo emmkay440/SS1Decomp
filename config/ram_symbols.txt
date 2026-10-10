@@ -252,3 +252,4 @@
 03000508 gUnknown_03000508      # buffer (src/menu_misc.c)
 0300050C gUnknown_0300050C      # buffer (src/menu_misc.c)
 03000510 gUnknown_03000510      # struct SpriteObj (src/menu_misc.c)
+03003F80 gUnknown_03003F80      # = gPlayerStats + 0x270 (two 10-bit masks); own symbol for sub_0801702C

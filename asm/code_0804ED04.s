@@ -431,7 +431,7 @@ _0804F064:
 	ldr r4, _0804F084 @ =0x03001290
 	movs r6, #3
 _0804F068:
-	bl sub_0801708C
+	bl GetPlayerColorScheme
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	bl GetPlayerClass

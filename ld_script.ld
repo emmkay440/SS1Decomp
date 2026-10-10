@@ -85,9 +85,6 @@ SECTIONS {
         asm/code_0801516C.o(.text);
         src/skill_check2.o(.text);
         src/stats.o(.text);
-        asm/code_08016F00.o(.text);
-        src/player_stats_ptr.o(.text);
-        asm/code_08016FA0.o(.text);
         src/exp_gain.o(.text);
         src/exp.o(.text);
         asm/code_08017150.o(.text);
