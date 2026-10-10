@@ -165,6 +165,8 @@ SECTIONS {
         asm/code_0803F468.o(.text);
         src/menu_setup.o(.text);
         asm/code_0803F73C.o(.text);
+        src/menu_apply.o(.text);
+        asm/code_0803F9D4.o(.text);
         src/menu_stats_changed.o(.text);
         asm/code_0803FAFC.o(.text);
         src/menu_skill_tick.o(.text);
