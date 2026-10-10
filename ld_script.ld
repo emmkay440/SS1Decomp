@@ -101,7 +101,7 @@ SECTIONS {
         src/window_kill.o(.text);
         asm/code_08021CE4.o(.text);
         src/window_checks.o(.text);
-        asm/code_080229D4.o(.text);
+        asm/code_08022AB4.o(.text);
         src/unk_08026AD0.o(.text);
         asm/code_08026ADC.o(.text);
         src/sprite_obj.o(.text);
