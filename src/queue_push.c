@@ -123,3 +123,25 @@ bool32 sub_08029250(void)
         result = FALSE;
     return result;
 }
+
+// Queues kind 12 with `value` in the upper half of the kind byte and three
+// more bytes.
+bool32 sub_08029270(u32 value, u8 a, u8 b, u8 c)
+{
+    struct Unknown_03006720 *entry;
+
+    if (!sub_08001F98())
+        return TRUE;
+    if (gUnknown_03006758 >= QUEUE_SIZE)
+        return FALSE;
+    entry = &gUnknown_03006720[gUnknown_03006758];
+    gUnknown_03006758++;
+    entry->unk8 = 0;
+    entry->unkA = 1;
+    entry->unk4.k.kind = 12;
+    entry->unk4.k.who = value;
+    entry->unk4.bytes[1] = a;
+    entry->unk4.bytes[2] = b;
+    entry->unk4.bytes[3] = c;
+    return TRUE;
+}

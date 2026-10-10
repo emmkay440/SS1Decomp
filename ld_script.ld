@@ -118,10 +118,11 @@ SECTIONS {
         src/player_threads.o(.text);
         src/queue_init.o(.text);
         asm/code_080273DC.o(.text);
+        src/queue_push3.o(.text);
+        asm/code_0802759C.o(.text);
         src/queue_push2.o(.text);
         asm/code_08027828.o(.text);
         src/queue_push.o(.text);
-        asm/queue_push_bytes.o(.text);
         src/unk_080292D0.o(.text);
         asm/code_08029560.o(.text);
         src/unk_08029BB4.o(.text);
