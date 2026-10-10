@@ -46,7 +46,9 @@ struct StatBlock
     u16 int_;
     u16 dex;
     u16 unk8;
-    u8 unkA[0x6];
+    u16 unkA;
+    u16 unkC;
+    u16 unkE;
     u32 exp;
     u32 level;
     u16 statPoints;
