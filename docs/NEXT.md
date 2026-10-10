@@ -1,9 +1,9 @@
 # What's next (decomp)
 
-Status as of 2026-10-07 (`make progress`): ROM matches; 260 / 986 game
-functions in C (3% of game code bytes: the small ones are mostly done);
-m4a's C part is fully C. Most easy runs of small functions are done; next
-are medium functions (menus, items, map) and the near misses below.
+Status as of 2026-10-10 (`make progress`): ROM matches; 608 / 1000 game
+functions in C (12.9% of game code bytes: the small ones are mostly done).
+m4a's C part is fully C. What's left is mostly medium and large functions
+(menus, items, map, save select) and the near misses below.
 
 ## Waiting on research data (you)
 
@@ -57,6 +57,14 @@ are medium functions (menus, items, map) and the near misses below.
       args: needs one register too many; draft tmp/drafts/sub_08029270.c) and
       `sub_0803F060` (asm/enemy_threads2_alloc.s, allocs three pools; draft
       tmp/drafts/sub_0803F060.c).
+      `sub_0800EDBC` (asm/text_draw_string.s, draws a u16 string as sprites;
+      5 lines off: the original loop isn't optimized as a loop, only a
+      `goto check; do { ... check: ; } while` shape gets close; draft
+      tmp/drafts/sub_0800EDBC.c). `sub_0804087C` (asm/menu_slot_item.s, item
+      in a menu slot; 4-8 lines off in the operand order of the index
+      additions; draft tmp/drafts/sub_0804087C.c). `Random` (asm/random.s;
+      loop and return match, the feedback-bit setup swaps r0/r1; draft
+      tmp/drafts/Random.c).
       Many earlier near misses turned out to be the compiler (fixed by
       agbcc -fprologue-bugfix); these remaining ones are source shape.
 - [x] Old near-miss list (now matching): `ApplyEnemyDamage` (asm/enemy_damage.s),
@@ -113,6 +121,16 @@ are medium functions (menus, items, map) and the near misses below.
 - The ARM part of the m4a mixer (`SoundMainRAM`, 0x0804FB3C-0x0804FE6C) was
   disassembled partly as Thumb. It's byte-exact but unreadable. Replace it with an
   m4a_1 source matching this older version.
+- Bogus function starts still in asm/ (each is the middle of the function
+  before it, so the "small function" lists are wrong about them):
+  `sub_080273F6` (inside `sub_080273DC`, asm/code_08027280.s) and
+  `sub_08027E7C` / `sub_08028D92` (inside `sub_08027E40`, same file; one
+  function of about 3.9 KB).
+- Functions nothing calls show up as `.byte` runs after a function's
+  literal pool (e.g. the tail of asm/code.s after `sub_080004A4`, which is
+  ARM code). Decode them by hand when decompiling the function before them;
+  six were turned into C on 2026-10-10 (`FindFreeInventorySlot`,
+  `sub_0804E1F4`, `sub_080294D8`, `sub_08029544`, `sub_08013E08`).
 - Some function starts came from heuristics (`push {..., lr}` scans). If
   `checkfunc.py` or the traces show a "function" that is really the middle of
   another, fix `config/functions.cfg`. Regenerating only works on a scratch

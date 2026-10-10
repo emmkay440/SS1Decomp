@@ -20,9 +20,9 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   commit a non-matching build. Never push; pushing is only done when the
   user explicitly asks.
 
-## Current state (2026-10-09)
+## Current state (2026-10-10)
 
-510 / 994 game functions are matching C (`make progress`); every module in
+608 / 1000 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -75,6 +75,30 @@ merge `ad_*` files into real modules, name things, fix style.
   covers the bits; separate globals give one literal per variable while
   struct fields give base + offset; `&array[i].field` folds into one literal,
   loading the field doesn't.
+- More shapes that mattered (2026-10-10):
+  - `ldr rX, =gPtr` before a `bl Alloc` whose result is stored there: a
+    pointer local (`void **p = &gPtr; *p = Alloc(n);`). Same for a loop that
+    should load the struct base once and add the offset
+    (`struct PlayerStats *stats = &gPlayerStats;`).
+  - Two compares for a range (`cmp #43; bgt; cmp #40; bge`) instead of a
+    subtract + unsigned compare: a `switch` with one `case` per value.
+  - An `||` chain comparing adjacent fields gets merged into one wider
+    compare; separate `if (...) return TRUE;` statements keep them apart.
+  - A value known to equal the tested variable is passed as the register
+    (`if (step == 1) f(..., 1)` passes `step`'s register): write the constant.
+  - `u8`/`u16` parameters whose `lsrs` happens at each use, not at entry:
+    declare them `u32` and let the callee's prototype narrow them.
+  - Chunk loops `for (i = 0; i < count; i++) f(src + i * N, ...)` count down
+    only when `i` and `count` are `s32`.
+  - Base + small offsets (`strb r0, [r4, #2]`) on a global struct that the
+    code otherwise reaches as `&g.field`: use a struct with plain byte fields
+    (`struct MenuSlotBytes`), not the `u8 *` cast macros.
+  - A byte built as `14 | (x << 4)` with `movs r0, #14; orrs r0, r2`: two
+    4-bit bitfield stores, not shifts.
+  - `while (--n != -1)` (not `n-- != 0`) for `subs; cmp rX, #-1`.
+- Before replacing an asm module with C, check it holds only the functions
+  you wrote (`grep func_start`), and look for `.byte` runs after literal
+  pools: those are uncalled functions and need C too.
 - Names: `tools/scripts/rename.py old new` (records in config/names.txt).
   RAM globals: `config/ram_symbols.txt`; ROM tables and link-time constants:
   `config/rom_symbols.txt`. Then run `tools/scripts/apply_syms.py` (regenerates
