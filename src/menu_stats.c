@@ -126,3 +126,27 @@ bool32 sub_080411D0(u8 i)
         return TRUE;
     return FALSE;
 }
+
+// Same as sub_080411D0; the original inlines it into sub_08041208.
+static inline u8 SkillLevelChanged(u8 i)
+{
+    struct SkillBlock skills;
+
+    GetSkillBlock(&skills);
+    if (skills.skills[i].level != gMenuSkillBlock->skills[i].level)
+        return TRUE;
+    return FALSE;
+}
+
+bool32 sub_08041208(u8 i, u8 max)
+{
+    struct SkillBlock skills;
+
+    if (!SkillLevelChanged(i))
+    {
+        GetSkillBlock(&skills);
+        if (skills.skills[i].unk2 >= max)
+            return FALSE;
+    }
+    return TRUE;
+}

@@ -174,7 +174,6 @@ SECTIONS {
         src/menu_state.o(.text);
         src/menu_items.o(.text);
         src/menu_stats.o(.text);
-        asm/skill_check.o(.text);
         src/menu_stats2.o(.text);
         src/menu_inventory_scan.o(.text);
         asm/code_08041538.o(.text);
