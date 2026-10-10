@@ -253,3 +253,5 @@
 0300050C gUnknown_0300050C      # buffer (src/menu_misc.c)
 03000510 gUnknown_03000510      # struct SpriteObj (src/menu_misc.c)
 03003F80 gUnknown_03003F80      # = gPlayerStats + 0x270 (two 10-bit masks); own symbol for sub_0801702C
+03005DA8 gUnknown_03005DA8      # u32: in-use mask of gUnknown_03005DB0
+03005DB0 gUnknown_03005DB0      # 3 x 12 bytes (sub_0800EA00)

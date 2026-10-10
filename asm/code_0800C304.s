@@ -161,7 +161,7 @@ _0800C3FE:
 	bls _0800C3FE
 	movs r7, #0
 	movs r1, #0
-	ldr r0, _0800C468 @ =0x03005DB0
+	ldr r0, _0800C468 @ =gUnknown_03005DB0
 _0800C43C:
 	str r1, [r0, #8]
 	str r1, [r0, #4]
@@ -180,4 +180,4 @@ _0800C458: .4byte 0x03005DD8
 _0800C45C: .4byte gUnknown_03005DD4
 _0800C460: .4byte gUnknown_03004998
 _0800C464: .4byte gUnknown_03005DA0
-_0800C468: .4byte 0x03005DB0
+_0800C468: .4byte gUnknown_03005DB0
