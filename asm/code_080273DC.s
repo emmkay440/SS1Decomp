@@ -18,8 +18,7 @@ sub_080273DC: @ 0x080273DC
 	lsls r0, r2, #1
 	adds r0, r0, r2
 
-	non_word_aligned_thumb_func_start sub_080273F6
-sub_080273F6: @ 0x080273F6
+_080273F6:
 	lsls r0, r0, #2
 	ldr r1, [r1]
 	adds r7, r1, r0

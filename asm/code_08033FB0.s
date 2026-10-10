@@ -248,8 +248,7 @@ _0803418C:
 	str r6, [sp, #0xcc]
 	str r0, [sp, #0xd0]
 
-	non_word_aligned_thumb_func_start sub_080341B6
-sub_080341B6: @ 0x080341B6
+_080341B6:
 	bl sub_080271D0
 	cmp r0, #0
 	beq _080341C0
@@ -1598,7 +1597,7 @@ _08034C6A:
 	mov r0, sb
 	cmp r0, #0x1b
 	beq _08034CA0
-	bl sub_080341B6
+	bl _080341B6
 _08034CA0:
 	bl sub_080292D0
 	ldrh r3, [r7, #2]

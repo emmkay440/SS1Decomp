@@ -991,8 +991,7 @@ _0804F4FC:
 	bl WaitFrame
 	adds r4, #1
 
-	non_word_aligned_thumb_func_start sub_0804F502
-sub_0804F502: @ 0x0804F502
+_0804F502:
 	cmp r4, #0x3c
 	blt _0804F4EE
 	movs r7, #0xb4
@@ -1228,8 +1227,7 @@ _0804F6EC:
 	bl sub_080076A8
 	cmp r0, #0
 
-	non_word_aligned_thumb_func_start sub_0804F6F2
-sub_0804F6F2: @ 0x0804F6F2
+_0804F6F2:
 	beq _0804F70C
 	movs r0, #0
 	str r0, [sp]

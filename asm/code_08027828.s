@@ -821,10 +821,9 @@ _08027E70:
 	str r3, [sp, #0x60]
 	movs r4, #0
 	mov sb, r4
-	bl sub_08028D92
+	bl _08028D92
 
-	thumb_func_start sub_08027E7C
-sub_08027E7C: @ 0x08027E7C
+_08027E7C:
 	bl GetMultiplayerId
 	movs r5, #1
 	add r5, sb
@@ -1076,7 +1075,7 @@ _08028078:
 	bl sub_0800FC70
 _08028096:
 	movs r0, #9
-	bl sub_08028CD2
+	bl _08028CD2
 _0802809C:
 	bl sub_08001F64
 	movs r2, #1
@@ -2594,8 +2593,7 @@ _08028CBC:
 _08028CD0:
 	movs r0, #0xe
 
-	non_word_aligned_thumb_func_start sub_08028CD2
-sub_08028CD2: @ 0x08028CD2
+_08028CD2:
 	bl sub_08027700
 	bl sub_08027940
 	b _08028D90
@@ -2688,12 +2686,11 @@ _08028D8A:
 _08028D90:
 	mov sb, sl
 
-	non_word_aligned_thumb_func_start sub_08028D92
-sub_08028D92: @ 0x08028D92
+_08028D92:
 	bl sub_08001EC4
 	cmp sb, r0
 	bhs _08028D9E
-	bl sub_08027E7C
+	bl _08027E7C
 _08028D9E:
 	ldr r1, _08028DAC @ =0x030066E4
 	movs r0, #0

@@ -311,10 +311,9 @@ _08007A2E:
 	str r1, [sp, #0xdc]
 	movs r2, #0
 	str r2, [sp, #0x110]
-	bl sub_0800AF24
+	bl _0800AF24
 
-	non_word_aligned_thumb_func_start sub_08007A46
-sub_08007A46: @ 0x08007A46
+_08007A46:
 	adds r3, r7, #0
 	adds r3, #0x74
 	str r3, [sp, #0x158]
@@ -3354,8 +3353,7 @@ _080091F8:
 	ldrh r2, [r3]
 	movs r4, #0xf
 
-	non_word_aligned_thumb_func_start sub_08009206
-sub_08009206: @ 0x08009206
+_08009206:
 	mov r8, r4
 	mov r0, r8
 	ands r0, r2
@@ -4152,8 +4150,7 @@ _0800985E:
 	ldrh r1, [r7, #0x10]
 	ldr r0, _080098F8 @ =0x0000FFFE
 
-	non_word_aligned_thumb_func_start sub_08009876
-sub_08009876: @ 0x08009876
+_08009876:
 	ands r0, r1
 	strh r0, [r7, #0x10]
 	bl sub_08026FD0
@@ -4658,7 +4655,7 @@ _08009C7A:
 	lsrs r0, r0, #0x1c
 	cmp r0, #9
 	bls _08009C8C
-	bl sub_0800A676
+	bl _0800A676
 _08009C8C:
 	lsls r0, r0, #2
 	ldr r1, _08009CA0 @ =_08009CA4
@@ -5373,8 +5370,7 @@ _0800A1F8:
 	adds r0, r0, r2
 	ldr r1, [r0]
 
-	non_word_aligned_thumb_func_start sub_0800A206
-sub_0800A206: @ 0x0800A206
+_0800A206:
 	ldr r2, [sp, #0x150]
 	ldrh r0, [r2]
 	adds r0, r0, r1
@@ -5941,8 +5937,7 @@ _0800A668:
 	cmp r0, #9
 	beq _0800A6BA
 
-	non_word_aligned_thumb_func_start sub_0800A676
-sub_0800A676: @ 0x0800A676
+_0800A676:
 	ldr r3, [sp, #0xcc]
 	ldr r4, [sp, #0xd4]
 	adds r3, r3, r4
@@ -7018,15 +7013,14 @@ _0800AF18:
 _0800AF20:
 	bl WaitFrame
 
-	thumb_func_start sub_0800AF24
-sub_0800AF24: @ 0x0800AF24
+_0800AF24:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _0800AF38
 	bl sub_08007578
 	cmp r0, #0
 	bne _0800AF38
-	bl sub_08007A46
+	bl _08007A46
 _0800AF38:
 	ldrh r0, [r7]
 	bl sub_0802EFD4

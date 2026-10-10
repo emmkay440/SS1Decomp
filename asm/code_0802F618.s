@@ -225,8 +225,7 @@ _0802F7D0:
 	movs r2, #4
 	str r2, [sp, #0x44]
 
-	non_word_aligned_thumb_func_start sub_0802F7EA
-sub_0802F7EA: @ 0x0802F7EA
+_0802F7EA:
 	bl sub_080271D0
 	cmp r0, #0
 	beq _0802F7F4
@@ -1661,7 +1660,7 @@ _08030348:
 	ldr r6, [sp, #0x44]
 	cmp r6, #0x19
 	beq _0803037E
-	bl sub_0802F7EA
+	bl _0802F7EA
 _0803037E:
 	movs r0, #0x4b
 	bl StopSE

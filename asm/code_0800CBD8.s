@@ -339,7 +339,7 @@ _0800CE72:
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _0800CE80
-	bl sub_0800D73A
+	bl _0800D73A
 _0800CE80:
 	ldrh r0, [r7, #0xa]
 	adds r2, r0, #0
@@ -540,8 +540,7 @@ _0800CFF4:
 	mov sl, r0
 	ldr r0, [r7, #0x10]
 
-	non_word_aligned_thumb_func_start sub_0800D006
-sub_0800D006: @ 0x0800D006
+_0800D006:
 	ldr r1, [r7, #0x14]
 	ldr r3, _0800D048 @ =gPlayers
 	movs r2, #0xd4
@@ -816,8 +815,7 @@ _0800D1FE:
 _0800D204:
 	ldr r5, [sp, #0xb0]
 
-	non_word_aligned_thumb_func_start sub_0800D206
-sub_0800D206: @ 0x0800D206
+_0800D206:
 	ldrh r0, [r5, #8]
 	ldr r6, [sp, #0xc0]
 	cmp r0, r6
@@ -1544,8 +1542,7 @@ _0800D708:
 	strh r2, [r7, #0x20]
 	b _0800D740
 
-	non_word_aligned_thumb_func_start sub_0800D73A
-sub_0800D73A: @ 0x0800D73A
+_0800D73A:
 	movs r0, #0
 	strh r0, [r7, #4]
 _0800D73E:

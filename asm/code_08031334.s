@@ -276,8 +276,7 @@ _08031550:
 	strh r4, [r0]
 	str r2, [sp, #0xc0]
 
-	non_word_aligned_thumb_func_start sub_08031572
-sub_08031572: @ 0x08031572
+_08031572:
 	bl sub_080271D0
 	cmp r0, #0
 	beq _0803157E
@@ -1559,8 +1558,7 @@ _08031FFC:
 	subs r1, #0x1e
 	lsls r1, r1, #0x10
 
-	non_word_aligned_thumb_func_start sub_0803202E
-sub_0803202E: @ 0x0803202E
+_0803202E:
 	asrs r1, r1, #0x10
 	movs r0, #0
 	bl sub_08005F60
@@ -2135,7 +2133,7 @@ _080324E6:
 	ldr r4, [sp, #0x98]
 	cmp r4, #0
 	beq _08032518
-	bl sub_08031572
+	bl _08031572
 _08032518:
 	bl sub_080292D0
 	ldrh r3, [r7, #2]

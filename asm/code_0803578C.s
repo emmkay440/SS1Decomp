@@ -234,8 +234,7 @@ _08035954:
 	lsls r1, r1, #2
 	str r1, [sp, #0x60]
 
-	non_word_aligned_thumb_func_start sub_08035972
-sub_08035972: @ 0x08035972
+_08035972:
 	bl sub_080271D0
 	cmp r0, #0
 	beq _0803597C
@@ -1321,7 +1320,7 @@ _08036200:
 	ldr r6, [sp, #0x64]
 	cmp r6, #0x15
 	beq _08036236
-	bl sub_08035972
+	bl _08035972
 _08036236:
 	bl sub_080292D0
 	ldrh r3, [r7, #2]

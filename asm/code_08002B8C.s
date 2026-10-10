@@ -313,8 +313,7 @@ _08002FF0:
 	movs r4, #0
 	ldrsb r4, [r6, r4]
 
-	non_word_aligned_thumb_func_start sub_08003006
-sub_08003006: @ 0x08003006
+_08003006:
 	ldr r2, [sp, #4]
 	adds r4, r4, r2
 	ldr r0, [sp]

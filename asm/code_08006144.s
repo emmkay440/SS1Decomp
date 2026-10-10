@@ -195,8 +195,7 @@ _080062CE:
 	bl sub_080074F0
 	cmp r0, #0
 
-	non_word_aligned_thumb_func_start sub_08006306
-sub_08006306: @ 0x08006306
+_08006306:
 	bne _08006318
 	movs r0, #0x1e
 	bl sub_0800F1EC
@@ -453,8 +452,7 @@ _08006538:
 	str r0, [sp, #0x1a4]
 	b _08006582
 
-	non_word_aligned_thumb_func_start sub_0800654E
-sub_0800654E: @ 0x0800654E
+_0800654E:
 	ands r0, r2
 	strb r0, [r1, #3]
 	bl _08007168
@@ -1931,7 +1929,7 @@ _08007128:
 	lsrs r0, r2, #4
 	cmp r0, #0xf
 	bne _0800714A
-	bl sub_0800654E
+	bl _0800654E
 _0800714A:
 	ldr r0, _08007164 @ =gGameFlags
 	ldr r0, [r0]

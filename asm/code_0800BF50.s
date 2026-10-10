@@ -93,8 +93,7 @@ _0800BFEE:
 	strh r0, [r1]
 	ldrh r0, [r4]
 
-	non_word_aligned_thumb_func_start sub_0800C006
-sub_0800C006: @ 0x0800C006
+_0800C006:
 	adds r1, r7, #0
 	bl sub_0802D49C
 	movs r0, #1
