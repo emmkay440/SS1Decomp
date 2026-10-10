@@ -105,3 +105,37 @@ struct FieldItem *FindFieldItemNear(s32 x, s32 y, u32 layer)
     }
     return NULL;
 }
+
+extern u32 gFrameCounter;
+
+// The active field item on `layer` within 8 pixels of (x, y), or NULL. Only
+// looks at every other item each frame.
+struct FieldItem *sub_08013D9C(s32 x, s32 y, u32 layer)
+{
+    struct FieldItem *fieldItem = gFieldItems;
+    u32 i;
+
+    for (i = 0; i < NUM_FIELD_ITEMS; i++, fieldItem++)
+    {
+        if ((gFrameCounter & 1) == (i & 1) && (fieldItem->active & 1))
+        {
+            s32 dx = (x - fieldItem->x) >> 12;
+            s32 dy;
+
+            if (dx < 0)
+                dx = -dx;
+            dy = (y - fieldItem->y) >> 12;
+            if (dy < 0)
+                dy = -dy;
+            if (dx <= 7 && dy <= 7 && layer == fieldItem->layer)
+                return fieldItem;
+        }
+    }
+    return NULL;
+}
+
+// Index of a field item. Nothing calls it.
+s32 sub_08013E08(struct FieldItem *fieldItem)
+{
+    return fieldItem - gFieldItems;
+}
