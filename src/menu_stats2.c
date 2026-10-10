@@ -23,6 +23,7 @@ extern struct MenuSlot gMenuSelectedSlot;
 extern u32 *gMenuWeapons;
 extern struct Item *gUnknown_030004A4;
 
+void bzero(void *dest, u32 size);
 u8 CanPutItemInSlot(struct MenuSlot *slot, struct Item *item);
 void SetWeapon(u8 i, u32 item);
 void SetArmor(u32 item);
@@ -31,7 +32,6 @@ void sub_08013A84(u32 item);
 void sub_080140AC(void);
 void sub_08016DC0(void);
 void GetWeapons(u32 *dest);
-void bzero(void *dest, u32 size);
 
 void ApplyAllocatedPoints(void)
 {

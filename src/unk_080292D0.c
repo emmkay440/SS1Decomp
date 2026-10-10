@@ -8,7 +8,6 @@
 // 12-byte entries (gUnknown_03006720, gUnknown_03006758 of them), and a
 // third thread (gUnknownThread_03006760).
 
-
 extern struct Thread gUnknownThread_03006730;
 extern struct Thread gUnknownThread_030066F0;
 extern struct Thread gUnknownThread_03006760;

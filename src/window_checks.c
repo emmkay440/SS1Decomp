@@ -1,6 +1,7 @@
 #include "global.h"
 #include "heap.h"
 #include "thread.h"
+#include "window.h"
 
 // State checks on a structure that is probably the message window
 // (fields are unknown).
@@ -57,16 +58,7 @@ bool32 sub_08022964(struct Unknown_0802292C *p)
     return result;
 }
 
-// Stops the live 0x34-byte records (see window_kill.c).
-struct Unknown_03006418
-{
-    struct Thread thread;
-    u8 unk28[0xC];
-};
-
-extern struct Unknown_03006418 *gUnknown_03006418;
-extern u8 gUnknown_03006424;
-
+// Stops the live 0x34-byte records (see window.h).
 void sub_0802297C(void)
 {
     u32 i;
@@ -81,9 +73,6 @@ void sub_0802297C(void)
         }
     }
 }
-
-extern void *gUnknown_0300641C;   // 4 x 0x88 bytes (see window_kill.c)
-extern u8 gUnknown_03006420;      // its live mask
 
 void sub_080229D4(struct Unknown_0802292C *p, u32 value)
 {
@@ -110,9 +99,9 @@ void sub_08022A0C(struct Unknown_0802292C *p)
 
 void sub_08022A38(void)
 {
-    void **records = &gUnknown_0300641C;
+    struct Unknown_0300641C **records = &gUnknown_0300641C;
 
-    *records = Alloc(4 * 0x88);
+    *records = Alloc(4 * sizeof(struct Unknown_0300641C));
     gUnknown_03006420 = 0;
 }
 

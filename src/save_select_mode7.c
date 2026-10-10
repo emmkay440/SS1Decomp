@@ -1,6 +1,8 @@
 #include "global.h"
 #include "heap.h"
 
+void bzero(void *dest, u32 size);
+
 extern u16 gUnknown_03000950;
 extern u16 gUnknown_03000952;
 extern u16 gUnknown_03000954;
@@ -8,8 +10,6 @@ extern u16 gUnknown_03000956;
 extern u16 gUnknown_03000958;
 extern u16 gUnknown_0300095A;
 extern void *gUnknown_0300095C;
-
-void bzero(void *dest, u32 size);
 
 void sub_0804C2E0(void)
 {

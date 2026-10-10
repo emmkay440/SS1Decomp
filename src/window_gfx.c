@@ -4,17 +4,8 @@
 #include "heap.h"
 #include "player_stats.h"
 #include "thread.h"
-
-struct Unknown_03006418
-{
-    struct Thread thread;
-    u8 unk28[0xC];
-};
-
-extern struct Unknown_03006418 *gUnknown_03006418;
-extern u8 gUnknown_03006424;
-
-void *GetDataRecord(u32 key);
+#include "window.h"
+#include "data_record.h"
 
 // Loads the window tiles and palette 15, sets the window color from the
 // options, and allocates the four small window records.

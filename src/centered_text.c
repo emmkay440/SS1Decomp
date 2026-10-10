@@ -1,9 +1,9 @@
 #include "global.h"
 #include "thread.h"
+#include "data_record.h"
 
 extern u16 gUnknown_03003CA0;      // character advance
 
-void *GetDataRecord(u32 key);
 u32 sub_0800ED80(u16 *str);
 void sub_0800EB30(u16 *str, s32 x, s32 y);
 bool32 sub_08022A88(void);

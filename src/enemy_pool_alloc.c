@@ -4,13 +4,6 @@
 #include "player.h"
 #include "enemy.h"
 
-struct Unknown_03005DB0
-{
-    u32 unk0;
-    u32 unk4;
-    u32 unk8;
-};
-
 struct Table_08052BC4
 {
     u32 values[6];
@@ -21,7 +14,6 @@ extern u16 gUnknown_03005DD8;
 extern u16 gUnknown_03005DD4;
 extern void *gUnknown_03004998;
 extern struct Thread *gUnknown_03005DA0;
-extern struct Unknown_03005DB0 gUnknown_03005DB0[3];
 
 void sub_0800B78C(u32 value);
 void sub_0802F0B8(u32 who);

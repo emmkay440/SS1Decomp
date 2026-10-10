@@ -1,12 +1,12 @@
 #include "global.h"
 #include "heap.h"
 
+void bzero(void *dest, u32 size);
+
 extern u8 gUnknown_030007F0;
 extern u8 gUnknown_030007F1;
 extern u32 *gUnknown_030007F4;
 extern void *gUnknown_030007F8;
-
-void bzero(void *dest, u32 size);
 
 void sub_08049DBC(void)
 {

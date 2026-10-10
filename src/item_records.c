@@ -1,8 +1,7 @@
 #include "global.h"
 #include "player_stats.h"
 #include "item.h"
-
-void *GetDataRecord(u32 key);
+#include "data_record.h"
 
 void *GetWeaponRecord(struct Item *item)
 {

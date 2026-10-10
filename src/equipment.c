@@ -1,9 +1,9 @@
 #include "global.h"
 #include "item.h"
 #include "player_stats.h"
+#include "data_record.h"
 
 bool32 CanEquipItem(void *item);
-void *GetDataRecord(u32 key);
 u16 sub_08011E54(void);
 
 extern const u8 gUnknown_080FB4CC[];

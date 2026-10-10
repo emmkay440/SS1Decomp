@@ -39,16 +39,7 @@ bool32 IsEnemyTypeActive(u16 type)
     return FALSE;
 }
 
-// Three 12-byte records with an in-use mask; purpose unknown.
-struct Unknown_03005DB0
-{
-    u32 unk0;
-    u32 unk4;
-    u32 unk8;
-};
-
 extern u32 gUnknown_03005DA8;
-extern struct Unknown_03005DB0 gUnknown_03005DB0[3];
 
 u32 sub_080074CC(void);
 u32 sub_080076A8(void);

@@ -3,6 +3,8 @@
 #include "thread.h"
 
 extern struct Thread *gUnknown_0300681C;   // pool of one thread
+extern u16 gUnknown_03000074;
+extern u16 gUnknown_03000076;
 
 void sub_0803B20C(void);
 
@@ -45,4 +47,10 @@ void sub_0803BEA8(void)
             WaitFrame();
     Free(gUnknown_0300681C);
     gUnknown_0300681C = NULL;
+}
+
+void sub_0803BEE8(u16 a, u16 b)
+{
+    gUnknown_03000074 = a;
+    gUnknown_03000076 = b;
 }

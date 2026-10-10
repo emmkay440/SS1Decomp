@@ -46,8 +46,18 @@ struct Enemy
     u8 unk90[0x4];
 };                       // size 0x94
 
+// Three 12-byte records with an in-use mask (gUnknown_03005DA8); purpose
+// unknown.
+struct Unknown_03005DB0
+{
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
+};
+
 extern struct Enemy *gEnemies;
 extern u32 gActiveEnemyMask;
+extern struct Unknown_03005DB0 gUnknown_03005DB0[3];
 
 bool32 ApplyEnemyDamage(struct Enemy *enemy);
 bool32 IsEnemyTypeActive(u16 type);

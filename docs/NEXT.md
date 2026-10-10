@@ -139,4 +139,9 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 ## Housekeeping
 
 - [x] `CLAUDE.md` with project notes.
-- [ ] First git commit (nothing is committed yet).
+- [x] First git commit.
+- [x] 2026-10-10: merged one-function `unk_*` modules into their neighbours,
+      shared structs moved to headers (`window.h`, `enemy.h`, `menu.h`),
+      `GetDataRecord` declared in `data_record.h`. Don't replace the local
+      `bzero`/`memcpy` prototypes with agbcc's `<string.h>`: that changes
+      code (the ROM stops matching).

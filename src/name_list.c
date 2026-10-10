@@ -1,7 +1,6 @@
 #include "global.h"
 #include "player_stats.h"
-
-void *GetDataRecord(u32 key);
+#include "data_record.h"
 
 // Data record 0x900E4: `count` 0-terminated names, back to back.
 struct NameList

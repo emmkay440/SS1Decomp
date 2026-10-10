@@ -1,15 +1,20 @@
 #include "global.h"
 #include "display.h"
 #include "sprite_obj.h"
+#include "data_record.h"
 
+extern u32 gUnknown_030064D8;
 extern struct SpriteObj gUnknown_03006430;
 
 void sub_08003518(u32 a, u32 b, u16 c, u16 d, u32 e, void *f, u32 g, u32 h);
 void sub_08003724(u32 a, u32 b, u16 c, u16 d, u32 e, void *f, u32 g, u32 h, s32 scaleX, s32 scaleY, u32 k);
 u32 sub_08004214(u16 a, u32 b, u32 c, u32 d, u32 e);
-
-void *GetDataRecord(u32 key);
 void sub_08026C64(struct SpriteObj *obj, s16 max, s16 min, s16 step);
+
+void sub_08026AD0(void)
+{
+    gUnknown_030064D8 = 0;
+}
 
 // Sets up a sprite object from data record `key` and the records with the
 // same low half in categories 0x11 and 0x13 (palettes). Loads the palettes

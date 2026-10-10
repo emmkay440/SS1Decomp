@@ -5,7 +5,6 @@
 // MenuScreen keeps working copies of the player's items and writes them
 // back with ApplyMenuChanges.
 
-
 extern u32 gMenuHeldCount;
 extern void *gUnknown_03000494;
 extern struct Item *gMenuInventory;

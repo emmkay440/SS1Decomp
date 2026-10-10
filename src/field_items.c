@@ -2,6 +2,7 @@
 #include "heap.h"
 #include "item.h"
 #include "player_stats.h"
+#include "data_record.h"
 
 extern u32 gUnknown_03003D08;
 extern struct Item *gUnknown_030063AC;
@@ -11,7 +12,6 @@ extern u32 gUnknown_030063B4;
 extern u32 gUnknown_030063BC;
 
 u32 sub_080074F0(void);
-void *GetDataRecord(u32 key);
 void sub_08013CE4(void);
 void sub_08014CB8(void);
 

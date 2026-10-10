@@ -1,11 +1,11 @@
 #include "global.h"
 #include "display.h"
+#include "data_record.h"
 
 extern u16 gUnknown_03005DE0;      // text layer: first changed row (text_layer.c)
 extern u32 *gUnknown_03006340[];   // the category 8 data records
 
 u32 sub_08002E18(u32 category);
-void *GetDataRecord(u32 key);
 
 // Marks `row` and below as changed.
 void sub_0800EE44(u32 row)

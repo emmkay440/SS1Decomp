@@ -4,6 +4,7 @@
 extern struct Item *gMenuInventory;
 extern u32 *gMenuEquipment;
 extern struct Item *gMenuSelectedItem;
+extern void *gUnknown_030004B8;
 
 u32 sub_08040900(struct Item *item);
 
@@ -55,4 +56,9 @@ bool32 sub_080414C8(void)
         }
     }
     return FALSE;
+}
+
+void *sub_0804152C(void)
+{
+    return gUnknown_030004B8;
 }

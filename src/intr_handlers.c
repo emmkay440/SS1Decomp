@@ -24,7 +24,6 @@ static inline void ClearDispStatFlagsInline(u16 flags)
     REG_DISPSTAT = gDispStat;
 }
 
-
 void SetVCountLine(u8 line)
 {
     gDispStat = (u8)gDispStat | (line << 8);

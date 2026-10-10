@@ -3,11 +3,11 @@
 #include "item.h"
 #include "player_stats.h"
 #include "thread.h"
+#include "data_record.h"
 
 extern struct Thread gUnknownThread_03006380;
 
 void sub_08013264(void);
-void *GetDataRecord(u32 key);
 
 void sub_08014CB8(void)
 {

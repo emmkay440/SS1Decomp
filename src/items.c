@@ -1,9 +1,23 @@
 #include "global.h"
 #include "player_stats.h"
 #include "item.h"
+#include "data_record.h"
 
-void *GetDataRecord(u32 key);
 bool32 AddItemToInventory(struct Item *item);
+
+// Frees an active field item (active = 0, unk14 = 5). Returns FALSE for
+// NULL. Called from asm/code_08027280.s.
+bool32 sub_08013E20(struct FieldItem *fieldItem)
+{
+    if (fieldItem == NULL)
+        return FALSE;
+    if (fieldItem->active & 1)
+    {
+        fieldItem->active = 0;
+        fieldItem->unk14 = 5;
+    }
+    return TRUE;
+}
 
 // Marks an active field item as being picked up (sets bit 1 of `active`)
 // and stores `arg` in unk14. Returns FALSE for NULL. Called from

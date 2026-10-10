@@ -14,7 +14,6 @@ extern u16 gBgRegsBuffer[];
 #define INTR_OFF() REG_IME = gIntrMasterEnable = FALSE
 #define INTR_ON()  REG_IME = gIntrMasterEnable = TRUE
 
-
 // Inlined copies of EnableIntr / DisableIntr / SetDispStatFlags.
 static inline void EnableIntrInline(u16 flags)
 {

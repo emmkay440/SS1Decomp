@@ -4,8 +4,6 @@
 #include "player_stats.h"
 #include "save.h"
 
-
-
 // Loads slot `slot` into gPlayerStats. An empty slot starts a new character
 // with the class, color and name chosen on the save select screen.
 u8 CalcSaveChecksum(u8 *buf)

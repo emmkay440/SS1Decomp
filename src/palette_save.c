@@ -1,14 +1,15 @@
 #include "global.h"
 #include "display.h"
 
+// The u32 size (not size_t) keeps agbcc from expanding memcpy inline; the
+// "conflicting types for built-in function" warning is expected.
+void *memcpy(void *dest, const void *src, u32 size);
+
 // A copy of palette rows, one word per color (gUnknown_03000A58[32][16]).
 // sub_0804EBFC saves rows of gPaletteBuffer into it, sub_0804EC80 restores
 // them (byte offsets: 4 bytes per saved color, 2 per palette color).
 // mode: 0 = all 32 rows, 1 = BG rows, 2 = OBJ rows, 3 = row `row`.
 extern u32 gUnknown_03000A58[32][16];
-
-void *memcpy(void *dest, const void *src, u32 size);
-
 
 void sub_0804EBFC(u8 mode, u8 row)
 {
