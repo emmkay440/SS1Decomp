@@ -19,6 +19,7 @@ struct SpriteObj
     s16 scaleMin;      // +0x32
 };
 
+struct SpriteObj *sub_08026ADC(struct SpriteObj *obj, u32 key, u32 palette, s32 paletteCount);
 void sub_08026B64(struct SpriteObj *obj);
 void sub_08026B74(struct SpriteObj *obj);
 void sub_08026B90(struct SpriteObj *obj, u32 a, u32 b, u16 c, u16 d);

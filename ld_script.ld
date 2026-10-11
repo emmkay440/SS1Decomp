@@ -216,7 +216,8 @@ SECTIONS {
         src/save_select_misc.o(.text);
         src/save_select_thread.o(.text);
         src/save_select_dispatch.o(.text);
-        asm/code_08048834.o(.text);
+        src/save_select_mode0_setup.o(.text);
+        asm/code_08048930.o(.text);
         src/save_select_mode0.o(.text);
         asm/code_08048F7C.o(.text);
         src/save_select_mode1.o(.text);
