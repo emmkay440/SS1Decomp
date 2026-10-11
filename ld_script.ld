@@ -99,7 +99,8 @@ SECTIONS {
         asm/code_08017150.o(.text);
         src/effect_anim.o(.text);
         src/effect_obj.o(.text);
-        asm/code_08018058.o(.text);
+        asm/effect_obj3.o(.text);
+        asm/code_08018148.o(.text);
         src/effect_pool.o(.text);
         src/effect_number.o(.text);
         src/area_alloc.o(.text);
