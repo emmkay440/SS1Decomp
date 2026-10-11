@@ -225,7 +225,8 @@ SECTIONS {
         src/unk_0804E1E4.o(.text);
         asm/code_0804E2E8.o(.text);
         src/palette_save.o(.text);
-        asm/code_0804ED04.o(.text);
+        asm/palette_clear.o(.text);
+        asm/code_0804ED80.o(.text);
         src/unk_0804F99C.o(.text);
         asm/code_0804FAA8.o(.text);
         asm/lib/m4a_1.o(.text);
