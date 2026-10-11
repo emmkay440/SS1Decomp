@@ -321,3 +321,4 @@
 030005DC gUnknown_030005DC      # struct MenuSlot: sub_08043E0C sets type 6, subSlot 4
 030006F8 gUnknown_030006F8      # struct SpriteObj: save select arrow that bobs left/right (sub_080472FC)
 03000730 gUnknown_03000730      # struct SpriteObj: save select yes/no arrows (sub_0804837C)
+03000960 gUnknown_03000960      # struct SpriteObj: the particles of save select mode 7 (sub_0804C238)

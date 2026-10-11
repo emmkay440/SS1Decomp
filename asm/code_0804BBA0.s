@@ -142,7 +142,7 @@ _0804BCD2:
 	movs r0, #0
 	movs r2, #0x10
 	bl LoadPalette
-	ldr r0, _0804BD04 @ =0x03000960
+	ldr r0, _0804BD04 @ =gUnknown_03000960
 	ldr r1, _0804BD08 @ =0x0010004E
 	movs r2, #9
 	movs r3, #2
@@ -154,5 +154,5 @@ _0804BCD2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804BD04: .4byte 0x03000960
+_0804BD04: .4byte gUnknown_03000960
 _0804BD08: .4byte 0x0010004E
