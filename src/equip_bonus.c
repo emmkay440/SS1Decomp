@@ -1,9 +1,43 @@
 #include "global.h"
 #include "equip_inline.h"
+#include "player.h"
 
 // Totals of one bonus type over the equipped items (and their extra
 // records), for the stat screens. Built from the inline helpers in
 // equip_inline.h.
+
+extern const u16 gUnknown_080548AC[6];
+extern const s16 gUnknown_080FB4D6[];
+
+void *memcpy(void *dest, const void *src, u32 size);
+u32 sub_080102C4(void);
+
+// Two values for the equipped weapon packed as low | high << 16: normally
+// the pair for its record byte 0x159; for a Warrior or class 3 in state 2 or
+// 5 with attack style 2 and a nonzero unk14, 4 and the table value for
+// unk14. 0 without a weapon. (What they are is unknown: animation ids?)
+u32 sub_080101F0(void)
+{
+    u8 *record = GetWeaponRecordInline(WEAPON);
+    struct Player *player = &gPlayers[GetMultiplayerId()];
+    u16 table[6];
+    u32 class;
+
+    memcpy(table, gUnknown_080548AC, sizeof(table));
+    if (record != NULL)
+    {
+        if ((player->state == 2 || player->state == 5)
+            && ((class = GetPlayerClass()) == 0 || class == 3)
+            && sub_080102C4() == 2)
+        {
+            if (player->unk14 != 0)
+                return (table[player->unk14] << 16) | 4;
+            return gUnknown_080FB4D6[record[0x159] * 2] | ((gUnknown_080FB4D6 + 1)[record[0x159] * 2] << 16);
+        }
+        return gUnknown_080FB4D6[record[0x159] * 2] | ((gUnknown_080FB4D6 + 1)[record[0x159] * 2] << 16);
+    }
+    return 0;
+}
 
 // Halfword view of the weapon item words, for code that reads the id with
 // ldrh.

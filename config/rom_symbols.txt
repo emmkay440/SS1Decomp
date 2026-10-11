@@ -30,3 +30,5 @@
 08052BC4 gUnknown_08052BC4      # u32[6]: 0, 80, 85, 90, 95, 100; indexed by Player.unk14 (sub_0800C304)
 0805289C gUnknown_0805289C      # u16[]: curve table (signed 16-bit values; sub_0804C4B0 indexes it with a % 255)
 080FBA9C gUnknown_080FBA9C      # u32[10]: powers of ten, largest first (sub_08026D98)
+080548AC gUnknown_080548AC      # u16[6]: 0, 14, 16, 18, 20, 22; indexed by Player.unk14 (sub_080101F0)
+080FB4D6 gUnknown_080FB4D6      # s16 pairs indexed by weapon record byte 0x159 (sub_080101F0)
