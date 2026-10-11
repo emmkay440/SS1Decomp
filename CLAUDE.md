@@ -20,9 +20,9 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   commit a non-matching build. Never push; pushing is only done when the
   user explicitly asks.
 
-## Current state (2026-10-10)
+## Current state (2026-10-11)
 
-643 / 981 game functions are matching C (`make progress`); every module in
+677 / 982 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -121,6 +121,25 @@ merge `ad_*` files into real modules, name things, fix style.
   `movs r0, #1 / #0; cmp r0, #0` of an inlined bool test (sub_08041208);
   32-bit temporaries for 16-bit register math (EnableDisplayLayers);
   `record[0]` twice instead of `*record++` (sub_080060A0).
+- Shapes decomp-permuter found (2026-10-10/11), worth trying by hand when a
+  function is a few lines off:
+  - `do { ... } while (0)` around a statement, a branch or the whole body
+    (probably macros in the original). It changes loop depth, and with it
+    register priority and what gets hoisted (`sub_08013B94`,
+    `sub_0800EDBC`, `Free`).
+  - A loop entered by a jump to its test (`b check` and no duplicated
+    test): `do { goto check; } while (0); do { ...; check: ; } while (c);`.
+  - Constants in local variables (`last = 11; first = 9;` in
+    `sub_08045D80`), an `int` temporary for an index, a value copied to a
+    second variable before it is stored to a register (`DisableDisplayLayers`).
+  - A read through a `vu16 *` when a global is loaded into its own register
+    before being combined.
+- Other shapes from the same days: the flags argument computed by an
+  `if/else` right before the call, with `item++` as the argument
+  (`src/menu_draw.c`); a signed class compare (`bgt`) from
+  `switch ((s32)GetPlayerClass())`; `if (p != NULL) {...} else { return 0; }`
+  to put that `return 0` last; a 2D view of a flat array
+  (`((u16 (*)[16])gPaletteBuffer)[i][j]`) for `row * 32 + (col * 2 + base)`.
 - decomp-permuter (`tools/decomp-permuter`, driven like
   `tools/autodecomp/autodecomp.py:permute`) rarely finishes a function, but
   its best candidates point at the idea (a reused variable, a volatile

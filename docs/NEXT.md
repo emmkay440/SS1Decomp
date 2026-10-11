@@ -1,7 +1,7 @@
 # What's next (decomp)
 
-Status as of 2026-10-10 (`make progress`): ROM matches; 643 / 981 game
-functions in C (14.0% of game code bytes: the small ones are mostly done).
+Status as of 2026-10-11 (`make progress`): ROM matches; 677 / 982 game
+functions in C (15.5% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
 
@@ -43,35 +43,34 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - [x] `src/enemy_util.c`: `IsEnemyTypeActive`.
 - [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
       block copies, `GetPlayerClass`, 10 functions).
-- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-10:
-      - `DisableDisplayLayers` (asm/display_disable.s): 2 lines off. Needs
-        the read of gDispCnt through a volatile pointer; the literal load
-        then comes one instruction early (draft DisableDisplayLayers.c).
-      - `Free` (asm/heap_free.s): 6 lines off, all in the first instructions
-        (ptr stays in r4 with a copy in r2; the original copies it to r1 and
-        derives the block from that). The loop needs a goto (draft Free.c).
+- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-11:
+      - `Free` (asm/heap_free.s): 2 lines off. It does `r4 = ptr; r1 = r4`,
+        the original `r1 = ptr; r4 = r1`. Needs a goto for the loop and an
+        integer copy of the pointer in its own do/while(0) (draft Free.c).
+      - `sub_0804096C` (asm/menu_quick_slots.s): matches except that the
+        original loads &gUnknown_03000494 into r8 before the first loop
+        (draft sub_0804096C.c).
       - `sub_0804087C` (asm/menu_slot_item.s): 6 lines off; which register
         holds the type 4 index (draft sub_0804087C.c).
-      - `sub_0800EDBC` (asm/text_draw_string.s): 5 lines off; the loop is
-        entered by a jump to its test and nothing is hoisted, only a goto
-        gets close (draft sub_0800EDBC.c).
-      - `sub_08005FC4`, `sub_08006008`, `GetMapTileAttributes`
-        (asm/map_fc4.s, map_6008.s, map_attr.s; drafts in map_all.c): the
-        layer pointer has to land in r0/r1 while x and y move to other
-        registers, and `sub_08005FC4` keeps a sign extension that every C
-        version drops. 13-20 lines off.
+      - `sub_08045114` (asm/menu_price_buy.s): 11 lines off; the original
+        keeps two copies of the price/money code (draft sub_08045114.c).
+      - `sub_08006008`, `GetMapTileAttributes` (asm/map_6008.s, map_attr.s;
+        drafts in map_all.c): the layer pointer has to land in r0/r1 while
+        x and y move to other registers. About 20 lines off.
       - `LoadSaveSlotInfo` (asm/save_slot_info.s), `sub_0802F374`
         (asm/save_load_or_new.s): the original loads the constant 0x1000
         twice (for Alloc and ReadSaveSector); every C version shares it in a
         register, which shifts the whole register assignment. The matched
         `LoadSaveSlot` (src/save_check.c) does share it, so these two were
-        written differently.
+        written differently. A do/while(0) around either call doesn't help.
       - `sub_08010B48` / `sub_08012230` (asm/equip_has.s, about 700 bytes
         each): not retried; drafts equip_has_*.c, permuter score 1445.
-      Solved on 2026-10-10: `Random`, `sub_0803F060`, `Lerp1024`,
+      Solved on 2026-10-10/11: `Random`, `sub_0803F060`, `Lerp1024`,
       `TakeItemFromSlot`, `sub_08041208`, `sub_08029270`,
-      `EnableDisplayLayers`, `sub_080060A0`. What solved most of them:
-      reusing one variable for two values (see CLAUDE.md).
+      `EnableDisplayLayers`, `DisableDisplayLayers`, `sub_080060A0`,
+      `sub_08005FC4`, `sub_0800EDBC`, `sub_08013B94`, `sub_08045D80`.
+      What solved them: reusing one variable for two values, and shapes
+      found by decomp-permuter (see CLAUDE.md).
 - [x] Old near-miss list (now matching): `ApplyEnemyDamage` (asm/enemy_damage.s),
       `ApplyPendingDamage` (asm/player_damage.s), `CalcExpGain`
       (asm/exp_gain.s, 12 bytes off), `InitSaveFlash` (asm/save_init.s),
@@ -84,7 +83,7 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       `CalcSaveChecksum` (4 lines off) and the rest should follow. `include/player.h` / `include/enemy.h` hold the
       struct layouts.
 - [x] Heap (src/heap.c, src/heap_top.c; only `Free` is still asm, see the
-      near misses). Was: 16-byte block header
+      near misses; merge heap_top.c into heap.c once it matches). Was: 16-byte block header
       {prev:31 + used:1 in one word, next, freePrev, freeNext}; the code
       reads the first word as a plain pointer too, so the struct probably
       needs a union. `gHeap` = free-list sentinel + start + size.
