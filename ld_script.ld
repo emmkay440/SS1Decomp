@@ -101,6 +101,8 @@ SECTIONS {
         asm/code_08018940.o(.text);
         src/enemy_spawner_start.o(.text);
         asm/code_080199B4.o(.text);
+        src/area_list_find.o(.text);
+        asm/code_08019C40.o(.text);
         src/menu_open.o(.text);
         asm/code_0801B210.o(.text);
         src/thread_starters.o(.text);

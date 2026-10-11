@@ -9,7 +9,9 @@ struct Unknown_030063D8
     void *unk4;         // +0x04 8-byte entries
     void *unk8;         // +0x08 freed by sub_0802173C
     u32 unkC[5];        // +0x0C
-    u8 unk20[0x64];
+    u8 unk20[0x28];
+    u16 unk48[5][5];    // +0x48 five lists of ids (sub_08019B98)
+    u16 unk7A[5];       // +0x7A their lengths
     u16 unk84;          // +0x84
     u8 unk86[0x16];
     u16 unk9C;          // +0x9C flags; bit 1: enemies may spawn (sub_0800EAD8)
