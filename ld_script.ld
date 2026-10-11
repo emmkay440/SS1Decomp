@@ -95,7 +95,8 @@ SECTIONS {
         src/exp.o(.text);
         asm/code_08017150.o(.text);
         src/effect_pool.o(.text);
-        asm/code_08018600.o(.text);
+        src/effect_number.o(.text);
+        asm/code_080186A8.o(.text);
         src/thread_slots_free.o(.text);
         asm/code_08018940.o(.text);
         src/enemy_spawner_start.o(.text);
