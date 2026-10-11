@@ -28,6 +28,43 @@ extern const struct Unknown_080FBB84 gUnknown_080FBB84[];
 
 s16 sub_0801076C(void);
 
+void sub_0802DC18(void);
+void sub_0802E224(void);
+void sub_0802E824(void);
+
+// Starts one of three effect threads for character `who` in a free slot of
+// its second pool. The thread gets (who, arg << 16 | slot).
+void sub_0802EEA8(u32 who, u32 kind, u32 arg)
+{
+    u32 i = 0;
+
+    while (gUnknown_030067A0[who] & (1 << i))
+    {
+        if (++i > 15)
+            return;
+    }
+    if (i > 15)
+        return;
+    gUnknown_030067D0[who][i].priority = 0x34;
+    switch (kind)
+    {
+    case 0:
+        gUnknown_030067D0[who][i].entry = sub_0802DC18;
+        break;
+    case 1:
+        gUnknown_030067D0[who][i].entry = sub_0802E224;
+        break;
+    case 2:
+        gUnknown_030067D0[who][i].entry = sub_0802E824;
+        break;
+    }
+    gUnknown_030067D0[who][i].stack = Alloc(0x400);
+    gUnknown_030067D0[who][i].sp = (u8 *)gUnknown_030067D0[who][i].stack + 0x3FC;
+    gUnknown_030067D0[who][i].onExit = NULL;
+    CreateThread(&gUnknown_030067D0[who][i], who, (arg << 16) | i);
+    gUnknown_030067A0[who] |= 1 << i;
+}
+
 void sub_0802EF7C(u32 who)
 {
     struct Thread **shared;

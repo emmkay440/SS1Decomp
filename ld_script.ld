@@ -134,6 +134,8 @@ SECTIONS {
         src/queue_push.o(.text);
         src/unk_080292D0.o(.text);
         asm/code_08029560.o(.text);
+        src/spell_effect_start.o(.text);
+        asm/code_08029ACC.o(.text);
         src/unk_08029BB4.o(.text);
         asm/code_08029C44.o(.text);
         src/item_use_effect.o(.text);
