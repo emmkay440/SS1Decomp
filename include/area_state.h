@@ -13,7 +13,8 @@ struct Unknown_030063D8
     u16 unk48[5][5];    // +0x48 five lists of ids (sub_08019B98)
     u16 unk7A[5];       // +0x7A their lengths
     u16 unk84;          // +0x84
-    u8 unk86[0x16];
+    u8 unk86[0x14];
+    u16 unk9A;          // +0x9A 0xFFFF at start
     u16 unk9C;          // +0x9C flags; bit 1: enemies may spawn (sub_0800EAD8)
     u8 unk9E[0xD];
     u8 unkAB;           // +0xAB set once SignalEvent(3000) has been sent

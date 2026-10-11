@@ -100,7 +100,7 @@ SECTIONS {
         asm/code_08017E50.o(.text);
         src/effect_pool.o(.text);
         src/effect_number.o(.text);
-        asm/code_080186A8.o(.text);
+        src/area_alloc.o(.text);
         src/thread_slots_free.o(.text);
         asm/code_08018940.o(.text);
         src/area_enter_pos.o(.text);
