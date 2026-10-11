@@ -173,7 +173,7 @@ SECTIONS {
         asm/code_0803ECBC.o(.text);
         src/enemy_threads2.o(.text);
         src/sound.o(.text);
-        asm/code_0803F468.o(.text);
+        src/menu_screen.o(.text);
         src/menu_setup.o(.text);
         asm/code_0803F73C.o(.text);
         src/menu_apply.o(.text);
