@@ -312,3 +312,10 @@
 03000604 gUnknown_03000604      # u16, cleared by sub_08046338
 03000606 gUnknown_03000606      # u16, cleared by sub_08046338
 03000580 gUnknown_03000580      # struct SpriteObj: menu cursor/hand sprite (sub_08041DE8)
+03000548 gUnknown_03000548      # struct SpriteObj: the two arrow sprites drawn by sub_08043B28
+030005BA gUnknown_030005BA      # u8, cleared by sub_08043E0C
+030005BE gUnknown_030005BE      # u8, cleared by sub_08043E0C
+030005C1 gUnknown_030005C1      # u8, cleared by sub_08043E0C
+030005C2 gUnknown_030005C2      # u16, cleared by sub_08043E0C
+030005C4 gUnknown_030005C4      # u16, cleared by sub_08043E0C
+030005DC gUnknown_030005DC      # struct MenuSlot: sub_08043E0C sets type 6, subSlot 4

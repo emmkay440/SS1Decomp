@@ -24,6 +24,35 @@ void sub_0804288C(void);
 void sub_08043378(void);
 void sub_08046110(void);
 
+extern struct SpriteObj gUnknown_03000548;
+
+u32 sub_08026C40(struct SpriteObj *obj, u16 a, u16 *frame, u16 *timer, u32 loop);
+void sub_0802706C(struct SpriteObj *obj, u32 a, u32 b, u16 c, u16 d, u8 e);
+u8 sub_08045FBC(void);
+
+// Animates and draws the two arrows; sub_08045FBC() picks which of them is
+// drawn scaled and which sprite goes between them.
+void sub_08043B28(void)
+{
+    u8 flag;
+
+    sub_08026C40(&gUnknown_03000548, 4, &gUnknown_030004D0[0], &gUnknown_030004E8[0], 1);
+    sub_08026C40(&gUnknown_03000548, 5, &gUnknown_030004D0[1], &gUnknown_030004E8[1], 1);
+    flag = sub_08045FBC();
+    if (flag)
+    {
+        sub_08026BC4(&gUnknown_03000548, 0xCC, 0x7C, 4, gUnknown_030004D0[0]);
+        sub_08026B90(&gUnknown_03000548, 0xE2, 0x7C, 5, gUnknown_030004D0[1]);
+        sub_0802706C(&gUnknown_03000548, 0xD7, 0x7C, 8, 0, 0);
+    }
+    else
+    {
+        sub_08026B90(&gUnknown_03000548, 0xCC, 0x7C, 4, gUnknown_030004D0[0]);
+        sub_08026BC4(&gUnknown_03000548, 0xE2, 0x7C, 5, gUnknown_030004D0[1]);
+        sub_0802706C(&gUnknown_03000548, 0xD7, 0x7C, 9, flag, flag);
+    }
+}
+
 // Resets this screen's state.
 void sub_08043BD8(void)
 {

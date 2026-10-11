@@ -75,3 +75,71 @@ u32 sub_08043DD0(u8 type, u8 subSlot)
         return 2;
     return 0;
 }
+
+struct Unknown_030005E0_b
+{
+    u8 unk0;
+    u8 unk1[0x7];
+    u32 unk8;
+    u32 unkC;
+};
+
+extern u8 gUnknown_030005B8;
+extern u8 gUnknown_030005B9;
+extern u8 gUnknown_030005BA;
+extern u8 gUnknown_030005BB;
+extern u8 gUnknown_030005BC;
+extern u8 gUnknown_030005BD;
+extern u8 gUnknown_030005BE;
+extern u8 gUnknown_030005BF;
+extern u8 gUnknown_030005C0;
+extern u8 gUnknown_030005C1;
+extern u16 gUnknown_030005C2;
+extern u16 gUnknown_030005C4;
+extern u8 gUnknown_030005C8[2];
+extern u8 gUnknown_030005CC[2];
+extern struct MenuSlotBytes gUnknown_030005D0;
+extern struct MenuSlotBytes gUnknown_030005D4;
+extern struct MenuSlotBytes gUnknown_030005D8;
+extern struct MenuSlotBytes gUnknown_030005DC;
+extern struct Unknown_030005E0_b gUnknown_030005E0;
+
+void sub_08045304(struct MenuSlotBytes *slot);
+
+// Resets the menu cursor state.
+void sub_08043E0C(void)
+{
+    gUnknown_030005B8 = 0;
+    gUnknown_030005B9 = 0;
+    gUnknown_030005C1 = 0;
+    gUnknown_030005BA = 0;
+    gUnknown_030005BB = 0;
+    gUnknown_030005BC = 0;
+    gUnknown_030005C2 = 0;
+    gUnknown_030005C4 = 0;
+    gUnknown_030005BD = 1;
+    gUnknown_030005C8[0] = 0;
+    gUnknown_030005C8[1] = 0;
+    gUnknown_030005BE = 0;
+    gUnknown_030005C0 = 0;
+    gUnknown_030005BF = 1;
+    gUnknown_030005CC[1] = 0;
+    gUnknown_030005CC[0] = 4;
+    gUnknown_030005D0.type = 0;
+    gUnknown_030005D0.subSlot = 0;
+    gUnknown_030005D0.unk0 = 0;
+    gUnknown_030005D0.unk1 = 0;
+    gUnknown_030005D4.type = 0;
+    gUnknown_030005D4.subSlot = 0;
+    gUnknown_030005D4.unk0 = 0;
+    gUnknown_030005D4.unk1 = 0;
+    gUnknown_030005D8.type = 3;
+    gUnknown_030005D8.subSlot = 12;
+    sub_08045304(&gUnknown_030005D8);
+    gUnknown_030005DC.type = 6;
+    gUnknown_030005DC.subSlot = 4;
+    sub_08045304(&gUnknown_030005DC);
+    gUnknown_030005E0.unk0 = 0;
+    gUnknown_030005E0.unk8 = 0;
+    gUnknown_030005E0.unkC = 0;
+}

@@ -841,13 +841,13 @@ _08041BE4:
 	movs r2, #9
 	movs r3, #5
 	bl sub_08026ADC
-	ldr r0, _08041C00 @ =0x03000548
+	ldr r0, _08041C00 @ =gUnknown_03000548
 	ldr r1, _08041C04 @ =0x0010006A
 	b _08041C60
 	.align 2, 0
 _08041BF8: .4byte gUnknown_03000510
 _08041BFC: .4byte 0x00100069
-_08041C00: .4byte 0x03000548
+_08041C00: .4byte gUnknown_03000548
 _08041C04: .4byte 0x0010006A
 _08041C08:
 	ldr r0, _08041C1C @ =gUnknown_03000510
@@ -855,13 +855,13 @@ _08041C08:
 	movs r2, #9
 	movs r3, #5
 	bl sub_08026ADC
-	ldr r0, _08041C24 @ =0x03000548
+	ldr r0, _08041C24 @ =gUnknown_03000548
 	ldr r1, _08041C28 @ =0x00100073
 	b _08041C60
 	.align 2, 0
 _08041C1C: .4byte gUnknown_03000510
 _08041C20: .4byte 0x00100072
-_08041C24: .4byte 0x03000548
+_08041C24: .4byte gUnknown_03000548
 _08041C28: .4byte 0x00100073
 _08041C2C:
 	ldr r0, _08041C40 @ =gUnknown_03000510
@@ -869,13 +869,13 @@ _08041C2C:
 	movs r2, #9
 	movs r3, #5
 	bl sub_08026ADC
-	ldr r0, _08041C48 @ =0x03000548
+	ldr r0, _08041C48 @ =gUnknown_03000548
 	ldr r1, _08041C4C @ =0x0010007B
 	b _08041C60
 	.align 2, 0
 _08041C40: .4byte gUnknown_03000510
 _08041C44: .4byte 0x00100071
-_08041C48: .4byte 0x03000548
+_08041C48: .4byte gUnknown_03000548
 _08041C4C: .4byte 0x0010007B
 _08041C50:
 	ldr r0, _08041C6C @ =gUnknown_03000510
@@ -883,7 +883,7 @@ _08041C50:
 	movs r2, #9
 	movs r3, #5
 	bl sub_08026ADC
-	ldr r0, _08041C74 @ =0x03000548
+	ldr r0, _08041C74 @ =gUnknown_03000548
 	ldr r1, _08041C78 @ =0x00100083
 _08041C60:
 	movs r2, #0
@@ -893,7 +893,7 @@ _08041C60:
 	.align 2, 0
 _08041C6C: .4byte gUnknown_03000510
 _08041C70: .4byte 0x00100084
-_08041C74: .4byte 0x03000548
+_08041C74: .4byte gUnknown_03000548
 _08041C78: .4byte 0x00100083
 _08041C7C:
 	ldr r0, _08041CA4 @ =gUnknown_03000510
@@ -901,7 +901,7 @@ _08041C7C:
 	movs r2, #9
 	movs r3, #5
 	bl sub_08026ADC
-	ldr r0, _08041CAC @ =0x03000548
+	ldr r0, _08041CAC @ =gUnknown_03000548
 	ldr r1, _08041CB0 @ =0x0010008D
 	movs r2, #0
 	movs r3, #0
@@ -917,7 +917,7 @@ _08041C94:
 	.align 2, 0
 _08041CA4: .4byte gUnknown_03000510
 _08041CA8: .4byte 0x0010008E
-_08041CAC: .4byte 0x03000548
+_08041CAC: .4byte gUnknown_03000548
 _08041CB0: .4byte 0x0010008D
 _08041CB4: .4byte gUnknown_030004C8
 _08041CB8: .4byte gUnknown_03000580
