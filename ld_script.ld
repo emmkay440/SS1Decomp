@@ -212,6 +212,8 @@ SECTIONS {
         asm/code_080496CC.o(.text);
         src/save_select_mode2.o(.text);
         asm/code_08049E70.o(.text);
+        src/save_select_mode3_scroll.o(.text);
+        asm/code_0804A074.o(.text);
         src/save_select_mode3.o(.text);
         asm/code_0804A4AC.o(.text);
         src/save_select_mode4.o(.text);
@@ -226,6 +228,8 @@ SECTIONS {
         asm/code_0804BD48.o(.text);
         src/save_select_mode7.o(.text);
         asm/code_0804C37C.o(.text);
+        src/save_select_mode8_scroll.o(.text);
+        asm/code_0804C548.o(.text);
         src/save_select_mode8.o(.text);
         src/unk_0804C9C4.o(.text);
         asm/code_0804CA84.o(.text);
