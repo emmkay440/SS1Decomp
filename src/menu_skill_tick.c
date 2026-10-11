@@ -15,6 +15,109 @@ extern s8 gUnknown_030004C0;
 u8 sub_0803FAFC(u8 stat);
 void sub_080413F4(void);
 
+u32 GetPlayerClass(void);
+
+// TRUE if stat `stat` (0 STR, 1 DEX, 2 INT, 3 VIT) of the menu's stat block
+// has reached the class's cap. `max` stays unset for an unknown class (as in
+// the original).
+u8 sub_0803FAFC(u8 stat)
+{
+    s16 max;
+    s32 value;
+
+    switch ((s32)GetPlayerClass())
+    {
+    case 0:
+        switch (stat)
+        {
+            case 0:
+                max = 200;
+                break;
+            case 1:
+                max = 200;
+                break;
+            case 2:
+                max = 0;
+                break;
+            case 3:
+                max = 200;
+                break;
+        }
+        break;
+    case 3:
+        switch (stat)
+        {
+            case 0:
+                max = 230;
+                break;
+            case 1:
+                max = 220;
+                break;
+            case 2:
+                max = 0;
+                break;
+            case 3:
+                max = 150;
+                break;
+        }
+        break;
+    case 2:
+        switch (stat)
+        {
+            case 0:
+                max = 200;
+                break;
+            case 1:
+                max = 150;
+                break;
+            case 2:
+                max = 0;
+                break;
+            case 3:
+                max = 250;
+                break;
+        }
+        break;
+    case 1:
+        switch (stat)
+        {
+            case 0:
+                max = 50;
+                break;
+            case 1:
+                max = 100;
+                break;
+            case 2:
+                max = 300;
+                break;
+            case 3:
+                max = 150;
+                break;
+        }
+        break;
+    }
+    switch (stat)
+    {
+    case 0:
+        value = (s16)gMenuStatBlock->str;
+        break;
+    case 1:
+        value = (s16)gMenuStatBlock->dex;
+        break;
+    case 2:
+        value = (s16)gMenuStatBlock->int_;
+        break;
+    case 3:
+        value = (s16)gMenuStatBlock->vit;
+        break;
+    default:
+        return TRUE;
+    }
+    if (value >= (s16)max)
+        return TRUE;
+    return FALSE;
+}
+
 // Puts one point into the stat or skill at `slot`. FALSE if there are no
 // points left or it can't go higher (a skill stops at level 5). A skill
 // whose pending points pass its level starts the level-up countdown.

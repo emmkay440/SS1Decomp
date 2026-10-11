@@ -181,7 +181,6 @@ SECTIONS {
         asm/code_0803F73C.o(.text);
         src/menu_apply.o(.text);
         src/menu_stats_changed.o(.text);
-        asm/code_0803FAFC.o(.text);
         src/menu_skill_tick.o(.text);
         src/menu_stat_sync.o(.text);
         asm/code_0803FE70.o(.text);
