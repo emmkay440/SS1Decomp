@@ -311,3 +311,4 @@
 030005F7 gUnknown_030005F7      # u8, set to 1 by sub_08046338
 03000604 gUnknown_03000604      # u16, cleared by sub_08046338
 03000606 gUnknown_03000606      # u16, cleared by sub_08046338
+03000580 gUnknown_03000580      # struct SpriteObj: menu cursor/hand sprite (sub_08041DE8)

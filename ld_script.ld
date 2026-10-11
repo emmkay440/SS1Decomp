@@ -184,6 +184,8 @@ SECTIONS {
         src/menu_stats2.o(.text);
         src/menu_inventory_scan.o(.text);
         asm/code_08041538.o(.text);
+        src/menu_draw.o(.text);
+        asm/code_080420EC.o(.text);
         src/menu_misc.o(.text);
         src/unk_08043DB8.o(.text);
         asm/code_08043E0C.o(.text);
