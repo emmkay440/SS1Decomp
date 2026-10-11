@@ -2,6 +2,7 @@
 #include "display.h"
 #include "heap.h"
 #include "save.h"
+#include "save_select.h"
 #include "sound.h"
 #include "thread.h"
 
@@ -99,8 +100,6 @@ extern u8 gUnknown_030005F5;
 extern u8 gUnknown_030005F6;
 extern u8 gUnknown_030005F7;
 extern u8 gUnknown_030005F8;
-extern u8 gUnknown_030005FC[2];
-extern u8 gUnknown_03000600[2];
 extern u16 gUnknown_03000604;
 extern u16 gUnknown_03000606;
 extern void *gUnknown_03000608;
@@ -125,10 +124,10 @@ void sub_08046338(void)
     gUnknown_03000608 = NULL;
     gUnknown_0300060C = NULL;
     gUnknown_03000610 = NULL;
-    gUnknown_030005FC[0] = 0;
-    gUnknown_030005FC[1] = 0;
-    gUnknown_03000600[0] = 0;
-    gUnknown_03000600[1] = 0;
+    gUnknown_030005FC.x = 0;
+    gUnknown_030005FC.y = 0;
+    gUnknown_03000600.c.column = 0;
+    gUnknown_03000600.c.row = 0;
     gUnknown_030005F6 = 0;
     gUnknown_030005F3 = 0;
     gUnknown_030005F8 = 0;

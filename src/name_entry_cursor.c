@@ -1,27 +1,10 @@
 #include "global.h"
 #include "save.h"
-
-union CursorCell
-{
-    u16 raw;
-    struct
-    {
-        u8 column;
-        u8 row;
-    } c;
-};
-
-struct CursorPos
-{
-    u8 x;
-    u8 y;
-};
+#include "save_select.h"
 
 extern u8 gUnknown_030005F0;
 extern u8 gUnknown_030005F2;
 extern u8 gUnknown_030005F5;
-extern struct CursorPos gUnknown_030005FC;
-extern union CursorCell gUnknown_03000600;
 extern struct SaveSlotInfo *gUnknown_03000764;
 
 // In state 5 (name entry): screen position of the cursor for its cell. On
