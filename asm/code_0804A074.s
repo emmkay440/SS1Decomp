@@ -55,7 +55,7 @@ _0804A0B6:
 	movs r0, #0x6a
 	bl PlaySE
 	movs r5, #0
-	ldr r7, _0804A1B4 @ =0x03000850
+	ldr r7, _0804A1B4 @ =gUnknown_03000850
 	ldr r6, _0804A1B8 @ =0x03000842
 _0804A0EC:
 	lsls r4, r5, #0x10
@@ -91,7 +91,7 @@ _0804A0EC:
 	cmp r4, #0x1d
 	ble _0804A0EC
 	movs r5, #0x1e
-	ldr r0, _0804A1B4 @ =0x03000850
+	ldr r0, _0804A1B4 @ =gUnknown_03000850
 	mov r8, r0
 	ldr r7, _0804A1B8 @ =0x03000842
 _0804A13C:
@@ -150,7 +150,7 @@ _0804A13C:
 	adds r4, r2, #0
 	b _0804A1DC
 	.align 2, 0
-_0804A1B4: .4byte 0x03000850
+_0804A1B4: .4byte gUnknown_03000850
 _0804A1B8: .4byte 0x03000842
 _0804A1BC: .4byte gUnknown_0300083A
 _0804A1C0: .4byte gUnknown_0300083B
@@ -310,7 +310,7 @@ sub_0804A2EC: @ 0x0804A2EC
 	ldr r6, [r0]
 	movs r0, #0
 	mov sl, r0
-	ldr r1, _0804A3E4 @ =0x03000850
+	ldr r1, _0804A3E4 @ =gUnknown_03000850
 	mov r8, r1
 	movs r2, #1
 	mov sb, r2
@@ -422,7 +422,7 @@ _0804A3BE:
 	bx r0
 	.align 2, 0
 _0804A3E0: .4byte gUnknown_0300084C
-_0804A3E4: .4byte 0x03000850
+_0804A3E4: .4byte gUnknown_03000850
 _0804A3E8: .4byte gUnknown_0300083A
 _0804A3EC: .4byte gUnknown_0300083B
 _0804A3F0: .4byte 0x0300086C

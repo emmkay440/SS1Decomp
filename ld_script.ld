@@ -225,7 +225,7 @@ SECTIONS {
         src/save_select_mode2_setup.o(.text);
         asm/code_080497D8.o(.text);
         src/save_select_mode2.o(.text);
-        asm/code_08049E70.o(.text);
+        src/save_select_mode3_setup.o(.text);
         src/save_select_mode3_scroll.o(.text);
         asm/code_0804A074.o(.text);
         src/save_select_mode3.o(.text);
