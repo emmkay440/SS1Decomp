@@ -61,3 +61,50 @@ u8 sub_08013B20(u32 which, u8 **list)
         return 0;
     }
 }
+
+// Copies one of the three 12-item lists: the shared copy while
+// sub_080074F0() is true, else the one in gPlayerStats.
+// `src` stays unset for another `which` (as in the original).
+// The body only matches inside a do/while(0), so it was probably a macro
+// (found by decomp-permuter).
+void sub_08013B94(u32 which, struct Item *dest)
+{
+    u32 i;
+    struct Item *src;
+    struct Item *d;
+
+    do
+    {
+    switch (which)
+    {
+    case 0:
+        if (sub_080074F0())
+            src = gUnknown_030063AC;
+        else
+            src = gPlayerStats.unk1DC[0];
+        break;
+    case 1:
+        if (sub_080074F0())
+            src = gUnknown_030063B8;
+        else
+            src = gPlayerStats.unk1DC[1];
+        break;
+    case 2:
+        if (sub_080074F0())
+            src = gUnknown_030063A8;
+        else
+            src = gPlayerStats.unk1DC[2];
+        break;
+    }
+    for (i = 0, d = dest; i < 12; i++)
+        *d++ = *src++;
+    } while (0);
+}
+
+// A storage slot (slot 0 for an out-of-range index). Nothing calls it.
+struct Item GetStorageSlot(u32 slot)
+{
+    if (slot > 59)
+        slot = 0;
+    return gPlayerStats.storage[slot];
+}

@@ -80,7 +80,6 @@ SECTIONS {
         src/materials.o(.text);
         src/player_stats.o(.text);
         src/field_items.o(.text);
-        asm/item_lists.o(.text);
         src/field_items2.o(.text);
         src/items.o(.text);
         src/item_records.o(.text);
