@@ -1,7 +1,7 @@
 # What's next (decomp)
 
-Status as of 2026-10-11 (`make progress`): ROM matches; 677 / 982 game
-functions in C (15.5% of game code bytes: the small ones are mostly done).
+Status as of 2026-10-11 (`make progress`): ROM matches; 679 / 982 game
+functions in C (15.7% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
 
@@ -54,6 +54,9 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         holds the type 4 index (draft sub_0804087C.c).
       - `sub_08045114` (asm/menu_price_buy.s): 11 lines off; the original
         keeps two copies of the price/money code (draft sub_08045114.c).
+      - `sub_08026D98` (asm/code_08026D98.s, draw a decimal number): far
+        off; the original spills a variable around the divide calls (draft
+        sub_08026D98.c).
       - `sub_08006008`, `GetMapTileAttributes` (asm/map_6008.s, map_attr.s;
         drafts in map_all.c): the layer pointer has to land in r0/r1 while
         x and y move to other registers. About 20 lines off.
