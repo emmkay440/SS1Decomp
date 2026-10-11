@@ -22,7 +22,7 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
 
 ## Current state (2026-10-11)
 
-679 / 982 game functions are matching C (`make progress`); every module in
+705 / 982 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -140,6 +140,17 @@ merge `ad_*` files into real modules, name things, fix style.
   `switch ((s32)GetPlayerClass())`; `if (p != NULL) {...} else { return 0; }`
   to put that `return 0` last; a 2D view of a flat array
   (`((u16 (*)[16])gPaletteBuffer)[i][j]`) for `row * 32 + (col * 2 + base)`.
+- Families: many functions are copies with different constants. Check
+  for one before starting (same mnemonic sequence, or the same first 30
+  instructions); solve one, then generate the rest. Done so far: the nine
+  save select mode setups (`src/save_select_mode*_setup.c`), the effect
+  threads (`src/effect_obj.c`, `effect_anim.c`, `effect_number.c`), the
+  queue pushes. Open: the palette fades around `sub_0804E2E8`, the
+  `ItemUseEffectThread` copies (`sub_0802C3D4`, `sub_0802C798`).
+- Return layout: `if (ok) { ... } else { return FALSE; }` in each branch
+  and one `return TRUE` at the end puts the shared failure block right
+  before the final `movs r0, #1` (`sub_0803FC00`). A table that the code
+  reloads after a call isn't `const`.
 - decomp-permuter (`tools/decomp-permuter`, driven like
   `tools/autodecomp/autodecomp.py:permute`) rarely finishes a function, but
   its best candidates point at the idea (a reused variable, a volatile

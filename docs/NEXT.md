@@ -1,7 +1,7 @@
 # What's next (decomp)
 
-Status as of 2026-10-11 (`make progress`): ROM matches; 679 / 982 game
-functions in C (15.7% of game code bytes: the small ones are mostly done).
+Status as of 2026-10-11 (`make progress`): ROM matches; 705 / 982 game
+functions in C (17.7% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
 
@@ -54,6 +54,18 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         holds the type 4 index (draft sub_0804087C.c).
       - `sub_08045114` (asm/menu_price_buy.s): 11 lines off; the original
         keeps two copies of the price/money code (draft sub_08045114.c).
+      - `sub_08004344` (asm/draw_sorted.s, sorted draw-list insert): logic
+        matches, block layout doesn't (the original puts the "insert at the
+        head" block before the loop); draft sub_08004344.c.
+      - `sub_08018058` (asm/effect_obj3.s, third effect thread of
+        src/effect_obj.c): 24 lines off from two swapped registers; draft
+        sub_08018058.c.
+      - `sub_0804E80C` (asm/palette_fade_step.s): the original tests each
+        color channel with a mask on a byte/halfword load and reads the
+        value through a 32-bit load; draft sub_0804E80C.c. Its family
+        (`sub_0804E2E8`, `sub_0804E464`, `sub_0804E6C0`, `sub_0804E8BC`,
+        `sub_0804E9F8`, palette fades with the same color accesses) will
+        fall together once this one does.
       - `sub_08026D98` (asm/code_08026D98.s, draw a decimal number): far
         off; the original spills a variable around the divide calls (draft
         sub_08026D98.c).
