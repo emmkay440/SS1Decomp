@@ -1,4 +1,5 @@
 #include "global.h"
+#include "sprite_obj.h"
 #include "heap.h"
 #include "save.h"
 #include "copy_queue.h"
@@ -13,6 +14,36 @@ extern u16 gUnknown_0300061C[3];
 
 bool32 sub_0802F374(struct SaveSlotInfo *info, u8 slot);
 void sub_080472FC(void);
+
+extern u16 gUnknown_03000614[3];
+extern u16 gUnknown_0300061C[3];
+extern u8 gUnknown_030005F7;
+extern struct SpriteObj gUnknown_03000730;
+
+u32 sub_08026C40(struct SpriteObj *obj, u16 a, u16 *frame, u16 *timer, u32 loop);
+
+// Animates and draws the two arrows; gUnknown_030005F7 picks which one is
+// drawn scaled and which sprite goes between them (like sub_08043B28).
+void sub_0804837C(void)
+{
+    u8 flag;
+
+    sub_08026C40(&gUnknown_03000730, 4, &gUnknown_03000614[0], &gUnknown_0300061C[0], 1);
+    sub_08026C40(&gUnknown_03000730, 5, &gUnknown_03000614[1], &gUnknown_0300061C[1], 1);
+    flag = gUnknown_030005F7;
+    if (flag)
+    {
+        sub_08026BC4(&gUnknown_03000730, 0xCC, 0x94, 4, gUnknown_03000614[0]);
+        sub_08026B90(&gUnknown_03000730, 0xE2, 0x94, 5, gUnknown_03000614[1]);
+        sub_08026B90(&gUnknown_03000730, 0xD7, 0x94, 8, 0);
+    }
+    else
+    {
+        sub_08026B90(&gUnknown_03000730, 0xCC, 0x94, 4, gUnknown_03000614[0]);
+        sub_08026BC4(&gUnknown_03000730, 0xE2, 0x94, 5, gUnknown_03000614[1]);
+        sub_08026B90(&gUnknown_03000730, 0xD7, 0x94, 9, flag);
+    }
+}
 
 void sub_08048428(void)
 {

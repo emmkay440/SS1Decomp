@@ -319,3 +319,5 @@
 030005C2 gUnknown_030005C2      # u16, cleared by sub_08043E0C
 030005C4 gUnknown_030005C4      # u16, cleared by sub_08043E0C
 030005DC gUnknown_030005DC      # struct MenuSlot: sub_08043E0C sets type 6, subSlot 4
+030006F8 gUnknown_030006F8      # struct SpriteObj: save select arrow that bobs left/right (sub_080472FC)
+03000730 gUnknown_03000730      # struct SpriteObj: save select yes/no arrows (sub_0804837C)
