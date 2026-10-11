@@ -1,26 +1,6 @@
 #include "global.h"
 #include "area_state.h"
 
-struct AreaHeader
-{
-    u8 unk0[0xC];
-    u16 entryCount;
-};
-
-struct AreaEntry
-{
-    u16 unk0;
-    u16 kind;
-    u32 offset;       // from the entry to its data
-};
-
-struct AreaPos
-{
-    u16 x;
-    u16 y;
-    u8 unk4[0x4];
-};
-
 extern u16 gUnknown_0300397C;
 
 // Copies a position from the first area entry of kind 0: its data is a

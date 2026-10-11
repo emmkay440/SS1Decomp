@@ -99,6 +99,8 @@ SECTIONS {
         asm/code_080186A8.o(.text);
         src/thread_slots_free.o(.text);
         asm/code_08018940.o(.text);
+        src/area_enter_pos.o(.text);
+        asm/code_080193BC.o(.text);
         src/enemy_spawner_start.o(.text);
         asm/code_080199B4.o(.text);
         src/area_list_find.o(.text);

@@ -22,6 +22,28 @@ struct Unknown_030063D8
     u8 unkDA;           // +0xDA
 };
 
+// An area's data record: a list of entries, each pointing at its data.
+struct AreaHeader
+{
+    u8 unk0[0x8];
+    u32 entriesOffset;  // +0x08 from the header to the entries
+    u16 entryCount;     // +0x0C
+};
+
+struct AreaEntry
+{
+    u16 unk0;
+    u16 kind;           // 0: start positions (AreaPos list), 3: see sub_08019300
+    u32 offset;         // from the entry to its data
+};
+
+struct AreaPos
+{
+    u16 x;              // in tiles
+    u16 y;
+    u8 unk4[0x4];
+};
+
 extern struct Unknown_030063D8 *gUnknown_030063D8;
 
 #endif // GUARD_AREA_STATE_H
