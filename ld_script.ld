@@ -109,6 +109,8 @@ SECTIONS {
         asm/code_08019C40.o(.text);
         src/menu_open.o(.text);
         asm/code_0801B210.o(.text);
+        src/message_wait.o(.text);
+        asm/code_0801CC68.o(.text);
         src/thread_starters.o(.text);
         src/area_start_pos.o(.text);
         src/unk_0802173C.o(.text);
