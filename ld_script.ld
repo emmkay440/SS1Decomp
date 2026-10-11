@@ -176,7 +176,8 @@ SECTIONS {
         asm/code_0803FE70.o(.text);
         asm/menu_slot_item.o(.text);
         src/menu_item_price.o(.text);
-        asm/code_0804096C.o(.text);
+        asm/menu_quick_slots.o(.text);
+        asm/code_08040A18.o(.text);
         src/menu_state.o(.text);
         src/menu_items.o(.text);
         src/menu_stats.o(.text);
