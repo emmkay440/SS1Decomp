@@ -5,6 +5,73 @@
 // records), for the stat screens. Built from the inline helpers in
 // equip_inline.h.
 
+// Halfword view of the weapon item words, for code that reads the id with
+// ldrh.
+struct ItemHalf
+{
+    u16 unk0:7;
+    u16 id:7;
+    u16 unk14:2;
+    u16 unk16;
+} __attribute__((packed, aligned(2)));
+
+struct EquipHalfView
+{
+    u8 unk0[0x70];
+    struct ItemHalf weapons[3];
+};
+
+// Attack style of the equipped weapon for the player's class, from byte
+// 0x159 of the weapon record (0 = none). An unknown class returns nothing
+// (as in the original). (What the values mean is a guess.)
+u32 sub_080102C4(void)
+{
+    u8 *record = GetDataRecord(((struct EquipHalfView *)&gPlayerStats)->weapons[gPlayerStats.currentWeapon].id | 0x50000);
+    u8 *style;
+    u32 kind;
+
+    if (record != NULL)
+    {
+        if (!EQUIP->weapons[gPlayerStats.currentWeapon].flag14)
+            return 0;
+        style = &record[0x159];
+        kind = *style - 1;
+        kind >>= 1;
+        switch ((s32)GetPlayerClass())
+        {
+        case 0:
+            if (kind == 1)
+                kind = 2;
+            else if (kind == 2)
+                kind = 1;
+            else
+                kind = 0;
+            return kind + 1;
+        case 1:
+            return 0;
+        case 2:
+            if (kind == 1)
+                return 2;
+            return 1;
+        case 3:
+            switch (*style)
+            {
+            case 5:
+            case 6:
+                return 1;
+            case 7:
+                return 2;
+            default:
+                return 0;
+            }
+        }
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 s16 sub_0801036C(void)
 {
     s16 total = 0;
