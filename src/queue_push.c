@@ -2,6 +2,47 @@
 #include "queue.h"
 #include "thread.h"
 
+u32 sub_08001F64(void);
+
+// Same as sub_080294F4 (src/unk_080292D0.c), inlined here.
+static inline struct Unknown_03006720 *FindQueueEntry(u32 kind)
+{
+    struct Unknown_03006720 *entry = gUnknown_03006720;
+    u32 i;
+
+    for (i = 0; i < gUnknown_03006758; i++, entry++)
+    {
+        if ((entry->unkA & 0xB) && !(entry->unkA & 4) && entry->unk4.f.kind == kind)
+            return entry;
+    }
+    return NULL;
+}
+
+// Marks the first pending kind 2 entry as handled (unkA bit 2), signals the
+// queue event and returns the next pending one, if any. When
+// sub_08001F64() is 0 it only signals the event.
+struct Unknown_03006720 *sub_08028F6C(void)
+{
+    struct Unknown_03006720 *entry;
+
+    if (sub_08001F64())
+    {
+        entry = FindQueueEntry(2);
+        if (entry != NULL)
+        {
+            entry->unkA |= 4;
+            SignalEvent(QUEUE_EVENT);
+        }
+        entry = FindQueueEntry(2);
+    }
+    else
+    {
+        SignalEvent(QUEUE_EVENT);
+        entry = NULL;
+    }
+    return entry;
+}
+
 u32 sub_08001F98(void);
 
 // The push functions return TRUE without queuing anything when
