@@ -329,3 +329,5 @@
 03000800 gUnknown_03000800      # struct SpriteObj of save select mode 2 (record 0x100052)
 03000850 gUnknown_03000850      # struct SpriteObj of save select mode 3 (record 0x100051)
 030008D8 gUnknown_030008D8      # struct SpriteObj of save select mode 5 (record 0x100053)
+03000918 gUnknown_03000918      # struct SpriteObj of save select mode 6 (record 0x100054)
+030009A0 gUnknown_030009A0      # struct SpriteObj of save select mode 8 (record 0x100050)

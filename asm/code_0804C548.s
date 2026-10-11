@@ -55,7 +55,7 @@ _0804C5AA:
 	subs r2, #0x40
 	movs r0, #0
 	str r0, [sp]
-	ldr r0, _0804C7A8 @ =0x030009A0
+	ldr r0, _0804C7A8 @ =gUnknown_030009A0
 	movs r1, #0x78
 	movs r3, #0
 	bl sub_08026B90
@@ -75,7 +75,7 @@ _0804C5AA:
 _0804C5E0:
 	movs r4, #0
 	str r4, [sp]
-	ldr r0, _0804C7A8 @ =0x030009A0
+	ldr r0, _0804C7A8 @ =gUnknown_030009A0
 	movs r1, #0x78
 	movs r2, #0x50
 	movs r3, #0
@@ -103,7 +103,7 @@ _0804C5E0:
 	movs r3, #8
 	bl sub_080044E4
 	movs r5, #0
-	ldr r6, _0804C7A8 @ =0x030009A0
+	ldr r6, _0804C7A8 @ =gUnknown_030009A0
 	ldr r0, _0804C7AC @ =gUnknown_0300099A
 	mov sl, r0
 	movs r1, #1
@@ -248,7 +248,7 @@ _0804C72E:
 	bl sub_080044E4
 	movs r5, #0
 _0804C75A:
-	ldr r4, _0804C7A8 @ =0x030009A0
+	ldr r4, _0804C7A8 @ =gUnknown_030009A0
 	ldr r2, _0804C7AC @ =gUnknown_0300099A
 	ldr r3, _0804C7B0 @ =gUnknown_0300099C
 	movs r0, #1
@@ -283,7 +283,7 @@ _0804C794:
 	.align 2, 0
 _0804C7A0: .4byte gBgRegsBuffer
 _0804C7A4: .4byte 0x0000FFF8
-_0804C7A8: .4byte 0x030009A0
+_0804C7A8: .4byte gUnknown_030009A0
 _0804C7AC: .4byte gUnknown_0300099A
 _0804C7B0: .4byte gUnknown_0300099C
 _0804C7B4: .4byte _0804C7B8
@@ -490,7 +490,7 @@ _0804C944:
 _0804C952:
 	movs r0, #0
 	str r0, [sp]
-	ldr r0, _0804C9A0 @ =0x030009A0
+	ldr r0, _0804C9A0 @ =gUnknown_030009A0
 	movs r1, #0x78
 	movs r2, #0x50
 	movs r3, #0
@@ -521,4 +521,4 @@ _0804C952:
 	.align 2, 0
 _0804C998: .4byte 0xFFFFFED4
 _0804C99C: .4byte 0x01670000
-_0804C9A0: .4byte 0x030009A0
+_0804C9A0: .4byte gUnknown_030009A0
