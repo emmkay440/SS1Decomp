@@ -7,7 +7,7 @@
 sub_08022AB4: @ 0x08022AB4
 	push {r4, r5, lr}
 	ldr r0, _08022C6C @ =0x0010004B
-	ldr r5, _08022C70 @ =0x03006510
+	ldr r5, _08022C70 @ =gUnknown_03006510
 	movs r1, #9
 	movs r2, #4
 	str r0, [r5, #0x10]
@@ -216,7 +216,7 @@ _08022C62:
 	mov pc, r0
 	.align 2, 0
 _08022C6C: .4byte 0x0010004B
-_08022C70: .4byte 0x03006510
+_08022C70: .4byte gUnknown_03006510
 _08022C74: .4byte 0x0011004B
 _08022C78: .4byte 0x00100049
 _08022C7C: .4byte 0x03006544
@@ -2715,7 +2715,7 @@ _08023FC8:
 	adds r6, r0, #0
 	adds r6, #0x30
 	str r2, [sp, #0x20]
-	ldr r5, _080241A0 @ =0x03006510
+	ldr r5, _080241A0 @ =gUnknown_03006510
 	add r0, sp, #0x20
 	movs r1, #0x64
 	bl sub_080004A4
@@ -2914,7 +2914,7 @@ _0802418C:
 _08024194: .4byte 0x0000FFFF
 _08024198: .4byte gKeysNew
 _0802419C: .4byte gPlayerStats
-_080241A0: .4byte 0x03006510
+_080241A0: .4byte gUnknown_03006510
 _080241A4: .4byte gUnknown_03006430
 _080241A8: .4byte 0x0300644C
 _080241AC: .4byte gPlayers

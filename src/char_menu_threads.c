@@ -1,6 +1,7 @@
 #include "global.h"
 #include "heap.h"
 #include "thread.h"
+#include "sprite_obj.h"
 #include "data_record.h"
 #include "item.h"
 
@@ -13,6 +14,27 @@ void CharacterMenuThread(void);
 void sub_08025940(void);
 void sub_080260E8(void);
 void sub_08003518(u32 a, u32 b, u16 c, u16 d, u8 e, void *f, u32 g, u32 h);
+
+extern struct SpriteObj gUnknown_03006510[];
+
+u32 sub_080004A4(u32 *value, u32 divisor);
+
+// Draws a number below 10000 at (x, y) with the sprites of object `which`:
+// the hundreds as one sprite (if any), then the last two digits as one
+// sprite, with a 0 sprite between them when the rest is below 10.
+void sub_08026E70(s32 x, s32 y, u32 value, u8 which)
+{
+    struct SpriteObj *obj = &gUnknown_03006510[which];
+    u8 digits[2];
+
+    digits[0] = sub_080004A4(&value, 100);
+    digits[1] = value;
+    if (digits[0] != 0)
+        sub_08003518(x - 12, y, 0, digits[0], 0, obj->unk1C, obj->unk8, obj->unk0);
+    if (digits[1] < 10 && digits[0] != 0)
+        sub_08003518(x - 6, y, 0, 0, 0, obj->unk1C, obj->unk8, obj->unk0);
+    sub_08003518(x, y, 0, digits[1], 0, obj->unk1C, obj->unk8, obj->unk0);
+}
 
 extern u16 gLanguage;
 extern u16 gUnknown_03003CA0;      // character advance

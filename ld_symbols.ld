@@ -270,6 +270,7 @@ gUnknown_03006430 = 0x03006430;
 gCharacterMenuThread = 0x030064B0;
 gUnknown_030064D8 = 0x030064D8;
 gUnknownThread_030064E0 = 0x030064E0;
+gUnknown_03006510 = 0x03006510;
 gUnknown_030065E0 = 0x030065E0;
 gUnknown_03006630 = 0x03006630;
 gUnknownThread_03006680 = 0x03006680;
