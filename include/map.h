@@ -17,10 +17,10 @@ struct MapEntry
 struct MapLayer
 {
     struct MapEntry entries[4];
-    u8 unk50[0x4];
+    s16 *map;          // +0x50 map data: width, height, ... ; tiles follow at +0x10 + width * height * 6
     u16 *tiles;        // +0x54
     u16 width;         // +0x58 in tiles
-    u8 unk5A[0x2];
+    u16 height;        // +0x5A
     u16 originX;       // +0x5C
     u16 originY;       // +0x5E
     u16 unk60;
@@ -31,6 +31,8 @@ struct MapLayer
     u16 unk6C;         // +0x6C
     u8 unk6E[0xA];
     u32 flags;         // +0x78
+    u8 unk7C[0x10];
+    u8 *record;        // +0x8C the area's data record (second layer, sub_08004EF8)
 };
 
 struct MapTile

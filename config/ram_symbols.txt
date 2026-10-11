@@ -323,3 +323,4 @@
 03000730 gUnknown_03000730      # struct SpriteObj: save select yes/no arrows (sub_0804837C)
 03000960 gUnknown_03000960      # struct SpriteObj: the particles of save select mode 7 (sub_0804C238)
 03006510 gUnknown_03006510      # struct SpriteObj[]: number sprites, indexed by sub_08026E70's last argument
+03003BA0 gUnknownThread_03003BA0 # struct Thread: second map layer thread (sub_080055F8), started by sub_08004EF8
