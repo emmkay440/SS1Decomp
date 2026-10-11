@@ -96,6 +96,8 @@ SECTIONS {
         src/exp_gain.o(.text);
         src/exp.o(.text);
         asm/code_08017150.o(.text);
+        src/effect_anim.o(.text);
+        asm/code_08017E50.o(.text);
         src/effect_pool.o(.text);
         src/effect_number.o(.text);
         asm/code_080186A8.o(.text);
