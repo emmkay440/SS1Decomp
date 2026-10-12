@@ -64,6 +64,7 @@ SECTIONS {
         asm/code_0800C504.o(.text);
         src/enemy_start0.o(.text);
         asm/code_0800C7D4.o(.text);
+        src/direction_to.o(.text);
         src/unk_0800CB84.o(.text);
         asm/code_0800CBD8.o(.text);
         src/enemy_slot.o(.text);
