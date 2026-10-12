@@ -8,6 +8,7 @@
 extern u8 gUnknown_030005B8;
 extern u8 gUnknown_030005B9;                   // cursor mode (sub_08045234)
 extern u8 gUnknown_030005BA;
+extern u8 gUnknown_030005BB;                   // page of the 3-column list
 extern u8 gUnknown_030005BF;
 extern u16 gUnknown_030005C2;                  // keys (0x40 up, 0x80 down)
 extern struct MenuSlotBytes gUnknown_030005C8; // drawn position

@@ -204,7 +204,8 @@ SECTIONS {
         asm/menu_price_buy.o(.text);
         src/menu_price.o(.text);
         src/menu_cursor_mode.o(.text);
-        asm/code_08045304.o(.text);
+        src/menu_cursor_pos.o(.text);
+        asm/code_080453DC.o(.text);
         src/menu_cursor_move.o(.text);
         src/unk_030005B8.o(.text);
         src/unk_030005B8_2.o(.text);
