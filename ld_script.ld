@@ -261,7 +261,7 @@ SECTIONS {
         src/unk_0804C9C4.o(.text);
         asm/code_0804CA84.o(.text);
         src/unk_0804E1E4.o(.text);
-        asm/code_0804E2E8.o(.text);
+        src/palette_fade_clamp.o(.text);
         src/palette_fade_bright.o(.text);
         src/palette_fade_add.o(.text);
         src/palette_fade_sub.o(.text);
