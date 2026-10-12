@@ -245,7 +245,7 @@
 0300641C gUnknown_0300641C      # struct * (4 x 0x88, thread first): records with mask gUnknown_03006420
 03006420 gUnknown_03006420      # u8: live mask of gUnknown_0300641C
 03006424 gUnknown_03006424      # u8: live mask of gUnknown_03006418
-03000A58 gUnknown_03000A58      # u32[32][16]: saved palette rows (src/palette_save.c)
+03000A58 gUnknown_03000A58      # struct Color[32][16] (4 bytes per color): saved palette rows (src/palette_save.c, palette_fade_*.c)
 030004CB gUnknown_030004CB      # u8 (src/menu_misc.c)
 030004FC gUnknown_030004FC      # buffer (src/menu_misc.c)
 03000500 gUnknown_03000500      # buffer (src/menu_misc.c)

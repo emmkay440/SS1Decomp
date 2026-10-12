@@ -1,7 +1,7 @@
 # What's next (decomp)
 
-Status as of 2026-10-11 (`make progress`): ROM matches; 705 / 982 game
-functions in C (17.7% of game code bytes: the small ones are mostly done).
+Status as of 2026-10-12 (`make progress`): ROM matches; 721 / 982 game
+functions in C (18.9% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
 
@@ -43,7 +43,7 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - [x] `src/enemy_util.c`: `IsEnemyTypeActive`.
 - [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
       block copies, `GetPlayerClass`, 10 functions).
-- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-11:
+- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-12:
       - `Free` (asm/heap_free.s): 2 lines off. It does `r4 = ptr; r1 = r4`,
         the original `r1 = ptr; r4 = r1`. Needs a goto for the loop and an
         integer copy of the pointer in its own do/while(0) (draft Free.c).
@@ -60,12 +60,21 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       - `sub_08018058` (asm/effect_obj3.s, third effect thread of
         src/effect_obj.c): 24 lines off from two swapped registers; draft
         sub_08018058.c.
-      - `sub_0804E80C` (asm/palette_fade_step.s): the original tests each
-        color channel with a mask on a byte/halfword load and reads the
-        value through a 32-bit load; draft sub_0804E80C.c. Its family
-        (`sub_0804E2E8`, `sub_0804E464`, `sub_0804E6C0`, `sub_0804E8BC`,
-        `sub_0804E9F8`, palette fades with the same color accesses) will
-        fall together once this one does.
+      - `GetDataRecord` (asm/data_record.s): the structure matches (two
+        switches, every case with its own copy of the lookup); the key and
+        the section pointer end up in swapped registers (r2/r3), and the
+        per-language cases need the opposite registers for index and
+        table. Draft GetDataRecord.c. `sub_08002E18` next to it matches
+        (src/data_count.c).
+      - `DropItem` (asm/drop_item.s): 10 lines off. The original keeps a
+        separate call for the `| 0x80` case while the first case shares
+        the call of the last branch; every C version merges all three
+        tails. Draft DropItem.c. The function reads `spot` uninitialized
+        when sub_08001F64() is 0.
+      - `sub_0804A074` (asm/code_0804A074.s, save select mode 3 sequence):
+        logic matches; in the 30..239 loop x and the counter sit in each
+        other's registers (r4/r5). Draft sub_0804A074.c; it has to stay in
+        its own file (see the no-prototype note in CLAUDE.md).
       - `sub_08026D98` (asm/code_08026D98.s, draw a decimal number): far
         off; the original spills a variable around the divide calls (draft
         sub_08026D98.c).
@@ -80,6 +89,9 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         written differently. A do/while(0) around either call doesn't help.
       - `sub_08010B48` / `sub_08012230` (asm/equip_has.s, about 700 bytes
         each): not retried; drafts equip_has_*.c, permuter score 1445.
+      Solved on 2026-10-12: `sub_0804E80C` and its family (`sub_0804E2E8`,
+      `sub_0804E464`, `sub_0804E5A4`, `sub_0804E6C0`, `sub_0804E8BC`,
+      `sub_0804E9F8`, `sub_0804EB34`): the colors are `u16` bitfields.
       Solved on 2026-10-10/11: `Random`, `sub_0803F060`, `Lerp1024`,
       `TakeItemFromSlot`, `sub_08041208`, `sub_08029270`,
       `EnableDisplayLayers`, `DisableDisplayLayers`, `sub_080060A0`,

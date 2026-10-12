@@ -20,9 +20,9 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   commit a non-matching build. Never push; pushing is only done when the
   user explicitly asks.
 
-## Current state (2026-10-11)
+## Current state (2026-10-12)
 
-705 / 982 game functions are matching C (`make progress`); every module in
+721 / 982 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -140,12 +140,45 @@ merge `ad_*` files into real modules, name things, fix style.
   `switch ((s32)GetPlayerClass())`; `if (p != NULL) {...} else { return 0; }`
   to put that `return 0` last; a 2D view of a flat array
   (`((u16 (*)[16])gPaletteBuffer)[i][j]`) for `row * 32 + (col * 2 + base)`.
+- Shapes from 2026-10-12:
+  - Colors are `struct Color { u16 r:5; u16 g:5; u16 b:5; }`, not packed
+    (`src/palette_fade_*.c`, `palette_fill.c`). Through a pointer the
+    value is read with a 32-bit `ldr`, a `!= 0` test becomes a byte or
+    halfword mask test, and stores use the narrowest access. Indexing the
+    global array (`gUnknown_03000A58[row][i].r`) reads with `ldrb`/`ldrh`
+    instead; a `saved = &array[row][i]` pointer turns those into `ldr`.
+    The struct is 4 bytes, which is why the saved palette has a word per
+    color.
+  - A byte load in a loop whose result is never used: a volatile read
+    (`*(vu8 *)&p[i].kind;`). An unused local struct still gets its stack
+    space (`src/save_select_mode3_add.c`).
+  - `cmp count, #0; beq` before a loop that then tests `i < count` at the
+    bottom: `i = 0; if (count != 0) { do { ...; i++; } while (i < count); }`.
+    A `for` gives `cmp i, count; bhs`.
+  - A constant that stays grouped with one operand (`r1 = offset - 0x40;
+    r0 = x - r1`): a narrowing cast on the group, `x - (s16)(offset - 0x40)`.
+    Without it the compiler reassociates.
+  - `a + b` and `b + a` give different operand order in the `adds` and can
+    change which loop invariant is hoisted first (`sub_0804E464`).
+  - Arguments narrowed in a different order than the parameters, or after
+    other entry code: `s32` parameters copied into `s16` locals in that
+    order (`sub_0800C9EC`).
+  - A caller that sign-extends `s16` arguments for a function taking `u16`,
+    or passes an argument to a function that takes none, called it without
+    a prototype: keep it in another file and declare it with `s32`
+    parameters there (`sub_0804A074`, still asm).
+  - A stack parameter loaded right before the loop rather than at entry: a
+    local copy made there (`out = dest;` in `sub_08004288`).
+  - Two distances that end up in the registers of their inputs: the
+    result was stored back into the input variable (`x = abs(x - otherX)`,
+    `sub_08016C34`). It also keeps the sign extension of a value the
+    compiler would otherwise know to be small.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
   save select mode setups (`src/save_select_mode*_setup.c`), the effect
   threads (`src/effect_obj.c`, `effect_anim.c`, `effect_number.c`), the
-  queue pushes. Open: the palette fades around `sub_0804E2E8`, the
+  queue pushes, the palette fades (`src/palette_fade_*.c`). Open: the
   `ItemUseEffectThread` copies (`sub_0802C3D4`, `sub_0802C798`).
 - Return layout: `if (ok) { ... } else { return FALSE; }` in each branch
   and one `return TRUE` at the end puts the shared failure block right
