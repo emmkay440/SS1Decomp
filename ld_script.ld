@@ -238,6 +238,8 @@ SECTIONS {
         src/save_select_mode3_setup.o(.text);
         src/save_select_mode3_scroll.o(.text);
         asm/code_0804A074.o(.text);
+        src/save_select_mode3_add.o(.text);
+        asm/code_0804A2EC.o(.text);
         src/save_select_mode3.o(.text);
         src/save_select_mode4_setup.o(.text);
         asm/code_0804A5FC.o(.text);
