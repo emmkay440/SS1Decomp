@@ -36,7 +36,6 @@ SECTIONS {
         asm/code_08002F48.o(.text);
         src/unk_080041D4.o(.text);
         src/anim_step.o(.text);
-        asm/code_08004288.o(.text);
         asm/draw_sorted.o(.text);
         src/draw_list.o(.text);
         src/map_init.o(.text);
