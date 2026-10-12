@@ -265,7 +265,6 @@ SECTIONS {
         src/palette_fade_step.o(.text);
         asm/code_0804E8BC.o(.text);
         src/palette_fade_to.o(.text);
-        asm/code_0804E9F8.o(.text);
         src/palette_fill.o(.text);
         src/palette_save.o(.text);
         asm/code_0804ED80.o(.text);
