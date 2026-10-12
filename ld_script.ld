@@ -31,7 +31,9 @@ SECTIONS {
         src/unk_0800277C.o(.text);
         asm/code_08002790.o(.text);
         src/unk_08002B58.o(.text);
-        asm/code_08002B8C.o(.text);
+        asm/data_record.o(.text);
+        src/data_count.o(.text);
+        asm/code_08002F48.o(.text);
         src/unk_080041D4.o(.text);
         src/anim_step.o(.text);
         asm/code_08004288.o(.text);

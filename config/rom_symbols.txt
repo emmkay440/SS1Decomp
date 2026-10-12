@@ -32,3 +32,5 @@
 080FBA9C gUnknown_080FBA9C      # u32[10]: powers of ten, largest first (sub_08026D98)
 080548AC gUnknown_080548AC      # u16[6]: 0, 14, 16, 18, 20, 22; indexed by Player.unk14 (sub_080101F0)
 080FB4D6 gUnknown_080FB4D6      # s16 pairs indexed by weapon record byte 0x159 (sub_080101F0)
+080FABD8 gUnknown_080FABD8      # 0x1A0-byte records, 3 of them: category 22 of GetDataRecord (not in the archive)
+080FAB5C gUnknown_080FAB5C      # the one record of GetDataRecord category 23 (not in the archive)
