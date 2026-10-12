@@ -157,6 +157,7 @@
 0300083C gUnknown_0300083C      # u8, save select mode3 (zeroed / allocated by its setup)
 0300083D gUnknown_0300083D      # u8, save select mode3 (zeroed / allocated by its setup)
 0300083E gUnknown_0300083E      # u16, save select mode3 (zeroed / allocated by its setup)
+03000842 gUnknown_03000842      # u16[2], save select mode3: animation frame and timer of gUnknown_03000850 (sub_0804A074)
 0300084C gUnknown_0300084C      # void *, save select mode3 (zeroed / allocated by its setup)
 03000888 gUnknown_03000888      # u8, save select mode4 (zeroed / allocated by its setup)
 03000889 gUnknown_03000889      # u8, save select mode4 (zeroed / allocated by its setup)
