@@ -257,6 +257,8 @@ SECTIONS {
         src/save_select_mode5_setup.o(.text);
         src/save_select_mode5_scroll.o(.text);
         asm/code_0804ADF0.o(.text);
+        src/save_select_mode5_add.o(.text);
+        asm/code_0804B3A4.o(.text);
         src/save_select_mode5.o(.text);
         src/save_select_mode6_setup.o(.text);
         asm/code_0804B660.o(.text);
