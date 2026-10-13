@@ -170,7 +170,7 @@ SECTIONS {
         src/queue_push2.o(.text);
         asm/code_08027828.o(.text);
         src/queue_push4.o(.text);
-        asm/queue_to_front.o(.text);
+        src/queue_to_front.o(.text);
         asm/code_08027A90.o(.text);
         src/queue_push.o(.text);
         src/unk_080292D0.o(.text);
