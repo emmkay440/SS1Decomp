@@ -40,6 +40,8 @@ SECTIONS {
         src/draw_list.o(.text);
         src/map_init.o(.text);
         asm/code_080045C8.o(.text);
+        src/map_edge.o(.text);
+        asm/code_08004AE4.o(.text);
         src/map_layer2_init.o(.text);
         asm/code_08004FB4.o(.text);
         src/map_load.o(.text);

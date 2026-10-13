@@ -10,8 +10,11 @@ struct MapEntry
     u16 unk2;
     u16 unk4;
     u16 unk6;
-    u32 unk8;
-    u8 unkC[0x8];
+    u32 unk8;          // +0x08 the entry's tilemap (u16 tiles, `unkC` per row)
+    u16 unkC;          // +0x0C tilemap width in tiles
+    u8 unkE[0x2];
+    u16 unk10;         // +0x10 index of its BG tilemap buffer (gUnknown_03003C90)
+    u8 unk12[0x2];
 };                     // size 0x14
 
 struct MapLayer
