@@ -26,11 +26,15 @@ struct Enemy
     u16 unk24;
     u16 unk26;           // +0x26 map layer the enemy is on (compared with Player.layer)
     u16 pendingDamage;   // +0x28
-    u8 unk2A[0x2];
+    u16 unk2A;           // +0x2A the last hit's damage (sub_080297D4)
     u32 unk2C;           // +0x2C slot << 24 (sub_08036D28)
-    u8 unk30[0x8];
+    u32 unk30;           // +0x30 the attacker's Player.unk7C
+    u16 unk34;           // +0x34 the attacker's player id
+    u16 unk36;
     u16 hp;              // +0x38
-    u8 unk3A[0x1A];
+    u8 unk3A[0x4];
+    u16 unk3E;
+    u8 unk40[0x14];
     u32 unk54;
     u8 unk58[0x4];
     u32 unk5C;

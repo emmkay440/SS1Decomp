@@ -6,6 +6,8 @@
 
 #define MAX_PLAYERS 4
 
+struct Enemy;
+
 struct Player
 {
     u8 unk00[0xA];
@@ -45,12 +47,16 @@ struct Player
     s16 sp;               // +0x78 probably current SP (equal to maxSp when checked)
     s16 hp;               // +0x7A
     u32 unk7C;            // +0x7C counter (sub_0800BE2C)
-    u8 unk80[0x26];
+    u8 unk80[0x22];
+    u16 unkA2;            // +0xA2 where sub_080297D4 starts looking for a free unkC8 record
+    u8 unkA4[0x2];
     u16 status;           // +0xA6 (unverified)
     u8 unkA8[0x6];
     u16 enemyDistance[5]; // +0xAE per enemy slot; 0x7FFF = none (sub_0802C174)
     u16 enemyDirection[5]; // +0xB8 per enemy slot, in sixteenths of a turn
-    u8 unkC2[0xE];
+    u8 unkC2[0x6];
+    struct Enemy *unkC8;  // +0xC8 five copies of enemies this player hit (slot 0xFFFF = free)
+    u8 unkCC[0x4];
     void *unkD0;          // +0xD0
 };                        // size 0xD4
 
