@@ -20,9 +20,9 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   commit a non-matching build. Never push; pushing is only done when the
   user explicitly asks.
 
-## Current state (2026-10-12)
+## Current state (2026-10-13)
 
-721 / 982 game functions are matching C (`make progress`); every module in
+733 / 982 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -173,6 +173,36 @@ merge `ad_*` files into real modules, name things, fix style.
     result was stored back into the input variable (`x = abs(x - otherX)`,
     `sub_08016C34`). It also keeps the sign extension of a value the
     compiler would otherwise know to be small.
+- Shapes from 2026-10-13:
+  - The sprite object wrappers (`sub_08026C40`, `sub_08026B90` in
+    `src/sprite_obj.c`) are also inlined into callers: the tell is a
+    constant argument loaded into a register before the other arguments
+    (`movs r0, #1` ahead of `ldr r3, [r5, #8]`), `&local` recomputed for
+    the call although it is hoisted in a register, or a `u16` constant
+    built as `movs #2; lsls #16; ... lsrs #16`. Write `static inline`
+    copies in the file (`src/player_rise_effect.c`).
+  - A small count/search loop whose result is copied to a second register
+    (`adds r4, r3, #0`) before the next call is an inlined function too
+    (`CountActive` in `src/save_select_mode4_add.c`, `FindFreeParticle`
+    in `src/save_select_mode7.c`).
+  - `s16` parameters are narrowed at entry with `lsls`/`lsrs` like `u16`
+    ones and sign-extended (`lsls`/`asrs`) at each use; a `== 0` test on
+    one is `lsls r0, rX, #16; cmp r0, #0`. A `u16` parameter with `(s16)`
+    casts gives different code (`sub_0804C0A8`).
+  - `asrs; cmp #0; bge; rsbs` right after a call: the builtin `abs()`
+    (declare `int abs(int x);`), not a temporary and an `if`.
+  - A call followed by a lone `lsls r0, r0, #16` whose result is not used:
+    an `if (Random() > 0) x = 2; else x = 2;` with both arms the same. The
+    arms get merged late, the shift stays (`sub_0804AA10`).
+  - `sub sp` larger than the locals in use, with word-sized stores through
+    `mov rX, sp`: a local array (`s16 pos[2]`), which always lives on the
+    stack (`src/map_edge.c`).
+  - `(a + 0x60) - b` kept in that order: `(s16)(a + 0x60) - b`. Same cast
+    trick as `x - (s16)(offset - 0x40)`.
+  - Stack layout follows the order in which locals get their slot: arrays
+    at their declaration, scalars when their address is first taken. A
+    slot order that doesn't fit one declaration list means an inner block
+    (see the draft of `sub_08024320`).
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine

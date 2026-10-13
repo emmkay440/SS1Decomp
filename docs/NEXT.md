@@ -1,7 +1,7 @@
 # What's next (decomp)
 
-Status as of 2026-10-12 (`make progress`): ROM matches; 721 / 982 game
-functions in C (18.9% of game code bytes: the small ones are mostly done).
+Status as of 2026-10-13 (`make progress`): ROM matches; 733 / 982 game
+functions in C (20% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
 
@@ -43,7 +43,7 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - [x] `src/enemy_util.c`: `IsEnemyTypeActive`.
 - [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
       block copies, `GetPlayerClass`, 10 functions).
-- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-12:
+- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-13:
       - `Free` (asm/heap_free.s): 2 lines off. It does `r4 = ptr; r1 = r4`,
         the original `r1 = ptr; r4 = r1`. Needs a goto for the loop and an
         integer copy of the pointer in its own do/while(0) (draft Free.c).
@@ -75,6 +75,28 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         logic matches; in the 30..239 loop x and the counter sit in each
         other's registers (r4/r5). Draft sub_0804A074.c; it has to stay in
         its own file (see the no-prototype note in CLAUDE.md).
+      - `sub_0800481C` (asm/map_layer2_bg.s) and its twin `sub_080046E4`
+        (asm/code_080045C8.s): match except that the original computes
+        `index * 2` for the BG control register before the call into r4 and
+        copies it to a high register later; draft sub_0800481C.c.
+      - `sub_08024320` (asm/number_above.s, 4-digit number above an
+        object): 37 lines off; the loops are strength-reduced forms of
+        plain indexing, the table base isn't folded (`adds r0, #24`);
+        draft sub_08024320.c.
+      - `sub_0802C174` (asm/target_in_front.s): 17 lines off; the original
+        hoists 0x7FFF out of the loop and builds -8 inside it, C does the
+        opposite; draft sub_0802C174.c.
+      - `sub_0800B594` (asm/enemy_push.s, pushes the player out of
+        enemies): logic matches, 134 lines of register differences; draft
+        sub_0800B594.c. Its sibling `sub_0800B4B4` matches.
+      - `sub_080297D4` (asm/enemy_hit.s): 3 lines off; `index * 0x94 +
+        list` should land in r1 with the list loaded first; draft
+        sub_080297D4.c.
+      - `sub_08048240` (asm/name_entry_char.s): every case keeps its own
+        copy of the table lookup in the original, C merges them (the same
+        unexplained "identical tails not merged" as `DropItem` and
+        `GetDataRecord`); it also returns r0 untouched when no case
+        applies. Draft sub_08048240.c.
       - `sub_08026D98` (asm/code_08026D98.s, draw a decimal number): far
         off; the original spills a variable around the divide calls (draft
         sub_08026D98.c).
