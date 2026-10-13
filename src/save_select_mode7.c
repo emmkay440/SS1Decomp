@@ -1,11 +1,12 @@
 #include "global.h"
+#include "display.h"
 #include "sprite_obj.h"
 #include "heap.h"
 
 void bzero(void *dest, u32 size);
 
-extern u16 gUnknown_03000950;
-extern u16 gUnknown_03000952;
+extern s16 gUnknown_03000950;
+extern s16 gUnknown_03000952;
 extern u16 gUnknown_03000954;
 extern u16 gUnknown_03000956;
 extern u16 gUnknown_03000958;
@@ -31,6 +32,78 @@ struct Particle_sub_0804C238
 
 u32 sub_08026C40(struct SpriteObj *obj, u16 a, u16 *frame, u16 *timer, u32 loop);
 void sub_08003FA4(s32 x, s32 y, u32 c, u32 d, u32 e, void *f, u32 g, u32 h, u32 i);
+
+s16 Random(void);
+int abs(int x);
+
+// Index of the first particle that isn't moving, 60 if there is none.
+static inline u8 FindFreeParticle(void)
+{
+    u8 i;
+
+    for (i = 0; i < 60; i++)
+    {
+        if (((struct Particle_sub_0804C238 *)gUnknown_0300095C)[i].state != 1)
+            return i;
+    }
+    return 60;
+}
+
+// Moves the screen shake offsets one step back towards 0 and, at random
+// (Random() above `chance`), starts a particle in a free slot; that also
+// kicks the shake offsets. Returns FALSE when `chance` is 0 or no slot is
+// free.
+bool32 sub_0804C0A8(s16 chance, s16 yOffset)
+{
+    struct Particle_sub_0804C238 *particle;
+    u8 slot;
+    s16 kick;
+
+    if (gUnknown_03000950 != 0)
+    {
+        if (gUnknown_03000950 > 0)
+            gUnknown_03000950--;
+        else
+            gUnknown_03000950++;
+    }
+    gBgRegsBuffer[2] = gUnknown_03000954 - gUnknown_03000950;
+    if (gUnknown_03000952 != 0)
+    {
+        if (gUnknown_03000952 > 0)
+            gUnknown_03000952--;
+        else
+            gUnknown_03000952++;
+    }
+    gBgRegsBuffer[3] = gUnknown_03000954 - gUnknown_03000952;
+    if (chance == 0)
+        return FALSE;
+    slot = FindFreeParticle();
+    if (slot == 60)
+        return FALSE;
+    particle = &((struct Particle_sub_0804C238 *)gUnknown_0300095C)[slot];
+    if (abs(Random()) > chance)
+    {
+        particle->state = 1;
+        particle->dx = Random() % 200;
+        particle->dy = Random() % 120;
+        particle->speed = Random() % 2 + 8;
+        particle->distance = 0;
+        particle->frame = 0;
+        particle->timer = 0;
+        particle->x = gUnknown_03000950 + 0x5C;
+        particle->y = (s16)(gUnknown_03000952 + 0x60) - yOffset;
+        kick = abs((s16)(Random() % 4));
+        if (particle->dx < 0)
+            gUnknown_03000950 += kick;
+        else
+            gUnknown_03000950 -= kick;
+        if (particle->dy < 0)
+            gUnknown_03000952 += kick;
+        else
+            gUnknown_03000952 -= kick;
+    }
+    return TRUE;
+}
 
 // Animates, draws and moves every particle.
 void sub_0804C238(void)
