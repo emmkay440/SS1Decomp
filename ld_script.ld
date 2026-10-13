@@ -281,9 +281,8 @@ SECTIONS {
         src/save_select_mode0_runners.o(.text);
         src/save_select_mode0.o(.text);
         src/save_select_mode1_setup.o(.text);
-        asm/code_08049088.o(.text);
         src/save_select_mode1_seq.o(.text);
-        asm/code_080492A8.o(.text);
+        src/save_select_mode1_add.o(.text);
         src/save_select_mode1_drops.o(.text);
         src/save_select_mode1.o(.text);
         src/save_select_mode2_setup.o(.text);
