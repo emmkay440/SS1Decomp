@@ -164,7 +164,7 @@ SECTIONS {
         src/queue_push.o(.text);
         src/unk_080292D0.o(.text);
         src/spell_area_hit.o(.text);
-        asm/spell_damage.o(.text);
+        src/spell_damage.o(.text);
         asm/enemy_hit.o(.text);
         asm/spell_effect_thread.o(.text);
         src/spell_effect_start.o(.text);
