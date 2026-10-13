@@ -40,5 +40,6 @@ void WaitEvent(u32 event);
 bool32 IsAnyThreadWaitingOn(u32 event);
 void SignalEvent(u32 event);
 bool32 IsThreadInList(struct Thread *thread);
+struct Thread *GetCurrentThread(void);
 
 #endif // GUARD_THREAD_H

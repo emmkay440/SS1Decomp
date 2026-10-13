@@ -204,7 +204,8 @@ SECTIONS {
         src/unk_0803BE28.o(.text);
         asm/code_0803BEFC.o(.text);
         src/enemy_threads2_free.o(.text);
-        asm/code_0803ECBC.o(.text);
+        src/enemy_effect_line.o(.text);
+        asm/code_0803EDD8.o(.text);
         src/enemy_threads2.o(.text);
         src/sound.o(.text);
         src/menu_screen.o(.text);
