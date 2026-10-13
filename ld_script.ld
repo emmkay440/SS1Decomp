@@ -114,6 +114,8 @@ SECTIONS {
         src/exp_gain.o(.text);
         src/exp.o(.text);
         asm/code_08017150.o(.text);
+        src/player_calc_damage.o(.text);
+        asm/code_08017664.o(.text);
         src/effect_anim.o(.text);
         src/effect_obj.o(.text);
         src/effect_obj3.o(.text);
