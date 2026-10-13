@@ -275,6 +275,7 @@ SECTIONS {
         src/save_select_mode0.o(.text);
         src/save_select_mode1_setup.o(.text);
         asm/code_08049088.o(.text);
+        src/save_select_mode1_drops.o(.text);
         src/save_select_mode1.o(.text);
         src/save_select_mode2_setup.o(.text);
         asm/code_080497D8.o(.text);
