@@ -139,6 +139,8 @@ SECTIONS {
         asm/code_08021CE4.o(.text);
         src/window_checks.o(.text);
         asm/code_08022AB4.o(.text);
+        src/text_number.o(.text);
+        asm/code_08023048.o(.text);
         asm/number_above.o(.text);
         src/player_rise_effect.o(.text);
         asm/code_080244F4.o(.text);
