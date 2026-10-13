@@ -342,3 +342,4 @@
 0800C2C8 StartHudThread
 0803F570 StartMenuScreen
 0801708C GetPlayerColorScheme
+0800EC30 sub_0800EC30            # empty variadic function nothing calls (after sub_0800EB30)
