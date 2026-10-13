@@ -10,7 +10,8 @@ struct Enemy;
 
 struct Player
 {
-    u8 unk00[0xA];
+    u16 facing;           // +0x00 0 down, 1 left, 2 up, 3 right (a guess from sub_080191FC)
+    u8 unk02[0x8];
     u16 unk0A;            // +0x0A SpawnPlayer sets 4
     u16 state;            // +0x0C 8, 9 are special (see ApplyPendingDamage, UseItem)
     u16 unk0E;
@@ -18,7 +19,8 @@ struct Player
     u16 unk12;            // +0x12 cleared with unk14 (sub_0800C304)
     u16 unk14;            // +0x14 index (0-5) into the table sub_0800C304 copies
     u16 layer;            // +0x16 map layer the player is on (field items are drawn when it matches)
-    u8 unk18[0x4];
+    u16 layer2;           // +0x18 layer of the second position (sub_080191FC)
+    u8 unk1A[0x2];
     u16 *unk1C;           // +0x1C 3 ids; CalcExpGain doubles EXP for each 11 (equipped item ids?)
     u8 unk20[0xC];
     // +0x2C: copy of gPlayerStats' stat block, plus resistances
@@ -40,7 +42,10 @@ struct Player
     u16 pendingDamage[2]; // +0x54
     s32 x;                // +0x58 fixed point
     s32 y;                // +0x5C
-    u8 unk60[0x12];
+    u8 unk60[0x8];
+    s32 x2;               // +0x68 second position (sub_080191FC)
+    s32 y2;               // +0x6C
+    u8 unk70[0x2];
     u16 unk72;            // +0x72 sub_0800BE2C counts its changes to even values
     u16 unk74;
     u16 unk76;            // +0x76 nonzero ends the state 5 loops (sub_0800C304)

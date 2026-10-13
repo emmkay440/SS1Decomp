@@ -122,6 +122,7 @@ SECTIONS {
         src/area_alloc.o(.text);
         src/thread_slots_free.o(.text);
         asm/code_08018940.o(.text);
+        src/area_place_player.o(.text);
         src/area_enter_pos.o(.text);
         asm/code_080193BC.o(.text);
         src/enemy_spawner_start.o(.text);
