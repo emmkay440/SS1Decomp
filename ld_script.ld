@@ -138,7 +138,8 @@ SECTIONS {
         src/area_start_pos.o(.text);
         src/unk_0802173C.o(.text);
         src/window_gfx.o(.text);
-        asm/code_08021874.o(.text);
+        src/window_open.o(.text);
+        asm/code_0802199C.o(.text);
         src/window_kill.o(.text);
         asm/code_08021CE4.o(.text);
         src/window_checks.o(.text);
