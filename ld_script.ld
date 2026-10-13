@@ -39,7 +39,8 @@ SECTIONS {
         asm/draw_sorted.o(.text);
         src/draw_list.o(.text);
         src/map_init.o(.text);
-        asm/code_080045C8.o(.text);
+        src/map_bg_setup.o(.text);
+        asm/code_080046E4.o(.text);
         asm/map_layer2_bg.o(.text);
         src/map_edge.o(.text);
         asm/code_08004AE4.o(.text);

@@ -16,7 +16,7 @@ extern struct Unknown_080FB0F8 gUnknown_080FB0F8[];
 extern struct Thread gUnknownThread_03003BD0;
 extern u8 gUnknown_030039A0[0x200];     // its stack
 
-void sub_080045C8(u8 *record, u32 arg);
+void sub_080045C8(u32 *record, u32 area);
 void sub_08005278(void);
 void *LZ77DecompressAlloc(const u32 *src);
 

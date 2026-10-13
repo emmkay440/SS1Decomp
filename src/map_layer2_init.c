@@ -7,7 +7,7 @@
 extern u32 gUnknown_080FB0F8[];         // first record; word 4 is its data record key
 extern struct Thread gUnknownThread_03003BA0;
 
-void sub_080045C8(u8 *record, u32 arg);
+void sub_080045C8(u32 *record, u32 area);
 void sub_080055F8(void);
 void *LZ77DecompressAlloc(const u32 *src);
 
