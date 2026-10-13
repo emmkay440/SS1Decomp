@@ -22,7 +22,8 @@ SECTIONS {
         src/lib/multi_sio.o(.text);
         src/save.o(.text);
         src/game_main.o(.text);
-        asm/code_08001A00.o(.text);
+        src/link_thread.o(.text);
+        asm/code_08001B78.o(.text);
         src/link.o(.text);
         asm/code_08001FD0.o(.text);
         src/unk_080022BC.o(.text);

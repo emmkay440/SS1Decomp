@@ -198,6 +198,7 @@ gMultiSioIntrFuncBuf = 0x03002D90;
 gMultiSioArea = 0x03002EB0;
 gMultiSioRecvFuncBuf = 0x03003060;
 gUnknown_030030B0 = 0x030030B0;
+gUnknown_030030C0 = 0x030030C0;
 gUnknown_030030C4 = 0x030030C4;
 gUnknownThread_030030D0 = 0x030030D0;
 gUnknown_03003100 = 0x03003100;
