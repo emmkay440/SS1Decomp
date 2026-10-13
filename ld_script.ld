@@ -100,6 +100,7 @@ SECTIONS {
         asm/code_080119DC.o(.text);
         src/equip_bonus3.o(.text);
         asm/code_08012230.o(.text);
+        src/item_roll.o(.text);
         src/field_items_thread.o(.text);
         asm/code_08013310.o(.text);
         src/materials.o(.text);
