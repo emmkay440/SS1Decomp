@@ -199,6 +199,12 @@ merge `ad_*` files into real modules, name things, fix style.
     stack (`src/map_edge.c`).
   - `(a + 0x60) - b` kept in that order: `(s16)(a + 0x60) - b`. Same cast
     trick as `x - (s16)(offset - 0x40)`.
+  - A `u16` countdown tested as `subs; ...; cmp old, #0` (the old value)
+    is `while (n-- > 0)`; `n-- != 0` compares the new value with 0xFFFF.
+  - Loop-invariant values appear before the loop in the order the loop
+    uses them. If `x << 16` is stored before the hoisted `&local`
+    addresses, it was a variable set before the loop (`fixedX = x << 16`,
+    used as `fixedX >> 16`), not a hoisted `(s16)x` (`sub_08018058`).
   - Stack layout follows the order in which locals get their slot: arrays
     at their declaration, scalars when their address is first taken. A
     slot order that doesn't fit one declaration list means an inner block

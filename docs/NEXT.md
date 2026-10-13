@@ -57,9 +57,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       - `sub_08004344` (asm/draw_sorted.s, sorted draw-list insert): logic
         matches, block layout doesn't (the original puts the "insert at the
         head" block before the loop); draft sub_08004344.c.
-      - `sub_08018058` (asm/effect_obj3.s, third effect thread of
-        src/effect_obj.c): 24 lines off from two swapped registers; draft
-        sub_08018058.c.
       - `GetDataRecord` (asm/data_record.s): the structure matches (two
         switches, every case with its own copy of the lookup); the key and
         the section pointer end up in swapped registers (r2/r3), and the
@@ -111,6 +108,8 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         written differently. A do/while(0) around either call doesn't help.
       - `sub_08010B48` / `sub_08012230` (asm/equip_has.s, about 700 bytes
         each): not retried; drafts equip_has_*.c, permuter score 1445.
+      Solved on 2026-10-13: `sub_08018058` (`frames-- > 0`, and 16.16 copies of
+      x and y made before the loop).
       Solved on 2026-10-12: `sub_0804E80C` and its family (`sub_0804E2E8`,
       `sub_0804E464`, `sub_0804E5A4`, `sub_0804E6C0`, `sub_0804E8BC`,
       `sub_0804E9F8`, `sub_0804EB34`): the colors are `u16` bitfields.
