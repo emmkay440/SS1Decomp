@@ -61,7 +61,7 @@ SECTIONS {
         src/player_damage.o(.text);
         asm/code_0800B4B4.o(.text);
         src/enemy_bearing.o(.text);
-        asm/enemy_push.o(.text);
+        src/enemy_push.o(.text);
         asm/code_0800B594.o(.text);
         src/player_step.o(.text);
         asm/code_0800B8A4.o(.text);
