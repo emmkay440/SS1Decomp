@@ -279,6 +279,7 @@ SECTIONS {
         src/save_select_mode1.o(.text);
         src/save_select_mode2_setup.o(.text);
         asm/code_080497D8.o(.text);
+        src/save_select_mode2_orbit.o(.text);
         src/save_select_mode2.o(.text);
         src/save_select_mode3_setup.o(.text);
         src/save_select_mode3_scroll.o(.text);
