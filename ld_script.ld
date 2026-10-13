@@ -60,7 +60,7 @@ SECTIONS {
         src/player_skill_threads0.o(.text);
         asm/code_0800BF50.o(.text);
         src/player_skill_threads.o(.text);
-        asm/code_0800C1E8.o(.text);
+        src/spawn_player.o(.text);
         src/hud_start.o(.text);
         src/enemy_pool_alloc.o(.text);
         src/enemy_unload.o(.text);
