@@ -63,6 +63,8 @@ SECTIONS {
         asm/enemy_push.o(.text);
         asm/code_0800B594.o(.text);
         asm/code_0800B78C.o(.text);
+        src/player_step.o(.text);
+        asm/code_0800B8A4.o(.text);
         src/player_skill_threads0.o(.text);
         asm/code_0800BF50.o(.text);
         src/player_skill_threads.o(.text);

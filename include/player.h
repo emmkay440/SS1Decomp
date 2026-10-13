@@ -12,7 +12,7 @@ struct Player
 {
     u16 facing;           // +0x00 0 down, 1 left, 2 up, 3 right (a guess from sub_080191FC)
     u8 unk02[0x8];
-    u16 unk0A;            // +0x0A SpawnPlayer sets 4
+    u16 unk0A;            // +0x0A movement direction (read as s16): index into gUnknown_080FB5D0 / gUnknown_080FB9FC (SpawnPlayer sets 4)
     u16 state;            // +0x0C 8, 9 are special (see ApplyPendingDamage, UseItem)
     u16 unk0E;
     u16 unk10;            // +0x10 bit 7 set by sub_08027228

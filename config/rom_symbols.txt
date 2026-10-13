@@ -51,3 +51,4 @@
 080FBD80 gUnknown_080FBD80      # 0x20-byte records (start guessed); x, y (fixed point) at +0x14, +0x18: start of the effect line (sub_0803ECBC)
 080FBE04 gUnknown_080FBE04      # {s32 x, y}[]: end of the effect line (sub_0803ECBC)
 080548EC gUnknown_080548EC      # u16[5]: reach of the area attack per level (sub_08029560)
+080FB5D0 gUnknown_080FB5D0      # {s32 x, y}[]: step per direction, indexed by Player.unk0A (sub_0800B78C)
