@@ -243,6 +243,13 @@ merge `ad_*` files into real modules, name things, fix style.
     up at the bottom and `b` stays at the top of the body. To get both at
     the bottom the first one must not be a plain exit jump:
     `while (a ? b : FALSE)` (`AddItemToInventory`).
+    The same rule for a `do { } while (a && b && c)` whose tests all sit
+    at the bottom in the original: with `&&` the body up to the first
+    test is moved below the others. Write `do { ...; if (!a || !b || !c)
+    break; } while (1);` (one `if`, one `break`; `sub_08033CC8`).
+  - `asrs r0, rX, #16` of a hoisted `pos << 16` next to an in-loop
+    `lsls; asrs` of the other half: `u16 x = pos; u16 y = pos >> 16;`
+    passed as `(s16)x, (s16)y` (`(s16)pos` hoists both).
   - Two identical `return FALSE` blocks that the original keeps apart
     (`movs r0, #0; b end` twice): one of them comes from a `static
     inline` (`SetSlot` in `AddItemToInventory`). Worth trying on the

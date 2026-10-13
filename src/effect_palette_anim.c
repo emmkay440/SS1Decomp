@@ -17,8 +17,8 @@ void sub_0802706C(struct SpriteObj *obj, u32 a, u32 b, u16 c, u16 d, u8 e);
 
 // Effect thread started by sub_08033E6C: plays animation 10 of sprite
 // record 0x10002C once at a map position (`pos` is y << 16 | x in pixels)
-// with one color of its palette data copied to object palette entry
-// `arg >> 16`. Stops early when one of the checks fails (among them bit 1
+// with the record's palette 1 loaded into object palette `arg >> 16`.
+// Stops early when one of the checks fails (among them bit 1
 // of the area state's unk9C being clear). Ends by clearing its thread's
 // priority, which frees the slot for sub_08033E6C.
 void sub_08033CC8(u32 pos, u32 arg)
