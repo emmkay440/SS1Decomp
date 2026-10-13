@@ -36,3 +36,4 @@
 080FAB5C gUnknown_080FAB5C      # the one record of GetDataRecord category 23 (not in the archive)
 080FB0D8 gUnknown_080FB0D8      # u32[4]: tile data bytes by sprite size, when the part's shape bits are not 0 (sub_08004288)
 080FB0E8 gUnknown_080FB0E8      # u32[4]: tile data bytes by sprite size for square parts (sub_08004288)
+080FB9FC gUnknown_080FB9FC      # u16[]: facing direction in sixteenths of a turn, indexed by Player.unk0A (sub_0802C174)

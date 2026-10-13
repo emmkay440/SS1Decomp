@@ -155,6 +155,8 @@ SECTIONS {
         src/effect_obj4.o(.text);
         src/unk_08029BB4.o(.text);
         asm/code_08029C44.o(.text);
+        asm/target_in_front.o(.text);
+        asm/code_0802C25C.o(.text);
         src/item_use_effect.o(.text);
         asm/code_0802C798.o(.text);
         src/item_use_effect2.o(.text);

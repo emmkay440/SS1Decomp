@@ -47,7 +47,10 @@ struct Player
     u32 unk7C;            // +0x7C counter (sub_0800BE2C)
     u8 unk80[0x26];
     u16 status;           // +0xA6 (unverified)
-    u8 unkA8[0x28];
+    u8 unkA8[0x6];
+    u16 enemyDistance[5]; // +0xAE per enemy slot; 0x7FFF = none (sub_0802C174)
+    u16 enemyDirection[5]; // +0xB8 per enemy slot, in sixteenths of a turn
+    u8 unkC2[0xE];
     void *unkD0;          // +0xD0
 };                        // size 0xD4
 
