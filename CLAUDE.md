@@ -22,7 +22,7 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
 
 ## Current state (2026-10-13)
 
-759 / 983 game functions are matching C (`make progress`); every module in
+762 / 983 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -250,6 +250,11 @@ merge `ad_*` files into real modules, name things, fix style.
   - `asrs r0, rX, #16` of a hoisted `pos << 16` next to an in-loop
     `lsls; asrs` of the other half: `u16 x = pos; u16 y = pos >> 16;`
     passed as `(s16)x, (s16)y` (`(s16)pos` hoists both).
+  - `count = field; count++;` (not `field + 1`) for `mov r8, r0; movs r0,
+    #1; add r8, r0` (`sub_0800BF50`).
+  - Functions the disassembler cut short: a "function" that ends in
+    `bl _08xxxxxx` to local labels far away is the head of a much larger
+    one (`sub_0801B210`, `EnemyThread`). Check before starting.
   - Two identical `return FALSE` blocks that the original keeps apart
     (`movs r0, #0; b end` twice): one of them comes from a `static
     inline` (`SetSlot` in `AddItemToInventory`). Worth trying on the

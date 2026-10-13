@@ -1,7 +1,7 @@
 # What's next (decomp)
 
-Status as of 2026-10-13 (`make progress`): ROM matches; 759 / 983 game
-functions in C (22% of game code bytes: the small ones are mostly done).
+Status as of 2026-10-13 (`make progress`): ROM matches; 762 / 983 game
+functions in C (23% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
 
@@ -54,10 +54,18 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         5 KB function that runs to 0x0801C6B0 (it jumps into
         `sub_0801B370` with `bl`-encoded long branches). The asm needs
         merging into one function before anyone tries it.
-      - `sub_0800BF50` (asm/code_0800BF50.s, player state 5 thread): not
-        tried yet, only read. The PlayerInfo fields are read with `ldrb`
-        there (a packed `u8` bitfield view), and the loop is entered in
-        the middle.
+      - `EnemyThread` (asm/code_0800CBD8.s) is the same case: its first
+        170 lines are only the head, the function runs to about
+        0x0800E2D2 (it branches to 0x0800E0F6).
+      - `sub_0800E634` (asm/enemy_update_msg.s, applies a received enemy
+        update): 6 lines off, all registers of `y`. What it took so far:
+        plain `for` loops for the two searches; the two 12-bit position
+        fields read as "word << 12" and a `u16`, both before the final
+        shifts (`rawX`/`rawY` in the draft; a signed bitfield gives the
+        shifts in the wrong order); and `enemy->y = (x = y << 12)`
+        (permuter), which keeps `x` out of the register of `rawX`. `y`
+        needs the same (it must not share r1 with `rawY`; the original has
+        the constant 0 there). Draft sub_0800E634.c.
       - `Free` (asm/heap_free.s): 2 lines off. It does `r4 = ptr; r1 = r4`,
         the original `r1 = ptr; r4 = r1`. Needs a goto for the loop and an
         integer copy of the pointer in its own do/while(0) (draft Free.c).
