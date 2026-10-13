@@ -258,6 +258,7 @@ SECTIONS {
         asm/code_08046F6C.o(.text);
         src/save_select_frame.o(.text);
         asm/code_080473AC.o(.text);
+        src/save_select_stats.o(.text);
         src/name_entry_cursor.o(.text);
         asm/code_08047F6C.o(.text);
         asm/name_entry_char.o(.text);
