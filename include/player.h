@@ -60,6 +60,20 @@ struct Player
     void *unkD0;          // +0xD0
 };                        // size 0xD4
 
+// What Player.unkD0 points to: the player as other code looks it up
+// (position in pixels, state, map layer). Accessed with halfword and byte
+// loads.
+struct PlayerInfo
+{
+    u16 unk0_0:4;
+    u16 x:12;
+    u16 y:12;
+    u16 unk2_12:4;
+    u16 state:4;       // 8 = not there (dead?)
+    u16 layer:6;
+    u16 unk4_10:6;
+} __attribute__((packed, aligned(2)));
+
 extern struct Player gPlayers[MAX_PLAYERS];
 
 u32 GetMultiplayerId(void);
