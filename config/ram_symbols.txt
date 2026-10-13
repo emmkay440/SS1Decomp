@@ -334,3 +334,4 @@
 030009A0 gUnknown_030009A0      # struct SpriteObj of save select mode 8 (record 0x100050)
 030039A0 gUnknown_030039A0       # u8[0x200]: stack of the first map layer thread
 03003BD0 gUnknownThread_03003BD0 # struct Thread: first map layer thread (sub_08005278), started by sub_08004DE0
+03000628 gUnknown_03000628      # struct SpriteObj[4]: save select, keys 0x100000-0x100003 (sub_08046D90)

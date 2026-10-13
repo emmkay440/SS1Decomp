@@ -253,6 +253,8 @@ SECTIONS {
         src/unk_08046128.o(.text);
         src/save_select_start.o(.text);
         asm/code_080463F0.o(.text);
+        src/save_select_setup.o(.text);
+        asm/code_08046F6C.o(.text);
         src/save_select_frame.o(.text);
         asm/code_080473AC.o(.text);
         src/name_entry_cursor.o(.text);
