@@ -156,6 +156,8 @@ SECTIONS {
         src/queue_push3.o(.text);
         src/queue_push2.o(.text);
         asm/code_08027828.o(.text);
+        src/queue_push4.o(.text);
+        asm/code_08027940.o(.text);
         src/queue_push.o(.text);
         src/unk_080292D0.o(.text);
         asm/code_08029560.o(.text);
