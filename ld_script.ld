@@ -66,7 +66,7 @@ SECTIONS {
         src/player_step.o(.text);
         asm/code_0800B8A4.o(.text);
         src/player_skill_threads0.o(.text);
-        asm/code_0800BF50.o(.text);
+        src/player_attack_thread.o(.text);
         src/player_skill_threads.o(.text);
         src/spawn_player.o(.text);
         src/hud_start.o(.text);
