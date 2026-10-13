@@ -79,6 +79,7 @@ SECTIONS {
         src/direction_to.o(.text);
         src/unk_0800CB84.o(.text);
         asm/code_0800CBD8.o(.text);
+        src/enemy_separate_one.o(.text);
         src/enemy_separate.o(.text);
         asm/enemy_update_msg.o(.text);
         asm/code_0800E74C.o(.text);

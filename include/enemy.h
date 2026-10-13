@@ -35,7 +35,9 @@ struct Enemy
     u8 unk3A[0x2];
     u16 unk3C;           // +0x3C cleared by sub_0800E634
     u16 unk3E;
-    u8 unk40[0x14];
+    u8 unk40[0x10];
+    u16 unk50;           // +0x50 slot of the enemy sub_0800E300 checks next
+    u8 unk52[0x2];
     u32 unk54;
     u8 unk58[0x4];
     u32 unk5C;
