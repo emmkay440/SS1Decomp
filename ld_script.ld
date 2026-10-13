@@ -199,6 +199,7 @@ SECTIONS {
         asm/code_0802F618.o(.text);
         src/unk_08031250.o(.text);
         asm/code_08031334.o(.text);
+        src/effect_palette_anim.o(.text);
         src/thread_pools.o(.text);
         asm/code_08033FB0.o(.text);
         src/thread_pools2.o(.text);
