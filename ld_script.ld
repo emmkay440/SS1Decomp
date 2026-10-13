@@ -168,7 +168,7 @@ SECTIONS {
         asm/code_0802C25C.o(.text);
         src/item_use_thread.o(.text);
         src/item_use_effect.o(.text);
-        asm/code_0802C798.o(.text);
+        src/item_use_thread3.o(.text);
         src/item_use_effect2.o(.text);
         asm/code_0802CA30.o(.text);
         src/unk_0802CE40.o(.text);
