@@ -48,6 +48,16 @@ struct Unknown_03006720
             u32 unk28:1;
             u32 unk29:3;
         } o;           // kind 10 (sub_080274BC)
+        struct
+        {
+            u32 kind:4;
+            u32 type:8;
+            u32 unk12:4;
+            u32 unk16:4;
+            u32 unk20:8;
+            u32 unk28:1;
+            u32 unk29:3;
+        } p;           // kind 4 (sub_080273DC)
     } unk4;
     u16 unk8;
     u16 unkA;

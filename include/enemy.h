@@ -21,13 +21,20 @@ struct Enemy
     s32 y;               // +0x14
     s32 homeX;           // +0x18 set to x by SpawnEnemy
     s32 homeY;           // +0x1C
-    u8 unk20[0x8];
+    u8 unk20[0x2];
+    u16 unk22;           // +0x22 5 sets a flag in the kind 4 queue entry (sub_080273DC)
+    u16 unk24;
+    u8 unk26[0x2];
     u16 pendingDamage;   // +0x28
     u8 unk2A[0x2];
     u32 unk2C;           // +0x2C slot << 24 (sub_08036D28)
     u8 unk30[0x8];
     u16 hp;              // +0x38
-    u8 unk3A[0x2A];
+    u8 unk3A[0x1A];
+    u32 unk54;
+    u8 unk58[0x4];
+    u32 unk5C;
+    u8 unk60[0x4];
     u16 unk64;
     u16 unk66;
     u16 unk68;
