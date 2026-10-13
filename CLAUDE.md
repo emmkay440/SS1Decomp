@@ -22,7 +22,7 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
 
 ## Current state (2026-10-13)
 
-733 / 982 game functions are matching C (`make progress`); every module in
+759 / 983 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -209,6 +209,53 @@ merge `ad_*` files into real modules, name things, fix style.
     at their declaration, scalars when their address is first taken. A
     slot order that doesn't fit one declaration list means an inner block
     (see the draft of `sub_08024320`).
+- Shapes from 2026-10-13, second batch:
+  - A value and a copy of it in two registers (`lsrs r1, r0, #1; adds r3,
+    r1, #0`), one used for stores and one in compares: an `s32` variable
+    plus a `u16` copy (`size = w >> 1; half = size;`). Which register each
+    gets depends on whether the neighbouring variable is shared between
+    two similar blocks or separate (`posX`/`posY` in `sub_08021874`):
+    variables that live across blocks are allocated by priority over the
+    whole function. A small grid search over types / shared-or-separate /
+    declaration order with `fcheck.py` in a loop settles these in a minute.
+  - `x + ((w >> 1) + 1)` computed as `r0 = w >> 1; r0 += 1; r0 = x + r0`:
+    an `s32` temporary for the group (`t = (w >> 1) + 1; p->x = x + t;`).
+  - A `cmp #2; blt`-style lower bound, output-address temporaries taken
+    at the top of a loop body (they set giv order), declaration order
+    (it sets spill-slot order), and a callee declared as returning `int`
+    (removes the caller's narrowing) all mattered in `sub_08029560` /
+    `sub_0803ECBC`.
+  - A table's address loaded before the index is scaled (`ldr r1, =table;
+    ldr r2, [sp]; lsls r0, r2, #4; adds r0, r0, r1`): a pointer local for
+    the table (`table = gTable; entry = &table[kind];`, `sub_08029688`).
+  - `ands #15` followed by `asrs #6` that the compiler didn't fold to 0:
+    a signed division, `(x & 0xF) / 64` (`CalcDamageToPlayer`). `>> 6`,
+    an unsigned divide or temporaries all fold.
+  - A bitfield compared with 0 as `lsls; lsrs; cmp #0` instead of a mask
+    test: read it into a `u32` local first (same rule as the `u8` ones;
+    `layer` in `sub_0800B78C`).
+  - `ldrsh` of a `u16` field next to a separate `ldrh` of the same field:
+    `(s16)p->field` at each use, not a local and not an `s16` field.
+  - Loop exit tests: `expand_end_loop` (tools/agbcc/gcc/stmt.c) moves the
+    code from the loop start up to the *first* jump to the loop's exit
+    label to the bottom (once that test is more than 30 insns in, it
+    stops looking). So in `while (a && b)` with a long `a` only `a` ends
+    up at the bottom and `b` stays at the top of the body. To get both at
+    the bottom the first one must not be a plain exit jump:
+    `while (a ? b : FALSE)` (`AddItemToInventory`).
+  - Two identical `return FALSE` blocks that the original keeps apart
+    (`movs r0, #0; b end` twice): one of them comes from a `static
+    inline` (`SetSlot` in `AddItemToInventory`). Worth trying on the
+    "identical tails not merged" near misses (`DropItem`,
+    `GetDataRecord`, `sub_08048240`).
+  - A bitfield whose store reads a halfword and a following byte, and
+    writes both back: a packed struct with a field crossing the halfword
+    (`u32 unk0:4; u32 flags:20;` at gPlayerStats +0x272, `sub_0801CC68`).
+    The field's width shows in the store: no mask on the last byte means
+    the field takes all of it.
+  - decomp-permuter's score isn't 0 for a matching function here (10 is
+    the floor: literal pool / relocation noise). Build its best candidate
+    in the real tree before deciding it didn't match (`sub_08029688` did).
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine

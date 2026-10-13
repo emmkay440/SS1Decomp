@@ -1,7 +1,7 @@
 # What's next (decomp)
 
-Status as of 2026-10-13 (`make progress`): ROM matches; 733 / 982 game
-functions in C (20% of game code bytes: the small ones are mostly done).
+Status as of 2026-10-13 (`make progress`): ROM matches; 759 / 983 game
+functions in C (22% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
 
@@ -44,6 +44,20 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
       block copies, `GetPlayerClass`, 10 functions).
 - [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-13:
+      - `sub_080298C0` (asm/spell_effect_thread.s, spell effect thread):
+        2 lines off. `x << 16` has to go through a wider temporary
+        (`unsigned long long wide = x << 16; fixedX = wide;`, found by
+        decomp-permuter); what's left is that the original computes it in
+        r2, C in r0. A second 10-minute permuter run from that draft found
+        nothing. Draft sub_080298C0.c.
+      - `sub_0801B210` is not a function of its own: it is the head of one
+        5 KB function that runs to 0x0801C6B0 (it jumps into
+        `sub_0801B370` with `bl`-encoded long branches). The asm needs
+        merging into one function before anyone tries it.
+      - `sub_0800BF50` (asm/code_0800BF50.s, player state 5 thread): not
+        tried yet, only read. The PlayerInfo fields are read with `ldrb`
+        there (a packed `u8` bitfield view), and the loop is entered in
+        the middle.
       - `Free` (asm/heap_free.s): 2 lines off. It does `r4 = ptr; r1 = r4`,
         the original `r1 = ptr; r4 = r1`. Needs a goto for the loop and an
         integer copy of the pointer in its own do/while(0) (draft Free.c).
