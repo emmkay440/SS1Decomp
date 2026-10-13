@@ -213,6 +213,8 @@ SECTIONS {
         src/menu_skill_tick.o(.text);
         src/menu_stat_sync.o(.text);
         asm/code_0803FE70.o(.text);
+        src/menu_gold_count.o(.text);
+        asm/code_08040120.o(.text);
         asm/menu_slot_item.o(.text);
         src/menu_item_price.o(.text);
         asm/menu_quick_slots.o(.text);
