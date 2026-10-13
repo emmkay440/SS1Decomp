@@ -20,7 +20,7 @@ s16 Random(void);
 
 // By chance (Random() above 16000) and with fewer than 10 on the way, adds
 // an object: from the left or from the right edge, at a random height
-// (about 20 to 100, or 120 to 160). Then sorts the moving objects by y,
+// (20 to 60 or 120 to 160). Then sorts the moving objects by y,
 // largest first (each one is swapped with the largest after it).
 void sub_08048BF0(void)
 {
