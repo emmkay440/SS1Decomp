@@ -151,6 +151,8 @@ SECTIONS {
         asm/code_0802199C.o(.text);
         src/window_kill.o(.text);
         asm/code_08021CE4.o(.text);
+        src/message_window_start.o(.text);
+        asm/code_08021E70.o(.text);
         src/window_checks.o(.text);
         asm/code_08022AB4.o(.text);
         src/text_number.o(.text);
@@ -170,6 +172,8 @@ SECTIONS {
         asm/code_08027828.o(.text);
         src/queue_push4.o(.text);
         asm/code_08027940.o(.text);
+        asm/queue_to_front.o(.text);
+        asm/code_08027A90.o(.text);
         src/queue_push.o(.text);
         src/unk_080292D0.o(.text);
         src/spell_area_hit.o(.text);
