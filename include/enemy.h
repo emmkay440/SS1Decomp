@@ -24,7 +24,7 @@ struct Enemy
     u8 unk20[0x2];
     u16 unk22;           // +0x22 5 sets a flag in the kind 4 queue entry (sub_080273DC)
     u16 unk24;
-    u8 unk26[0x2];
+    u16 unk26;           // +0x26 map layer the enemy is on (compared with Player.layer)
     u16 pendingDamage;   // +0x28
     u8 unk2A[0x2];
     u32 unk2C;           // +0x2C slot << 24 (sub_08036D28)
@@ -48,7 +48,9 @@ struct Enemy
     u16 unk78;
     u16 unk7A;
     u16 unk7C;
-    u8 unk7E[0xE];
+    u8 unk7E[0x4];
+    u16 unk82;           // +0x82 index into gUnknown_080FB4B8 (body size)
+    u8 unk84[0x8];
     u32 unk8C;
     u8 unk90[0x4];
 };                       // size 0x94

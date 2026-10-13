@@ -58,7 +58,9 @@ SECTIONS {
         src/player_damage.o(.text);
         asm/code_0800B4B4.o(.text);
         src/enemy_bearing.o(.text);
+        asm/enemy_push.o(.text);
         asm/code_0800B594.o(.text);
+        asm/code_0800B78C.o(.text);
         src/player_skill_threads0.o(.text);
         asm/code_0800BF50.o(.text);
         src/player_skill_threads.o(.text);
