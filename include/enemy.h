@@ -32,7 +32,8 @@ struct Enemy
     u16 unk34;           // +0x34 the attacker's player id
     u16 unk36;
     u16 hp;              // +0x38
-    u8 unk3A[0x4];
+    u8 unk3A[0x2];
+    u16 unk3C;           // +0x3C cleared by sub_0800E634
     u16 unk3E;
     u8 unk40[0x14];
     u32 unk54;
@@ -54,7 +55,10 @@ struct Enemy
     u16 unk7C;
     u8 unk7E[0x4];
     u16 unk82;           // +0x82 index into gUnknown_080FB4B8 (body size)
-    u8 unk84[0x8];
+    u8 unk84[0x2];
+    u8 unk86;            // +0x86 what unk22 goes back to (sub_0800E634)
+    u8 unk87;            // +0x87 element of its attack, 0-3 (CalcDamageToPlayer)
+    u8 unk88[0x4];
     u32 unk8C;
     u8 unk90[0x4];
 };                       // size 0x94
