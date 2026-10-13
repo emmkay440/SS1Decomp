@@ -43,6 +43,7 @@ SECTIONS {
         asm/map_layer2_bg.o(.text);
         src/map_edge.o(.text);
         asm/code_08004AE4.o(.text);
+        src/map_layer1_init.o(.text);
         src/map_layer2_init.o(.text);
         asm/code_08004FB4.o(.text);
         src/map_load.o(.text);
