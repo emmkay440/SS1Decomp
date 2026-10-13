@@ -253,9 +253,10 @@ merge `ad_*` files into real modules, name things, fix style.
     (`u32 unk0:4; u32 flags:20;` at gPlayerStats +0x272, `sub_0801CC68`).
     The field's width shows in the store: no mask on the last byte means
     the field takes all of it.
-  - decomp-permuter's score isn't 0 for a matching function here (10 is
-    the floor: literal pool / relocation noise). Build its best candidate
-    in the real tree before deciding it didn't match (`sub_08029688` did).
+  - decomp-permuter's score isn't always 0 for a matching function here:
+    the score 10 candidate of `sub_08029688` matched in the real tree
+    (the reason wasn't looked into; `sub_080298C0` at 10 is really 2
+    lines off). Build the best candidate before deciding.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
