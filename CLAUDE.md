@@ -22,7 +22,7 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
 
 ## Current state (2026-10-13)
 
-762 / 983 game functions are matching C (`make progress`); every module in
+770 / 983 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -255,6 +255,29 @@ merge `ad_*` files into real modules, name things, fix style.
   - Functions the disassembler cut short: a "function" that ends in
     `bl _08xxxxxx` to local labels far away is the head of a much larger
     one (`sub_0801B210`, `EnemyThread`). Check before starting.
+  - A value computed in one register and then shifted or copied into
+    another (`subs r0, r0, r1; asrs r3, r0, #12` where `asrs r2, r2, #12`
+    would do): the destination variable is assigned more than once, so
+    the compiler doesn't tie it to its source. Look for the second use:
+    `dx`/`dy` reused for the pushed position and `hit` for the table
+    value in `sub_0800B594` (134 lines of register noise went away),
+    `dx`/`dy` assigned in both branches at function scope in
+    `sub_08049C58`, a flag variable set before a switch that never
+    changes it in `StartMessageWindow` (found by the permuter).
+  - A table base loaded before the base of the table that gives its
+    index: the index is assigned inside the subscript,
+    `sine[(index = other[direction]) * 16 + 64]` (`sub_0800B594`).
+  - Unused stack (`sub sp` larger than needed, low part never touched):
+    an unused local array, declared first (`sub_0800E49C`).
+  - `i < gCount` re-read after a search loop but cached during it
+    (`adds r6, r3, #0`): no local for the count, the loop test reads the
+    global and the compiler hoists it (`sub_08027940`). Inline helpers
+    for such a search show up as `mov ip, sp` / a copied result; here
+    there were none.
+  - A parameter reused for an unrelated value (`column` for the roll in
+    `sub_080130F4`) puts that value in the parameter's register.
+  - `if ((a && x < N) || (!a && x >= N)) { body }` rather than two
+    `continue`s for `ble body; b next` in both arms (`sub_08049508`).
   - Two identical `return FALSE` blocks that the original keeps apart
     (`movs r0, #0; b end` twice): one of them comes from a `static
     inline` (`SetSlot` in `AddItemToInventory`). Worth trying on the

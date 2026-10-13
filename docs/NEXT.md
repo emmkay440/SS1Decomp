@@ -1,6 +1,6 @@
 # What's next (decomp)
 
-Status as of 2026-10-13 (`make progress`): ROM matches; 762 / 983 game
+Status as of 2026-10-13 (`make progress`): ROM matches; 770 / 983 game
 functions in C (23% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
@@ -105,9 +105,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       - `sub_0802C174` (asm/target_in_front.s): 17 lines off; the original
         hoists 0x7FFF out of the loop and builds -8 inside it, C does the
         opposite; draft sub_0802C174.c.
-      - `sub_0800B594` (asm/enemy_push.s, pushes the player out of
-        enemies): logic matches, 134 lines of register differences; draft
-        sub_0800B594.c. Its sibling `sub_0800B4B4` matches.
       - `sub_080297D4` (asm/enemy_hit.s): 3 lines off; `index * 0x94 +
         list` should land in r1 with the list loaded first; draft
         sub_080297D4.c.
