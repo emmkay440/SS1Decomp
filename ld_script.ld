@@ -167,7 +167,6 @@ SECTIONS {
         asm/target_in_front.o(.text);
         asm/code_0802C25C.o(.text);
         src/item_use_thread.o(.text);
-        asm/code_0802C3D4.o(.text);
         src/item_use_effect.o(.text);
         asm/code_0802C798.o(.text);
         src/item_use_effect2.o(.text);
