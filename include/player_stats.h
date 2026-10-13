@@ -95,7 +95,12 @@ struct PlayerStats
     u16 unk270_0:9;
     u16 unk270_9:1;   // +0x270 bit 9: shown on the save select screen (SaveSlotInfo.unk5)
     u16 unk270_10:6;
-    u8 unk272[0x6];
+    struct
+    {
+        u32 unk0:4;
+        u32 flags:20;  // +0x272 bits 4-23; bit 2: the three messages of sub_0801CC68 were shown
+    } __attribute__((packed)) unk272;
+    u8 unk275[0x3];
     struct Options options; // +0x278 last saved word
 };
 
