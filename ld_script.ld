@@ -34,7 +34,6 @@ SECTIONS {
         src/unk_08002B58.o(.text);
         asm/data_record.o(.text);
         src/data_count.o(.text);
-        asm/code_08002F48.o(.text);
         asm/oam_draw.o(.text);
         asm/code_080030DC.o(.text);
         src/unk_080041D4.o(.text);
