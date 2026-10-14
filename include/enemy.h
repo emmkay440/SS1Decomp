@@ -65,7 +65,8 @@ struct Enemy
     u8 unk84[0x2];
     u8 unk86;            // +0x86 what unk22 goes back to (sub_0800E634)
     u8 unk87;            // +0x87 element of its attack, 0-3 (CalcDamageToPlayer)
-    u8 unk88[0x4];
+    u16 unk88;           // +0x88 kind of the attack being cast (sub_0803EDD8)
+    u8 unk8A[0x2];
     u32 unk8C;
     u8 unk90[0x4];
 };                       // size 0x94

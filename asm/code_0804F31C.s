@@ -570,7 +570,7 @@ _0804F7BC:
 	ldr r0, _0804F8F0 @ =gUnknown_03001398
 	ldrh r0, [r0]
 	str r0, [sp]
-	ldr r0, _0804F8F8 @ =0x03001290
+	ldr r0, _0804F8F8 @ =gUnknown_03001290
 	movs r1, #0x78
 	movs r2, #0x64
 	movs r3, #0
@@ -708,7 +708,7 @@ _0804F8D0:
 _0804F8EC: .4byte 0x00000167
 _0804F8F0: .4byte gUnknown_03001398
 _0804F8F4: .4byte gUnknown_030013A8
-_0804F8F8: .4byte 0x03001290
+_0804F8F8: .4byte gUnknown_03001290
 _0804F8FC: .4byte gUnknown_03003CA0
 _0804F900: .4byte 0x00000257
 _0804F904:
