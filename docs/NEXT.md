@@ -1,6 +1,6 @@
 # What's next (decomp)
 
-Status as of 2026-10-14 (`make progress`): ROM matches; 782 / 984 game
+Status as of 2026-10-14 (`make progress`): ROM matches; 786 / 977 game
 functions in C (25% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
@@ -60,6 +60,24 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         registers and the layout of the wait loop. Draft sub_08028DB0.c.
       - `sub_080199B4` (asm/spawn_points.s, spawn point thread): far off;
         the original keeps the constant 1 in r9. Draft sub_080199B4.c.
+      - `CanEquipItem` (asm/can_equip.s): about 30 lines off. The
+        weapon's required level and `stats` sit in each other's registers
+        (r7/r8), and the armor / head gear str checks share their tail
+        where the original keeps the class-bit test after them. Draft
+        CanEquipItem.c.
+      - `sub_0801AF3C` (asm/area_change_thread.s, area change thread):
+        about 45 lines off, the loop counters (r4/r5 swapped) and
+        `index * 212 + table` built in the other order (the original
+        multiplies first and adds the table to a copy in r8). Draft
+        sub_0801AF3C.c.
+      - `sub_08004FB4` (asm/map_tile_anim.s, animated map tiles): about 55
+        lines off; the four-block loop keeps its counter in r8 and the
+        table base `gUnknown_080FB0F8` reloaded per use, C hoists the base
+        and puts the counter in r9. Draft sub_08004FB4.c.
+      - `sub_0800FA74` (asm/drop_spot.s, find or take a field item slot):
+        about 70 lines off. The original places the "found a free slot"
+        tail before the search loop and keeps the stack slots swapped
+        (sp+16/sp+20). Draft sub_0800FA74.c.
       - `sub_080298C0` (asm/spell_effect_thread.s, spell effect thread):
         2 lines off. `x << 16` has to go through a wider temporary
         (`unsigned long long wide = x << 16; fixedX = wide;`, found by
@@ -143,6 +161,10 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         written differently. A do/while(0) around either call doesn't help.
       - `sub_08010B48` / `sub_08012230` (asm/equip_has.s, about 700 bytes
         each): not retried; drafts equip_has_*.c, permuter score 1445.
+      Solved on 2026-10-14: `sub_0800588C` (src/camera_follow.c): declared
+      `u32` with no return statement (the original never uses r0 as
+      scratch), the two low parts loaded before the stores, `unk60 +
+      unk64` operand order.
       Solved on 2026-10-13: `sub_08018058` (`frames-- > 0`, and 16.16 copies of
       x and y made before the loop).
       Solved on 2026-10-12: `sub_0804E80C` and its family (`sub_0804E2E8`,

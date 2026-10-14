@@ -22,7 +22,7 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
 
 ## Current state (2026-10-14)
 
-782 / 984 game functions are matching C (`make progress`); every module in
+786 / 977 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -315,6 +315,26 @@ merge `ad_*` files into real modules, name things, fix style.
     (scratch script; kills its workers at the time limit). It needs the
     function alone in its asm module or at least no jump table after it,
     else the base score is in the thousands and it finds nothing.
+- Shapes from 2026-10-14, second batch:
+  - A `void`-looking function that never uses r0 as scratch (everything
+    in r1-r3, r0 untouched after the prologue): declare it `u32` with no
+    `return` (`sub_0800588C`, 330 diff lines to 0 with that alone).
+  - A loop helper written as a macro with its own block-local loop
+    variables (`ADD_ABILITIES` in src/item_flags.c), and a block-local
+    record pointer per case.
+  - A `switch` whose cases are one-statement bodies tested one by one
+    (`cmp #3; beq; bgt; cmp #2`): give each case its own copy of the body
+    (src/item_price.c).
+  - `cmp; beq; movs #1` is `if (v) v = 1;`, not `v = v ? 1 : 0`.
+  - Case order in the source sets the order of the bodies; of several
+    identical bodies the last one is kept (CanEquipItem draft,
+    `sub_08047570`).
+  - Bogus function starts: a "function" with a `pop` but no `push`, or
+    that reads the stack before setting up a frame, is a label inside
+    another function; turn it into a local label (`5857b9d`, `b6c6152`).
+  - `tmp/dcheck.sh FUNC module draft.c [-v [N]]` compiles a draft alone and
+    diffs it against the asm (branch targets and pc loads normalized), no
+    tree build needed; good for quick variant sweeps.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
