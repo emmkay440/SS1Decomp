@@ -74,6 +74,12 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         lines off; the four-block loop keeps its counter in r8 and the
         table base `gUnknown_080FB0F8` reloaded per use, C hoists the base
         and puts the counter in r9. Draft sub_08004FB4.c.
+      - `sub_08049A24` (asm/code_08049A24.s, adds a save select mode 2
+        orbiter at random): about 30 lines off. The original keeps
+        `&gUnknown_030007F0` / `&gUnknown_030007F8` in r5/r4 from the x
+        store of each branch to the radius store after the join; C reloads
+        them. Draft sub_08049A24.c (a `s16 roll` temporary was needed for
+        the rest); permuter 840 -> 625 with a nonsense change.
       - `sub_080298C0` (asm/spell_effect_thread.s, spell effect thread):
         2 lines off. `x << 16` has to go through a wider temporary
         (`unsigned long long wide = x << 16; fixedX = wide;`, found by
