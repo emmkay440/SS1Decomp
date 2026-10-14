@@ -228,7 +228,7 @@ SECTIONS {
         src/sound.o(.text);
         src/menu_screen.o(.text);
         src/menu_setup.o(.text);
-        asm/code_0803F73C.o(.text);
+        src/menu_alloc.o(.text);
         src/menu_apply.o(.text);
         src/menu_stats_changed.o(.text);
         src/menu_skill_tick.o(.text);
