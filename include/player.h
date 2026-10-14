@@ -20,7 +20,8 @@ struct PlayerStatusRec
 struct Player
 {
     u16 facing;           // +0x00 0 down, 1 left, 2 up, 3 right (a guess from sub_080191FC)
-    u8 unk02[0x4];
+    u16 unk02;
+    u16 unk04;
     u16 actionKeys;       // +0x06 button mask that activates warp pads (sub_0801EA78)
     u8 unk08[0x2];
     u16 unk0A;            // +0x0A movement direction (read as s16): index into gUnknown_080FB5D0 / gUnknown_080FB9FC (SpawnPlayer sets 4)

@@ -74,7 +74,7 @@ struct PlayerStats
     u16 int_;         // +0x28 (always 0 for the Warrior)
     u16 dex;          // +0x2A
     u16 unk2C;        // +0x2C 5 on a level 2 Warrior
-    u8 unk2E[0x6];
+    u16 unk2E[3];
     u32 exp;          // +0x34 total EXP (AddExp)
     u32 level;        // +0x38
     u16 statPoints;   // +0x3C unspent; +4 per level up
