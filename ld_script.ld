@@ -299,7 +299,7 @@ SECTIONS {
         src/save_select_thread.o(.text);
         src/save_select_dispatch.o(.text);
         src/save_select_mode0_setup.o(.text);
-        asm/code_08048930.o(.text);
+        src/save_select_mode0_seq.o(.text);
         src/save_select_mode0_add.o(.text);
         src/save_select_mode0_runners.o(.text);
         src/save_select_mode0.o(.text);
