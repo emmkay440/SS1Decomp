@@ -52,3 +52,5 @@
 080FBE04 gUnknown_080FBE04      # {s32 x, y}[]: end of the effect line (sub_0803ECBC)
 080548EC gUnknown_080548EC      # u16[5]: reach of the area attack per level (sub_08029560)
 080FB5D0 gUnknown_080FB5D0      # {s32 x, y}[]: step per direction, indexed by Player.unk0A (sub_0800B78C)
+0805485C gUnknown_0805485C      # u32[16]: item price multipliers in tenths, by item bits 20-23 (sub_0800FE5C)
+0805489C gUnknown_0805489C      # u32[4]: item price multipliers in tenths, by item bits 24-25
