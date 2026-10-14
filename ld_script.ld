@@ -164,7 +164,7 @@ SECTIONS {
         src/unk_0802173C.o(.text);
         src/window_gfx.o(.text);
         src/window_open.o(.text);
-        asm/code_0802199C.o(.text);
+        src/window_thread.o(.text);
         src/window_kill.o(.text);
         src/message_window_start.o(.text);
         asm/code_08022010.o(.text);
