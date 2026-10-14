@@ -353,7 +353,7 @@ merge `ad_*` files into real modules, name things, fix style.
     block that uses it (src/field_session.c).
   - A 1-bit field tested as `lsls #29; cmp #0; bge`: the bitfield's
     container is `u32` (a `u8` container gives `movs #4; ands`).
-  - Fixed-point PlayerStats fields at large offsets (`ldr base; movs #off;
+  - PlayerStats fields at large offsets (`ldr base; movs #off;
     adds`) need direct member access; a cast pointer to the field folds
     `sym+off` into one literal.
   - A call that copies a whole struct to the stack (`memcpy` of size - 16,
