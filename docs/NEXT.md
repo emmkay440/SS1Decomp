@@ -1,6 +1,6 @@
 # What's next (decomp)
 
-Status as of 2026-10-14 (`make progress`): ROM matches; 786 / 977 game
+Status as of 2026-10-14 (`make progress`): ROM matches; 796 / 977 game
 functions in C (25% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
@@ -168,6 +168,9 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       fail` branch (decomp-permuter) puts the "found" tail before the
       search loop; `field = gFieldItems; field[n]` for the oldest slot;
       both abs values computed before the comparisons.
+      Also matched that day: `sub_0804F0E8`, `sub_0800AF90`, `SpawnEnemy`,
+      `sub_08006144`, `sub_080497D8`, `sub_080244F4`, `sub_08037B58`,
+      `sub_0801516C` (shapes in CLAUDE.md, third batch).
       `sub_0800588C` (src/camera_follow.c): declared
       `u32` with no return statement (the original never uses r0 as
       scratch), the two low parts loaded before the stores, `unk60 +

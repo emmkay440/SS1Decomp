@@ -22,7 +22,7 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
 
 ## Current state (2026-10-14)
 
-786 / 977 game functions are matching C (`make progress`); every module in
+796 / 977 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -335,6 +335,37 @@ merge `ad_*` files into real modules, name things, fix style.
   - `tmp/dcheck.sh FUNC module draft.c [-v [N]]` compiles a draft alone and
     diffs it against the asm (branch targets and pc loads normalized), no
     tree build needed; good for quick variant sweeps.
+- Shapes from 2026-10-14, third batch:
+  - A "found" tail placed before the search loop (right after the early
+    `bne; b fail`): an assignment in the early-exit branch, `if (bad) {
+    field = gFieldItems; goto fail; }` (decomp-permuter; src/drop_spot.c).
+  - Base loaded before the index (`ldr r4, [base]` first): `p = gTable;
+    p[n].x = 0;` instead of `gTable[n].x = 0`.
+  - `abs(a)` and `abs(b)` both computed before the `<= 7` tests: locals
+    `dx = abs(..); dy = abs(..); if (dx <= 7 && dy <= 7)`.
+  - A table read twice at one index keeps its base in a register (and
+    adds +2 to the base) as a 2D array `t[n][1]`, `t[n][0]`; struct
+    fields `t[n].b`, `t[n].a` CSE `&t[n]` instead (SpawnEnemy).
+  - Every ROM address loaded from the literal pool on its own (no base +
+    offset): separate symbols, not one array (src/start_equipment.c).
+  - Stack space nothing uses: an unused local array (`u8 unused[12]`);
+    `&cnt` hoisted before a loop: the `cnt` union declared inside the
+    block that uses it (src/field_session.c).
+  - A 1-bit field tested as `lsls #29; cmp #0; bge`: the bitfield's
+    container is `u32` (a `u8` container gives `movs #4; ands`).
+  - Fixed-point PlayerStats fields at large offsets (`ldr base; movs #off;
+    adds`) need direct member access; a cast pointer to the field folds
+    `sym+off` into one literal.
+  - A call that copies a whole struct to the stack (`memcpy` of size - 16,
+    then r0-r3 from the first 16 bytes): the callee was declared taking
+    the struct by value in that file (src/player_setup.c).
+  - A `for` whose step does two things in the original order:
+    `for (i = 0; i < 60; i++, angle += 2)`.
+  - A `u16` local for a call result moves its `u8` conversion to the
+    argument setup (src/enemy_projectile.c).
+  - Accepted fakes from decomp-permuter when nothing natural was found:
+    `do { x = f(); } while (0);` (src/link_lost.c, probably a macro) and
+    `angle++; angle--;` (src/save_select_mode2_seq.c), both commented.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
