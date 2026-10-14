@@ -35,6 +35,8 @@ SECTIONS {
         asm/data_record.o(.text);
         src/data_count.o(.text);
         asm/code_08002F48.o(.text);
+        asm/oam_draw.o(.text);
+        asm/code_080030DC.o(.text);
         src/unk_080041D4.o(.text);
         src/anim_step.o(.text);
         asm/draw_sorted.o(.text);
@@ -235,7 +237,7 @@ SECTIONS {
         src/menu_stat_sync.o(.text);
         asm/menu_gold_count2.o(.text);
         src/menu_gold_count.o(.text);
-        asm/menu_pick_up.o(.text);
+        src/menu_pick_up.o(.text);
         asm/code_080402B4.o(.text);
         asm/menu_slot_item.o(.text);
         src/menu_item_price.o(.text);
