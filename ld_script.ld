@@ -48,7 +48,7 @@ SECTIONS {
         asm/code_08004AE4.o(.text);
         src/map_layer1_init.o(.text);
         src/map_layer2_init.o(.text);
-        asm/code_08004FB4.o(.text);
+        asm/map_tile_anim.o(.text);
         src/map_load.o(.text);
         asm/code_08005278.o(.text);
         asm/camera_follow.o(.text);

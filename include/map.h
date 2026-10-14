@@ -36,7 +36,8 @@ struct MapLayer
     u16 unk6E;         // +0x6E map index in the area
     u8 unk70[0x8];
     u32 flags;         // +0x78
-    u8 unk7C[0x10];
+    u16 animFrame[4];  // +0x7C animated tile blocks (sub_08004FB4)
+    u16 animTimer[4];  // +0x84
     u8 *record;        // +0x8C the area's data record (second layer, sub_08004EF8)
 };
 
