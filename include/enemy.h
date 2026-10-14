@@ -21,7 +21,7 @@ struct Enemy
     s32 y;               // +0x14
     s32 homeX;           // +0x18 set to x by SpawnEnemy
     s32 homeY;           // +0x1C
-    u8 unk20[0x2];
+    u16 unk20;
     u16 unk22;           // +0x22 5 sets a flag in the kind 4 queue entry (sub_080273DC)
     u16 unk24;
     u16 unk26;           // +0x26 map layer the enemy is on (compared with Player.layer)
@@ -32,7 +32,7 @@ struct Enemy
     u16 unk34;           // +0x34 the attacker's player id
     u16 unk36;
     u16 hp;              // +0x38
-    u8 unk3A[0x2];
+    u16 unk3A;
     u16 unk3C;           // +0x3C cleared by sub_0800E634
     u16 unk3E;
     u16 statusMask;      // +0x40 bit n: status n + 1 (sub_0800E74C)
@@ -43,9 +43,9 @@ struct Enemy
     u16 unk50;           // +0x50 slot of the enemy sub_0800E300 checks next
     u8 unk52[0x2];
     u32 unk54;
-    u8 unk58[0x4];
+    u32 unk58;
     u32 unk5C;
-    u8 unk60[0x4];
+    u32 unk60;
     u16 unk64;
     u16 unk66;
     u16 unk68;

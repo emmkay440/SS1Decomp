@@ -54,3 +54,4 @@
 080FB5D0 gUnknown_080FB5D0      # {s32 x, y}[]: step per direction, indexed by Player.unk0A (sub_0800B78C)
 0805485C gUnknown_0805485C      # u32[16]: item price multipliers in tenths, by item bits 20-23 (sub_0800FE5C)
 0805489C gUnknown_0805489C      # u32[4]: item price multipliers in tenths, by item bits 24-25
+080FB740 gUnknown_080FB740      # u16[][2]: by player count - 1, percent added to Enemy.unk72 and unk6E (SpawnEnemy)

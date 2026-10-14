@@ -77,7 +77,7 @@ SECTIONS {
         src/hud_start.o(.text);
         src/enemy_pool_alloc.o(.text);
         src/enemy_unload.o(.text);
-        asm/code_0800C504.o(.text);
+        src/enemy_spawn.o(.text);
         src/enemy_start0.o(.text);
         src/enemy_spawn_thread.o(.text);
         asm/nearest_player.o(.text);

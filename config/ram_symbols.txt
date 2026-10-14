@@ -339,3 +339,4 @@
 03001400 gUnknown_03001400      # s32: frame counter of sub_0804F0E8 (five drifting sprites)
 03003F90 gPlayerThreads         # struct Thread[4] (guess): one per player, started by sub_0800AF90 (entry sub_080077D0)
 03004030 gUnknown_03004030      # u8[0x480]: stack of the local player's thread (sub_0800AF90)
+030049A0 gEnemyStacks           # u8[5][0x400] (guess): the enemy threads' stacks (SpawnEnemy)
