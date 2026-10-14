@@ -77,7 +77,7 @@ _0802459C:
 	lsls r0, r5, #2
 	adds r0, r0, r5
 	lsls r0, r0, #3
-	ldr r1, _08024668 @ =0x03003F90
+	ldr r1, _08024668 @ =gPlayerThreads
 	adds r4, r0, r1
 	adds r0, r4, #0
 	bl IsThreadInList
@@ -161,7 +161,7 @@ _08024630:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08024668: .4byte 0x03003F90
+_08024668: .4byte gPlayerThreads
 _0802466C: .4byte gMenuScreenThread
 _08024670: .4byte gUnknownThread_030068F0
 _08024674: .4byte gHudThread
@@ -504,7 +504,7 @@ _0802497C: .4byte gEnemyThreads
 _08024980: .4byte gUnknown_030065E0
 _08024984: .4byte gUnknown_03006630
 _08024988:
-	ldr r0, _08024A7C @ =0x03003F90
+	ldr r0, _08024A7C @ =gPlayerThreads
 	adds r4, r6, r0
 	adds r0, r4, #0
 	bl IsThreadInList
@@ -611,7 +611,7 @@ _08024A28:
 	bl sub_0800F308
 	b _08024A94
 	.align 2, 0
-_08024A7C: .4byte 0x03003F90
+_08024A7C: .4byte gPlayerThreads
 _08024A80: .4byte 0xFFFF0000
 _08024A84: .4byte 0x00001C08
 _08024A88: .4byte gBgRegsBuffer
@@ -1041,7 +1041,7 @@ _08024E50: .4byte 0x00001C08
 _08024E54: .4byte gUnknown_030065E0
 _08024E58: .4byte gUnknown_03006630
 _08024E5C:
-	ldr r0, _08024ED0 @ =0x03003F90
+	ldr r0, _08024ED0 @ =gPlayerThreads
 	adds r4, r6, r0
 	adds r0, r4, #0
 	bl IsThreadInList
@@ -1081,7 +1081,7 @@ _08024E74:
 	bl sub_0800F308
 	b _08024ED8
 	.align 2, 0
-_08024ED0: .4byte 0x03003F90
+_08024ED0: .4byte gPlayerThreads
 _08024ED4:
 	bl WaitFrame
 _08024ED8:

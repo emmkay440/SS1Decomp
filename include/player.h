@@ -8,6 +8,15 @@
 
 struct Enemy;
 
+struct PlayerStats;
+
+// What Player.unk20 points to (3 of them, with the unk1C ids).
+struct PlayerStatusRec
+{
+    u16 unk0[8];
+    u8 unk10[0xC];
+};                        // size 0x1C
+
 struct Player
 {
     u16 facing;           // +0x00 0 down, 1 left, 2 up, 3 right (a guess from sub_080191FC)
@@ -22,7 +31,7 @@ struct Player
     u16 layer2;           // +0x18 layer of the second position (sub_080191FC)
     u8 unk1A[0x2];
     u16 *unk1C;           // +0x1C 3 ids; CalcExpGain doubles EXP for each 11 (equipped item ids?)
-    u8 unk20[0x4];
+    struct PlayerStatusRec *unk20; // +0x20 3 records, allocated by sub_0800AF90
     u16 unk24[3];         // +0x24 timers of the unk1C statuses (sub_0802DA2C sets 260 - resist[1])
     u8 unk2A[0x2];
     // +0x2C: copy of gPlayerStats' stat block, plus resistances
@@ -61,9 +70,10 @@ struct Player
     u8 unkA8[0x6];
     u16 enemyDistance[5]; // +0xAE per enemy slot; 0x7FFF = none (sub_0802C174)
     u16 enemyDirection[5]; // +0xB8 per enemy slot, in sixteenths of a turn
-    u8 unkC2[0x6];
+    u16 unkC2;
+    void *unkC4;          // +0xC4 10 bytes, allocated for the local player only (sub_0800AF90)
     struct Enemy *unkC8;  // +0xC8 five copies of enemies this player hit (slot 0xFFFF = free)
-    u8 unkCC[0x4];
+    struct PlayerStats *stats; // +0xCC gPlayerStats for the local player
     void *unkD0;          // +0xD0
 };                        // size 0xD4
 
