@@ -35,7 +35,11 @@ struct Enemy
     u8 unk3A[0x2];
     u16 unk3C;           // +0x3C cleared by sub_0800E634
     u16 unk3E;
-    u8 unk40[0x10];
+    u16 statusMask;      // +0x40 bit n: status n + 1 (sub_0800E74C)
+    u16 statusTimer[4];  // +0x42 status 1 lasts (120 - unk7A) / 9 seconds
+    u16 unk4A;
+    u16 unk4C;
+    u8 unk4E[0x2];
     u16 unk50;           // +0x50 slot of the enemy sub_0800E300 checks next
     u8 unk52[0x2];
     u32 unk54;

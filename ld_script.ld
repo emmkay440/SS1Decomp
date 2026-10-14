@@ -83,7 +83,7 @@ SECTIONS {
         src/enemy_separate_one.o(.text);
         src/enemy_separate.o(.text);
         asm/enemy_update_msg.o(.text);
-        asm/code_0800E74C.o(.text);
+        src/enemy_hit_type.o(.text);
         src/enemy_slot.o(.text);
         src/enemy_damage.o(.text);
         src/enemy_util.o(.text);
