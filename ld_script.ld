@@ -332,7 +332,7 @@ SECTIONS {
         src/save_select_mode6.o(.text);
         src/save_select_mode7_setup.o(.text);
         src/save_select_mode7_scroll.o(.text);
-        asm/code_0804BD48.o(.text);
+        src/save_select_mode7_seq.o(.text);
         src/save_select_mode7.o(.text);
         src/save_select_mode8_setup.o(.text);
         src/save_select_mode8_scroll.o(.text);
