@@ -1,6 +1,7 @@
 #include "global.h"
 #include "data_record.h"
 #include "heap.h"
+#include "item.h"
 #include "sprite_obj.h"
 #include "thread.h"
 #include "window.h"
@@ -100,6 +101,66 @@ struct MessageWindow *StartMessageWindow(u32 a, u8 y, u32 c, u8 lines, s32 e, u3
     window->unk7C = 0;
     window->unk7E = 0;
     window->unk64 = 0;
+    window->thread.entry = MessageWindowThread;
+    window->thread.onExit = NULL;
+    window->thread.stack = Alloc(0x400);
+    window->thread.sp = (u8 *)window->thread.stack + 0x3FC;
+    window->thread.priority = 0x13;
+    window->thread.next = NULL;
+    window->thread.prev = NULL;
+    CreateThread(&window->thread, window);
+    gUnknown_03006420 |= 1 << window->slot;
+    return window;
+}
+
+// StartMessageWindow for an item: the window's unk64 points at the item's
+// record entry for the current language (weapons and category 5: 56 bytes
+// per language, armor and head gear: 40). With `e` == -2 the sprite object
+// is record 0x100047.
+struct MessageWindow *sub_08021E70(u32 a, u8 y, u32 c, u8 lines, s32 e, u32 text, struct Item *item)
+{
+    struct MessageWindow *window;
+    u8 slot = FindFreeMessageWindow();
+    s32 unk69;
+
+    if (slot == 0xFF)
+        return NULL;
+    unk69 = 0;
+    window = (struct MessageWindow *)&gUnknown_0300641C[slot];
+    window->slot = slot;
+    window->window = sub_08021874(0, y, 27, (lines * 13) >> 3);
+    if (e == -2)
+        sub_08026ADC(&window->obj, 0x100047, 0, 0x80000000);
+    if (window->window == NULL)
+        return NULL;
+    window->unk69 = unk69;
+    window->y = y;
+    window->lines = lines;
+    window->text = GetDataRecord(text);
+    window->unk6C = 0;
+    window->unk6E = 0;
+    window->unk74 = 1;
+    window->unk84 = e;
+    window->unk80 = 0;
+    window->unk78 = 0;
+    window->unk7A = 0;
+    window->unk7C = 0;
+    window->unk7E = 0;
+    switch (item->category)
+    {
+    case ITEM_CATEGORY_WEAPON:
+        window->unk64 = (u32)((u8 *)GetDataRecord(item->id | 0x50000) + gLanguage * 56);
+        break;
+    case ITEM_CATEGORY_HEAD:
+        window->unk64 = (u32)((u8 *)GetDataRecord(item->id | 0x70000) + gLanguage * 40);
+        break;
+    case ITEM_CATEGORY_ARMOR:
+        window->unk64 = (u32)((u8 *)GetDataRecord(item->id | 0x60000) + gLanguage * 40);
+        break;
+    case ITEM_CATEGORY_5:
+        window->unk64 = (u32)((u8 *)GetDataRecord(item->id | 0xB0000) + gLanguage * 56);
+        break;
+    }
     window->thread.entry = MessageWindowThread;
     window->thread.onExit = NULL;
     window->thread.stack = Alloc(0x400);

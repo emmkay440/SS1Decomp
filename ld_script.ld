@@ -154,7 +154,7 @@ SECTIONS {
         asm/code_0802199C.o(.text);
         src/window_kill.o(.text);
         src/message_window_start.o(.text);
-        asm/code_08021E70.o(.text);
+        asm/code_08022010.o(.text);
         src/window_checks.o(.text);
         asm/code_08022AB4.o(.text);
         src/text_number.o(.text);
