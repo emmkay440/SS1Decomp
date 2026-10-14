@@ -1,6 +1,17 @@
 #ifndef GUARD_AREA_STATE_H
 #define GUARD_AREA_STATE_H
 
+// A spot on the map that lights up when the local player stands on it
+// (sub_0801CDE0).
+struct AreaMarker
+{
+    u16 x;              // in 8-pixel units
+    u16 y;
+    u32 key;            // sprite record (only the first entry's is used)
+    u16 anim;
+    u16 unkA;
+};                      // size 0xC
+
 // The structure gUnknown_030063D8 points to: state of the current area
 // (map data pointers, flags). Only the fields code has touched so far.
 struct Unknown_030063D8
@@ -9,11 +20,17 @@ struct Unknown_030063D8
     void *unk4;         // +0x04 8-byte entries
     void *unk8;         // +0x08 freed by sub_0802173C
     u32 unkC[5];        // +0x0C
-    u8 unk20[0x28];
+    struct AreaMarker *unk20; // +0x20 unk86 markers (sub_0801CDE0)
+    void *unk24;        // +0x24 unk88 entries (sub_0801CFB0)
+    u8 unk28[0x20];
     u16 unk48[5][5];    // +0x48 five lists of ids (sub_08019B98)
     u16 unk7A[5];       // +0x7A their lengths
     u16 unk84;          // +0x84
-    u8 unk86[0x14];
+    u16 unk86;          // +0x86 number of unk20 markers
+    u16 unk88;          // +0x88 number of unk24 entries
+    u8 unk8A[0x8];
+    u16 unk92;          // +0x92 bit n: marker n reached
+    u8 unk94[0x6];
     u16 unk9A;          // +0x9A 0xFFFF at start
     u16 unk9C;          // +0x9C flags; bit 1: enemies may spawn (sub_0800EAD8)
     u8 unk9E[0xD];

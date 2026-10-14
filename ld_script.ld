@@ -146,7 +146,8 @@ SECTIONS {
         asm/code_0801B210.o(.text);
         src/message_wait.o(.text);
         src/intro_messages.o(.text);
-        asm/code_0801CDE0.o(.text);
+        asm/area_markers.o(.text);
+        asm/code_0801CFB0.o(.text);
         src/thread_starters.o(.text);
         src/area_start_pos.o(.text);
         src/unk_0802173C.o(.text);
