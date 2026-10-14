@@ -28,7 +28,8 @@ struct MapLayer
     u16 originY;       // +0x5E
     u16 unk60;
     u16 unk62;
-    u8 unk64[0x4];
+    u16 unk64;         // +0x64 origin minus unk60 (kept while flag 0x10 holds the camera)
+    u16 unk66;
     u16 unk68;         // +0x68 index into gUnknown_080FB0F8 (area id?)
     u8 unk6A[0x2];
     u16 unk6C;         // +0x6C

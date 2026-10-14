@@ -51,6 +51,8 @@ SECTIONS {
         asm/code_08004FB4.o(.text);
         src/map_load.o(.text);
         asm/code_08005278.o(.text);
+        asm/camera_follow.o(.text);
+        asm/code_08005A2C.o(.text);
         src/map.o(.text);
         asm/map_6008.o(.text);
         asm/map_attr.o(.text);
