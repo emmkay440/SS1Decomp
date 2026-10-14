@@ -1,7 +1,7 @@
 # What's next (decomp)
 
-Status as of 2026-10-13 (`make progress`): ROM matches; 770 / 983 game
-functions in C (23% of game code bytes: the small ones are mostly done).
+Status as of 2026-10-14 (`make progress`): ROM matches; 782 / 984 game
+functions in C (25% of game code bytes: the small ones are mostly done).
 m4a's C part is fully C. What's left is mostly medium and large functions
 (menus, items, map, save select) and the near misses below.
 
@@ -43,7 +43,23 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - [x] `src/enemy_util.c`: `IsEnemyTypeActive`.
 - [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
       block copies, `GetPlayerClass`, 10 functions).
-- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-13:
+- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-14:
+      - `sub_0803FE70` (asm/menu_gold_count2.s, two gold totals with the
+        count animation, sibling of `sub_0803FFFC`): logic matches; the
+        original holds `&gUnknown_0300047B` in two registers (sl, sb) and
+        spills both parameters. Draft sub_0803FE70.c.
+      - `sub_08002F48` (asm/oam_draw.s, a sprite frame into the OAM
+        buffer): 5 lines off, the frame list address (`list + frame * 4`
+        lands in the wrong registers) and the 9-bit x sign extension done
+        in place (`lsls r5, r0, #23; asrs r5, r5, #23`). Draft
+        sub_08002F48.c, with a local `struct OamData`.
+      - `sub_080473AC` (asm/save_select_chars.s, the four slot characters):
+        2 lines off; `y + (offset + 0x22)` has to add 0x22 to the
+        sign-extended offset before adding y. Draft sub_080473AC.c.
+      - `sub_08028DB0` (asm/link_sync.s, link sync thread): far off,
+        registers and the layout of the wait loop. Draft sub_08028DB0.c.
+      - `sub_080199B4` (asm/spawn_points.s, spawn point thread): far off;
+        the original keeps the constant 1 in r9. Draft sub_080199B4.c.
       - `sub_080298C0` (asm/spell_effect_thread.s, spell effect thread):
         2 lines off. `x << 16` has to go through a wider temporary
         (`unsigned long long wide = x << 16; fixedX = wide;`, found by

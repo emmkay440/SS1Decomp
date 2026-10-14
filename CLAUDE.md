@@ -20,9 +20,9 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   commit a non-matching build. Never push; pushing is only done when the
   user explicitly asks.
 
-## Current state (2026-10-13)
+## Current state (2026-10-14)
 
-770 / 983 game functions are matching C (`make progress`); every module in
+782 / 984 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -292,6 +292,29 @@ merge `ad_*` files into real modules, name things, fix style.
     the score 10 candidate of `sub_08029688` matched in the real tree
     (the reason wasn't looked into; `sub_080298C0` at 10 is really 2
     lines off). Build the best candidate before deciding.
+- Shapes from 2026-10-14:
+  - `adds rD, off, base` (offset first) where `&p[i]` gives `adds rD,
+    base, off`: integer address math, `(T *)(i * sizeof(T) + (u32)p)`
+    (`sub_08040120`), or offsets kept as `u32` (`anims = (u32)rec +
+    rec->anims; entry = (T *)(i * 12 + anims)`, draft of `sub_08002F48`).
+  - `(x & 1) << 6` built as `movs r1, #1; ands r0, r1` with the 1 reused
+    later: `(x % 2) << 6` (`sub_08047570`).
+  - One `movs rX, #0` before both arms of an `if/else` that each set the
+    same variable: a `? :` in each arm (`x = a > 1 ? 0x78 : 0;`).
+  - A function from another file that returns `bool32` but is followed by
+    `lsls r0, #24` in the caller: declare it `u8` in the caller's file.
+  - An `if (a) ... else ...` order of `adds` that `x + (c + K)` can't give
+    (the compiler reassociates the constant): the function's own
+    `(level + 1)` written inline in the product rather than in a local
+    (`sub_0802DA2C`), or a temporary.
+  - Variable-length arrays (`u8 lit[state->count];`) are what the
+    `r7` frame pointer and `mov sp, rX` adjustments mean (`src/area_markers.c`).
+    decomp-permuter handles them; it found the last piece there (an `s16`
+    temporary declared between the two arrays).
+  - decomp-permuter: `tmp/perm.sh FUNC asm_module draft.c SECONDS JOBS`
+    (scratch script; kills its workers at the time limit). It needs the
+    function alone in its asm module or at least no jump table after it,
+    else the base score is in the thousands and it finds nothing.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
