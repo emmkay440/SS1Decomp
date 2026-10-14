@@ -56,7 +56,7 @@ struct Player
     u8 unk60[0x8];
     s32 x2;               // +0x68 second position (sub_080191FC)
     s32 y2;               // +0x6C
-    u8 unk70[0x2];
+    u16 unk70;            // +0x70 set to 0xFFFE when an enemy projectile hits (sub_08037B58)
     u16 unk72;            // +0x72 sub_0800BE2C counts its changes to even values
     u16 unk74;
     u16 unk76;            // +0x76 nonzero ends the state 5 loops (sub_0800C304)

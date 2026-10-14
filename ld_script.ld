@@ -229,6 +229,8 @@ SECTIONS {
         asm/code_0803578C.o(.text);
         src/enemy_start.o(.text);
         asm/code_08036DC0.o(.text);
+        src/enemy_projectile.o(.text);
+        asm/code_08037D98.o(.text);
         src/enemy_threads.o(.text);
         asm/code_08038AF8.o(.text);
         src/thread_pool18.o(.text);
