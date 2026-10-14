@@ -58,7 +58,6 @@ SECTIONS {
         asm/map_attr.o(.text);
         src/map_bg.o(.text);
         src/unk_08006114.o(.text);
-        asm/code_08006144.o(.text);
         src/field_session.o(.text);
         asm/code_08006414.o(.text);
         src/game_flags.o(.text);
