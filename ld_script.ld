@@ -282,7 +282,8 @@ SECTIONS {
         src/unk_030005B8_2.o(.text);
         src/unk_08046128.o(.text);
         src/save_select_start.o(.text);
-        asm/code_080463F0.o(.text);
+        src/save_select_dpad.o(.text);
+        asm/code_080466A8.o(.text);
         src/save_select_setup.o(.text);
         asm/code_08046F6C.o(.text);
         src/save_select_frame.o(.text);

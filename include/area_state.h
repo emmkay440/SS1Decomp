@@ -20,6 +20,16 @@ struct AreaMarker
     u16 unkA;
 };                      // size 0xC
 
+// A warp pad of an area (a guess): standing next to it and pressing the
+// player's key moves the player to the destination.
+struct AreaWarp
+{
+    u16 x;              // in tiles
+    u16 y;
+    u16 destX;
+    u16 destY;
+};
+
 // The structure gUnknown_030063D8 points to: state of the current area
 // (map data pointers, flags). Only the fields code has touched so far.
 struct Unknown_030063D8
@@ -30,7 +40,9 @@ struct Unknown_030063D8
     u32 unkC[5];        // +0x0C
     struct AreaMarker *unk20; // +0x20 unk86 markers (sub_0801CDE0)
     void *unk24;        // +0x24 unk88 entries (sub_0801CFB0)
-    u8 unk28[0x20];
+    u8 unk28[0x18];
+    struct AreaWarp *unk40; // +0x40 unk96 warp pads (sub_0801EA78)
+    u8 unk44[0x4];
     u16 unk48[5][5];    // +0x48 five lists of ids (sub_08019B98)
     u16 unk7A[5];       // +0x7A their lengths
     u16 unk84;          // +0x84
@@ -38,7 +50,9 @@ struct Unknown_030063D8
     u16 unk88;          // +0x88 number of unk24 entries
     u8 unk8A[0x8];
     u16 unk92;          // +0x92 bit n: marker n reached
-    u8 unk94[0x6];
+    u16 unk94;
+    u16 unk96;          // +0x96 number of unk40 warp pads
+    u8 unk98[0x2];
     u16 unk9A;          // +0x9A 0xFFFF at start
     u16 unk9C;          // +0x9C flags; bit 1: enemies may spawn (sub_0800EAD8)
     u16 unk9E;          // +0x9E number of unk8 spawn points
