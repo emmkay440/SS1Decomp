@@ -256,8 +256,7 @@ _08036FB8:
 	movs r0, #0
 	str r0, [sp, #0xb8]
 
-	thumb_func_start sub_08036FDC
-sub_08036FDC: @ 0x08036FDC
+_08036FDC:
 	bl sub_080271D0
 	cmp r0, #0
 	beq _08036FE6
@@ -1328,7 +1327,7 @@ _0803787A:
 	mov r3, r8
 	cmp r3, #0x11
 	beq _080378B0
-	bl sub_08036FDC
+	bl _08036FDC
 _080378B0:
 	bl sub_080292D0
 	mov r4, sl

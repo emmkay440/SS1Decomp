@@ -175,8 +175,7 @@ _0800CC78:
 _0800CD38: .4byte 0x0000FFFF
 _0800CD3C: .4byte 0x0000FFC4
 
-	thumb_func_start sub_0800CD40
-sub_0800CD40: @ 0x0800CD40
+_0800CD40:
 	movs r0, #0
 	str r0, [sp, #0x90]
 	movs r1, #0
@@ -2750,7 +2749,7 @@ _0800E0F6:
 	ands r0, r1
 	cmp r0, #0
 	beq _0800E112
-	bl sub_0800CD40
+	bl _0800CD40
 _0800E112:
 	ldr r0, _0800E138 @ =gUnknown_030063D8
 	ldr r0, [r0]

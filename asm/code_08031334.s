@@ -519,7 +519,7 @@ _080317B4:
 	bl sub_0802934C
 	movs r0, #0x17
 	str r0, [r7, #0x5c]
-	bl sub_080321E0
+	bl _080321E0
 _080317CE:
 	ldr r0, [sp, #0x80]
 	cmp r0, #0
@@ -1758,8 +1758,7 @@ _080321AC:
 	cmp r0, #0
 	bne _080321F4
 
-	thumb_func_start sub_080321E0
-sub_080321E0: @ 0x080321E0
+_080321E0:
 	bl GetMultiplayerId
 	ldr r2, _08032298 @ =gPlayers
 	movs r1, #0xd4

@@ -170,8 +170,7 @@ _0801B368:
 	bl sub_08021504
 	bl _0801C64E
 
-	thumb_func_start sub_0801B370
-sub_0801B370: @ 0x0801B370
+_0801B370:
 	ldr r3, _0801B3E8 @ =gPaletteBuffer
 	ldr r4, _0801B3EC @ =gPlayerStats
 	movs r0, #0x9e
@@ -2596,7 +2595,7 @@ _0801C662:
 	bl sub_080074CC
 	cmp r0, #0
 	bne _0801C674
-	bl sub_0801B370
+	bl _0801B370
 _0801C674:
 	add sp, #0x28
 	pop {r3, r4, r5}

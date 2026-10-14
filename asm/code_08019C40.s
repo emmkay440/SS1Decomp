@@ -2079,8 +2079,7 @@ _0801ACD8:
 	ldrh r0, [r6, #6]
 	ands r0, r1
 
-	thumb_func_start sub_0801AD00
-sub_0801AD00: @ 0x0801AD00
+_0801AD00:
 	cmp r0, #0
 	bne _0801AD10
 	mov r1, sb
