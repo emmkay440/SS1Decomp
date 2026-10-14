@@ -172,7 +172,8 @@ SECTIONS {
         asm/code_08023048.o(.text);
         asm/number_above.o(.text);
         src/player_rise_effect.o(.text);
-        asm/code_080244F4.o(.text);
+        src/link_lost.o(.text);
+        asm/code_080247D0.o(.text);
         src/sprite_obj.o(.text);
         src/thread_slots.o(.text);
         asm/code_08026D98.o(.text);
