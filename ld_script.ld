@@ -350,7 +350,7 @@ SECTIONS {
         src/palette_fade_to.o(.text);
         src/palette_fill.o(.text);
         src/palette_save.o(.text);
-        asm/code_0804ED80.o(.text);
+        src/picture_screen.o(.text);
         src/sprite_drift.o(.text);
         asm/code_0804F31C.o(.text);
         src/unk_0804F99C.o(.text);

@@ -340,3 +340,4 @@
 03003F90 gPlayerThreads         # struct Thread[4] (guess): one per player, started by sub_0800AF90 (entry sub_080077D0)
 03004030 gUnknown_03004030      # u8[0x480]: stack of the local player's thread (sub_0800AF90)
 030049A0 gEnemyStacks           # u8[5][0x400] (guess): the enemy threads' stacks (SpawnEnemy)
+03001290 gUnknown_03001290      # struct SpriteObj[4]: the four player characters (sub_0804ED80 kind 30)
