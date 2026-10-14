@@ -125,7 +125,8 @@ SECTIONS {
         src/inventory_misc.o(.text);
         src/item_bonus2.o(.text);
         src/name_list.o(.text);
-        asm/code_0801516C.o(.text);
+        src/start_equipment.o(.text);
+        asm/code_08015478.o(.text);
         src/heal_near.o(.text);
         src/skill_check2.o(.text);
         src/stats.o(.text);
