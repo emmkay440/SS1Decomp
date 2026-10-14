@@ -27,7 +27,8 @@ struct SaveSlotInfo
     u16 attack;
     u16 defense;
     u16 name[16];
-    u8 unk34[0x4];
+    u16 frame;        // +0x34 animation of the character on the save select screen
+    u16 timer;
 };                    // size 0x38
 
 // Byte sum of the first SAVE_DATA_SIZE bytes of buf; the save stores ~sum.

@@ -270,7 +270,8 @@ SECTIONS {
         src/save_select_setup.o(.text);
         asm/code_08046F6C.o(.text);
         src/save_select_frame.o(.text);
-        asm/code_080473AC.o(.text);
+        asm/save_select_chars.o(.text);
+        asm/code_08047570.o(.text);
         src/save_select_stats.o(.text);
         src/name_entry_cursor.o(.text);
         asm/code_08047F6C.o(.text);
