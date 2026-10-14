@@ -74,10 +74,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         lines off; the four-block loop keeps its counter in r8 and the
         table base `gUnknown_080FB0F8` reloaded per use, C hoists the base
         and puts the counter in r9. Draft sub_08004FB4.c.
-      - `sub_0800FA74` (asm/drop_spot.s, find or take a field item slot):
-        about 70 lines off. The original places the "found a free slot"
-        tail before the search loop and keeps the stack slots swapped
-        (sp+16/sp+20). Draft sub_0800FA74.c.
       - `sub_080298C0` (asm/spell_effect_thread.s, spell effect thread):
         2 lines off. `x << 16` has to go through a wider temporary
         (`unsigned long long wide = x << 16; fixedX = wide;`, found by
@@ -161,7 +157,12 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         written differently. A do/while(0) around either call doesn't help.
       - `sub_08010B48` / `sub_08012230` (asm/equip_has.s, about 700 bytes
         each): not retried; drafts equip_has_*.c, permuter score 1445.
-      Solved on 2026-10-14: `sub_0800588C` (src/camera_follow.c): declared
+      Solved on 2026-10-14: `sub_0800FA74` and its sibling `sub_0800FC70`
+      (src/drop_spot.c): `field = gFieldItems;` inside the early `goto
+      fail` branch (decomp-permuter) puts the "found" tail before the
+      search loop; `field = gFieldItems; field[n]` for the oldest slot;
+      both abs values computed before the comparisons.
+      `sub_0800588C` (src/camera_follow.c): declared
       `u32` with no return statement (the original never uses r0 as
       scratch), the two low parts loaded before the stores, `unk60 +
       unk64` operand order.
