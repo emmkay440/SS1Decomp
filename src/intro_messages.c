@@ -21,10 +21,10 @@ void sub_0801CC68(void)
 {
     struct Unknown_0802292C *window;
 
-    if (!(gPlayerStats.unk272.flags & 4) || sub_080074F0())
+    if (!(gPlayerStats.unk270.b.unk272.flags & 4) || sub_080074F0())
         sub_0800F53C();
     gPlayers[GetMultiplayerId()].unk10 |= 1;
-    if (!(gPlayerStats.unk272.flags & 4))
+    if (!(gPlayerStats.unk270.b.unk272.flags & 4))
     {
         while (!sub_0800F298())
         {
@@ -53,7 +53,7 @@ void sub_0801CC68(void)
                 return;
             WaitFrame();
         } while (!sub_0802294C(window) && sub_08007544());
-        gPlayerStats.unk272.flags |= 4;
+        gPlayerStats.unk270.b.unk272.flags |= 4;
     }
     gPlayers[GetMultiplayerId()].unk10 &= ~1;
 }

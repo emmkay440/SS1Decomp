@@ -91,16 +91,29 @@ struct PlayerStats
     struct Item inventory[INVENTORY_SIZE]; // +0x88
     struct Item storage[60]; // +0xEC storage box: 4 pages x 5 x 3 (GetStorage/SetStorage)
     struct Item unk1DC[3][12]; // +0x1DC three 12-item lists (sub_08013B94)
-    u8 unk26C[0x4];
-    u16 unk270_0:9;
-    u16 unk270_9:1;   // +0x270 bit 9: shown on the save select screen (SaveSlotInfo.unk5)
-    u16 unk270_10:6;
-    struct
+    u32 unk26C;       // +0x26C 0 until the first start (sub_08006144)
+    union
     {
-        u32 unk0:4;
-        u32 flags:20;  // +0x272 bits 4-23; bit 2: the three messages of sub_0801CC68 were shown
-    } __attribute__((packed)) unk272;
-    u8 unk275[0x3];
+        struct
+        {
+            u32 unk0:10;   // bit 9: shown on the save select screen (SaveSlotInfo.unk5)
+            u32 unk10:10;  // sub_08006144 copies this one or unk0 to gUnknown_03003D08
+            u32 unk20:12;
+        } w;
+        struct
+        {
+            u16 unk0;
+            struct
+            {
+                u32 unk0:4;
+                u32 flags:20;  // +0x272 bits 4-23; bit 2: the three messages of sub_0801CC68 were shown
+            } __attribute__((packed)) unk272;
+            u32 unk275_0:2;
+            u32 quit:1;     // +0x275 bit 2: set when the field session ends (sub_08006144)
+            u32 unk275_3:5;
+            u8 unk276[2];
+        } __attribute__((packed)) b;
+    } unk270;              // +0x270
     struct Options options; // +0x278 last saved word
 };
 
