@@ -197,7 +197,6 @@ SECTIONS {
         src/unk_0802D49C.o(.text);
         asm/code_0802D53C.o(.text);
         src/unk_0802D98C.o(.text);
-        asm/code_0802DA2C.o(.text);
         src/spell_damage_player.o(.text);
         asm/code_0802DC18.o(.text);
         src/effect_pools.o(.text);
