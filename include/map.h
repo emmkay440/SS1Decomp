@@ -31,9 +31,10 @@ struct MapLayer
     u16 unk64;         // +0x64 origin minus unk60 (kept while flag 0x10 holds the camera)
     u16 unk66;
     u16 unk68;         // +0x68 index into gUnknown_080FB0F8 (area id?)
-    u8 unk6A[0x2];
+    u16 unk6A;         // +0x6A area for sub_08004DE0 (sub_0801AF3C)
     u16 unk6C;         // +0x6C
-    u8 unk6E[0xA];
+    u16 unk6E;         // +0x6E map index in the area
+    u8 unk70[0x8];
     u32 flags;         // +0x78
     u8 unk7C[0x10];
     u8 *record;        // +0x8C the area's data record (second layer, sub_08004EF8)

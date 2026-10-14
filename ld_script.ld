@@ -145,6 +145,7 @@ SECTIONS {
         asm/spawn_points.o(.text);
         src/area_list_find.o(.text);
         asm/code_08019C40.o(.text);
+        asm/area_change_thread.o(.text);
         src/menu_open.o(.text);
         asm/code_0801B210.o(.text);
         src/message_wait.o(.text);
