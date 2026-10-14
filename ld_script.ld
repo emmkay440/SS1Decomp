@@ -100,6 +100,7 @@ SECTIONS {
         src/item_flags.o(.text);
         src/inventory_add.o(.text);
         asm/code_0800FA74.o(.text);
+        asm/can_equip.o(.text);
         src/equip_bonus.o(.text);
         asm/equip_has.o(.text);
         src/equip_bonus2.o(.text);
