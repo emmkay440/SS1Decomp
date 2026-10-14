@@ -139,7 +139,7 @@ SECTIONS {
         src/area_enter_pos.o(.text);
         asm/code_080193BC.o(.text);
         src/enemy_spawner_start.o(.text);
-        asm/code_080199B4.o(.text);
+        asm/spawn_points.o(.text);
         src/area_list_find.o(.text);
         asm/code_08019C40.o(.text);
         src/menu_open.o(.text);

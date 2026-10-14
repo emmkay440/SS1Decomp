@@ -1,6 +1,14 @@
 #ifndef GUARD_AREA_STATE_H
 #define GUARD_AREA_STATE_H
 
+// A place where enemies spawn when a player comes near (sub_080199B4).
+struct SpawnPoint
+{
+    u16 x;              // in 8-pixel units; the first word is -1 once used up
+    u16 y;
+    u8 unk4[0x2C];
+};                      // size 0x30
+
 // A spot on the map that lights up when the local player stands on it
 // (sub_0801CDE0).
 struct AreaMarker
@@ -18,7 +26,7 @@ struct Unknown_030063D8
 {
     void *unk0;         // +0x00 (u16 at +0xC of it: a count)
     void *unk4;         // +0x04 8-byte entries
-    void *unk8;         // +0x08 freed by sub_0802173C
+    struct SpawnPoint *unk8; // +0x08 spawn points; freed by sub_0802173C
     u32 unkC[5];        // +0x0C
     struct AreaMarker *unk20; // +0x20 unk86 markers (sub_0801CDE0)
     void *unk24;        // +0x24 unk88 entries (sub_0801CFB0)
@@ -33,7 +41,8 @@ struct Unknown_030063D8
     u8 unk94[0x6];
     u16 unk9A;          // +0x9A 0xFFFF at start
     u16 unk9C;          // +0x9C flags; bit 1: enemies may spawn (sub_0800EAD8)
-    u8 unk9E[0xD];
+    u16 unk9E;          // +0x9E number of unk8 spawn points
+    u8 unkA0[0xB];
     u8 unkAB;           // +0xAB set once SignalEvent(3000) has been sent
     u8 unkAC[0x20];
     u8 unkCC[0xE];      // +0xCC indexed past its end: row * 15 + entry (sub_080216E0)
