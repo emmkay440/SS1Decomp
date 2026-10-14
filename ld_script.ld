@@ -51,7 +51,7 @@ SECTIONS {
         asm/map_tile_anim.o(.text);
         src/map_load.o(.text);
         asm/code_08005278.o(.text);
-        asm/camera_follow.o(.text);
+        src/camera_follow.o(.text);
         asm/code_08005A2C.o(.text);
         src/map.o(.text);
         asm/map_6008.o(.text);
