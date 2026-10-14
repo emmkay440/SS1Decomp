@@ -205,8 +205,7 @@ _080053FE:
 	adds r1, #0x6c
 	ldrh r1, [r1]
 
-	thumb_func_start sub_08005420
-sub_08005420: @ 0x08005420
+_08005420:
 	cmp r0, r1
 	bne _08005468
 	cmp r2, #8
