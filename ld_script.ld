@@ -336,7 +336,7 @@ SECTIONS {
         src/save_select_mode7.o(.text);
         src/save_select_mode8_setup.o(.text);
         src/save_select_mode8_scroll.o(.text);
-        asm/code_0804C548.o(.text);
+        src/save_select_mode8_seq.o(.text);
         src/save_select_mode8.o(.text);
         src/unk_0804C9C4.o(.text);
         asm/code_0804CA84.o(.text);
