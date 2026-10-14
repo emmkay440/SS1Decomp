@@ -233,7 +233,7 @@ SECTIONS {
         src/menu_stats_changed.o(.text);
         src/menu_skill_tick.o(.text);
         src/menu_stat_sync.o(.text);
-        asm/code_0803FE70.o(.text);
+        asm/menu_gold_count2.o(.text);
         src/menu_gold_count.o(.text);
         asm/code_08040120.o(.text);
         asm/menu_slot_item.o(.text);
