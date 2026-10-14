@@ -193,6 +193,7 @@ SECTIONS {
         src/effect_obj4.o(.text);
         src/unk_08029BB4.o(.text);
         asm/code_08029C44.o(.text);
+        src/skill_thread_start.o(.text);
         asm/target_in_front.o(.text);
         asm/code_0802C25C.o(.text);
         src/item_use_thread.o(.text);
