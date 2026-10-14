@@ -95,6 +95,7 @@ SECTIONS {
         asm/code_0800F470.o(.text);
         asm/drop_item.o(.text);
         asm/code_0800F53C.o(.text);
+        src/item_flags.o(.text);
         src/inventory_add.o(.text);
         asm/code_0800FA74.o(.text);
         src/equip_bonus.o(.text);
