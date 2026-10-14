@@ -22,7 +22,9 @@ struct Player
     u16 layer2;           // +0x18 layer of the second position (sub_080191FC)
     u8 unk1A[0x2];
     u16 *unk1C;           // +0x1C 3 ids; CalcExpGain doubles EXP for each 11 (equipped item ids?)
-    u8 unk20[0xC];
+    u8 unk20[0x4];
+    u16 unk24[3];         // +0x24 timers of the unk1C statuses (sub_0802DA2C sets 260 - resist[1])
+    u8 unk2A[0x2];
     // +0x2C: copy of gPlayerStats' stat block, plus resistances
     u16 str;              // +0x2C
     u16 vit;              // +0x2E
