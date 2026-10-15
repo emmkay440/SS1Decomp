@@ -43,7 +43,19 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - [x] `src/enemy_util.c`: `IsEnemyTypeActive`.
 - [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
       block copies, `GetPlayerClass`, 10 functions).
-- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-14:
+- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-15:
+      - `sub_08015478` (asm/player_status_tick.s, status timers): 12 lines
+        off; `&player->unk24` and a zero sit in each other's registers
+        (r7/r4).
+      - `sub_0803861C` (asm/enemy_projectile2.s, sibling of
+        `sub_08037B58`): about 65 lines off around the hit test; the
+        original copies the 12-bit positions to the stack after
+        `sub_08007670()`.
+      - `sub_08023048` (asm/item_icon.s, item icon): about 85 lines of
+        register differences (flags, x, y and the counter).
+      - `sub_0804ADF0` (asm/code_0804ADF0.s): 4 lines off after the
+        permuter's shared object pointer; at `done:` the compiler reuses a
+        register it knows is 0 where the original loads a fresh 0.
       - `sub_0803FE70` (asm/menu_gold_count2.s, two gold totals with the
         count animation, sibling of `sub_0803FFFC`): logic matches; the
         original holds `&gUnknown_0300047B` in two registers (sl, sb) and

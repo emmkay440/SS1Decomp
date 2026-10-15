@@ -20,9 +20,9 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   commit a non-matching build. Never push; pushing is only done when the
   user explicitly asks.
 
-## Current state (2026-10-14)
+## Current state (2026-10-15)
 
-796 / 977 game functions are matching C (`make progress`); every module in
+809 / 977 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -366,6 +366,24 @@ merge `ad_*` files into real modules, name things, fix style.
   - Accepted fakes from decomp-permuter when nothing natural was found:
     `do { x = f(); } while (0);` (src/link_lost.c, probably a macro) and
     `angle++; angle--;` (src/save_select_mode2_seq.c), both commented.
+- Shapes from 2026-10-15:
+  - A `switch` over a `u8`/`u16` gives signed compares (`cmp #1; bgt;
+    cmp #0; blt`) without any cast; an added `(s8)`/`(s16)` cast puts in
+    a sign extension. A plain `if (x <= 1 && x >= 0)` on a `u16` drops
+    the `>= 0` test (src/name_entry_move.c).
+  - The out-of-range branch of a jump table going to the function end:
+    `case 0: default: return;` (src/item_icon draft).
+  - A retry loop with the success path first and the retry jump at the
+    end: a label and `goto retry` (src/link_save_reset.c).
+  - A 4-byte size difference with otherwise equal listings is an extra
+    literal pool word: look for the first `ldr rX, [pc, #N]` whose offset
+    differs.
+  - A decompress-and-store with the destination's address loaded before
+    the call: `void **p = &gPtr; *p = f();` in a block, for each global
+    (src/save_select_bg.c).
+  - decomp-permuter runs leave their results in `tmp/permute/<func>/
+    output-<score>-N/source.c`; `tmp/perm.sh` now times out each compile
+    (an agbcc process once hung for a day on a bad candidate).
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
