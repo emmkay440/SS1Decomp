@@ -341,3 +341,4 @@
 03004030 gUnknown_03004030      # u8[0x480]: stack of the local player's thread (sub_0800AF90)
 030049A0 gEnemyStacks           # u8[5][0x400] (guess): the enemy threads' stacks (SpawnEnemy)
 03001290 gUnknown_03001290      # struct SpriteObj[4]: the four player characters (sub_0804ED80 kind 30)
+03000054 gUnknown_03000054      # u32: gFrameCounter at the last sub_08015478 call (status timers tick once per frame)

@@ -12,6 +12,7 @@ gUnknown_0300001C = 0x0300001C;
 gFadeDirection = 0x0300001E;
 gFadeFlags = 0x03000020;
 gUnknownThread_03000028 = 0x03000028;
+gUnknown_03000054 = 0x03000054;
 gUnknown_03000058 = 0x03000058;
 gUnknown_0300005C = 0x0300005C;
 gUnknown_03000060 = 0x03000060;
