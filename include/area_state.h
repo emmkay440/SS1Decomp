@@ -20,6 +20,40 @@ struct AreaTrap
     u16 unkA;
 };                      // size 0xC
 
+// A trap that stays active until all of its switches are on (bits of
+// unk92) (sub_0801D2C4).
+struct AreaSwitchedTrap
+{
+    u16 x;              // in 8-pixel units
+    u16 y;
+    u16 switches[8];    // 1-based bit numbers in unk92; 0: unused
+    u32 key;            // +0x14 sprite record (only the first entry's is used)
+    u16 anim;           // +0x18
+    u16 unk1A;
+};                      // size 0x1C
+
+// A trap that goes off by itself every `period` frames (sub_0801D5D8).
+struct AreaTimedTrap
+{
+    u16 x;              // in 8-pixel units
+    u16 y;
+    u16 period;
+    u16 anim;
+    u32 key;            // sprite record
+};                      // size 0xC
+
+// A pillar that blocks players and enemies until all of its switches are
+// on (bits of unk92); then it rises out of the way (sub_0801DBC8).
+struct AreaPillar
+{
+    u16 x;              // in 8-pixel units
+    u16 y;
+    u16 anim;
+    u16 fixed;          // nonzero: never rises
+    u16 switches[8];    // 1-based bit numbers in unk92; 0: unused
+    u32 key;            // +0x18 sprite record (only the first entry's is used)
+};                      // size 0x1C
+
 // A switch on the map that animates while a player stands on it
 // (sub_0801D928).
 struct AreaSwitch
@@ -62,9 +96,11 @@ struct Unknown_030063D8
     u32 unkC[5];        // +0x0C
     struct AreaMarker *unk20; // +0x20 unk86 markers (sub_0801CDE0)
     struct AreaTrap *unk24; // +0x24 unk88 traps (sub_0801CFB0)
-    u8 unk28[0x8];
+    struct AreaSwitchedTrap *unk28; // +0x28 unk8A traps (sub_0801D2C4)
+    struct AreaTimedTrap *unk2C; // +0x2C unk8C timed traps (sub_0801D5D8)
     struct AreaSwitch *unk30; // +0x30 unk8E switches (sub_0801D928)
-    u8 unk34[0xC];
+    struct AreaPillar *unk34; // +0x34 unk90 pillars (sub_0801DBC8)
+    u8 unk38[0x8];
     struct AreaWarp *unk40; // +0x40 unk96 warp pads (sub_0801EA78)
     u8 unk44[0x4];
     u16 unk48[5][5];    // +0x48 five lists of ids (sub_08019B98)
@@ -72,9 +108,10 @@ struct Unknown_030063D8
     u16 unk84;          // +0x84
     u16 unk86;          // +0x86 number of unk20 markers
     u16 unk88;          // +0x88 number of unk24 entries
-    u8 unk8A[0x4];
+    u16 unk8A;          // +0x8A number of unk28 traps
+    u16 unk8C;          // +0x8C number of unk2C timed traps
     u16 unk8E;          // +0x8E number of unk30 switches
-    u8 unk90[0x2];
+    u16 unk90;          // +0x90 number of unk34 pillars
     u16 unk92;          // +0x92 bit n: marker n reached
     u16 unk94;
     u16 unk96;          // +0x96 number of unk40 warp pads

@@ -161,9 +161,11 @@ SECTIONS {
         src/area_markers.o(.text);
         asm/code_0801CFB0.o(.text);
         src/area_traps.o(.text);
-        asm/code_0801D2C4.o(.text);
+        asm/area_switched_traps.o(.text);
+        src/area_timed_traps.o(.text);
         src/area_switches.o(.text);
-        asm/code_0801DBC8.o(.text);
+        asm/area_pillars.o(.text);
+        asm/code_0801E014.o(.text);
         src/thread_starters.o(.text);
         src/area_start_pos.o(.text);
         src/unk_0802173C.o(.text);
