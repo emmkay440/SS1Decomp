@@ -160,6 +160,8 @@ SECTIONS {
         src/intro_messages.o(.text);
         src/area_markers.o(.text);
         asm/code_0801CFB0.o(.text);
+        asm/area_traps.o(.text);
+        asm/code_0801D2C4.o(.text);
         src/area_switches.o(.text);
         asm/code_0801DBC8.o(.text);
         src/thread_starters.o(.text);

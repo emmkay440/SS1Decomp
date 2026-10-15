@@ -9,6 +9,17 @@ struct SpawnPoint
     u8 unk4[0x2C];
 };                      // size 0x30
 
+// A trap on the map: it hurts the local player standing on it once per
+// trigger (sub_0801CFB0).
+struct AreaTrap
+{
+    u16 x;              // in 8-pixel units
+    u16 y;
+    u32 key;            // sprite record (only the first entry's is used)
+    u16 anim;
+    u16 unkA;
+};                      // size 0xC
+
 // A switch on the map that animates while a player stands on it
 // (sub_0801D928).
 struct AreaSwitch
@@ -50,7 +61,7 @@ struct Unknown_030063D8
     struct SpawnPoint *unk8; // +0x08 spawn points; freed by sub_0802173C
     u32 unkC[5];        // +0x0C
     struct AreaMarker *unk20; // +0x20 unk86 markers (sub_0801CDE0)
-    void *unk24;        // +0x24 unk88 entries (sub_0801CFB0)
+    struct AreaTrap *unk24; // +0x24 unk88 traps (sub_0801CFB0)
     u8 unk28[0x8];
     struct AreaSwitch *unk30; // +0x30 unk8E switches (sub_0801D928)
     u8 unk34[0xC];
