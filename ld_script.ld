@@ -295,7 +295,7 @@ SECTIONS {
         asm/code_08047780.o(.text);
         src/save_select_stats.o(.text);
         src/name_entry_cursor.o(.text);
-        asm/code_08047F6C.o(.text);
+        src/name_entry_move.o(.text);
         asm/name_entry_char.o(.text);
         src/save_select_misc.o(.text);
         src/save_select_thread.o(.text);
