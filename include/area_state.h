@@ -9,6 +9,17 @@ struct SpawnPoint
     u8 unk4[0x2C];
 };                      // size 0x30
 
+// A switch on the map that animates while a player stands on it
+// (sub_0801D928).
+struct AreaSwitch
+{
+    u16 x;              // in 8-pixel units
+    u16 y;
+    u16 unk4;
+    u16 unk6;           // nonzero: not animated
+    u32 key;            // sprite record (only the first entry's is used)
+};                      // size 0xC
+
 // A spot on the map that lights up when the local player stands on it
 // (sub_0801CDE0).
 struct AreaMarker
@@ -40,7 +51,9 @@ struct Unknown_030063D8
     u32 unkC[5];        // +0x0C
     struct AreaMarker *unk20; // +0x20 unk86 markers (sub_0801CDE0)
     void *unk24;        // +0x24 unk88 entries (sub_0801CFB0)
-    u8 unk28[0x18];
+    u8 unk28[0x8];
+    struct AreaSwitch *unk30; // +0x30 unk8E switches (sub_0801D928)
+    u8 unk34[0xC];
     struct AreaWarp *unk40; // +0x40 unk96 warp pads (sub_0801EA78)
     u8 unk44[0x4];
     u16 unk48[5][5];    // +0x48 five lists of ids (sub_08019B98)
@@ -48,7 +61,9 @@ struct Unknown_030063D8
     u16 unk84;          // +0x84
     u16 unk86;          // +0x86 number of unk20 markers
     u16 unk88;          // +0x88 number of unk24 entries
-    u8 unk8A[0x8];
+    u8 unk8A[0x4];
+    u16 unk8E;          // +0x8E number of unk30 switches
+    u8 unk90[0x2];
     u16 unk92;          // +0x92 bit n: marker n reached
     u16 unk94;
     u16 unk96;          // +0x96 number of unk40 warp pads

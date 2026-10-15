@@ -160,6 +160,8 @@ SECTIONS {
         src/intro_messages.o(.text);
         src/area_markers.o(.text);
         asm/code_0801CFB0.o(.text);
+        src/area_switches.o(.text);
+        asm/code_0801DBC8.o(.text);
         src/thread_starters.o(.text);
         src/area_start_pos.o(.text);
         src/unk_0802173C.o(.text);
