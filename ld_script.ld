@@ -288,7 +288,7 @@ SECTIONS {
         src/save_select_dpad.o(.text);
         asm/code_080466A8.o(.text);
         src/save_select_setup.o(.text);
-        asm/code_08046F6C.o(.text);
+        src/save_select_bg.o(.text);
         src/save_select_frame.o(.text);
         asm/save_select_chars.o(.text);
         src/save_select_cursor.o(.text);
