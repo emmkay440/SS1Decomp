@@ -168,7 +168,7 @@ SECTIONS {
         asm/code_0801E014.o(.text);
         src/npc_gift_f160.o(.text);
         asm/npc_walker.o(.text);
-        asm/npc_gift_f9c8.o(.text);
+        src/npc_gift_f9c8.o(.text);
         src/npc_gift.o(.text);
         src/npc_gift_01b0.o(.text);
         src/npc_gift_0604.o(.text);
