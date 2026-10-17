@@ -343,3 +343,4 @@
 03001290 gUnknown_03001290      # struct SpriteObj[4]: the four player characters (sub_0804ED80 kind 30)
 03000054 gUnknown_03000054      # u32: gFrameCounter at the last sub_08015478 call (status timers tick once per frame)
 03006470 gUnknown_03006470      # struct SpriteObj: item icons (sub_08023048)
+03000A10 gUnknown_03000A10      # struct SpriteObj: second sprite object of the picture screens (sub_0804CA84)
