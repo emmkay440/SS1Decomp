@@ -166,6 +166,7 @@ SECTIONS {
         src/area_switches.o(.text);
         asm/area_pillars.o(.text);
         asm/code_0801E014.o(.text);
+        asm/npc_gift_f9c8.o(.text);
         src/npc_gift.o(.text);
         asm/code_080201B0.o(.text);
         src/thread_starters.o(.text);
