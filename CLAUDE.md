@@ -392,6 +392,16 @@ merge `ad_*` files into real modules, name things, fix style.
     instruction streams (`diff` of the asm with labels normalized).
   - The case order of a `switch` sets the body order; a case whose body
     is a `return` placed last in the original goes last in the source.
+  - A register copy of a byte value right before two calls that take it
+    (`adds r5, r6, #0`): the variable is a `u32` holding the `u8` result
+    (`priority = (u8)f();`), so passing it to a `u8` parameter is a move
+    (src/npc_gift_0604.c, npc_gift_f9c8.c).
+  - `ldrsh` of an `s16` field before `lsls #19; asrs #16`: `(s16)(p->x *
+    8)`; `(s16)(p->x << 3)` lets the compiler use `ldrh`
+    (src/npc_gift_f160.c).
+  - decomp-permuter scores count `bl` offsets: an output of score 5-10 can
+    already match. Copy it to src/ and run `fcheck.py` before dismissing
+    it (sub_0801F9C8 matched at score 5).
   - Still open, seen in `sub_08004AE4` and the spell threads: the original
     sign-extends an `s16` before an add whose result is truncated to 16
     bits again (`lsls; asrs; adds; lsls; lsrs`); every C form tried drops

@@ -44,10 +44,9 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
       block copies, `GetPlayerClass`, 10 functions).
 - [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-17:
-      - `sub_0801F9C8` (asm/npc_gift_f9c8.s): only the priority copy
-        (`adds r5, r6, #0`) before the two-layer draw in anim cases 2/3.
-      - `sub_0801F160` (asm/npc_gift_f160.s): 28 lines; the spot is
-        read with `ldrsh` for sub_08005FC4 where C narrows it to `ldrh`.
+      - `sub_08020ADC` (asm/npc_gift_0adc.s) and `sub_0801F4DC`
+        (asm/npc_walker.s): area 0 characters, structure right, registers
+        off (the original spills the spot pointer).
       - `sub_08004AE4` (asm/code_08004AE4.s, map entry scrolling) and
         `sub_08002790` (asm/code_08002790.s, link lobby): far off, see
         the open sign-extension shape in CLAUDE.md.
