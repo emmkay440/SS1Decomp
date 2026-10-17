@@ -171,7 +171,8 @@ SECTIONS {
         asm/npc_gift_f9c8.o(.text);
         src/npc_gift.o(.text);
         src/npc_gift_01b0.o(.text);
-        asm/code_08020604.o(.text);
+        src/npc_gift_0604.o(.text);
+        asm/code_08020ADC.o(.text);
         src/thread_starters.o(.text);
         src/area_start_pos.o(.text);
         src/unk_0802173C.o(.text);
