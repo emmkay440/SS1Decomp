@@ -167,7 +167,7 @@ SECTIONS {
         asm/area_pillars.o(.text);
         asm/code_0801E014.o(.text);
         src/npc_gift_f160.o(.text);
-        asm/code_0801F4DC.o(.text);
+        asm/npc_walker.o(.text);
         asm/npc_gift_f9c8.o(.text);
         src/npc_gift.o(.text);
         src/npc_gift_01b0.o(.text);
