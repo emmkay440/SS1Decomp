@@ -191,7 +191,8 @@ SECTIONS {
         src/player_rise_effect.o(.text);
         src/link_lost.o(.text);
         src/link_save_reset.o(.text);
-        asm/code_08024B68.o(.text);
+        src/quit_to_title.o(.text);
+        asm/code_0802501C.o(.text);
         src/warp_spot_thread.o(.text);
         asm/code_08025BFC.o(.text);
         src/sprite_obj.o(.text);
