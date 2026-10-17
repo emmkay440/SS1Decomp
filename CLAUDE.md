@@ -20,9 +20,9 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   commit a non-matching build. Never push; pushing is only done when the
   user explicitly asks.
 
-## Current state (2026-10-15)
+## Current state (2026-10-17)
 
-809 / 977 game functions are matching C (`make progress`); every module in
+815 / 977 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -384,6 +384,18 @@ merge `ad_*` files into real modules, name things, fix style.
   - decomp-permuter runs leave their results in `tmp/permute/<func>/
     output-<score>-N/source.c`; `tmp/perm.sh` now times out each compile
     (an agbcc process once hung for a day on a bad candidate).
+- Shapes from 2026-10-17:
+  - The area 0 characters (src/npc_gift*.c, module asm/code_0801E014.s
+    and asm/code_08020604.s) are one family: the same message/item state
+    machine with different spot offsets, items, messages and draw cases.
+    Start a new one from the closest matched file and diff the
+    instruction streams (`diff` of the asm with labels normalized).
+  - The case order of a `switch` sets the body order; a case whose body
+    is a `return` placed last in the original goes last in the source.
+  - Still open, seen in `sub_08004AE4` and the spell threads: the original
+    sign-extends an `s16` before an add whose result is truncated to 16
+    bits again (`lsls; asrs; adds; lsls; lsrs`); every C form tried drops
+    the extension (`old_agbcc` too).
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine

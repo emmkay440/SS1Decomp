@@ -43,7 +43,16 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - [x] `src/enemy_util.c`: `IsEnemyTypeActive`.
 - [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
       block copies, `GetPlayerClass`, 10 functions).
-- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-15:
+- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-17:
+      - `sub_0801F9C8` (asm/npc_gift_f9c8.s): only the priority copy
+        (`adds r5, r6, #0`) before the two-layer draw in anim cases 2/3.
+      - `sub_0801F160` (asm/npc_gift_f160.s): 28 lines; the spot is
+        read with `ldrsh` for sub_08005FC4 where C narrows it to `ldrh`.
+      - `sub_08004AE4` (asm/code_08004AE4.s, map entry scrolling) and
+        `sub_08002790` (asm/code_08002790.s, link lobby): far off, see
+        the open sign-extension shape in CLAUDE.md.
+      - `sub_0801DBC8` (asm/area_pillars.s): the other session's draft
+        and a second one (`tmp/drafts/sub_0801DBC8_wip.c`, 245 lines).
       - `sub_08015478` (asm/player_status_tick.s, status timers): 12 lines
         off; `&player->unk24` and a zero sit in each other's registers
         (r7/r4).
