@@ -172,7 +172,7 @@ SECTIONS {
         src/npc_gift.o(.text);
         src/npc_gift_01b0.o(.text);
         src/npc_gift_0604.o(.text);
-        asm/code_08020ADC.o(.text);
+        asm/npc_gift_0adc.o(.text);
         src/thread_starters.o(.text);
         src/area_start_pos.o(.text);
         src/unk_0802173C.o(.text);
