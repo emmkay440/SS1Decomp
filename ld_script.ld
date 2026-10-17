@@ -27,7 +27,7 @@ SECTIONS {
         src/link.o(.text);
         src/logos.o(.text);
         src/unk_080022BC.o(.text);
-        asm/code_080022F8.o(.text);
+        src/title_menu.o(.text);
         src/title_menu_start.o(.text);
         src/unk_0800277C.o(.text);
         asm/code_08002790.o(.text);
