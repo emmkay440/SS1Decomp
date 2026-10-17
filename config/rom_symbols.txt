@@ -81,3 +81,4 @@
 080FB870 gUnknown_080FB870      # item word: starting equipment / name bonus (sub_0801516C)
 08054948 gUnknown_08054948      # u16[3]: projectile directions (sine table index, sub_0803861C)
 0805494E gUnknown_0805494E      # u16[3]: projectile animation by direction (sub_0803861C)
+08052B6C gUnknown_08052B6C      # {u16 x, y}[4]: link lobby "OK" mark positions by player (sub_08002790)

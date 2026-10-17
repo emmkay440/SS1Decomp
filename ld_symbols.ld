@@ -421,6 +421,7 @@ MultiSioRecvBufChange = 0x080004C4;
 MultiSioIntr = 0x08000504;
 gUnknown_0805289C = 0x0805289C;
 gKnownFlashIds = 0x08052B60;
+gUnknown_08052B6C = 0x08052B6C;
 gUnknown_08052BC4 = 0x08052BC4;
 gUnknown_08052BDC = 0x08052BDC;
 gUnknown_08052C5C = 0x08052C5C;
