@@ -44,6 +44,7 @@
 080FB730 gUnknown_080FB730      # u8[16]: angle index (into the sine table / 16) by direction (sub_0800B594)
 080FB720 gUnknown_080FB720      # u8[]: by the same angle index, first argument of sub_08005A2C
 080548BC gUnknown_080548BC      # u16[4]: tile of the digit 0 per text color (sub_08022F60 copies it to its stack)
+08054954 gUnknown_08054954      # u16[3]: directions (sine table index) of the three shots of sub_08039B3C
 080FBE1C gUnknown_080FBE1C      # u8[7][13]: name entry characters, page 0 (sub_08048240)
 080FBE77 gUnknown_080FBE77      # u8[7][13]: name entry characters, page 1
 080FBED2 gUnknown_080FBED2      # u16[5][14]: name entry characters, page 2, languages 0 and 1

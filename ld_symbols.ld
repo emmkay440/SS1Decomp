@@ -433,6 +433,7 @@ gUnknown_080548BC = 0x080548BC;
 gUnknown_080548EC = 0x080548EC;
 gUnknown_08054948 = 0x08054948;
 gUnknown_0805494E = 0x0805494E;
+gUnknown_08054954 = 0x08054954;
 gScaleTable = 0x080549FC;
 gFreqTable = 0x08054AB0;
 gPcmSamplesPerVBlankTable = 0x08054AE0;

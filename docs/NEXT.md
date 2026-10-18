@@ -68,6 +68,14 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         count animation, sibling of `sub_0803FFFC`): logic matches; the
         original holds `&gUnknown_0300047B` in two registers (sl, sb) and
         spills both parameters. Draft sub_0803FE70.c.
+      - `sub_08039B3C` (asm/enemy_shot.s, an enemy shot that gives status
+        1/2): 177 lines off, 40 bytes short. The original has more live
+        values (enemy in sb, gPlayers in r7, 0xD4 in r8, px/py spilled to
+        the stack after `sub_08007670`) and two zeroed registers (r6, r5)
+        before the status code, so probably another variable or two.
+        Locals must be declared obj, dirs, frame, timer, screenX, screenY
+        for the stack layout. Permuter: nothing. Draft sub_08039B3C.c.
+        `sub_08039EC8` next to it is a two-stage variant, not a copy.
       - `sub_08034F3C` (asm/enemy_bolt.s, an enemy bolt, modelled on
         src/enemy_projectile.c): 18 lines off, right size. Left: (1) the
         original calls sub_080271D0 before storing px/py to the stack

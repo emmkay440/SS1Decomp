@@ -268,6 +268,8 @@ SECTIONS {
         asm/enemy_projectile2.o(.text);
         src/enemy_threads.o(.text);
         asm/code_08038AF8.o(.text);
+        asm/enemy_shot.o(.text);
+        asm/code_08039EC8.o(.text);
         src/thread_pool18.o(.text);
         asm/code_0803A448.o(.text);
         src/unk_0803BE28.o(.text);
