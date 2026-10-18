@@ -328,7 +328,7 @@ SECTIONS {
         src/save_select_frame.o(.text);
         asm/save_select_chars.o(.text);
         src/save_select_cursor.o(.text);
-        asm/code_08047780.o(.text);
+        asm/save_select_slots.o(.text);
         src/save_select_stats.o(.text);
         src/name_entry_cursor.o(.text);
         src/name_entry_move.o(.text);

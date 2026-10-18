@@ -68,6 +68,15 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         count animation, sibling of `sub_0803FFFC`): logic matches; the
         original holds `&gUnknown_0300047B` in two registers (sl, sb) and
         spills both parameters. Draft sub_0803FE70.c.
+      - `sub_08047780` (asm/save_select_slots.s, the save select screen's
+        text): 97 lines off, right size. Found: `sub_0800EDBC` declared
+        with int parameters in the caller (the coordinates aren't
+        truncated), `(s16)x` in the valid-slot branch, the second sprite at
+        `(s16)x + 0x48`, `y` reset with if/else. Left: `slot`/`i` swapped
+        between sb and sl, `dy` and the gUnknown_030005F0 address in other
+        registers, and `y += 0x40` comes out as `adds; lsls; lsrs` where
+        the original does `lsls; adds 0x400000; lsrs`. Draft
+        sub_08047780.c.
       - `sub_080119DC` (asm/equip_bonus_scaled.s, bonus type 0x15 over the
         equipment, each item's sum scaled by value / 100): 28 lines off,
         right size. Built from equip_inline.h with single-return record
