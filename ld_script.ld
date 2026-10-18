@@ -38,7 +38,7 @@ SECTIONS {
         src/oam_frame_tiles.o(.text);
         src/oam_draw_tiles.o(.text);
         src/oam_draw_copy.o(.text);
-        asm/oam_draw_affine.o(.text);
+        src/oam_draw_affine.o(.text);
         src/oam_draw_affine_mode.o(.text);
         asm/oam_draw_affine2.o(.text);
         src/oam_draw_mode.o(.text);
