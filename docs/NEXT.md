@@ -68,6 +68,19 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         count animation, sibling of `sub_0803FFFC`): logic matches; the
         original holds `&gUnknown_0300047B` in two registers (sl, sb) and
         spills both parameters. Draft sub_0803FE70.c.
+      - `sub_08023A94` (asm/hud_weapon_wheel.s, the weapon wheel HUD
+        thread; `sub_08023E74` after it is its quick-slot sibling): 60
+        lines off, right size. Found: `s16 offs[3][2]` (not a struct),
+        `memcpy` declared (else it's inlined as ldm/stm), a `u16 *` to
+        gPlayerStats.currentWeapon set right before the L check (after a
+        `keys = gKeysNew & 0x200` temporary) and after the clamp in the
+        slide-out loop, the two sub_08003518 draws as an inline taking the
+        object pointer. Left: the original forms `gPlayerStats` + 0x6C /
+        + 0x70 as base + add where the build loads `gPlayerStats+0x6c` /
+        `+0x70` literals (every spelling of the address compiles the same;
+        goto loops and direct accesses are worse). Permuter: only
+        `stats = &gPlayerStats; weapon = &stats->currentWeapon`, which is
+        worse by line count. Draft sub_08023A94.c.
       - `sub_08047780` (asm/save_select_slots.s, the save select screen's
         text): 97 lines off, right size. Found: `sub_0800EDBC` declared
         with int parameters in the caller (the coordinates aren't

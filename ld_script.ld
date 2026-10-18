@@ -195,6 +195,8 @@ SECTIONS {
         src/text_number.o(.text);
         asm/item_icon.o(.text);
         asm/code_08023330.o(.text);
+        asm/hud_weapon_wheel.o(.text);
+        asm/code_08023E74.o(.text);
         asm/number_above.o(.text);
         src/player_rise_effect.o(.text);
         src/link_lost.o(.text);
