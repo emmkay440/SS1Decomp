@@ -68,6 +68,16 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         count animation, sibling of `sub_0803FFFC`): logic matches; the
         original holds `&gUnknown_0300047B` in two registers (sl, sb) and
         spills both parameters. Draft sub_0803FE70.c.
+      - `sub_0802BA34` (asm/spell_status_near.s, the kind-5 action
+        thread: inlined SP check `sub_0802F058`, then status 6 to the
+        players in range): 1 instruction off, `cmp r0, #0` where the
+        original has `cmp r4, #0` after the inlined SP check (the s16
+        result has to be compared, its u16 copy computed first). Draft
+        tmp/drafts/sub_0802BA34.c gets there with a fake `(res & 0xFFFF)
+        == 0`; sub_0802BA34_natural.c is 2 lines off (the `lsrs`/`asrs`
+        order). Found on the way (permuter): one u16 temporary shared by
+        the SP payment and the y distance, `level` reused for the status
+        value, and `u16 level` with a `u8` copy for the status loops.
       - OAM family: all matched 2026-10-18 (src/oam_*.c), the affine
         ones `sub_08003724`, `sub_080039C8` and `sub_08003CF8` included.
       - `sub_080473AC` (asm/save_select_chars.s, the four slot characters):
