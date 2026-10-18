@@ -34,11 +34,12 @@ SECTIONS {
         src/unk_08002B58.o(.text);
         asm/data_record.o(.text);
         src/data_count.o(.text);
-        asm/oam_draw.o(.text);
+        src/oam_draw.o(.text);
         asm/code_080030DC.o(.text);
         src/oam_draw_tiles.o(.text);
         src/oam_draw_copy.o(.text);
         asm/code_08003724.o(.text);
+        asm/oam_draw_mode.o(.text);
         src/unk_080041D4.o(.text);
         src/anim_step.o(.text);
         asm/draw_sorted.o(.text);
