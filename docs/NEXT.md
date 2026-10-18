@@ -68,13 +68,8 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         count animation, sibling of `sub_0803FFFC`): logic matches; the
         original holds `&gUnknown_0300047B` in two registers (sl, sb) and
         spills both parameters. Draft sub_0803FE70.c.
-      - OAM family: `sub_08002F48`, `sub_080030DC`, `sub_0800336C`,
-        `sub_08003518`, `sub_08003FA4` matched 2026-10-18 (src/oam_*.c).
-        Left: the affine ones, `sub_08003724` (asm/oam_draw_affine.s,
-        draft 14 lines off: only where the `src` increment goes),
-        `sub_08003CF8` (asm/oam_draw_affine2.s, about 76 lines off) and
-        `sub_080039C8` (asm/code_080039C8.s, not started; it mixes the
-        other two with an OBJ mode).
+      - OAM family: all matched 2026-10-18 (src/oam_*.c), the affine
+        ones `sub_08003724`, `sub_080039C8` and `sub_08003CF8` included.
       - `sub_080473AC` (asm/save_select_chars.s, the four slot characters):
         2 lines off; `y + (offset + 0x22)` has to add 0x22 to the
         sign-extended offset before adding y. Draft sub_080473AC.c.

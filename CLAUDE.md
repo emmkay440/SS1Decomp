@@ -427,6 +427,19 @@ merge `ad_*` files into real modules, name things, fix style.
   - The same `do { ... } while (0)` around the copy-and-position code
     fixed the dest/position register swap in three of these functions
     (probably a macro).
+  - The affine ones (`sub_08003724`, `sub_080039C8`, `sub_08003CF8`)
+    took `src = oams; for (...; i++, dest++, src++) { obj = src; ... }`
+    with `obj` used in the body: that gives the `adds r6, r2, #0` copy
+    above the loop label where `&oams[i]` didn't. The `do/while (0)` is
+    needed in two of them and has to go in `sub_080039C8`: try both
+    whenever dest and the y position swap registers.
+  - A matrix number read with `ldrb [obj, #3]` and shifts: the
+    `SpriteOam` u16 bitfields (`matrixLo:3, matrix2:1, matrix3:1`); a
+    byte-struct pointer at +3 added a register.
+  - A table pick that branches to a shared `ldrb`/`ldr` tail (with a
+    literal pool after the first arm's `b`): `size = A[i]; tile += size;`
+    written out in each arm, merged by cross-jumping. `table = c ? A :
+    B; size = table[i];` loads A before the test instead.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
