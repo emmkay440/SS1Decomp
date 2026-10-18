@@ -68,6 +68,16 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         count animation, sibling of `sub_0803FFFC`): logic matches; the
         original holds `&gUnknown_0300047B` in two registers (sl, sb) and
         spills both parameters. Draft sub_0803FE70.c.
+      - `sub_08034F3C` (asm/enemy_bolt.s, an enemy bolt, modelled on
+        src/enemy_projectile.c): 18 lines off, right size. Left: (1) the
+        original calls sub_080271D0 before storing px/py to the stack
+        (moving the assignments below the draw block makes it worse); (2)
+        the 0xFFFF of the wait loop is loaded before px/py; (3) at the end
+        `GetCurrentThread()->priority = 0` comes out as `movs r1, #0; str
+        r1, [r0, #8]` where the original has `adds r1, r0, #0; movs r0,
+        #0; str r0, [r1, #8]` with a void epilogue (`pop {r0}`). Making the
+        function `u32` brings it to 12 lines (what the permuter found),
+        but the original's epilogue says void. Draft sub_08034F3C.c.
       - `sub_080352C4` (asm/enemy_wave.s, an enemy shock wave, modelled on
         src/enemy_projectile.c): 21 lines off, right size; the
         `LAST_HIT` store loads `gPlayers + 0x80` from the pool where the
