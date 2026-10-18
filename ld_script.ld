@@ -303,6 +303,8 @@ SECTIONS {
         src/menu_page_arrows.o(.text);
         src/menu_slot_value.o(.text);
         asm/code_0804288C.o(.text);
+        src/menu_stats_diff.o(.text);
+        asm/code_08043378.o(.text);
         src/menu_misc.o(.text);
         src/unk_08043DB8.o(.text);
         asm/code_08043EDC.o(.text);
