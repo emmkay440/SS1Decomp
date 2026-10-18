@@ -35,7 +35,7 @@ SECTIONS {
         asm/data_record.o(.text);
         src/data_count.o(.text);
         src/oam_draw.o(.text);
-        asm/code_080030DC.o(.text);
+        src/oam_frame_tiles.o(.text);
         src/oam_draw_tiles.o(.text);
         src/oam_draw_copy.o(.text);
         asm/oam_draw_affine.o(.text);
