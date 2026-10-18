@@ -40,7 +40,7 @@ SECTIONS {
         src/oam_draw_copy.o(.text);
         asm/oam_draw_affine.o(.text);
         asm/code_080039C8.o(.text);
-        asm/oam_draw_mode.o(.text);
+        src/oam_draw_mode.o(.text);
         src/unk_080041D4.o(.text);
         src/anim_step.o(.text);
         asm/draw_sorted.o(.text);
