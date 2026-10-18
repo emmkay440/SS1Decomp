@@ -9,6 +9,7 @@ SECTIONS {
     .text : {
         asm/crt0.o(.text);
         asm/code.o(.text);
+        src/agb_main.o(.text);
         src/input.o(.text);
         src/display.o(.text);
         src/display_misc.o(.text);
