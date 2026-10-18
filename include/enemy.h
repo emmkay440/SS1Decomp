@@ -62,11 +62,11 @@ struct Enemy
     u16 unk7E;           // +0x7E palette row of the projectile sprite (sub_08037B58)
     u8 unk80[0x2];
     u16 unk82;           // +0x82 index into gUnknown_080FB4B8 (body size)
-    u8 unk84[0x2];
+    u16 unk84;           // +0x84 index into gUnknown_080FB4C0 (attack reach)
     u8 unk86;            // +0x86 what unk22 goes back to (sub_0800E634)
     u8 unk87;            // +0x87 element of its attack, 0-3 (CalcDamageToPlayer)
     u16 unk88;           // +0x88 kind of the attack being cast (sub_0803EDD8)
-    u8 unk8A[0x2];
+    u16 unk8A;           // +0x8A unk4A has to reach this before it attacks (sub_08017A44)
     u32 unk8C;
     u8 unk90[0x4];
 };                       // size 0x94

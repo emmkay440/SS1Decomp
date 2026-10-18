@@ -40,6 +40,7 @@
 080FB0E8 gUnknown_080FB0E8      # u32[4]: tile data bytes by sprite size for square parts (sub_08004288)
 080FB9FC gUnknown_080FB9FC      # u16[]: facing direction in sixteenths of a turn, indexed by Player.unk0A (sub_0802C174)
 080FB4B8 gUnknown_080FB4B8      # u16[]: enemy body size by Enemy.unk82 (sub_0800B594)
+080FB4C0 gUnknown_080FB4C0      # {u16 arc, u16 range}[]: enemy attack reach by Enemy.unk84 (sub_08017A44)
 080FB730 gUnknown_080FB730      # u8[16]: angle index (into the sine table / 16) by direction (sub_0800B594)
 080FB720 gUnknown_080FB720      # u8[]: by the same angle index, first argument of sub_08005A2C
 080548BC gUnknown_080548BC      # u16[4]: tile of the digit 0 per text color (sub_08022F60 copies it to its stack)

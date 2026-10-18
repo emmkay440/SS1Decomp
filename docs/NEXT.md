@@ -68,6 +68,20 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         count animation, sibling of `sub_0803FFFC`): logic matches; the
         original holds `&gUnknown_0300047B` in two registers (sl, sb) and
         spills both parameters. Draft sub_0803FE70.c.
+      - `sub_080352C4` (asm/enemy_wave.s, an enemy shock wave, modelled on
+        src/enemy_projectile.c): 21 lines off, right size; the
+        `LAST_HIT` store loads `gPlayers + 0x80` from the pool where the
+        original adds 0x80 to the gPlayers register (r8). The first
+        loop's early exits need a `goto` past `while (!done)`. A permuter
+        run found nothing. Draft sub_080352C4.c.
+      - `sub_08017A44` (asm/enemy_melee.s, enemy melee hit on the local
+        player): 127 lines off, 4 bytes long. Found: the last-hit test is a
+        stored boolean (`ok = ... != enemy->unk2C`, the original's
+        `eors/negs/orrs` + `blt`), `enemy->state` kept in a variable and
+        reused in `state & player->unk10`, the reach table is `u16
+        [][2]` (gUnknown_080FB4C0). Left: the original loads
+        `enemyDirection` and gUnknown_080FB9FC with `ldrsh`, then register
+        choice. Draft sub_08017A44.c.
       - `sub_0802BA34` (asm/spell_status_near.s, the kind-5 action
         thread: inlined SP check `sub_0802F058`, then status 6 to the
         players in range): 1 instruction off, `cmp r0, #0` where the

@@ -143,6 +143,7 @@ SECTIONS {
         asm/code_08017150.o(.text);
         src/player_calc_damage.o(.text);
         asm/code_08017664.o(.text);
+        asm/enemy_melee.o(.text);
         src/effect_anim.o(.text);
         src/effect_obj.o(.text);
         src/effect_obj3.o(.text);
@@ -256,6 +257,7 @@ SECTIONS {
         src/effect_palette_anim.o(.text);
         src/thread_pools.o(.text);
         asm/code_08033FB0.o(.text);
+        asm/enemy_wave.o(.text);
         src/thread_pools2.o(.text);
         asm/code_0803578C.o(.text);
         src/enemy_start.o(.text);
