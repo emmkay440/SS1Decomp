@@ -302,7 +302,7 @@ SECTIONS {
         src/menu_inventory_scan.o(.text);
         asm/code_08041538.o(.text);
         src/menu_draw.o(.text);
-        asm/code_080420EC.o(.text);
+        src/menu_cursor_draw.o(.text);
         src/menu_page_arrows.o(.text);
         src/menu_slot_value.o(.text);
         asm/code_0804288C.o(.text);
