@@ -191,7 +191,7 @@ SECTIONS {
         src/message_window_start.o(.text);
         asm/code_08022010.o(.text);
         src/window_checks.o(.text);
-        asm/code_08022AB4.o(.text);
+        src/hud_sprites.o(.text);
         src/text_number.o(.text);
         asm/item_icon.o(.text);
         asm/code_08023330.o(.text);
