@@ -442,6 +442,20 @@ merge `ad_*` files into real modules, name things, fix style.
     f(a, b); g(x, y, value, color);`). Written inline, the compiler loads
     `value` first and keeps it in a callee-saved register across the call
     (src/menu_stats_diff.c).
+  - A two-byte out-parameter read back as `ldrb [rX]` for the first
+    byte but `add rY, sp, #N; ldrb [rY, #1]` for the second: a local
+    `struct { u8 x; u8 y; } pos;`, not `u8 pos[2]` (src/menu_cursor_draw.c,
+    92 -> 11 lines).
+  - A switch that the original compiles to a jump table starting at 0
+    where the C only has the higher cases: list the low cases explicitly
+    (`case 0: ... case 5: break;`).
+  - A zero argument passed from a register that held an earlier call's
+    result (`str r4, [sp]` after `if ((b = f()) != 0) ... else`): reuse
+    that result variable as the argument; and give each unrelated result
+    its own local, since one shared `r` stretches its live range and moves
+    registers everywhere.
+  - `a - (b - 0x40)` kept unfolded (`subs r0, #64; subs r2, r2, r0`) with
+    `a` computed first: `y = a; off = b - 0x40; f(y - off)`.
   - Repeated inlined helpers: a function built from already-matched
     helpers (queue pushes, the pop) matched with each written as a
     `static inline` copy, plus one more inline for a duplicated wait loop
