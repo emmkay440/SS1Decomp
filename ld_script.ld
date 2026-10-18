@@ -116,7 +116,7 @@ SECTIONS {
         src/equip_bonus.o(.text);
         asm/equip_has.o(.text);
         src/equip_bonus2.o(.text);
-        asm/code_080119DC.o(.text);
+        asm/equip_bonus_scaled.o(.text);
         src/equip_bonus3.o(.text);
         asm/code_08012230.o(.text);
         src/item_roll.o(.text);

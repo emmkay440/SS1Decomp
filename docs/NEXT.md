@@ -68,6 +68,16 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         count animation, sibling of `sub_0803FFFC`): logic matches; the
         original holds `&gUnknown_0300047B` in two registers (sl, sb) and
         spills both parameters. Draft sub_0803FE70.c.
+      - `sub_080119DC` (asm/equip_bonus_scaled.s, bonus type 0x15 over the
+        equipment, each item's sum scaled by value / 100): 28 lines off,
+        right size. Built from equip_inline.h with single-return record
+        getters (`if (item != NULL && item->category == c)`) and a scaled
+        sum inline taking `s16 scale` (`sum = sum * scale / 100; return
+        sum;`), `u8 equipped` for armor/head/unk84 as in sub_0801036C.
+        Left: the truncated scaled sum lands in r3 (the sum's register);
+        the original uses a fresh r1. A separate `scaled` local or other
+        return types make it worse. Permuter: nothing. Draft
+        sub_080119DC.c.
       - `sub_08039B3C` (asm/enemy_shot.s, an enemy shot that gives status
         1/2): 177 lines off, 40 bytes short. The original has more live
         values (enemy in sb, gPlayers in r7, 0xD4 in r8, px/py spilled to
