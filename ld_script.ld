@@ -214,7 +214,8 @@ SECTIONS {
         asm/code_08027828.o(.text);
         src/queue_push4.o(.text);
         src/queue_to_front.o(.text);
-        asm/code_08027A90.o(.text);
+        src/queue_thread.o(.text);
+        asm/code_08027E40.o(.text);
         asm/link_sync.o(.text);
         src/queue_push.o(.text);
         src/unk_080292D0.o(.text);
