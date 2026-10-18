@@ -406,6 +406,27 @@ merge `ad_*` files into real modules, name things, fix style.
     sign-extends an `s16` before an add whose result is truncated to 16
     bits again (`lsls; asrs; adds; lsls; lsrs`); every C form tried drops
     the extension (`old_agbcc` too).
+- Shapes from 2026-10-18 (the OAM family, src/oam_*.c):
+  - A sign extension done in place (`lsls r3, r0, #23; asrs r3, r3, #23`,
+    one register for both shifts): two statements on the variable,
+    `x = field << 23; x >>= 23;` (the 9-bit OAM x as an unsigned
+    bitfield). A signed bitfield or a single `(s32)(v << 23) >> 23`
+    expression puts the first shift in another register.
+  - A narrowed `u16` parameter copied to a second register at entry
+    (`lsrs r2, r2, #16; adds r5, r2, #0`): the parameter is compared in a
+    separate `if` from an earlier test. `if (a > N || p->n < anim)` makes
+    one pseudo; `if (a > N) return; if (p->n < anim) return;` gives the copy.
+  - A pointer copied to a new register just before the loop (`adds r6,
+    r2, #0` above the loop label): the loop indexes it (`src =
+    &oams[i]`) and strength reduction made the copy; a `src++` pointer
+    doesn't.
+  - A 1-bit field stored with a doubled `ands` (`movs r3, #1; ands r0,
+    r3; ands r0, r3`): `(m / 4) % 2`; `(m >> 2) & 1` gives one `ands`.
+  - `list + frame * 4` keeping the list in the destination register:
+    `list += frame * 4;` as its own statement.
+  - The same `do { ... } while (0)` around the copy-and-position code
+    fixed the dest/position register swap in three of these functions
+    (probably a macro).
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
