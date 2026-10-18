@@ -436,6 +436,16 @@ merge `ad_*` files into real modules, name things, fix style.
   - A matrix number read with `ldrb [obj, #3]` and shifts: the
     `SpriteOam` u16 bitfields (`matrixLo:3, matrix2:1, matrix3:1`); a
     byte-struct pointer at +3 added a register.
+  - A call whose result is the last argument of another call, made
+    before the other arguments are loaded (`bl f; lsls r0, #24; lsrs r3,
+    r0, #24; ldrsh r2, ...`): the result goes in a local first (`color =
+    f(a, b); g(x, y, value, color);`). Written inline, the compiler loads
+    `value` first and keeps it in a callee-saved register across the call
+    (src/menu_stats_diff.c).
+  - Repeated inlined helpers: a function built from already-matched
+    helpers (queue pushes, the pop) matched with each written as a
+    `static inline` copy, plus one more inline for a duplicated wait loop
+    (src/queue_thread.c).
   - A table pick that branches to a shared `ldrb`/`ldr` tail (with a
     literal pool after the first arm's `b`): `size = A[i]; tile += size;`
     written out in each arm, merged by cross-jumping. `table = c ? A :
