@@ -225,7 +225,7 @@ SECTIONS {
         src/unk_080292D0.o(.text);
         src/spell_area_hit.o(.text);
         src/spell_damage.o(.text);
-        asm/enemy_hit.o(.text);
+        src/enemy_hit.o(.text);
         asm/spell_effect_thread.o(.text);
         src/spell_effect_start.o(.text);
         src/effect_obj4.o(.text);
