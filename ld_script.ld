@@ -293,7 +293,7 @@ SECTIONS {
         asm/menu_gold_count2.o(.text);
         src/menu_gold_count.o(.text);
         src/menu_pick_up.o(.text);
-        asm/code_080402B4.o(.text);
+        src/menu_drop_item.o(.text);
         asm/menu_slot_item.o(.text);
         src/menu_item_price.o(.text);
         asm/menu_quick_slots.o(.text);
