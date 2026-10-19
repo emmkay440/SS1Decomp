@@ -20,9 +20,9 @@ mGBA tracing workflow, docs/variables.md for RAM/struct findings.
   commit a non-matching build. Never push; pushing is only done when the
   user explicitly asks.
 
-## Current state (2026-10-17)
+## Current state (2026-10-19)
 
-820 / 977 game functions are matching C (`make progress`); every module in
+841 / 977 game functions are matching C (`make progress`); every module in
 `src/` matches. Next steps are in docs/NEXT.md; trace sessions still to
 analyze are in docs/TRACES.md. RAM/struct findings: docs/variables.md;
 ROM data formats: docs/data.md.
@@ -498,6 +498,24 @@ merge `ad_*` files into real modules, name things, fix style.
     variable.
   - `tmp/ndiff.sh FUNC module draft.c` counts dcheck differences with the
     registers normalized: a better guide for structure than raw lines.
+- Shapes from 2026-10-19, second batch (src/menu_drop_item.c, 1480 bytes,
+  matched from scratch in about ten variants):
+  - `ble ok; b fail` where the draft gives `ble skip; b fail; skip: b ok`
+    (a far `bgt fail` rewritten by final): the test was inverted in the
+    source, `if (x <= cap) break; goto fail;`. Same for `cmp; beq L; b
+    done; L: b fail`: `if (count != 0) goto done; goto fail;`.
+  - An error block placed after the success path: `if (!(a) && !(b)) {
+    ...; goto done; } PlaySE(0x61); return 1;`.
+  - A global's address *not* hoisted out of a small loop while the others
+    are: index the global directly each time (`gTable[i] == ...;
+    gTable[i] = ...`), not through a `p = &gTable[i]` pointer local.
+  - A swap that stores the held item first: `raw = *a; *a = *b; *b = raw;`
+    with no temporary for `*b` (it reuses the load from the category
+    test).
+  - `sub sp, #0x20` with only `[sp, #0x1c]` used (a spilled flag): an
+    unused `u8 unused[28]` declared first.
+  - A `u32 id = item->id;` temporary before `result = 7; if (id != 6)
+    result = 6;` puts the `movs #7` after the id extraction.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine

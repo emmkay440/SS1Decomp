@@ -43,7 +43,28 @@ m4a's C part is fully C. What's left is mostly medium and large functions
 - [x] `src/enemy_util.c`: `IsEnemyTypeActive`.
 - [x] `src/exp.c` (`GetExpToNextLevel`, `AddExp`), `src/stats.c` (stat/skill
       block copies, `GetPlayerClass`, 10 functions).
-- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-17:
+- [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-19
+      (counts from `tmp/ndiff.sh`, registers normalized):
+      - `EnemySpawnerThread` (asm/code_080193BC.s): 8 normalized. Has the
+        `pos = &gUnknown_0300397C` hoist (permuter). Left: the delay loop
+        keeps its entry test (`cmp i, delay; bcs`, the draft jumps to the
+        bottom test) and `spawner->trigger` stays in r5.
+      - `sub_08017664` (asm/code_08017664.s): 3 normalized. The mask test
+        goes into `hit` before `next = i + 1`, and `if (roll ok) hit =
+        TRUE; else hit = FALSE;`. Left: the original computes `i + 1`
+        into sb a second time, before the `reach` test (i's register is
+        reused for `start` later); another `next = i + 1` there uses a
+        third callee-saved register.
+      - `UseItem` (asm/code_08013310.s): 24 normalized. Stat caps as `if
+        (x <= cap) break; goto fail;`, effect 7 ends `if (count != 0) goto
+        done; goto fail;`. Left: of two identical tails the original keeps
+        the first (stat case 0 over case 2, effect 7 over effect 8) where
+        the draft keeps the last, and the heal blocks hold hp/max in r3/r2
+        (not live across a call). Separate SP-block pointers made it worse.
+      - `sub_08010B48` / twin `sub_08012230`: 10 real-build lines, all
+        `beq` targets: the original threads the NULL item test past the
+        bonus loop. Early-return getters, nested ifs, and getters that
+        return `item` on the NULL path are all worse (100+ lines).
       - `sub_08020ADC` (asm/npc_gift_0adc.s) and `sub_0801F4DC`
         (asm/npc_walker.s): area 0 characters, structure right, registers
         off (the original spills the spot pointer).
