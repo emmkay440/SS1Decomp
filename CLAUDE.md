@@ -483,6 +483,21 @@ merge `ad_*` files into real modules, name things, fix style.
   - `index * size + list` with the offset first again
     (src/enemy_hit.c), and a copy-loop `memcpy` placed out of line:
     `if (...) goto found;` after the loop.
+- Shapes from 2026-10-19 (src/area_exit_thread.c, UseItem draft):
+  - The same position read twice from `p + 0x8C` (base kept, then
+    `[rX]`, `[rX, #2]`) where `p->x`/`p->y` fold each offset: a pointer to
+    the nested struct, in a macro block (`struct AreaPos *pos =
+    &spot->pos;`) or assigned inside the first use (`abs(x - (pos =
+    &spot->pos)->x)`). Identical blocks in two loops are a macro.
+  - A literal loaded early for an index computation: write the indexed
+    access inline (`gPlayers[GetMultiplayerId()].layer = ...`) instead of a
+    pointer local.
+  - A switch where each case tests a global and the default paths each load
+    its address before a shared increment (`ldr r2, =gPlayerStats; b inc`):
+    plain `gPlayerStats.field` accesses and GCSE doing the rest; no pointer
+    variable.
+  - `tmp/ndiff.sh FUNC module draft.c` counts dcheck differences with the
+    registers normalized: a better guide for structure than raw lines.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
