@@ -314,7 +314,7 @@ SECTIONS {
         src/menu_misc.o(.text);
         src/unk_08043DB8.o(.text);
         asm/code_08043EDC.o(.text);
-        asm/menu_price_buy.o(.text);
+        src/menu_price_buy.o(.text);
         src/menu_price.o(.text);
         src/menu_cursor_mode.o(.text);
         src/menu_cursor_pos.o(.text);
