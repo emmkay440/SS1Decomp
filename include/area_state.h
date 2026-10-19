@@ -119,9 +119,11 @@ struct Unknown_030063D8
     u16 unk9A;          // +0x9A 0xFFFF at start
     u16 unk9C;          // +0x9C flags; bit 1: enemies may spawn (sub_0800EAD8)
     u16 unk9E;          // +0x9E number of unk8 spawn points
-    u8 unkA0[0x4];
+    u16 unkA0;          // +0xA0 counter slot of the last spawn (EnemySpawnerThread)
+    u8 unkA2[0x2];
     u16 unkA4;          // +0xA4 set while leaving through the area exit (sub_0801AAC8, a guess)
-    u8 unkA6[0x5];
+    u8 unkA6[0x4];
+    u8 unkAA;           // +0xAA next spawned enemy id - 8, wraps to 1 (EnemySpawnerThread)
     u8 unkAB;           // +0xAB set once SignalEvent(3000) has been sent
     u8 unkAC[0x20];
     u8 unkCC[0xE];      // +0xCC indexed past its end: row * 15 + entry (sub_080216E0)
