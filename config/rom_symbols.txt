@@ -34,6 +34,8 @@
 080FB4D6 gUnknown_080FB4D6      # s16 pairs indexed by weapon record byte 0x159 (sub_080101F0)
 080FABD8 gUnknown_080FABD8      # 0x1A0-byte records, 3 of them: category 22 of GetDataRecord (not in the archive)
 080FAB5C gUnknown_080FAB5C      # the one record of GetDataRecord category 23 (not in the archive)
+080FBA0C gUnknown_080FBA0C      # u16[] by class: Player.unk72 needed for a state 2 attack to hit (sub_08017664)
+080FBA14 gUnknown_080FBA14      # u16[] by class: Player.unk72 needed for a state 5 attack to hit (sub_08017664)
 080FB0B8 gUnknown_080FB0B8      # u32[4]: tile numbers used by sprite size, when the object's shape bits are not 0 (sub_0800336C)
 080FB0C8 gUnknown_080FB0C8      # u32[4]: tile numbers used by sprite size for square objects (sub_0800336C)
 080FB0D8 gUnknown_080FB0D8      # u32[4]: tile data bytes by sprite size, when the part's shape bits are not 0 (sub_08004288)
