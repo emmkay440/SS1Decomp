@@ -144,9 +144,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         value, and `u16 level` with a `u8` copy for the status loops.
       - OAM family: all matched 2026-10-18 (src/oam_*.c), the affine
         ones `sub_08003724`, `sub_080039C8` and `sub_08003CF8` included.
-      - `sub_080473AC` (asm/save_select_chars.s, the four slot characters):
-        2 lines off; `y + (offset + 0x22)` has to add 0x22 to the
-        sign-extended offset before adding y. Draft sub_080473AC.c.
       - `sub_08028DB0` (asm/link_sync.s, link sync thread): far off,
         registers and the layout of the wait loop. Draft sub_08028DB0.c.
       - `sub_080199B4` (asm/spawn_points.s, spawn point thread): far off;
@@ -232,9 +229,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       - `sub_0802C174` (asm/target_in_front.s): 17 lines off; the original
         hoists 0x7FFF out of the loop and builds -8 inside it, C does the
         opposite; draft sub_0802C174.c.
-      - `sub_080297D4` (asm/enemy_hit.s): 3 lines off; `index * 0x94 +
-        list` should land in r1 with the list loaded first; draft
-        sub_080297D4.c.
       - `sub_08048240` (asm/name_entry_char.s): every case keeps its own
         copy of the table lookup in the original, C merges them (the same
         unexplained "identical tails not merged" as `DropItem` and

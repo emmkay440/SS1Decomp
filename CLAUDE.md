@@ -464,6 +464,25 @@ merge `ad_*` files into real modules, name things, fix style.
     literal pool after the first arm's `b`): `size = A[i]; tile += size;`
     written out in each arm, merged by cross-jumping. `table = c ? A :
     B; size = table[i];` loads A before the test instead.
+- Shapes from 2026-10-18, second batch (player attack, src/player_attack_damage.c):
+  - `y + (off + 0x22)` with the constant kept on the offset (the compiler
+    reassociates it onto y): an assignment inside the argument,
+    `y + (t = off + 0x22)` (src/save_select_chars.c). A temporary set in
+    its own statement moves the computation earlier.
+  - `switch (f())` compiled as `subs r0, #1; cmp r0, #1; bls`: the source
+    switched on `f() - 1` (cases 0, 1, 2); with a `u32` result the range
+    test is unsigned.
+  - A call result kept un-narrowed and sign-extended at its use
+    (`lsls; asrs` after a `bl` of an `s16` function, no `lsrs` first):
+    declare the callee `int` in this file and use `(s16)v`.
+  - A value sign-extended for one call and zero-extended for the return
+    from the same `x << 16` register: `t = v << 16; f(t >> 16); return
+    (u32)t >> 16;` (nothing more natural found).
+  - A `u16` local that the compiler keeps writing back to its home
+    register (`ands r5, r0; mov r8, r5`): try `s16`.
+  - `index * size + list` with the offset first again
+    (src/enemy_hit.c), and a copy-loop `memcpy` placed out of line:
+    `if (...) goto found;` after the loop.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
