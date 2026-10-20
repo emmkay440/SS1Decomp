@@ -262,6 +262,18 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         object): 37 lines off; the loops are strength-reduced forms of
         plain indexing, the table base isn't folded (`adds r0, #24`);
         draft sub_08024320.c.
+      - `sub_0802BD2C` (asm/spell_sleep.s, the enemy twin of
+        `sub_0802BA34`: status 2 for 1800 frames to the enemies in range):
+        25 normalized, 159 raw (2026-10-20), queued. Found: `u32 count`
+        (a u16 is 40 lines worse), `s32 level` (the roll compare is
+        signed), the roll's `- 25` kept in its own `d = (unk64 >> 1) - 25`,
+        the failure path with its own exit copy. Left: the mask and y
+        positions in other registers / stack slots. Draft sub_0802BD2C.c.
+      - `sub_0800C8F8` (asm/nearest_player.s, nearest player to an enemy
+        within range): 30 normalized, queued. `s32 list[5][2]` and the
+        `> range` test first were better; the original strength-reduces
+        `&list[i][1]` into its own register and spills `range`. Draft
+        sub_0800C8F8.c.
       - `sub_0802C174` (asm/target_in_front.s): 17 lines off; the original
         hoists 0x7FFF out of the loop and builds -8 inside it, C does the
         opposite; draft sub_0802C174.c.
