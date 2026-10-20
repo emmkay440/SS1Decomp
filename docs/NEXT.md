@@ -45,10 +45,12 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       block copies, `GetPlayerClass`, 10 functions).
 - [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-19
       (counts from `tmp/ndiff.sh`, registers normalized):
-      - `EnemySpawnerThread` (asm/code_080193BC.s): 8 normalized. Has the
-        `pos = &gUnknown_0300397C` hoist (permuter). Left: the delay loop
-        keeps its entry test (`cmp i, delay; bcs`, the draft jumps to the
-        bottom test) and `spawner->trigger` stays in r5.
+      - `EnemySpawnerThread` (asm/code_080193BC.s): 1 normalized, 47 raw
+        (2026-10-20). Case 0 reads `spawner->counts[...]` directly (no
+        pointer), the trigger is read into the `kind` variable, `next` and
+        `j` are one variable, and the counts sum reuses `id`. Left:
+        operand registers of the `x` and `type` bitfield stores, and one
+        address copy in the unkAA wrap test.
       - `sub_08017664` (asm/code_08017664.s): 3 normalized. The mask test
         goes into `hit` before `next = i + 1`, and `if (roll ok) hit =
         TRUE; else hit = FALSE;`. Left: the original computes `i + 1`
@@ -65,9 +67,12 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         `beq` targets: the original threads the NULL item test past the
         bonus loop. Early-return getters, nested ifs, and getters that
         return `item` on the NULL path are all worse (100+ lines).
-      - `sub_08020ADC` (asm/npc_gift_0adc.s) and `sub_0801F4DC`
-        (asm/npc_walker.s): area 0 characters, structure right, registers
-        off (the original spills the spot pointer).
+      - `sub_08020ADC` (asm/npc_gift_0adc.s): only stack slots of hoisted
+        local addresses left (2026-10-20). The spot position at +0x80 is
+        read through `px = &spot->pos.x` / `px[1]` in the distance test
+        and a `pos` pointer for the draw calls. Left: `&obj2.unk1C[13]`
+        gets the last spill slot where the original gives it the first.
+      - `sub_0801F4DC` (asm/npc_walker.s): far off (172 normalized).
       - `sub_08004AE4` (asm/code_08004AE4.s, map entry scrolling) and
         `sub_08002790` (asm/code_08002790.s, link lobby): far off, see
         the open sign-extension shape in CLAUDE.md.
