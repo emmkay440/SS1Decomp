@@ -48,6 +48,17 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       The ones with only registers / stack slots / order left are in
       `config/permute_queue.txt` (2026-10-20) for long permuter runs; leave
       them to the permuter and work on the others.
+      Added 2026-10-20 from drafts that had no entry: `sub_08001B78`
+      (code_08001B78, 0 normalized / 28 raw), `sub_0801D2C4`
+      (area_switched_traps, 13 raw: the spill slots of `&idle[i]` and
+      `trap + 28` swapped), `sub_0803EDD8` (code_0803EDD8, 5 normalized:
+      `best &= 0xFF` lands in a new register in the last block, and the
+      `GetCurrentThread()->priority = 0` epilogue shape of sub_08034F3C).
+      Also `sub_0802B638` (asm/code_08029C44.s, the kind-6 heal skill
+      thread, a sibling of `sub_0802BA34`): 38 normalized, see the draft's
+      comment. Its module also holds the kind 0-4 threads (`sub_08029C44`
+      / `sub_0802A0FC` and `sub_0802A60C` / `sub_0802B134` are pairs, 0.8
+      similar), not started.
       - `EnemySpawnerThread` (asm/code_080193BC.s): 0 normalized, 43 raw
         (2026-10-20). Case 0 reads `spawner->counts[...]` directly (no
         pointer), the trigger is read into the `kind` variable, `next` and
@@ -291,6 +302,13 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         register, which shifts the whole register assignment. The matched
         `LoadSaveSlot` (src/save_check.c) does share it, so these two were
         written differently. A do/while(0) around either call doesn't help.
+        2026-10-20: no flag or spelling stops the sharing (it's the first
+        CSE pass, also with old_agbcc and -O1); most likely the shared
+        pseudo lost register allocation in the original and reload rebuilt
+        the constant at each use. The name copy loop of `sub_0802F374` is
+        not loop-optimized in the original (a goto loop reproduces that).
+        Draft tmp/drafts/sub_0802F374.c (53 normalized), queued for the
+        permuter.
       - `sub_08010B48` / `sub_08012230` (asm/equip_has.s, about 700 bytes
         each): not retried; drafts equip_has_*.c, permuter score 1445.
       Solved on 2026-10-14: `sub_0800FA74` and its sibling `sub_0800FC70`
