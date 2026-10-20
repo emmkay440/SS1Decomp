@@ -516,6 +516,22 @@ merge `ad_*` files into real modules, name things, fix style.
     unused `u8 unused[28]` declared first.
   - A `u32 id = item->id;` temporary before `result = 7; if (id != 6)
     result = 6;` puts the `movs #7` after the id extraction.
+- Shapes from 2026-10-20 (src/draw_sorted.c, EnemySpawnerThread draft):
+  - A list walk entered by a jump to its test, with the step (`p =
+    p->next`) placed *above* the test: `p = head; goto check; for (;;) {
+    p = p->next; check: if (p != NULL) { body } else break; }`. A plain
+    `for`/`while` moves the test to the bottom; a goto-only loop loses
+    the loop notes (registers change). The `else break` keeps
+    expand_end_loop from moving the test, since the first exit jump comes
+    after the body.
+  - A block that the original places before the loop it exits from
+    (`insert at head` in a search): `if (0) { label: ...; return x; }`
+    ahead of the loop and a `goto label` inside.
+  - One register for several unrelated values (spawn kind, then the
+    trigger; the next-index and the inner counter): reuse one variable in
+    the source; separate variables get separate registers.
+  - A position read as `[rX]` and `[rX, #2]` from one pointer taken in the
+    first use: `*(px = &spot->pos.x)` and `px[1]`.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
