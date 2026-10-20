@@ -29,3 +29,4 @@ Rules:
 | `sub_0800336C` | src/oam_draw_tiles.c | loop body inside `do/while (0)` | maybe a macro |
 | `EnemySpawnerThread` | src/enemy_spawner_thread.c | two `do/while (0)` around the setup/spawn block and the rest, empty `do {} while (0);` in the unkAA wrap test | maybe a macro / fake |
 | `sub_0802BA34` | src/spell_status_near.c | `t` holds a copy of `res`, then of `j` in the first status loop | fake |
+| `sub_08043378` | src/menu_help_line.c | `goto` into a `case` of a later switch (shares its `0x900E5` code) | maybe real |

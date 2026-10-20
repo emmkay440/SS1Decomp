@@ -544,6 +544,23 @@ merge `ad_*` files into real modules, name things, fix style.
     the source; separate variables get separate registers.
   - A position read as `[rX]` and `[rX, #2]` from one pointer taken in the
     first use: `*(px = &spot->pos.x)` and `px[1]`.
+- Shapes from 2026-10-20, second batch (src/menu_help_line.c, 54 -> 0
+  normalized by layout alone):
+  - "Identical tails not merged" (`bl f; adds r4, r0; b draw` kept twice):
+    the compiler merges a tail into an *identical* one that jumps to the
+    same label. The original wrote the shared code (a macro) out in some
+    branches (`record += 10; DRAW_CENTERED(...); return;`) and used
+    `goto draw` in others; which branches get the copy decides which tails
+    survive. Try the macro inline in each branch whose tail the original keeps.
+  - A shared call placed after an if-chain (`if (a) r = f(1); else if (b)
+    r = f(2); ... else goto other; g(); draw:`) where each arm had `g()`.
+  - A block placed after the function's main exit in the original (here
+    the item drawing after the help-line draw): move it behind a label at
+    the end and `goto` it from its `else`.
+  - Case bodies come in source order: read it from the code addresses,
+    not the jump table order (case 7 before case 5 here).
+  - A `b` from an unrelated branch straight to a case label's literal load
+    (`ldr r0, =X` included): a `goto` into that case.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
