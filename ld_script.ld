@@ -45,7 +45,7 @@ SECTIONS {
         src/oam_draw_mode.o(.text);
         src/unk_080041D4.o(.text);
         src/anim_step.o(.text);
-        asm/draw_sorted.o(.text);
+        src/draw_sorted.o(.text);
         src/draw_list.o(.text);
         src/map_init.o(.text);
         src/map_bg_setup.o(.text);
