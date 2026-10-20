@@ -303,7 +303,7 @@ SECTIONS {
         src/menu_stats.o(.text);
         src/menu_stats2.o(.text);
         src/menu_inventory_scan.o(.text);
-        asm/code_08041538.o(.text);
+        src/menu_screen_setup.o(.text);
         src/menu_draw.o(.text);
         src/menu_cursor_draw.o(.text);
         src/menu_page_arrows.o(.text);
