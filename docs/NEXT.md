@@ -45,12 +45,14 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       block copies, `GetPlayerClass`, 10 functions).
 - [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-19
       (counts from `tmp/ndiff.sh`, registers normalized):
-      - `EnemySpawnerThread` (asm/code_080193BC.s): 1 normalized, 47 raw
+      - `EnemySpawnerThread` (asm/code_080193BC.s): 0 normalized, 43 raw
         (2026-10-20). Case 0 reads `spawner->counts[...]` directly (no
         pointer), the trigger is read into the `kind` variable, `next` and
-        `j` are one variable, and the counts sum reuses `id`. Left:
-        operand registers of the `x` and `type` bitfield stores, and one
-        address copy in the unkAA wrap test.
+        `j` are one variable, and the counts sum reuses `id`. An empty
+        `do {} while (0);` before `unkAA = 1` in the wrap test fixed the
+        address copy there (permuter). Left: the `x` and `type` bitfield
+        stores hold value and mask in each other's registers. Casts and
+        `<< 3` don't change it; `(u8)id` changes the instructions.
       - `sub_08017664` (asm/code_08017664.s): 3 normalized. The mask test
         goes into `hit` before `next = i + 1`, and `if (roll ok) hit =
         TRUE; else hit = FALSE;`. Left: the original computes `i + 1`
@@ -72,24 +74,27 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         read through `px = &spot->pos.x` / `px[1]` in the distance test
         and a `pos` pointer for the draw calls. Left: `&obj2.unk1C[13]`
         gets the last spill slot where the original gives it the first.
+        The permuter's 120 -> 30 candidates are all invalid: each puts an
+        assignment in dead code before a `case` label, so a pointer is
+        read uninitialized. Reordering the init stores doesn't help.
       - `sub_0801F4DC` (asm/npc_walker.s): far off (172 normalized).
       - `sub_08004AE4` (asm/code_08004AE4.s, map entry scrolling) and
         `sub_08002790` (asm/code_08002790.s, link lobby): far off, see
         the open sign-extension shape in CLAUDE.md.
       - `sub_0801DBC8` (asm/area_pillars.s): the other session's draft
         and a second one (`tmp/drafts/sub_0801DBC8_wip.c`, 245 lines).
-      - `sub_08015478` (asm/player_status_tick.s, status timers): 12 lines
-        off; `&player->unk24` and a zero sit in each other's registers
-        (r7/r4).
+      - `sub_08015478` (asm/player_status_tick.s, status timers): 18 raw
+        lines (was 34). `player->unk24[i]--; timer = player->unk24[i];`
+        as two statements fixes the r7/r4 and r2/r3 swaps. Left: the
+        timer is reloaded with `ldrsh` where the original sign-extends the
+        stored value (`lsls/asrs`), and one `ldr r0, [r5, #32]` is
+        scheduled two instructions earlier in the original.
       - `sub_0803861C` (asm/enemy_projectile2.s, sibling of
         `sub_08037B58`): about 65 lines off around the hit test; the
         original copies the 12-bit positions to the stack after
         `sub_08007670()`.
       - `sub_08023048` (asm/item_icon.s, item icon): about 85 lines of
         register differences (flags, x, y and the counter).
-      - `sub_0804ADF0` (asm/code_0804ADF0.s): 4 lines off after the
-        permuter's shared object pointer; at `done:` the compiler reuses a
-        register it knows is 0 where the original loads a fresh 0.
       - `sub_0803FE70` (asm/menu_gold_count2.s, two gold totals with the
         count animation, sibling of `sub_0803FFFC`): logic matches; the
         original holds `&gUnknown_0300047B` in two registers (sl, sb) and
@@ -168,6 +173,14 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         order). Found on the way (permuter): one u16 temporary shared by
         the SP payment and the y distance, `level` reused for the status
         value, and `u16 level` with a `u8` copy for the status loops.
+        Tried 2026-10-20 without effect: `paid = res = ...`, casts in the
+        test, other `res` types, and other return shapes of the inline.
+      - `sub_08005A2C` (asm/code_08005A2C.s, the 5x5 tile attribute
+        check): 4 normalized, 86 raw (2026-10-20). The second loop takes
+        `tile = &tiles[(tx + i) + width * (ty + j)]` as a temporary (no
+        `col`); the first keeps `col = tx + i`. Left: `dir` and `tiles`
+        swapped (r5/r6), and the first loop computes `tx + i` a few
+        instructions earlier. Draft sub_08005A2C.c.
       - OAM family: all matched 2026-10-18 (src/oam_*.c), the affine
         ones `sub_08003724`, `sub_080039C8` and `sub_08003CF8` included.
       - `sub_08028DB0` (asm/link_sync.s, link sync thread): far off,
@@ -199,7 +212,10 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         (`unsigned long long wide = x << 16; fixedX = wide;`, found by
         decomp-permuter); what's left is that the original computes it in
         r2, C in r0. A second 10-minute permuter run from that draft found
-        nothing. Draft sub_080298C0.c.
+        nothing. By hand (2026-10-20): `fixedX = wide = ...`, a block
+        temporary, `(s32)wide`, `(u32)x`, and moving `wide`'s declaration
+        anywhere all stay at 2 lines; `do {} while (0)` around it is
+        worse. Draft sub_080298C0.c.
       - `sub_0801B210` is not a function of its own: it is the head of one
         5 KB function that runs to 0x0801C6B0 (it jumps into
         `sub_0801B370` with `bl`-encoded long branches). The asm needs
