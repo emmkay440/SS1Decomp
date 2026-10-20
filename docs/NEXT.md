@@ -59,14 +59,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       comment. Its module also holds the kind 0-4 threads (`sub_08029C44`
       / `sub_0802A0FC` and `sub_0802A60C` / `sub_0802B134` are pairs, 0.8
       similar), not started.
-      - `EnemySpawnerThread` (asm/code_080193BC.s): 0 normalized, 43 raw
-        (2026-10-20). Case 0 reads `spawner->counts[...]` directly (no
-        pointer), the trigger is read into the `kind` variable, `next` and
-        `j` are one variable, and the counts sum reuses `id`. An empty
-        `do {} while (0);` before `unkAA = 1` in the wrap test fixed the
-        address copy there (permuter). Left: the `x` and `type` bitfield
-        stores hold value and mask in each other's registers. Casts and
-        `<< 3` don't change it; `(u8)id` changes the instructions.
       - `sub_08017664` (asm/code_08017664.s): 3 normalized. The mask test
         goes into `hit` before `next = i + 1`, and `if (roll ok) hit =
         TRUE; else hit = FALSE;`. Left: the original computes `i + 1`

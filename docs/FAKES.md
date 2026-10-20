@@ -27,3 +27,4 @@ Rules:
 | `sub_080244F4` | src/link_lost.c | `do { ... } while (0)` around one call | maybe a macro |
 | `sub_08013B94` | src/field_items.c | body inside `do/while (0)` | maybe a macro |
 | `sub_0800336C` | src/oam_draw_tiles.c | loop body inside `do/while (0)` | maybe a macro |
+| `EnemySpawnerThread` | src/enemy_spawner_thread.c | two `do/while (0)` around the setup/spawn block and the rest, empty `do {} while (0);` in the unkAA wrap test | maybe a macro / fake |

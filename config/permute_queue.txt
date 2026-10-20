@@ -6,7 +6,6 @@
 #
 # func                module               draft
 sub_08010B48          equip_has            tmp/drafts/sub_08010B48.c
-EnemySpawnerThread    code_080193BC        tmp/drafts/EnemySpawnerThread.c
 sub_080298C0          spell_effect_thread  tmp/drafts/sub_080298C0.c
 sub_080119DC          equip_bonus_scaled   tmp/drafts/sub_080119DC.c
 sub_0802BA34          spell_status_near    tmp/drafts/sub_0802BA34_natural.c

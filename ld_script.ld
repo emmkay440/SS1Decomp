@@ -156,7 +156,7 @@ SECTIONS {
         asm/code_08018940.o(.text);
         src/area_place_player.o(.text);
         src/area_enter_pos.o(.text);
-        asm/code_080193BC.o(.text);
+        src/enemy_spawner_thread.o(.text);
         src/enemy_spawner_start.o(.text);
         asm/spawn_points.o(.text);
         src/area_list_find.o(.text);
