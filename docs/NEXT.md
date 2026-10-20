@@ -169,18 +169,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         [][2]` (gUnknown_080FB4C0). Left: the original loads
         `enemyDirection` and gUnknown_080FB9FC with `ldrsh`, then register
         choice. Draft sub_08017A44.c.
-      - `sub_0802BA34` (asm/spell_status_near.s, the kind-5 action
-        thread: inlined SP check `sub_0802F058`, then status 6 to the
-        players in range): 1 instruction off, `cmp r0, #0` where the
-        original has `cmp r4, #0` after the inlined SP check (the s16
-        result has to be compared, its u16 copy computed first). Draft
-        tmp/drafts/sub_0802BA34.c gets there with a fake `(res & 0xFFFF)
-        == 0`; sub_0802BA34_natural.c is 2 lines off (the `lsrs`/`asrs`
-        order). Found on the way (permuter): one u16 temporary shared by
-        the SP payment and the y distance, `level` reused for the status
-        value, and `u16 level` with a `u8` copy for the status loops.
-        Tried 2026-10-20 without effect: `paid = res = ...`, casts in the
-        test, other `res` types, and other return shapes of the inline.
       - `sub_08005A2C` (asm/code_08005A2C.s, the 5x5 tile attribute
         check): 4 normalized, 86 raw (2026-10-20). The second loop takes
         `tile = &tiles[(tx + i) + width * (ty + j)]` as a temporary (no

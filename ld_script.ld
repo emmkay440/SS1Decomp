@@ -232,7 +232,7 @@ SECTIONS {
         src/effect_obj4.o(.text);
         src/unk_08029BB4.o(.text);
         asm/code_08029C44.o(.text);
-        asm/spell_status_near.o(.text);
+        src/spell_status_near.o(.text);
         asm/spell_sleep.o(.text);
         src/skill_thread_start.o(.text);
         asm/target_in_front.o(.text);
