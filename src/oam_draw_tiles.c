@@ -102,8 +102,8 @@ u32 sub_0800336C(s32 x, s32 y, u16 anim, u16 frame, u8 priority, u8 *palettes,
     tile = 0;
     for (i = 0; i < frames->count; i++, dest++, src++)
     {
-        // decomp-permuter found the do/while (probably a macro in the
-        // original); x is the 9-bit signed field, shifted by hand.
+        // FAKE (maybe a macro, decomp-permuter): the do/while; x is the
+        // 9-bit signed field, shifted by hand.
         do
         {
             obj = src;

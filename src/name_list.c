@@ -12,8 +12,8 @@ struct NameList
 
 // Index of the player's name in the list. Doesn't return a value when the
 // name isn't there (the caller gets the record pointer).
-// The do/while (0) and the empty if (1) are no-ops that decomp-permuter
-// found; they reproduce the original block layout (maybe macros or debug
+// FAKE (decomp-permuter): the do/while (0) and the empty if (1) are
+// no-ops; they reproduce the original block layout (maybe macros or debug
 // code in the original source).
 u32 sub_080150D4(void)
 {

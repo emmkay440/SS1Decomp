@@ -1,0 +1,22 @@
+# decomp-permuter queue: near misses whose logic is right, with only
+# registers, stack slots or instruction order left. Don't work on these by
+# hand; tools/scripts/permute_queue.sh runs the permuter on each in turn.
+# Results: tmp/permute/<func>/ (older runs moved to tmp/permute_old/),
+# summary in tmp/permute/queue.log. Remove a line once the function matches.
+#
+# func                module               draft
+sub_08010B48          equip_has            tmp/drafts/sub_08010B48.c
+EnemySpawnerThread    code_080193BC        tmp/drafts/EnemySpawnerThread.c
+sub_080298C0          spell_effect_thread  tmp/drafts/sub_080298C0.c
+sub_080119DC          equip_bonus_scaled   tmp/drafts/sub_080119DC.c
+sub_0802BA34          spell_status_near    tmp/drafts/sub_0802BA34_natural.c
+sub_080352C4          enemy_wave           tmp/drafts/sub_080352C4.c
+sub_08017664          code_08017664        tmp/drafts/sub_08017664.c
+sub_08005A2C          code_08005A2C        tmp/drafts/sub_08005A2C.c
+sub_08049A24          code_08049A24        tmp/drafts/sub_08049A24.c
+sub_08034F3C          enemy_bolt           tmp/drafts/sub_08034F3C.c
+sub_08015478          player_status_tick   tmp/drafts/sub_08015478.c
+sub_08023A94          hud_weapon_wheel     tmp/drafts/sub_08023A94.c
+sub_0803FE70          menu_gold_count2     tmp/drafts/sub_0803FE70.c
+sub_0801AF3C          area_change_thread   tmp/drafts/sub_0801AF3C.c
+sub_08020ADC          npc_gift_0adc        tmp/drafts/sub_08020ADC.c

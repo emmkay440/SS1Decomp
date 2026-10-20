@@ -125,7 +125,7 @@ void sub_08003518(u32 a, u32 b, u16 c, u16 d, u8 e, void *f, u32 g, u32 h);
 
 // Draws a 0-terminated u16 string as sprites: the high byte of a character
 // picks the font record, the low byte - 1 the glyph.
-// Matching needs three odd things, all found by decomp-permuter: the loop
+// FAKE (decomp-permuter): matching needs three odd things: the loop
 // is entered by a jump to its test (and that goto has to sit in its own
 // do/while(0)), and the font index is shifted in two steps into an int.
 // A plain `while (*str != 0)` is 16 instructions off.

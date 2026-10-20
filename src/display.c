@@ -42,7 +42,7 @@ void EnableDisplayLayers(u16 layers, u16 windows, u16 apply)
         REG_DISPCNT = mask;
 }
 
-// Turns off layers and windows. (Shape found by decomp-permuter: the read
+// Turns off layers and windows. (FAKE, decomp-permuter: the read
 // goes through a volatile pointer and the register write uses a second
 // variable.)
 void DisableDisplayLayers(u16 layers, u16 windows, u16 apply)

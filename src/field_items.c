@@ -65,8 +65,8 @@ u8 sub_08013B20(u32 which, u8 **list)
 // Copies one of the three 12-item lists: the shared copy while
 // sub_080074F0() is true, else the one in gPlayerStats.
 // `src` stays unset for another `which` (as in the original).
-// The body only matches inside a do/while(0), so it was probably a macro
-// (found by decomp-permuter).
+// FAKE (maybe a macro, decomp-permuter): the body only matches inside a
+// do/while(0).
 void sub_08013B94(u32 which, struct Item *dest)
 {
     u32 i;

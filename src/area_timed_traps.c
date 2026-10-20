@@ -70,7 +70,7 @@ void sub_0801D5D8(void)
                 }
                 if (idle[i] == 0)
                 {
-                    do  // fake (found by decomp-permuter)
+                    do  // FAKE (decomp-permuter): a no-op do/while
                     {
                         for (p = 0; p < sub_08001EC4(); p++)
                         {

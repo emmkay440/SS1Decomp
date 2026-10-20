@@ -43,7 +43,7 @@ void sub_080497D8(void)
     sub_080044E4(0, 0, 0, 0, 0, 0);
     for (i = 0; i < 90; i++, angle += 2)
     {
-        angle++;  // fake (decomp-permuter): only changes the register allocation
+        angle++;  // FAKE (decomp-permuter): only changes the register allocation
         angle--;
         sub_08026B90(&gUnknown_03000800, 120, 80 - (gUnknown_0805289C[angle % 255] >> 4), 0, 0);
         gBgRegsBuffer[6]++;

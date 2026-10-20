@@ -78,7 +78,7 @@ void sub_0801F9C8(void)
     u32 item;
     u32 nextText;
     void *window;
-    int zero;          // a zero in a variable (found by decomp-permuter)
+    int zero;          // FAKE (decomp-permuter): a zero in a variable
     u32 state;
     u32 anim;
     u32 i;

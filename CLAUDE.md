@@ -46,6 +46,19 @@ merge `ad_*` files into real modules, name things, fix style.
   `old_agbcc` gets that right but allocates registers differently). Only
   the m4a library uses `old_agbcc` (Makefile override).
 - Functions that come close but don't match go to `tmp/drafts/` and stay asm.
+- Fake matches are accepted when nothing natural is found, as long as the
+  code does the same thing (never a permuter candidate that reads an
+  uninitialized variable). Mark each with a `FAKE (who found it): what it
+  does` comment and add it to docs/FAKES.md.
+- Permuter queue: once a draft's logic is right and only registers, stack
+  slots or instruction order are off, don't keep tuning it by hand. Add it
+  to `config/permute_queue.txt` and move on to other functions; the
+  permuter runs over the queue for long periods
+  (`tools/scripts/permute_queue.sh [secs_each] [jobs]`, detached with
+  `nohup setsid ... &`; `touch tmp/permute/STOP` ends it after the current
+  function). Check `tmp/permute/queue.log` and the best outputs later:
+  build them (`tools/scripts/dcheck.sh`, then the real tree) before
+  accepting, and record fakes as above.
 - Matching tricks that worked: return-0/1 layout follows if/else order
   (flip the condition or use a result variable); `x & (1 << i)` vs
   `(1 << i) & x` changes scheduling; per-layer code duplicated in both
@@ -364,8 +377,7 @@ merge `ad_*` files into real modules, name things, fix style.
   - A `u16` local for a call result moves its `u8` conversion to the
     argument setup (src/enemy_projectile.c).
   - Accepted fakes from decomp-permuter when nothing natural was found:
-    `do { x = f(); } while (0);` (src/link_lost.c, probably a macro) and
-    `angle++; angle--;` (src/save_select_mode2_seq.c), both commented.
+    see docs/FAKES.md.
 - Shapes from 2026-10-15:
   - A `switch` over a `u8`/`u16` gives signed compares (`cmp #1; bgt;
     cmp #0; blt`) without any cast; an added `(s8)`/`(s16)` cast puts in

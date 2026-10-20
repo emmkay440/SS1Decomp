@@ -114,7 +114,7 @@ void sub_080244F4(void)
     }
     tiles = GetDataRecord(record[0]);
     palette = GetDataRecord((*record++ & 0xFFFF) | 0x120000);
-    do  // probably a macro: only matches inside a do/while(0)
+    do  // FAKE (maybe a macro): only matches inside a do/while(0)
     {
         tilemap = LZ77DecompressAlloc(record);
     } while (0);

@@ -45,6 +45,9 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       block copies, `GetPlayerClass`, 10 functions).
 - [ ] Near misses still open (drafts in `tmp/drafts/`), status 2026-10-19
       (counts from `tmp/ndiff.sh`, registers normalized):
+      The ones with only registers / stack slots / order left are in
+      `config/permute_queue.txt` (2026-10-20) for long permuter runs; leave
+      them to the permuter and work on the others.
       - `EnemySpawnerThread` (asm/code_080193BC.s): 0 normalized, 43 raw
         (2026-10-20). Case 0 reads `spawner->counts[...]` directly (no
         pointer), the trigger is read into the `kind` variable, `next` and

@@ -33,7 +33,7 @@ void sub_0801CFB0(void)
     s16 screenY;
     u16 frame[gUnknown_030063D8->unk88];
     u16 timer[gUnknown_030063D8->unk88];
-    u16 (*framePtr)[gUnknown_030063D8->unk88];  // fake (found by decomp-permuter)
+    u16 (*framePtr)[gUnknown_030063D8->unk88];  // FAKE (decomp-permuter): only changes the stack layout
     u8 idle[gUnknown_030063D8->unk88];
     u8 armed[gUnknown_030063D8->unk88];
     u32 trigger[gUnknown_030063D8->unk88];

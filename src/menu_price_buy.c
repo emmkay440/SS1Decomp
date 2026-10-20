@@ -1,7 +1,6 @@
-// Draft: 11 lines off with the else branch in a do/while(0) (from
-// decomp-permuter); about 20 without. The original keeps both copies of the
-// price/money code and puts the shared `return 0` last; versions that put
-// the return there get the two copies merged (136 bytes instead of 164).
+// The original keeps both copies of the price/money code and puts the
+// shared `return 0` last; versions that put the return there get the two
+// copies merged (136 bytes instead of 164).
 #include "global.h"
 #include "item.h"
 #include "menu.h"
