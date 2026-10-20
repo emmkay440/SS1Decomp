@@ -32,3 +32,4 @@ sub_0802C174          target_in_front      tmp/drafts/sub_0802C174.c
 DropItem              drop_item            tmp/drafts/DropItem.c
 sub_0800C8F8          nearest_player       tmp/drafts/sub_0800C8F8.c
 sub_0802BD2C          spell_sleep          tmp/drafts/sub_0802BD2C.c
+sub_08023330          code_08023330        tmp/drafts/sub_08023330.c
