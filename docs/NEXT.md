@@ -268,6 +268,15 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         signed), the roll's `- 25` kept in its own `d = (unk64 >> 1) - 25`,
         the failure path with its own exit copy. Left: the mask and y
         positions in other registers / stack slots. Draft sub_0802BD2C.c.
+      - `sub_08018940` (asm/code_08018940.s, sets up the area's floor:
+        rolls entry variants into unkCC, link sync, starts the entry
+        threads): 64 normalized (2026-10-21), queued. Found: the area
+        table indexed directly (`gUnknown_080FB0F8[area].keys[i]`, not
+        through a pointer), the kind 13 item ids are bytes in 4-byte
+        slots. Left: the kind 2 search loop, where the original has the
+        body (kind test and flag store) twice, once before the loop (no
+        loop form tried gives that), and strength reduction in the kind
+        13 loop. Draft sub_08018940.c.
       - `sub_08012AD0` (asm/drop_roll.s, the item an enemy drops): 2
         instructions off (2026-10-20), queued; a 20-minute permuter run
         found nothing. `&spawner->category[kind]` is formed as `(spawner
