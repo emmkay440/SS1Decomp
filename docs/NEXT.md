@@ -238,12 +238,18 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       - `sub_08004344` (asm/draw_sorted.s, sorted draw-list insert): logic
         matches, block layout doesn't (the original puts the "insert at the
         head" block before the loop); draft sub_08004344.c.
-      - `GetDataRecord` (asm/data_record.s): the structure matches (two
-        switches, every case with its own copy of the lookup); the key and
-        the section pointer end up in swapped registers (r2/r3), and the
-        per-language cases need the opposite registers for index and
-        table. Draft GetDataRecord.c. `sub_08002E18` next to it matches
-        (src/data_count.c).
+      - `GetDataRecord` (asm/data_record.s): 25 normalized (2026-10-21),
+        queued. The asm's second switch was `.byte` data; it is now
+        `.inst.n`/`.4byte` so dcheck and the permuter can compare it. The
+        new draft: one `static inline Rec(section, index)` for every
+        lookup (each case keeps its own `ldr 0xFFFF; ands` and jumps to the
+        shared tail), case order from the code addresses, case 9's
+        languages 1-5 set a constant and share `(key + k) & 0xFFFF`. Left:
+        the original adds the `+4` of the offset table in its own
+        instruction (`adds r1, r2, #4; adds r1, r0; ldr [r1]`) where the
+        build folds it into `ldr [r0, #4]` (no spelling tried keeps it),
+        and language 0 keeps its own copy of the lookup. `sub_08002E18`
+        next to it matches (src/data_count.c).
       - `DropItem` (asm/drop_item.s): 10 lines off. The original keeps a
         separate call for the `| 0x80` case while the first case shares
         the call of the last branch; every C version merges all three
