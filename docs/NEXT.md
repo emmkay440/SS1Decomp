@@ -155,12 +155,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         #0; str r0, [r1, #8]` with a void epilogue (`pop {r0}`). Making the
         function `u32` brings it to 12 lines (what the permuter found),
         but the original's epilogue says void. Draft sub_08034F3C.c.
-      - `sub_080352C4` (asm/enemy_wave.s, an enemy shock wave, modelled on
-        src/enemy_projectile.c): 21 lines off, right size; the
-        `LAST_HIT` store loads `gPlayers + 0x80` from the pool where the
-        original adds 0x80 to the gPlayers register (r8). The first
-        loop's early exits need a `goto` past `while (!done)`. A permuter
-        run found nothing. Draft sub_080352C4.c.
       - `sub_08017A44` (asm/enemy_melee.s, enemy melee hit on the local
         player): 127 lines off, 4 bytes long. Found: the last-hit test is a
         stored boolean (`ok = ... != enemy->unk2C`, the original's
