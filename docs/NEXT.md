@@ -235,9 +235,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       - `Free` (asm/heap_free.s): 2 lines off. It does `r4 = ptr; r1 = r4`,
         the original `r1 = ptr; r4 = r1`. Needs a goto for the loop and an
         integer copy of the pointer in its own do/while(0) (draft Free.c).
-      - `sub_0804096C` (asm/menu_quick_slots.s): matches except that the
-        original loads &gUnknown_03000494 into r8 before the first loop
-        (draft sub_0804096C.c).
       - `sub_0804087C` (asm/menu_slot_item.s): 6 lines off; which register
         holds the type 4 index (draft sub_0804087C.c).
       - `sub_08045114` (asm/menu_price_buy.s): 11 lines off; the original
@@ -257,11 +254,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         build folds it into `ldr [r0, #4]` (no spelling tried keeps it),
         and language 0 keeps its own copy of the lookup. `sub_08002E18`
         next to it matches (src/data_count.c).
-      - `DropItem` (asm/drop_item.s): 10 lines off. The original keeps a
-        separate call for the `| 0x80` case while the first case shares
-        the call of the last branch; every C version merges all three
-        tails. Draft DropItem.c. The function reads `spot` uninitialized
-        when sub_08001F64() is 0.
       - `sub_0804A074` (asm/code_0804A074.s, save select mode 3 sequence):
         logic matches; in the 30..239 loop x and the counter sit in each
         other's registers (r4/r5). Draft sub_0804A074.c; it has to stay in

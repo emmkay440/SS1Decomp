@@ -106,7 +106,7 @@ SECTIONS {
         asm/code_0800EEA0.o(.text);
         src/fade.o(.text);
         asm/code_0800F470.o(.text);
-        asm/drop_item.o(.text);
+        src/drop_item.o(.text);
         asm/code_0800F53C.o(.text);
         src/item_flags.o(.text);
         src/inventory_add.o(.text);
@@ -297,7 +297,7 @@ SECTIONS {
         src/menu_drop_item.o(.text);
         asm/menu_slot_item.o(.text);
         src/menu_item_price.o(.text);
-        asm/menu_quick_slots.o(.text);
+        src/menu_quick_slots.o(.text);
         src/menu_can_put.o(.text);
         src/menu_state.o(.text);
         src/menu_items.o(.text);
