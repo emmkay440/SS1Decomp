@@ -31,3 +31,4 @@ Rules:
 | `sub_0802BA34` | src/spell_status_near.c | `t` holds a copy of `res`, then of `j` in the first status loop | fake |
 | `sub_08043378` | src/menu_help_line.c | `goto` into a `case` of a later switch (shares its `0x900E5` code) | maybe real |
 | `sub_080352C4` | src/enemy_wave.c | empty `if (!gPlayers) {}` (array address, never true) | fake |
+| `sub_08026D98` | src/number_draw.c (and its inlined copy in src/number_above.c) | `case 0: kind = 0;` etc., self-assignments in the kind switch | maybe real (a mapping) |

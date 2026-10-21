@@ -199,7 +199,7 @@ SECTIONS {
         asm/code_08023330.o(.text);
         asm/hud_weapon_wheel.o(.text);
         asm/code_08023E74.o(.text);
-        asm/number_above.o(.text);
+        src/number_above.o(.text);
         src/player_rise_effect.o(.text);
         src/link_lost.o(.text);
         src/link_save_reset.o(.text);
@@ -210,7 +210,7 @@ SECTIONS {
         src/area_title.o(.text);
         src/sprite_obj.o(.text);
         src/thread_slots.o(.text);
-        asm/code_08026D98.o(.text);
+        src/number_draw.o(.text);
         src/char_menu_threads.o(.text);
         src/centered_text.o(.text);
         src/player_threads.o(.text);

@@ -265,10 +265,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         (asm/code_080045C8.s): match except that the original computes
         `index * 2` for the BG control register before the call into r4 and
         copies it to a high register later; draft sub_0800481C.c.
-      - `sub_08024320` (asm/number_above.s, 4-digit number above an
-        object): 37 lines off; the loops are strength-reduced forms of
-        plain indexing, the table base isn't folded (`adds r0, #24`);
-        draft sub_08024320.c.
       - `sub_0802BD2C` (asm/spell_sleep.s, the enemy twin of
         `sub_0802BA34`: status 2 for 1800 frames to the enemies in range):
         25 normalized, 159 raw (2026-10-20), queued. Found: `u32 count`
@@ -335,16 +331,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         inline, `old_agbcc` (merges too). agbcc's cross-jumping always
         runs (jump2), so something in the original's RTL differed per
         case. Draft sub_08048240.c.
-      - `sub_08026D98` (asm/code_08026D98.s, draw a number right-aligned):
-        39 normalized (2026-10-21), queued. Found: the kind switch is a
-        mapping with self-assignments (`case 0: kind = 0; case 1: kind = 1;
-        case 2: kind = 2; case 3: kind = 13;`) which gives the original's
-        compare tree (pivot 1); `value` copied to a local after it (its
-        stack home is written there); table and digit pointers walked
-        (`*p++ = sub_080004A4(&value, *table++)`), table set before `p`.
-        Left: the original keeps `kind` in r3 and saves it around the
-        calls (caller-saves), the build puts it in r8. It goes at the top of
-        src/char_menu_threads.c once it matches.
       - `sub_08006008`, `GetMapTileAttributes` (asm/map_6008.s, map_attr.s;
         drafts in map_all.c): the layer pointer has to land in r0/r1 while
         x and y move to other registers. About 20 lines off.
