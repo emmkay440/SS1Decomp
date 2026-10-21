@@ -127,7 +127,12 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         `+0x70` literals (every spelling of the address compiles the same;
         goto loops and direct accesses are worse). Permuter: only
         `stats = &gPlayerStats; weapon = &stats->currentWeapon`, which is
-        worse by line count. Draft sub_08023A94.c.
+        worse by line count. Draft sub_08023A94.c. 2026-10-21: reading
+        `&stats->currentWeapon` through a `static inline` taking
+        `&gPlayerStats` gives the base + 0x6C form (4 normalized, registers
+        shifted); `&gPlayerStats.weapons[i]` still folds its 0x70 into the
+        literal (the original adds `i * 4 + 0x70` to the base) with every
+        spelling tried. Previous draft: sub_08023A94_old.c.
       - `sub_08047780` (asm/save_select_slots.s, the save select screen's
         text): 97 lines off, right size. Found: `sub_0800EDBC` declared
         with int parameters in the caller (the coordinates aren't
