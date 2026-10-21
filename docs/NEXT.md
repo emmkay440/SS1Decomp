@@ -269,6 +269,17 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         signed), the roll's `- 25` kept in its own `d = (unk64 >> 1) - 25`,
         the failure path with its own exit copy. Left: the mask and y
         positions in other registers / stack slots. Draft sub_0802BD2C.c.
+      - `sub_080124E8` (asm/code_08012230.s, rolls an equipment item's
+        random bonuses: element, prefix, "+n"): 28 normalized, 84 raw
+        (2026-10-20), queued. Found: the chance byte read into `c` before
+        the range tests, `next = c + acc` in the weapon case, one
+        function-scope `weapon` record for the loop and the final switch
+        (it lives in ip), `kinds = x & 7; kinds++;`. Left: in the three
+        "no bonus" flag loops the original indexes `base + i` and hoists
+        different mask constants (the draft strength-reduces the pointer).
+        Its module also holds `sub_08012230` (twin of the queued
+        `sub_08010B48`) and `sub_08012AD0` (drop roll, calls this one), so
+        it needs splitting before it can be linked. Draft sub_080124E8.c.
       - `sub_08023330` (asm/code_08023330.s, draws an item's name / text;
         called by the menu help line): 77 normalized, 317 raw (2026-10-20),
         queued. Found: `case 0:` in the category switch (the table starts
