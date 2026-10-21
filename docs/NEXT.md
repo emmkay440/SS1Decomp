@@ -71,6 +71,13 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         the first (stat case 0 over case 2, effect 7 over effect 8) where
         the draft keeps the last, and the heal blocks hold hp/max in r3/r2
         (not live across a call). Separate SP-block pointers made it worse.
+        2026-10-21: 20 normalized with str case 2 wrapped in `do { } while
+        (0); break;` (now neither copy is merged; the original merges case
+        2 into case 0). Why the original keeps the first copy: agbcc's
+        cross-jumping (jump.c) walks the jumps forward and deletes the
+        *current* jump's tail in favour of another jump to the same label,
+        so the earlier copy only survives if the later tail reached that
+        label through an intermediate jump that was threaded later.
       - `sub_08010B48` / twin `sub_08012230`: 10 real-build lines, all
         `beq` targets: the original threads the NULL item test past the
         bonus loop. Early-return getters, nested ifs, and getters that
