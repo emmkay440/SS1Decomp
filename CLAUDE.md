@@ -561,6 +561,21 @@ merge `ad_*` files into real modules, name things, fix style.
     not the jump table order (case 7 before case 5 here).
   - A `b` from an unrelated branch straight to a case label's literal load
     (`ldr r0, =X` included): a `goto` into that case.
+- Shapes from 2026-10-20, third batch (sub_08012AD0 draft, the drop roll):
+  - Bitfield stores with *word* access (`ldr r0, [sp]; ands; orrs; str`,
+    the value computed first, the next field's mask derived as `subs r2,
+    #0x78` from the previous constant): the variable is a `union { u32
+    raw; struct Item item; }` (a plain struct gives halfword/byte RMWs).
+  - `lsls r1, r0, #16; movs 0xFF << 16; ands; lsrs #16` after a call: a
+    `u16` assigned first, masked in a second statement (`roll =
+    abs(Random()); roll &= 0xFF;`); written as one expression the mask
+    folds away the narrowing. Same for `x % 101 + 100` added in the
+    shifted domain (`p = x % 101; p += 100;`).
+  - Don't mask a value stored into a bitfield (`item.id = list[i]`, not
+    `list[i] & 0x7F`): the store masks it anyway, and the explicit mask
+    changes which constant gets hoisted (24 -> 11 lines here).
+  - `x ? a == 0 : a != 0` as a `do/while` condition for a retry loop
+    whose two exit tests sit at the loop top and bottom.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
