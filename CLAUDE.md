@@ -576,6 +576,16 @@ merge `ad_*` files into real modules, name things, fix style.
     changes which constant gets hoisted (24 -> 11 lines here).
   - `x ? a == 0 : a != 0` as a `do/while` condition for a retry loop
     whose two exit tests sit at the loop top and bottom.
+- Shapes from 2026-10-21 (src/can_equip.c, 63 -> 0 lines):
+  - A record pointer that stays in r0 within one case (no copy to a
+    callee-saved register) while another case keeps one: a block-local
+    pointer in that case (`{ u8 *armor = GetDataRecord(...); ... }`),
+    not the function-wide `record`.
+  - `adds r0, #0xF1` from the base where the build derives it from the
+    previous address (`subs r0, #7`): compare the second field directly
+    (`if (rec[0xF1] > x)`) instead of through a local.
+  - A final `bne; movs r0, #0` / `movs r0, #1` order: `if (!cond) return
+    FALSE; return TRUE;`.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine

@@ -178,11 +178,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         registers and the layout of the wait loop. Draft sub_08028DB0.c.
       - `sub_080199B4` (asm/spawn_points.s, spawn point thread): far off;
         the original keeps the constant 1 in r9. Draft sub_080199B4.c.
-      - `CanEquipItem` (asm/can_equip.s): about 30 lines off. The
-        weapon's required level and `stats` sit in each other's registers
-        (r7/r8), and the armor / head gear str checks share their tail
-        where the original keeps the class-bit test after them. Draft
-        CanEquipItem.c.
       - `sub_0801AF3C` (asm/area_change_thread.s, area change thread):
         about 45 lines off, the loop counters (r4/r5 swapped) and
         `index * 212 + table` built in the other order (the original

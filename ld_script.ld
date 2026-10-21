@@ -112,7 +112,7 @@ SECTIONS {
         src/inventory_add.o(.text);
         src/drop_spot.o(.text);
         src/item_price.o(.text);
-        asm/can_equip.o(.text);
+        src/can_equip.o(.text);
         src/equip_bonus.o(.text);
         asm/equip_has.o(.text);
         src/equip_bonus2.o(.text);
