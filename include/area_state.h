@@ -100,9 +100,10 @@ struct Unknown_030063D8
     struct AreaTimedTrap *unk2C; // +0x2C unk8C timed traps (sub_0801D5D8)
     struct AreaSwitch *unk30; // +0x30 unk8E switches (sub_0801D928)
     struct AreaPillar *unk34; // +0x34 unk90 pillars (sub_0801DBC8)
-    u8 unk38[0x8];
+    u8 *unk38;          // +0x38 kind 10 entry data (sub_08018940)
+    u8 *unk3C;          // +0x3C kind 11 entry data (sub_08018940)
     struct AreaWarp *unk40; // +0x40 unk96 warp pads (sub_0801EA78)
-    u8 unk44[0x4];
+    u8 *unk44;          // +0x44 kind 13 entry data: items on the map (sub_08018940)
     u16 unk48[5][5];    // +0x48 five lists of ids (sub_08019B98)
     u16 unk7A[5];       // +0x7A their lengths
     u16 unk84;          // +0x84
@@ -125,7 +126,10 @@ struct Unknown_030063D8
     u8 unkA6[0x4];
     u8 unkAA;           // +0xAA next spawned enemy id - 8, wraps to 1 (EnemySpawnerThread)
     u8 unkAB;           // +0xAB set once SignalEvent(3000) has been sent
-    u8 unkAC[0x20];
+    s8 unkAC[8];        // +0xAC four random values per slot in area 0x40020010
+    s8 unkB4[8];        //       (sub_08018940)
+    s8 unkBC[8];
+    s8 unkC4[8];
     u8 unkCC[0xE];      // +0xCC indexed past its end: row * 15 + entry (sub_080216E0)
     u8 unkDA;           // +0xDA
 };

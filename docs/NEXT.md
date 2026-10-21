@@ -104,7 +104,10 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       - `sub_0803FE70` (asm/menu_gold_count2.s, two gold totals with the
         count animation, sibling of `sub_0803FFFC`): logic matches; the
         original holds `&gUnknown_0300047B` in two registers (sl, sb) and
-        spills both parameters. Draft sub_0803FE70.c.
+        spills both parameters. Draft sub_0803FE70.c. The permuter (2026-10-21)
+        got it to 0 normalized (register choice only) with two copy
+        variables (`from = result`, `new_var = other`): sub_0803FE70_perm.c,
+        now the queued draft.
       - `sub_08023A94` (asm/hud_weapon_wheel.s, the weapon wheel HUD
         thread; `sub_08023E74` after it is its quick-slot sibling): 60
         lines off, right size. Found: `s16 offs[3][2]` (not a struct),
@@ -184,7 +187,9 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         about 45 lines off, the loop counters (r4/r5 swapped) and
         `index * 212 + table` built in the other order (the original
         multiplies first and adds the table to a copy in r8). Draft
-        sub_0801AF3C.c.
+        sub_0801AF3C.c; 0 normalized since the permuter (2026-10-21) showed
+        `gPlayers[id].layer` read directly, no `player` pointer. Left: the
+        loop counters in r4/r5 swapped.
       - `sub_08004FB4` (asm/map_tile_anim.s, animated map tiles): about 55
         lines off; the four-block loop keeps its counter in r8 and the
         table base `gUnknown_080FB0F8` reloaded per use, C hoists the base
