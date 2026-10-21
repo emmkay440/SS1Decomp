@@ -263,6 +263,15 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         signed), the roll's `- 25` kept in its own `d = (unk64 >> 1) - 25`,
         the failure path with its own exit copy. Left: the mask and y
         positions in other registers / stack slots. Draft sub_0802BD2C.c.
+      - `sub_08012AD0` (asm/drop_roll.s, the item an enemy drops): 2
+        instructions off (2026-10-20), queued; a 20-minute permuter run
+        found nothing. `&spawner->category[kind]` is formed as `(spawner
+        + 0x10) + off` in the original, `(off + 0x10) + spawner` in the
+        build; every spelling tried gives the latter. Found: the item is
+        a `union { u32 raw; struct Item item; }` (word bitfield stores),
+        `roll = abs(Random()); roll &= 0xFF;`, no `& 0x7F` on stored ids,
+        a `? :` do/while condition, `goto done` for the second early
+        exit. Draft sub_08012AD0.c.
       - `sub_080124E8` (asm/code_08012230.s, rolls an equipment item's
         random bonuses: element, prefix, "+n"): 28 normalized, 84 raw
         (2026-10-20), queued. Found: the chance byte read into `c` before

@@ -119,6 +119,7 @@ SECTIONS {
         asm/equip_bonus_scaled.o(.text);
         src/equip_bonus3.o(.text);
         asm/code_08012230.o(.text);
+        asm/drop_roll.o(.text);
         src/item_roll.o(.text);
         src/field_items_thread.o(.text);
         asm/code_08013310.o(.text);
