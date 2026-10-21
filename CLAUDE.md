@@ -586,6 +586,12 @@ merge `ad_*` files into real modules, name things, fix style.
     (`if (rec[0xF1] > x)`) instead of through a local.
   - A final `bne; movs r0, #0` / `movs r0, #1` order: `if (!cond) return
     FALSE; return TRUE;`.
+- A switch compare tree with one test per case although several cases
+  do nothing (`cmp #1; beq J; cmp #1; ble J; cmp #2; beq J; cmp #3`):
+  the cases had different bodies at expand time that later vanished,
+  e.g. a mapping with self-assignments (`case 1: kind = 1; break;`).
+  Empty cases with the same target are merged into ranges instead
+  (sub_08026D98 draft).
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine

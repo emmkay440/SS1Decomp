@@ -335,9 +335,16 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         inline, `old_agbcc` (merges too). agbcc's cross-jumping always
         runs (jump2), so something in the original's RTL differed per
         case. Draft sub_08048240.c.
-      - `sub_08026D98` (asm/code_08026D98.s, draw a decimal number): far
-        off; the original spills a variable around the divide calls (draft
-        sub_08026D98.c).
+      - `sub_08026D98` (asm/code_08026D98.s, draw a number right-aligned):
+        39 normalized (2026-10-21), queued. Found: the kind switch is a
+        mapping with self-assignments (`case 0: kind = 0; case 1: kind = 1;
+        case 2: kind = 2; case 3: kind = 13;`) which gives the original's
+        compare tree (pivot 1); `value` copied to a local after it (its
+        stack home is written there); table and digit pointers walked
+        (`*p++ = sub_080004A4(&value, *table++)`), table set before `p`.
+        Left: the original keeps `kind` in r3 and saves it around the
+        calls (caller-saves), the build puts it in r8. It goes at the top of
+        src/char_menu_threads.c once it matches.
       - `sub_08006008`, `GetMapTileAttributes` (asm/map_6008.s, map_attr.s;
         drafts in map_all.c): the layer pointer has to land in r0/r1 while
         x and y move to other registers. About 20 lines off.
