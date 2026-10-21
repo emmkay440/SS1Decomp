@@ -323,11 +323,16 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       - `sub_0802C174` (asm/target_in_front.s): 17 lines off; the original
         hoists 0x7FFF out of the loop and builds -8 inside it, C does the
         opposite; draft sub_0802C174.c.
-      - `sub_08048240` (asm/name_entry_char.s): every case keeps its own
-        copy of the table lookup in the original, C merges them (the same
-        unexplained "identical tails not merged" as `DropItem` and
-        `GetDataRecord`); it also returns r0 untouched when no case
-        applies. Draft sub_08048240.c.
+      - `sub_08048240` (asm/name_entry_char.s): every case's code now
+        matches instruction for instruction (2026-10-21: the language
+        tables are `u16 [][14]` indexed `[row][column]`, page 2's
+        languages 0/1 included; `ch = ...; break;` so `ch` stays in r0),
+        but the build merges the identical tails after each case's table
+        load (cross-jumping) and the original keeps all seven copies.
+        Tried: a static inline per lookup, the language switch in an
+        inline, `old_agbcc` (merges too). agbcc's cross-jumping always
+        runs (jump2), so something in the original's RTL differed per
+        case. Draft sub_08048240.c.
       - `sub_08026D98` (asm/code_08026D98.s, draw a decimal number): far
         off; the original spills a variable around the divide calls (draft
         sub_08026D98.c).
