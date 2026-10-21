@@ -592,6 +592,17 @@ merge `ad_*` files into real modules, name things, fix style.
   e.g. a mapping with self-assignments (`case 1: kind = 1; break;`).
   Empty cases with the same target are merged into ranges instead
   (sub_08026D98 draft).
+- Shapes from 2026-10-21, second batch (src/number_draw.c,
+  src/number_above.c; a function and its inlined copy, solved together):
+  - A global object's base loaded once before a loop with `adds r0, rB,
+    #0x1C` per call (instead of one `sym+0x1C` literal): the field is
+    read inside a `static inline` that takes the object pointer
+    (`DrawAnim(&gObj, ...)`); the hoisted invariant is the base.
+  - Increment order at a loop's end follows the `for` step: `adds i; adds
+    p` is `for (...; i++, p++)`, `*p++ = ...` puts p first.
+  - An inline whose `kind` argument is a constant but whose code still
+    does `lsls #16` (hoisted) / `lsrs #16` per call: the inline's
+    parameter is `u32` and narrowed at the call to a `u16` parameter.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine
