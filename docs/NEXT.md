@@ -155,7 +155,13 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         before the status code, so probably another variable or two.
         Locals must be declared obj, dirs, frame, timer, screenX, screenY
         for the stack layout. Permuter: nothing. Draft sub_08039B3C.c.
-        `sub_08039EC8` next to it is a two-stage variant, not a copy.
+        `sub_08039EC8` next to it is a two-stage variant, not a copy:
+        first draft 2026-10-24 (120 normalized, queued): `while (count !=
+        0)` with the exit tests as an `if (...) break;` at the end, the
+        move code written out in both branches of the `anim != 6` test, px/py
+        locals kept here (stored to the stack after sub_08007670), the
+        zero sixth argument of sub_08005FC4 reusing sub_080075AC()'s result.
+        Left: the original spills `enemy` and keeps x/y in sl/sb.
         2026-10-24: without px/py locals (`x >> 12` at each use, the
         enemy_projectile style) 72 normalized; queued.
       - `sub_08029C44` (asm/code_08029C44.s, the kind 0 action thread: a
