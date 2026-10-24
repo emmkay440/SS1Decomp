@@ -102,10 +102,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         timer is reloaded with `ldrsh` where the original sign-extends the
         stored value (`lsls/asrs`), and one `ldr r0, [r5, #32]` is
         scheduled two instructions earlier in the original.
-      - `sub_0803861C` (asm/enemy_projectile2.s, sibling of
-        `sub_08037B58`): about 65 lines off around the hit test; the
-        original copies the 12-bit positions to the stack after
-        `sub_08007670()`.
       - `sub_08023048` (asm/item_icon.s, item icon): about 85 lines of
         register differences (flags, x, y and the counter).
       - `sub_0803FE70` (asm/menu_gold_count2.s, two gold totals with the

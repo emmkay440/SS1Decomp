@@ -270,7 +270,7 @@ SECTIONS {
         asm/code_08036DC0.o(.text);
         src/enemy_projectile.o(.text);
         asm/code_08037D98.o(.text);
-        asm/enemy_projectile2.o(.text);
+        src/enemy_projectile2.o(.text);
         src/enemy_threads.o(.text);
         asm/code_08038AF8.o(.text);
         asm/enemy_shot.o(.text);
