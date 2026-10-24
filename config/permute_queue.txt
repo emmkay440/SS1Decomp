@@ -28,8 +28,8 @@ sub_0800E634          enemy_update_msg     tmp/drafts/sub_0800E634_perm.c
 sub_0800481C          map_layer2_bg        tmp/drafts/sub_0800481C_perm.c
 sub_0802C174          target_in_front      tmp/drafts/sub_0802C174_perm.c
 sub_0800C8F8          nearest_player       tmp/drafts/sub_0800C8F8_perm.c
-sub_0802BD2C          spell_sleep          tmp/drafts/sub_0802BD2C.c
-sub_080124E8          code_08012230        tmp/drafts/sub_080124E8.c
+sub_0802BD2C          spell_sleep          tmp/drafts/sub_0802BD2C_perm.c
+sub_080124E8          code_08012230        tmp/drafts/sub_080124E8_perm.c
 sub_08012AD0          drop_roll            tmp/drafts/sub_08012AD0.c
 sub_08018940          code_08018940        tmp/drafts/sub_08018940.c
 GetDataRecord         data_record          tmp/drafts/GetDataRecord.c
