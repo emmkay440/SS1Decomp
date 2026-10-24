@@ -156,6 +156,8 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         Locals must be declared obj, dirs, frame, timer, screenX, screenY
         for the stack layout. Permuter: nothing. Draft sub_08039B3C.c.
         `sub_08039EC8` next to it is a two-stage variant, not a copy.
+        2026-10-24: without px/py locals (`x >> 12` at each use, the
+        enemy_projectile style) 72 normalized; queued.
       - `sub_08034F3C` (asm/enemy_bolt.s, an enemy bolt): 1 instruction
         pair off (2026-10-21). Without `px`/`py` locals (`x >> 12` at each
         use, like the matched sub_08037B58 and sub_0803861C) only the end
