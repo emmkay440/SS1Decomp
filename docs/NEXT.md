@@ -156,16 +156,14 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         Locals must be declared obj, dirs, frame, timer, screenX, screenY
         for the stack layout. Permuter: nothing. Draft sub_08039B3C.c.
         `sub_08039EC8` next to it is a two-stage variant, not a copy.
-      - `sub_08034F3C` (asm/enemy_bolt.s, an enemy bolt, modelled on
-        src/enemy_projectile.c): 18 lines off, right size. Left: (1) the
-        original calls sub_080271D0 before storing px/py to the stack
-        (moving the assignments below the draw block makes it worse); (2)
-        the 0xFFFF of the wait loop is loaded before px/py; (3) at the end
-        `GetCurrentThread()->priority = 0` comes out as `movs r1, #0; str
-        r1, [r0, #8]` where the original has `adds r1, r0, #0; movs r0,
-        #0; str r0, [r1, #8]` with a void epilogue (`pop {r0}`). Making the
-        function `u32` brings it to 12 lines (what the permuter found),
-        but the original's epilogue says void. Draft sub_08034F3C.c.
+      - `sub_08034F3C` (asm/enemy_bolt.s, an enemy bolt): 1 instruction
+        pair off (2026-10-21). Without `px`/`py` locals (`x >> 12` at each
+        use, like the matched sub_08037B58 and sub_0803861C) only the end
+        is left: `GetCurrentThread()->priority = 0` comes out as `movs r1,
+        #0; str r1, [r0, #8]` where the original has `adds r1, r0, #0;
+        movs r0, #0; str r0, [r1, #8]` (void epilogue). A `u32` return
+        type gives that but changes the epilogue; a thread local, an
+        inline and duplicated endings don't. Draft sub_08034F3C.c, queued.
       - `sub_08017A44` (asm/enemy_melee.s, enemy melee hit on the local
         player): 127 lines off, 4 bytes long. Found: the last-hit test is a
         stored boolean (`ok = ... != enemy->unk2C`, the original's
