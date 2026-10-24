@@ -35,3 +35,4 @@ sub_08018940          code_08018940        tmp/drafts/sub_08018940.c
 GetDataRecord         data_record          tmp/drafts/GetDataRecord.c
 sub_08028DB0          link_sync            tmp/drafts/sub_08028DB0.c
 sub_08039B3C          enemy_shot           tmp/drafts/sub_08039B3C.c
+sub_08029C44          code_08029C44        tmp/drafts/sub_08029C44.c

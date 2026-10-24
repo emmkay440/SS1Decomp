@@ -158,6 +158,18 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         `sub_08039EC8` next to it is a two-stage variant, not a copy.
         2026-10-24: without px/py locals (`x >> 12` at each use, the
         enemy_projectile style) 72 normalized; queued.
+      - `sub_08029C44` (asm/code_08029C44.s, the kind 0 action thread: a
+        homing shot towards the first live enemy of the info's target
+        type): first draft 2026-10-24, 42 normalized, queued. Built from
+        sub_0802BA34 (same SP check inline; the failure path returns
+        without clearing the thread bit). Found: the three copies of the
+        level in `count, anim, level` order (stack slots), only frame and
+        timer zeroed at entry, `a -= 256`. Left: the enemy search loop (the
+        original copies its bit test in front of the loop with i = 0
+        folded and jumps into the type test; every loop form tried jumps
+        to the test instead) and the sign extensions in the steering.
+        The module's other threads (`sub_0802A0FC`, `sub_0802A60C`,
+        `sub_0802AB94`, `sub_0802B134`) are the kinds 1-4.
       - `sub_08034F3C` (asm/enemy_bolt.s, an enemy bolt): 1 instruction
         pair off (2026-10-21). Without `px`/`py` locals (`x >> 12` at each
         use, like the matched sub_08037B58 and sub_0803861C) only the end
