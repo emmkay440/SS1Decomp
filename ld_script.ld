@@ -196,7 +196,7 @@ SECTIONS {
         src/hud_sprites.o(.text);
         src/text_number.o(.text);
         asm/item_icon.o(.text);
-        asm/code_08023330.o(.text);
+        src/item_name.o(.text);
         asm/hud_weapon_wheel.o(.text);
         asm/code_08023E74.o(.text);
         src/number_above.o(.text);

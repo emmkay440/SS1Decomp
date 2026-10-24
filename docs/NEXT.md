@@ -306,18 +306,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         `&gPlayerStats.unk64`, `.unk66` and the inventory addresses as base
         + add in stack slots, the build folds them into literals (inline
         helpers didn't help here). Draft sub_08023E74.c.
-      - `sub_08023330` (asm/code_08023330.s, draws an item's name / text;
-        called by the menu help line): 77 normalized, 317 raw (2026-10-20),
-        queued. Found: `case 0:` in the category switch (the table starts
-        at 0), offsets grouped as `rec + (gLanguage * 68 + K)`, `u16
-        *prefix` indexed as `prefix[gLanguage * 28 + i]`, block-local
-        records in cases 5-7, `u32 k` counting up in the case 7 digits,
-        `if (n != target) name++; else break;` (no loop rotation) in case
-        6, a `u16` x offset. Left: cases 3 and 4 have identical bodies and
-        the original merges only parts of case 3 into case 4 (their scratch
-        registers differ there); writing case 3's mode 2 offset ungrouped
-        gets 57 normalized and `item` into r7, but with the wrong
-        instructions. Draft sub_08023330.c.
       - `sub_0800C8F8` (asm/nearest_player.s, nearest player to an enemy
         within range): 30 normalized, queued. `s32 list[5][2]` and the
         `> range` test first were better; the original strength-reduces

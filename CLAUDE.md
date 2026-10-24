@@ -603,6 +603,13 @@ merge `ad_*` files into real modules, name things, fix style.
   - An inline whose `kind` argument is a constant but whose code still
     does `lsls #16` (hoisted) / `lsrs #16` per call: the inline's
     parameter is `u32` and narrowed at the call to a `u16` parameter.
+- From sub_08023330 (src/item_name.c, 77 -> 0 normalized with the
+  permuter's hint): one variable for unrelated small values (`j` as the
+  name start and the digit), a separate saved index for the first digit
+  (`at = i; ... i++; buf[at] = ...`), `buf[i] = x; k++; i++;` in that
+  order, a loop-invariant `item->id + 1` written in the loop test (the
+  compiler hoists it after the loop setup), and table pointers walked
+  with `for (...; k++, table++)`.
 - Families: many functions are copies with different constants. Check
   for one before starting (same mnemonic sequence, or the same first 30
   instructions); solve one, then generate the rest. Done so far: the nine

@@ -151,7 +151,7 @@ _08002C44:
 	.inst.n 0x6800
 	.inst.n 0x4687
 	.inst.n 0x0000
-	.4byte 0x03003CA8
+	.4byte gLanguage
 	.4byte 0x08002D18
 	.4byte 0x08002D30
 	.4byte 0x08002D44
