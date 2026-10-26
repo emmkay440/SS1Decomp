@@ -24,7 +24,7 @@ SECTIONS {
         src/save.o(.text);
         src/game_main.o(.text);
         src/link_thread.o(.text);
-        asm/code_08001B78.o(.text);
+        src/link_handshake.o(.text);
         src/link.o(.text);
         src/logos.o(.text);
         src/unk_080022BC.o(.text);

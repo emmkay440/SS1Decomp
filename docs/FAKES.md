@@ -35,3 +35,4 @@ Rules:
 | `sub_0804096C` | src/menu_quick_slots.c | `gUnknown_03000494++; gUnknown_03000494--;` | fake |
 | `Free` | src/heap_free.c | a copy `b` of `block`, `do/while (0)` around the last two stores | fake |
 | `sub_0800481C` | src/map_layer2_bg.c | an `int t` for two unrelated values, `regOffset` computed twice | fake |
+| `sub_08001B78` | src/link_handshake.c | two `do/while (0)` blocks (the count test, the slave's handshake) | maybe a macro |
