@@ -33,3 +33,5 @@ Rules:
 | `sub_080352C4` | src/enemy_wave.c | empty `if (!gPlayers) {}` (array address, never true) | fake |
 | `sub_08026D98` | src/number_draw.c (and its inlined copy in src/number_above.c) | `case 0: kind = 0;` etc., self-assignments in the kind switch | maybe real (a mapping) |
 | `sub_0804096C` | src/menu_quick_slots.c | `gUnknown_03000494++; gUnknown_03000494--;` | fake |
+| `Free` | src/heap_free.c | a copy `b` of `block`, `do/while (0)` around the last two stores | fake |
+| `sub_0800481C` | src/map_layer2_bg.c | an `int t` for two unrelated values, `regOffset` computed twice | fake |

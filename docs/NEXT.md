@@ -246,9 +246,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         (permuter), which keeps `x` out of the register of `rawX`. `y`
         needs the same (it must not share r1 with `rawY`; the original has
         the constant 0 there). Draft sub_0800E634.c.
-      - `Free` (asm/heap_free.s): 2 lines off. It does `r4 = ptr; r1 = r4`,
-        the original `r1 = ptr; r4 = r1`. Needs a goto for the loop and an
-        integer copy of the pointer in its own do/while(0) (draft Free.c).
       - `sub_0804087C` (asm/menu_slot_item.s): 6 lines off; which register
         holds the type 4 index (draft sub_0804087C.c).
       - `sub_08045114` (asm/menu_price_buy.s): 11 lines off; the original
@@ -272,10 +269,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         logic matches; in the 30..239 loop x and the counter sit in each
         other's registers (r4/r5). Draft sub_0804A074.c; it has to stay in
         its own file (see the no-prototype note in CLAUDE.md).
-      - `sub_0800481C` (asm/map_layer2_bg.s) and its twin `sub_080046E4`
-        (asm/code_080045C8.s): match except that the original computes
-        `index * 2` for the BG control register before the call into r4 and
-        copies it to a high register later; draft sub_0800481C.c.
       - `sub_0802BD2C` (asm/spell_sleep.s, the enemy twin of
         `sub_0802BA34`: status 2 for 1800 frames to the enemies in range):
         25 normalized, 159 raw (2026-10-20), queued. Found: `u32 count`

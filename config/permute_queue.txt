@@ -22,10 +22,8 @@ sub_0801D2C4          area_switched_traps  tmp/drafts/sub_0801D2C4.c
 sub_0803EDD8          code_0803EDD8        tmp/drafts/sub_0803EDD8_perm.c
 sub_0802F374          save_load_or_new     tmp/drafts/sub_0802F374_perm.c
 sub_0802B638          code_08029C44        tmp/drafts/sub_0802B638.c
-Free                  heap_free            tmp/drafts/Free_perm.c
 sub_0804087C          menu_slot_item       tmp/drafts/sub_0804087C.c
 sub_0800E634          enemy_update_msg     tmp/drafts/sub_0800E634_perm.c
-sub_0800481C          map_layer2_bg        tmp/drafts/sub_0800481C_perm.c
 sub_0802C174          target_in_front      tmp/drafts/sub_0802C174_perm.c
 sub_0800C8F8          nearest_player       tmp/drafts/sub_0800C8F8_perm.c
 sub_0802BD2C          spell_sleep          tmp/drafts/sub_0802BD2C_perm.c

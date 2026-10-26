@@ -18,7 +18,7 @@ SECTIONS {
         src/intr_handlers.o(.text);
         src/copy_queue.o(.text);
         src/heap.o(.text);
-        asm/heap_free.o(.text);
+        src/heap_free.o(.text);
         src/heap_top.o(.text);
         src/lib/multi_sio.o(.text);
         src/save.o(.text);
@@ -50,7 +50,7 @@ SECTIONS {
         src/map_init.o(.text);
         src/map_bg_setup.o(.text);
         asm/code_080046E4.o(.text);
-        asm/map_layer2_bg.o(.text);
+        src/map_layer2_bg.o(.text);
         src/map_edge.o(.text);
         asm/code_08004AE4.o(.text);
         src/map_layer1_init.o(.text);
