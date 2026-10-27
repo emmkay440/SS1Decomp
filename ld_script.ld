@@ -208,6 +208,8 @@ SECTIONS {
         asm/code_0802501C.o(.text);
         src/warp_spot_thread.o(.text);
         asm/code_08025BFC.o(.text);
+        asm/special_attack.o(.text);
+        asm/code_080260E8.o(.text);
         src/area_title.o(.text);
         src/sprite_obj.o(.text);
         src/thread_slots.o(.text);
