@@ -354,6 +354,18 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         live enemy): first draft 2026-10-27, 0 normalized, queued. Left:
         `obj` (&gUnknown_03006430) and the constant 212 swap r4/r5, and
         the enemy loop's `i + 1` / `enemy + 1` swap sb/sl.
+      - `sub_0802CA30` (asm/code_0802CA30.s, effect thread from
+        sub_0802CE40: three shots in the facing direction that hurt the
+        enemies they pass): first draft 2026-10-27, 4 normalized, queued.
+        Found: `while (1)` with `if (finished > 2) break; WaitFrame();` at
+        the end (a goto loop or do/while(1) is far worse), the speed 40 in
+        a variable (`muls`, not shifts), `dmg` local for unk2A/pendingDamage,
+        `(s16)(x >> 12)` arguments, `priority` as u32. Left: the facing
+        index is stored after the table load, and one hoisted `&frame`
+        address is set up before the zero constant.
+      - `sub_0801EA78` (asm/code_0801E014.s, warp spots): draft 76
+        normalized, queued 2026-10-27; stack slots of px/py/tx and the
+        original's 8 extra stack bytes.
       - `sub_080260E8` (asm/code_080260E8.s, character menu thread started
         by sub_08027010): not started. It reads `sb` before setting it
         (`mov r2, sb; adds r2, #4` at entry, later `ldr r0, [sb]` for a

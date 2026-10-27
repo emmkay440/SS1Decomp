@@ -35,3 +35,5 @@ sub_08039EC8          code_08039EC8        tmp/drafts/sub_08039EC8_perm.c
 sub_080046E4          code_080046E4        tmp/drafts/sub_080046E4_perm.c
 sub_08012230          equip_has_11         tmp/drafts/sub_08012230.c
 sub_08025BFC          special_attack       tmp/drafts/sub_08025BFC.c
+sub_0801EA78          code_0801E014        tmp/drafts/sub_0801EA78.c
+sub_0802CA30          code_0802CA30        tmp/drafts/sub_0802CA30.c
