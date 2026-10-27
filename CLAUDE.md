@@ -56,7 +56,8 @@ merge `ad_*` files into real modules, name things, fix style.
   permuter runs over the queue for long periods
   (`tools/scripts/permute_queue.sh [secs_each] [jobs]`, detached with
   `nohup setsid ... &`; `touch tmp/permute/STOP` ends it after the current
-  function). Check `tmp/permute/queue.log` and the best outputs later:
+  function). The user approved ~85% CPU (2026-10-27): run it as two queues
+  with `tools/scripts/permute_split.sh 3600 7 6` (7 + 6 jobs of 16 cores). Check `tmp/permute/queue.log` and the best outputs later:
   build them (`tools/scripts/dcheck.sh`, then the real tree) before
   accepting, and record fakes as above.
 - Matching tricks that worked: return-0/1 layout follows if/else order

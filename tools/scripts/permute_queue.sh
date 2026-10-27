@@ -10,13 +10,17 @@
 #
 # To stop after the current function: touch tmp/permute/STOP
 # Long runs: nohup setsid tools/scripts/permute_queue.sh 3600 8 > /dev/null 2>&1 &
+# Several queues at once: give each its own list with PERMUTE_QUEUE=file
+# (tools/scripts/permute_split.sh does this); log lines carry the list name.
 set -u
 T=${1:-3600}; J=${2:-8}; ROUNDS=${3:-1}
 Q=${PERMUTE_QUEUE:-config/permute_queue.txt}
 LOG=tmp/permute/queue.log
 mkdir -p tmp/permute tmp/permute_old
 rm -f tmp/permute/STOP
-log() { echo "$(date '+%F %T') $*" >> "$LOG"; }
+TAG=$(basename "$Q" .txt)
+CUR=tmp/permute/queue.cur.$TAG
+log() { echo "$(date '+%F %T') [$TAG] $*" >> "$LOG"; }
 
 lines() { tools/scripts/dcheck.sh "$1" "$2" "$3" 2>/dev/null | sed -n 's/.*draft lines, \([0-9]*\) diff lines/\1/p'; }
 
@@ -24,7 +28,7 @@ log "queue start: $T s each, $J jobs, $ROUNDS round(s)"
 r=0
 while [ "$r" -lt "$ROUNDS" ]; do
     r=$((r + 1))
-    grep -v '^[[:space:]]*#' "$Q" | grep -v '^[[:space:]]*$' > tmp/permute/queue.cur
+    grep -v '^[[:space:]]*#' "$Q" | grep -v '^[[:space:]]*$' > "$CUR"
     while read -r F M C rest; do
         [ -e tmp/permute/STOP ] && { log "STOP found, ending"; exit 0; }
         if [ ! -f "$C" ]; then log "$F: draft $C missing, skipped"; continue; fi
@@ -41,6 +45,6 @@ while [ "$r" -lt "$ROUNDS" ]; do
         else
             log "$F: base score ${base:-?}, nothing better"
         fi
-    done < tmp/permute/queue.cur
+    done < "$CUR"
 done
 log "queue done"
