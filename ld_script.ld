@@ -171,7 +171,7 @@ SECTIONS {
         src/area_markers.o(.text);
         asm/code_0801CFB0.o(.text);
         src/area_traps.o(.text);
-        asm/area_switched_traps.o(.text);
+        src/area_switched_traps.o(.text);
         src/area_timed_traps.o(.text);
         src/area_switches.o(.text);
         asm/area_pillars.o(.text);

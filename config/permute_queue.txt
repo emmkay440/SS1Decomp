@@ -17,7 +17,6 @@ sub_08023A94          hud_weapon_wheel     tmp/drafts/sub_08023A94_perm.c
 sub_0803FE70          menu_gold_count2     tmp/drafts/sub_0803FE70_perm.c
 sub_0801AF3C          area_change_thread   tmp/drafts/sub_0801AF3C.c
 sub_08020ADC          npc_gift_0adc        tmp/drafts/sub_08020ADC_perm.c
-sub_0801D2C4          area_switched_traps  tmp/drafts/sub_0801D2C4.c
 sub_0803EDD8          code_0803EDD8        tmp/drafts/sub_0803EDD8_perm.c
 sub_0802F374          save_load_or_new     tmp/drafts/sub_0802F374_perm.c
 sub_0802B638          code_08029C44        tmp/drafts/sub_0802B638_perm.c
