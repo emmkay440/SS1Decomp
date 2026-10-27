@@ -349,6 +349,16 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         permuter.
       - `sub_08010B48` / `sub_08012230` (asm/equip_has.s, about 700 bytes
         each): not retried; drafts equip_has_*.c, permuter score 1445.
+      - `sub_08025BFC` (asm/special_attack.s, thread started by
+        sub_08027188; kind 1-9 picks a scene and a power, then hurts every
+        live enemy): first draft 2026-10-27, 0 normalized, queued. Left:
+        `obj` (&gUnknown_03006430) and the constant 212 swap r4/r5, and
+        the enemy loop's `i + 1` / `enemy + 1` swap sb/sl.
+      - `sub_080260E8` (asm/code_080260E8.s, character menu thread started
+        by sub_08027010): not started. It reads `sb` before setting it
+        (`mov r2, sb; adds r2, #4` at entry, later `ldr r0, [sb]` for a
+        GetDataRecord key), so the original used an uninitialized pointer
+        local. 0x108 bytes of stack, per-player 0x34-byte records.
       Solved on 2026-10-14: `sub_0800FA74` and its sibling `sub_0800FC70`
       (src/drop_spot.c): `field = gFieldItems;` inside the early `goto
       fail` branch (decomp-permuter) puts the "found" tail before the
