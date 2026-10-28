@@ -380,11 +380,20 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         instead of `continue` didn't change it. Its siblings
         `sub_0801E5C0` (src/area_chest.c), `sub_0801EA78`
         (src/warp_spots.c) and `sub_0801ECC4` (src/area_rocks.c) match.
-      - `sub_080260E8` (asm/code_080260E8.s, character menu thread started
-        by sub_08027010): not started. It reads `sb` before setting it
-        (`mov r2, sb; adds r2, #4` at entry, later `ldr r0, [sb]` for a
-        GetDataRecord key), so the original used an uninitialized pointer
-        local. 0x108 bytes of stack, per-player 0x34-byte records.
+      - `sub_080260E8` (asm/code_080260E8.s, character preview scene
+        started by sub_08027010): first draft 2026-10-28, ~150
+        normalized (tmp/drafts/sub_080260E8.c; a byte-view variant in
+        sub_080260E8_bytes.c). The uninitialized `sb` is the record
+        pointer of an inlined background load (`tiles = GetDataRecord(
+        record[0])`, palette `*(u16 *)record | 0x120000`, tilemap
+        `record + 1`): an uninitialized `u32 *record` local reproduces
+        it. sub_08026ADC is inlined per player (paletteCount -1). Left:
+        the loop counter should get sl in all three loops (me, x, y are
+        spilled in the original); the player info is read through
+        different views (facing as `ldrb [#3]; lsrs #4`, the
+        gUnknown_080FB630 column as `ldrb [#5] & 0xC`, x/y as halfword
+        bitfields), and the two state cases each keep their own copy of
+        the unk70 code up to the shared `+= table` tail.
       Solved on 2026-10-14: `sub_0800FA74` and its sibling `sub_0800FC70`
       (src/drop_spot.c): `field = gFieldItems;` inside the early `goto
       fail` branch (decomp-permuter) puts the "found" tail before the
