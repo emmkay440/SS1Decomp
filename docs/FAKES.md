@@ -37,3 +37,4 @@ Rules:
 | `sub_0800481C` | src/map_layer2_bg.c | an `int t` for two unrelated values, `regOffset` computed twice | fake |
 | `sub_08001B78` | src/link_handshake.c | two `do/while (0)` blocks (the count test, the slave's handshake) | maybe a macro |
 | `sub_080124E8` | src/item_bonus_roll.c | record offsets written as `(t = 0xF2) + i` through dummy variables | fake |
+| `sub_0801EA78` | src/warp_spots.c | `*&t` in the Lerp1024 argument (keeps `t` on the stack) | fake |

@@ -364,9 +364,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         `(s16)(x >> 12)` arguments, `priority` as u32. Left: the facing
         index is stored after the table load, and one hoisted `&frame`
         address is set up before the zero constant.
-      - `sub_0801EA78` (asm/code_0801E014.s, warp spots): draft 76
-        normalized, queued 2026-10-27; stack slots of px/py/tx and the
-        original's 8 extra stack bytes.
       - `sub_0802D53C` (asm/code_0802D53C.s, enemy shot thread from
         sub_0802D98C, aimed at a player): first draft 2026-10-27, 15
         normalized, queued. Like sub_080260E8 it reads a pointer that is
