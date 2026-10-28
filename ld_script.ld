@@ -177,7 +177,7 @@ SECTIONS {
         asm/area_pillars.o(.text);
         asm/code_0801E014.o(.text);
         src/warp_spots.o(.text);
-        asm/code_0801ECC4.o(.text);
+        src/area_rocks.o(.text);
         src/npc_gift_f160.o(.text);
         asm/npc_walker.o(.text);
         src/npc_gift_f9c8.o(.text);
