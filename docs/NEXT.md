@@ -331,9 +331,11 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         inline, `old_agbcc` (merges too). agbcc's cross-jumping always
         runs (jump2), so something in the original's RTL differed per
         case. Draft sub_08048240.c.
-      - `sub_08006008`, `GetMapTileAttributes` (asm/map_6008.s, map_attr.s;
-        drafts in map_all.c): the layer pointer has to land in r0/r1 while
-        x and y move to other registers. About 20 lines off.
+      - `sub_08006008` (asm/map_6008.s, draft in map_all.c): the layer
+        pointer has to land in r0/r1 while x and y move to other registers.
+        About 20 lines off. `GetMapTileAttributes` next to it matched on
+        2026-10-27 (src/map_attr.c): the per-layer `tiles` load written in
+        both branches, and one `void *p` for the layer and then the tile.
       - `LoadSaveSlotInfo` (asm/save_slot_info.s), `sub_0802F374`
         (asm/save_load_or_new.s): the original loads the constant 0x1000
         twice (for Alloc and ReadSaveSector); every C version shares it in a

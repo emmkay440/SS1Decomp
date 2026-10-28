@@ -63,7 +63,7 @@ SECTIONS {
         asm/code_08005A2C.o(.text);
         src/map.o(.text);
         asm/map_6008.o(.text);
-        asm/map_attr.o(.text);
+        src/map_attr.o(.text);
         src/map_bg.o(.text);
         src/unk_08006114.o(.text);
         src/field_session.o(.text);
