@@ -37,3 +37,4 @@ sub_08012AD0          drop_roll            tmp/drafts/sub_08012AD0.c
 sub_08018940          code_08018940        tmp/drafts/sub_08018940_perm.c
 GetDataRecord         data_record          tmp/drafts/GetDataRecord.c
 sub_08028DB0          link_sync            tmp/drafts/sub_08028DB0_perm.c
+sub_0801E014          code_0801E014        tmp/drafts/sub_0801E014.c
