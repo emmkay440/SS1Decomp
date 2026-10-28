@@ -366,6 +366,15 @@ m4a's C part is fully C. What's left is mostly medium and large functions
       - `sub_0801EA78` (asm/code_0801E014.s, warp spots): draft 76
         normalized, queued 2026-10-27; stack slots of px/py/tx and the
         original's 8 extra stack bytes.
+      - `sub_0802D53C` (asm/code_0802D53C.s, enemy shot thread from
+        sub_0802D98C, aimed at a player): first draft 2026-10-27, 15
+        normalized, queued. Like sub_080260E8 it reads a pointer that is
+        never set (`[sp, #0x4c]`, used as `->unk6A` for sub_0801841C);
+        the draft has an uninitialized `other`. Found: a `hits` pointer
+        for the player's last-hit table, `u32 count` with `count-- > 0`,
+        the palette result in a u16 before `count = 1`, `(s16)angle >
+        0x80`. Left: `arg`/`player` registers swapped and the narrowing of
+        the target id, the speed 60 constant placement, one `ldrb` order.
       - `sub_080260E8` (asm/code_080260E8.s, character menu thread started
         by sub_08027010): not started. It reads `sb` before setting it
         (`mov r2, sb; adds r2, #4` at entry, later `ldr r0, [sb]` for a
