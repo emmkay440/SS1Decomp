@@ -373,6 +373,16 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         the palette result in a u16 before `count = 1`, `(s16)angle >
         0x80`. Left: `arg`/`player` registers swapped and the narrowing of
         the target id, the speed 60 constant placement, one `ldrb` order.
+      - `sub_0802CED4` (asm/code_0802CED4.s, the player's shot action
+        from sub_0802D49C, the twin of the enemy shot sub_0802D53C): first
+        draft 2026-10-29, 37 normalized, queued. Found: the player info
+        word read as its own bitfield layout (state:4, :8, sub:3,
+        target:8, power:9), `arg >>= 16` reusing the parameter, the
+        record search with `goto found` and the memcpy after the loop,
+        `power-- > 0`, the caster-only state check `who ==
+        GetMultiplayerId() && (...)`, the ArcTan2 result in a `u16`
+        temporary. Left: the first enemy search (the original peels the
+        i = 0 test, as in sub_08029C44) and stack slots.
       - `sub_080260E8` (asm/code_080260E8.s, character preview scene
         started by sub_08027010): first draft 2026-10-28, ~150
         normalized (tmp/drafts/sub_080260E8.c; a byte-view variant in
