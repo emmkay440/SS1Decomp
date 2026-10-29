@@ -175,7 +175,7 @@ SECTIONS {
         src/area_timed_traps.o(.text);
         src/area_switches.o(.text);
         asm/area_pillars.o(.text);
-        asm/code_0801E014.o(.text);
+        src/area_player_chests.o(.text);
         src/area_chest.o(.text);
         src/warp_spots.o(.text);
         src/area_rocks.o(.text);

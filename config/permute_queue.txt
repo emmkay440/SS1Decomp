@@ -5,7 +5,6 @@
 # summary in tmp/permute/queue.log. Remove a line once the function matches.
 #
 # func                module               draft
-sub_0801E014          code_0801E014        tmp/drafts/sub_0801E014.c
 sub_08039B3C          enemy_shot           tmp/drafts/sub_08039B3C_perm.c
 sub_08029C44          code_08029C44        tmp/drafts/sub_08029C44_perm.c
 sub_08039EC8          code_08039EC8        tmp/drafts/sub_08039EC8_perm.c

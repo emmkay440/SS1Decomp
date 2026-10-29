@@ -373,13 +373,6 @@ m4a's C part is fully C. What's left is mostly medium and large functions
         the palette result in a u16 before `count = 1`, `(s16)angle >
         0x80`. Left: `arg`/`player` registers swapped and the narrowing of
         the target id, the speed 60 constant placement, one `ldrb` order.
-      - `sub_0801E014` (asm/code_0801E014.s, the area's per-player chests):
-        first draft 2026-10-28, 0 normalized, queued. Left: one swap, the
-        `i * 2` offset and `&chests.x[i]` (r6/r7) at the top of the chest
-        loop; declaration order, a `px` pointer, `int i` and an if-block
-        instead of `continue` didn't change it. Its siblings
-        `sub_0801E5C0` (src/area_chest.c), `sub_0801EA78`
-        (src/warp_spots.c) and `sub_0801ECC4` (src/area_rocks.c) match.
       - `sub_080260E8` (asm/code_080260E8.s, character preview scene
         started by sub_08027010): first draft 2026-10-28, ~150
         normalized (tmp/drafts/sub_080260E8.c; a byte-view variant in

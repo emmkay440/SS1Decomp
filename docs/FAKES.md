@@ -39,3 +39,4 @@ Rules:
 | `sub_080124E8` | src/item_bonus_roll.c | record offsets written as `(t = 0xF2) + i` through dummy variables | fake |
 | `sub_0801EA78` | src/warp_spots.c | `*&t` in the Lerp1024 argument (keeps `t` on the stack) | fake |
 | `sub_0801ECC4` | src/area_rocks.c | `spot->x + (t = unkAC[i] - 4)`: an assignment inside the sum to keep the offset grouped (the start position is written twice, so maybe a macro) | fake |
+| `sub_0801E014` | src/area_player_chests.c | `info->x >> 1 >> 2` for `>> 3` | fake |
